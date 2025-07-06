@@ -7,6 +7,7 @@ import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon } from '../assets/S
 import { Link as RouterLink } from 'react-router-dom';
 import { sportData, sportsData } from '../data/dashboardData';
 import CloseIcon from '@mui/icons-material/Close';
+import CommonNavLink from './commonComponents/CommonNavLink';
 
 const typoStyle = {
     fontWeight: 600,
@@ -57,14 +58,14 @@ const Header = () => {
                         )}
                     </Box>
                     <Box>
-                        <Link component={RouterLink} to="/">
+                        <CommonNavLink>
                             <CardMedia
                                 component="img"
                                 image={logo}
                                 alt="Logo"
                                 sx={{ height: { lg: '40px', md: '40px', sm: '30px', xs: '20px' } }}
                             />
-                        </Link>
+                        </CommonNavLink>
                     </Box>
                 </Box>
             </Grid>
@@ -72,35 +73,33 @@ const Header = () => {
                 <Box sx={{ display: { lg: 'flex', md: 'flex', sm: 'none', xs: 'none' }, justifyContent: 'space-evenly' }}>
                     {headerData?.map((item, index) => (
                         <Box sx={commonBoxStyle}>
-                            <Link
-                                component={RouterLink}
-                                to={{
-                                    pathname: `/common-list/${item?.title.toLowerCase()}`,
-                                }}
-                                state={{ data: item.data, isLoggin: item.isLoggedIn }}
-                                underline="none"
+                            <CommonNavLink
+                                to={`common-list/${item?.title.toLowerCase()}`}
+                                item={{ data: item.data, isLoggin: item.isLoggedIn }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                                     {item.icon}
                                     <Typography sx={typoStyle}>{item.title}</Typography>
                                 </Box>
-                            </Link>
+                            </CommonNavLink>
+
                         </Box>
                     ))}
                 </Box>
             </Grid>
             <Grid item>
                 <Box sx={{ display: 'flex' }}>
-                    <Box sx={{ padding: '8px 10px', color: 'black', bgcolor: '#ffc107', borderRadius: '5px', m: '0px 5px', cursor: 'pointer' }}>
-                        <Link component={RouterLink} to="/login" underline="none" sx={{ color: 'black' }}>
+                    <CommonNavLink to={'login'} sx={{ color: 'black' }}>
+                        <Box sx={{ padding: '8px 10px', color: 'black', bgcolor: '#ffc107', borderRadius: '5px', m: '0px 5px', cursor: 'pointer' }}>
                             <Typography sx={typoStyle}>LOGIN</Typography>
-                        </Link>
-                    </Box>
-                    <Box sx={{ padding: '8px 10px', color: 'black', bgcolor: '#ffc107', borderRadius: '5px', m: '0px 5px', cursor: 'pointer' }}>
-                        <Link component={RouterLink} to="/register" underline="none" sx={{ color: 'black' }}>
+                        </Box>
+                    </CommonNavLink>
+
+                    <CommonNavLink to={"register"} sx={{ color: 'black' }}>
+                        <Box sx={{ padding: '8px 10px', color: 'black', bgcolor: '#ffc107', borderRadius: '5px', m: '0px 5px', cursor: 'pointer' }}>
                             <Typography sx={typoStyle}>REGISTER</Typography>
-                        </Link>
-                    </Box>
+                        </Box>
+                    </CommonNavLink>
                 </Box>
             </Grid>
         </Grid>

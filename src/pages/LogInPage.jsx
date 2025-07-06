@@ -17,6 +17,7 @@ import logo from "../assets/logo.png"
 import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { BestSoultionIcon } from '../assets/SVGs/allSVGs';
+import CommonNavLink from '../components/commonComponents/CommonNavLink';
 
 
 const LogInPage = () => {
@@ -49,7 +50,7 @@ const LogInPage = () => {
                 }}
             >
                 <Typography variant="h5" fontWeight="bold" mb={2} textAlign="center">
-                    <Link component={RouterLink} to="/" underline="none" sx={{ color: '#535558' }}>
+                    <CommonNavLink to={''} sx={{ color: '#535558' }}>
                         <CardMedia
                             component="img"
                             image={logo}
@@ -61,7 +62,7 @@ const LogInPage = () => {
                                 margin: "auto"
                             }}
                         />
-                    </Link>
+                    </CommonNavLink>
                 </Typography>
 
                 <form onSubmit={handleLogin}>
@@ -126,9 +127,9 @@ const LogInPage = () => {
                 <Box sx={{ mt: 2, textAlign: 'center' }}>
                     <Typography variant="body2">
                         Don't have an account?{' '}
-                        <Link href="#" variant="body2">
+                        <CommonNavLink to={'register'} >
                             Register
-                        </Link>
+                        </CommonNavLink>
                     </Typography>
                 </Box>
             </Paper>

@@ -42,6 +42,7 @@ const CommonList = ({ data: propsData = [] }) => {
     const isLoggedIN = location.state?.isLoggin ?? true;
     const data = propsData.length ? propsData : locationData || [];
     const navigate = useNavigate()
+    console.log(locationData, "wertyui")
 
     const sportIcons = {
         Cricket: <CricketIcon sx={{ color: 'red' }} />,

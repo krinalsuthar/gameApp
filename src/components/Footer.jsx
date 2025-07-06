@@ -2,6 +2,7 @@ import { Box, CardMedia, Drawer, Link, Typography } from "@mui/material";
 import logo from "../assets/logo.png";
 import { Link as RouterLink } from 'react-router-dom';
 import { BhimIcon, DiscortIcon, EmailIcon, FacebookIcon, GPayIcon, InstagramIcon, LinkedInIcon, PaytmIcon, PhonePeIcon, PinterestIcon, TelegramIcon, TelephoneIcon, TwitterIcon, VisaCardIcon, WhatsAppIcon, YouTubeIcon } from '../assets/SVGs/allSVGs';
+import CommonNavLink from "./commonComponents/CommonNavLink";
 
 
 const imageModules = import.meta.glob('/src/assets/footerImages/footer*.{png,jpg,jpeg,svg}', {
@@ -31,7 +32,7 @@ const Footer = () => {
     return (
         <Box sx={{ m: "5px 0px", p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px" }}>
             <Box>
-                <Link href="#" variant="body2">
+                <CommonNavLink to={''} >
                     <CardMedia
                         sx={{ width: "160px" }}
                         component="img"
@@ -39,8 +40,7 @@ const Footer = () => {
                         image={logo}
                         alt="Logo"
                     />
-                </Link>
-
+                </CommonNavLink>
                 <Typography
                     variant="subtitle2"
                     sx={{
@@ -89,23 +89,20 @@ const Footer = () => {
                 <Box>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Quick Link</Typography>
                     {footerLinks.map((item, i) => (
-                        <Link
-                            key={i}
-                            component={RouterLink}
-                            to="/common-page"
-                            underline="none"
-                            sx={{ color: '#535558', display: 'block' }}
-                        >
-                            <Typography variant="caption">{item}</Typography>
-                        </Link>
+                        <Box key={i}>
+                            <CommonNavLink to={'common-page'} sx={{ color: '#535558', display: 'block' }}>
+                                {console.log(item)}
+                                <Typography variant="caption">{item}</Typography>
+                            </CommonNavLink>
+                        </Box>
                     ))}
                 </Box>
 
                 <Box>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Info</Typography>
-                    <Link component={RouterLink} to="/rules" underline="none" sx={{ color: '#535558' }}>
+                    <CommonNavLink to={"rules"} sx={{ color: '#535558' }}>
                         <Typography variant="caption">Rules</Typography>
-                    </Link>
+                    </CommonNavLink>
                 </Box>
 
                 <Box sx={{ maxWidth: 500 }}>

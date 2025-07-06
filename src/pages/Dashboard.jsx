@@ -1,6 +1,6 @@
-import Header from '../compoennts/Header';
-import DrawerMenu from '../compoennts/DrawerMenu';
-import Footer from '../compoennts/Footer';
+import Header from '../components/Header';
+import DrawerMenu from '../components/DrawerMenu';
+import Footer from '../components/Footer';
 import React from 'react';
 import { Box, CssBaseline, useMediaQuery, useTheme } from '@mui/material';
 import { useSelector } from 'react-redux';

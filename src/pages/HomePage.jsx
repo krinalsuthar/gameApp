@@ -1,14 +1,14 @@
 import { Box, Button, CardMedia, Grid, Link, TextField, Typography } from "@mui/material";
-import { ImageCarousel } from "../compoennts/commonComponents/ImageCarousel";
+import { ImageCarousel } from "../components/commonComponents/ImageCarousel";
 import { BoldFireIcon, GiftBoxIcon, LeftArrowIcon, RightArrowIcon } from "../assets/SVGs/allSVGs";
 import { useRef, useState } from "react";
 import { sportsData, TopGamesData, TrendingGamesData } from "../data/dashboardData";
-import CardHeader from "../compoennts/commonComponents/CardHeader";
+import CardHeader from "../components/commonComponents/CardHeader";
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import CommonList from "../compoennts/commonComponents/CommonList";
+import CommonList from "../components/commonComponents/CommonList";
 import refer from "../assets/referimage.png"
 import underline from "../assets/underline.png"
-import CommonCard from "../compoennts/commonComponents/CommonCard";
+import CommonCard from "../components/commonComponents/CommonCard";
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -109,6 +109,7 @@ const HomePage = () => {
                         refer & Earn
                     </Button>
                     <Box mt={2}>
+                        {/* CommonNavLink used remain */}
                         <Link href="/common-page" variant="body2">
                             Show more
                         </Link>

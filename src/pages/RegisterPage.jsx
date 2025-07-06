@@ -10,11 +10,13 @@ import {
     Typography,
     Paper,
     Link,
+    CardMedia,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import logo from '../assets/logo.png';
 import { Link as RouterLink } from 'react-router-dom';
+import CommonNavLink from '../components/commonComponents/CommonNavLink';
 
 const RegisterPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -48,9 +50,21 @@ const RegisterPage = () => {
                     borderRadius: 3,
                 }}
             >
-                <Box sx={{ textAlign: 'center', mb: 2 }}>
-                    <img src={logo} alt="GameKhelo" width="120" />
-                </Box>
+                <Typography variant="h5" fontWeight="bold" mb={2} textAlign="center">
+                    <CommonNavLink to={''} sx={{ color: '#535558' }}>
+                        <CardMedia
+                            component="img"
+                            image={logo}
+                            alt={`logo image`}
+                            sx={{
+                                width: 160,
+                                height: 35,
+                                objectFit: "contain",
+                                margin: "auto"
+                            }}
+                        />
+                    </CommonNavLink>
+                </Typography>
 
                 <Button
                     fullWidth
@@ -157,14 +171,9 @@ const RegisterPage = () => {
                     sx={{ mt: 2, fontSize: 13, display: "flex", justifyContent: "center", gap: 0.5 }}
                 >
                     Already have an account?
-                    <Link
-                        component={RouterLink}
-                        to="/login"
-                        underline="none"
-                        sx={{ color: 'black', fontWeight: 600 }}
-                    >
-                        LOGIN
-                    </Link>
+                    <CommonNavLink to={`login`}>
+                        LogIn
+                    </CommonNavLink>
                 </Typography>
 
             </Paper >

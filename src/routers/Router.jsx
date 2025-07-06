@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
-import CommonCard from '../compoennts/commonComponents/CommonCard';
-import CommonPage from '../compoennts/commonComponents/CommonPage';
+import CommonCard from '../components/commonComponents/CommonCard';
+import CommonPage from '../components/commonComponents/CommonPage';
 import LogInPage from '../pages/LogInPage';
 import RegisterPage from '../pages/RegisterPage';
-import CommonList from '../compoennts/commonComponents/CommonList';
+import CommonList from '../components/commonComponents/CommonList';
 
 
 const AppRoutes = () => (
