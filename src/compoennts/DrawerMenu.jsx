@@ -23,6 +23,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDrawer } from '../features/drawer/drawerSlice';
+import { Link as RouterLink } from 'react-router-dom';
 import {
     drawerData,
     providersData,
@@ -33,6 +34,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { CricketIcon } from '../assets/SVGs/allSVGs';
 import { useMediaQuery, useTheme } from "@mui/material";
+import { sportData } from '../data/dashboardData';
 
 const DrawerMenu = () => {
     const open = useSelector((state) => state.drawer.open);
@@ -134,7 +136,7 @@ const DrawerMenu = () => {
                 onKeyDown={handleClose}
             >
                 <Grid container spacing={1} sx={{ padding: 2, bgcolor: "#f5f5f5de" }}>
-                    {["Sport", "Casino", "Promotions", "Refer & Earn"]?.map((item) => (
+                    {["Sports", "Casino", "Promotions", "Refer & Earn"]?.map((item) => (
                         <Grid item lg={5} md={5} key={item} sx={{ padding: "0px" }}>
                             <Card
                                 sx={{
@@ -154,6 +156,10 @@ const DrawerMenu = () => {
                                         boxShadow: 3,
                                     },
                                 }}
+                                component={RouterLink}
+                                to={`/common-list/${item.toLowerCase()}`}
+                                state={{ data: sportData }}
+                                onClick={handleClose}
                             >
                                 <CardContent sx={{
                                     padding: "5px !important"
@@ -171,8 +177,10 @@ const DrawerMenu = () => {
                         {startingData?.starting?.items?.map((item) => (
                             <ListItemButton
                                 key={item.segment}
-                                component={Link}
-                                to={`/provider/${item.segment}`}
+                                component={RouterLink}
+                                to={{
+                                    pathname: `/common-list/${item?.title}`,
+                                }}
                                 onClick={handleClose}
                                 sx={{
                                     justifyContent: "space-between",
@@ -285,6 +293,7 @@ const DrawerMenu = () => {
                                                                     key={match.segment}
                                                                     component={Link}
                                                                     to={`/match/${match.segment}`}
+                                                                    // to={`/common-page`}
                                                                     sx={{ bgcolor: "white", m: "5px 0px 5px 20px", p: "3px 10px" }}
                                                                     onClick={handleClose}
 
@@ -329,7 +338,8 @@ const DrawerMenu = () => {
                                     key={item.segment}
                                     component={Link}
                                     to={{
-                                        pathname: `/category/${item.segment}`,
+                                        pathname: `/common-page`,
+
                                     }}
                                     state={{
                                         data: item.segment,
@@ -392,7 +402,8 @@ const DrawerMenu = () => {
                                 <ListItemButton
                                     key={item.segment}
                                     component={Link}
-                                    to={`/provider/${item.segment}`}
+                                    // to={`/provider/${item.segment}`}
+                                    to={`/common-page`}
                                     onClick={handleClose}
                                     sx={{
                                         justifyContent: "space-between",

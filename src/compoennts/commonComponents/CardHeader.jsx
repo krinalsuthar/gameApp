@@ -1,5 +1,6 @@
-import { Box, Grid, Link, TextField, Typography } from "@mui/material"
+import { Box, Grid, IconButton, Link, TextField, Typography } from "@mui/material"
 import { LeftArrowIcon, BoldFireIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
+import { useRef } from "react";
 
 const CardHeader = (
     { searchTerm = "",
@@ -7,8 +8,26 @@ const CardHeader = (
         search = "false",
         title = "",
         scroll = "false",
-        icon = "" }
+        icon = "", containerRef = "" }
 ) => {
+
+    const scrollLeft = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollBy({
+                left: -161, // 145px (card width) + 16px (margin/gap)
+                behavior: 'smooth',
+            });
+        }
+    };
+
+    const scrollRight = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollBy({
+                left: 161, // 145px (card width) + 16px (margin/gap)
+                behavior: 'smooth',
+            });
+        }
+    };
     return (
         <>
             <Grid container sx={{ flexWrap: "wrap", }}>
@@ -55,8 +74,14 @@ const CardHeader = (
                                     borderRadius: "5px", border: "1px solid black"
                                 }}
                             >
-                                <LeftArrowIcon />
+                                <Box onClick={scrollLeft}
+                                    sx={{ display: "flex" }}
+                                >
+
+                                    <LeftArrowIcon />
+                                </Box>
                                 <Box
+
                                     sx={{
                                         width: "1px",
                                         height: "24px",
@@ -64,8 +89,51 @@ const CardHeader = (
                                         mx: 1,
                                     }}
                                 />
-                                <RightArrowIcon />
+                                <Box onClick={scrollRight} sx={{ display: "flex" }}
+                                >
+                                    <RightArrowIcon />
+                                </Box>
                             </Box>
+                            // <Box
+                            //     sx={{
+                            //         display: 'flex',
+                            //         alignItems: 'center',
+                            //         justifyContent: 'space-between',
+                            //         mb: 2,
+                            //         px: 2,
+                            //         color: 'white',
+                            //     }}
+                            // >
+                            //     <Typography variant="h6">lazy-loading</Typography>
+                            //     <Box sx={{ display: 'flex', gap: 1 }}>
+                            //         <IconButton
+                            //             onClick={scrollLeft}
+                            //             sx={{
+                            //                 color: 'white',
+                            //                 backgroundColor: '#fff',
+                            //                 borderRadius: '50%',
+                            //                 width: 30,
+                            //                 height: 30,
+                            //                 '&:hover': { backgroundColor: '#e0e0e0' },
+                            //             }}
+                            //         >
+                            //             <LeftArrowIcon />
+                            //         </IconButton>
+                            //         <IconButton
+                            //             onClick={scrollRight}
+                            //             sx={{
+                            //                 color: '#007bff',
+                            //                 backgroundColor: '#fff',
+                            //                 borderRadius: '50%',
+                            //                 width: 30,
+                            //                 height: 30,
+                            //                 '&:hover': { backgroundColor: '#e0e0e0' },
+                            //             }}
+                            //         >
+                            //             <RightArrowIcon />
+                            //         </IconButton>
+                            //     </Box>
+                            // </Box>
                         )}
                     </Box>
                 </Grid>
@@ -75,3 +143,4 @@ const CardHeader = (
 }
 
 export default CardHeader
+

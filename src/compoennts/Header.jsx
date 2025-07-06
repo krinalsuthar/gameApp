@@ -6,6 +6,7 @@ import { toggleDrawer } from '../features/drawer/drawerSlice';
 import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon } from '../assets/SVGs/allSVGs';
 import { Link as RouterLink } from 'react-router-dom';
 import { sportData, sportsData } from '../data/dashboardData';
+import CloseIcon from '@mui/icons-material/Close';
 
 const typoStyle = {
     fontWeight: 600,
@@ -30,7 +31,7 @@ const headerData = [
 ];
 
 const Header = () => {
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const isDrawerOpen = useSelector((state) => state.drawer.open);
     const dispatch = useDispatch();
     return (
         <Grid
@@ -48,8 +49,12 @@ const Header = () => {
         >
             <Grid item>
                 <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                    <Box onClick={() => dispatch(toggleDrawer())}>
-                        <DehazeIcon sx={{ color: 'white' }} />
+                    <Box onClick={() => dispatch(toggleDrawer())} sx={{ display: "flex" }}>
+                        {isDrawerOpen ? (
+                            <CloseIcon sx={{ color: 'white' }} />
+                        ) : (
+                            <DehazeIcon sx={{ color: 'white' }} />
+                        )}
                     </Box>
                     <Box>
                         <Link component={RouterLink} to="/">
@@ -70,7 +75,7 @@ const Header = () => {
                             <Link
                                 component={RouterLink}
                                 to={{
-                                    pathname: '/common-list',
+                                    pathname: `/common-list/${item?.title.toLowerCase()}`,
                                 }}
                                 state={{ data: item.data, isLoggin: item.isLoggedIn }}
                                 underline="none"

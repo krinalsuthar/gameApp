@@ -4,7 +4,7 @@ const CommonPage = ({ text = "" }) => {
         <>
             <h1>
                 {text}
-                common pages
+                This page will be in Process
             </h1>
         </>
     )
