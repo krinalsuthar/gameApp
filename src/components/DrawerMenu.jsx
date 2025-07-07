@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import {
     Drawer,
     List,
-    ListItem,
     ListItemButton,
-    ListItemIcon,
     ListItemText,
     Box,
-    TextField,
     Collapse,
-    Divider,
     Typography,
     Grid,
     CardContent,
@@ -32,7 +28,6 @@ import {
 } from '../data/drawerData';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import { CricketIcon } from '../assets/SVGs/allSVGs';
 import { useMediaQuery, useTheme } from "@mui/material";
 import { sportData } from '../data/dashboardData';
 import CommonNavLink from './commonComponents/CommonNavLink';
@@ -40,7 +35,6 @@ import CommonNavLink from './commonComponents/CommonNavLink';
 const DrawerMenu = () => {
     const open = useSelector((state) => state.drawer.open);
     const dispatch = useDispatch();
-    const [dataSate, setDataState] = useState({ title: "", icon: "" })
     const [searchTerm, setSearchTerm] = useState('');
     const [openSports, setOpenSports] = useState({});
     const [openLeagues, setOpenLeagues] = useState({});
@@ -54,12 +48,10 @@ const DrawerMenu = () => {
         title: item?.title,
         icon: item?.icon
     }));
-    console.log(casionData, "casionData")
     const data1 = [{ sport: sportData, title: "Sports", type: "list" },
     { sport: casionData, title: "Casion", type: "cards" },
     { sport: sportData, title: "Sports", type: "list" },
     { sport: sportData, title: "Sports", type: "list" }]
-    console.log(sportData, "sportData")
 
     const handleSportClick = (sport) => {
         setOpenSports((prev) => ({
@@ -82,9 +74,9 @@ const DrawerMenu = () => {
     const handleToggleSportsEntire = () => {
         setOpenSportsEntire((prev) => !prev);
     };
-    const filteredSports = drawerData.sports.map((sport) => ({
+    const filteredSports = drawerData.sports?.map((sport) => ({
         ...sport,
-        leagues: sport.leagues.map((league) => ({
+        leagues: sport.leagues?.map((league) => ({
             ...league,
             matches: league.matches.filter((match) =>
                 match.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -97,9 +89,7 @@ const DrawerMenu = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
-    const abc = categoriesData.categories?.items?.map((data) => {
-        return data.info
-    })
+
     return (
         <Drawer
             anchor={isMobile ? 'bottom' : 'left'}
@@ -139,50 +129,12 @@ const DrawerMenu = () => {
                     // marginLeft: isMobile ? 0 : open ? `${drawerWidth}px` : 0,
                     // width: isMobile ? '100%' : open ? `calc(100% - ${drawerWidth}px)` : '100%',
                     transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
-                    // width: {lg: 350, md: 350, sm: 250, xs: 0 },
                     overflowY: 'auto', scrollbarWidth: "none", overflowX: "hidden", bgcolor: "#f5f5f5de", pb: "50px"
                 }}
                 role="presentation"
                 onKeyDown={handleClose}
             >
                 <Grid container spacing={1} sx={{ padding: 2, bgcolor: "#f5f5f5de" }}>
-                    {/* {["sport", "Casino", "Promotions", "Refer & Earn"]?.map((item) => (
-                        <Grid item lg={5} md={5} key={item} sx={{ padding: "0px" }}>
-                            {console.log(item.trim().toLowerCase().concat('Data') === 'sportData')}
-                            <CommonNavLink
-                                to={`common-list/${item.toLowerCase()}`}
-                                item={{ data: item.toLowerCase().concat('Data') }}>
-                                <Card
-                                    sx={{
-                                        bgcolor: "#43727a",
-                                        cursor: "pointer",
-                                        padding: "0px",
-                                        border: '1px solid #ccc',
-                                        borderRadius: 2,
-                                        boxShadow: 1,
-                                        height: '100%',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'center',
-                                        minWidth: 150,
-                                        width: '100%',
-                                        '&:hover': {
-                                            boxShadow: 3,
-                                        },
-                                    }}
-                                    onClick={handleClose}
-                                >
-                                    <CardContent sx={{
-                                        padding: "5px !important"
-                                    }}>
-                                        <Typography variant="h7" component="div" sx={{ textAlign: 'center', color: 'white' }}>
-                                            {item}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </CommonNavLink>
-                        </Grid>
-                    ))} */}
                     {data1?.map((item, index) => {
                         return (
                             <Grid item lg={5} md={5} key={index} sx={{ padding: "0px" }}>
@@ -220,14 +172,12 @@ const DrawerMenu = () => {
                             </Grid>
                         );
                     })}
-
-
                 </Grid>
                 <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <List>
-                        {startingData?.starting?.items?.map((item) => (
+                        {startingData?.starting?.items?.map((item, index) => (
                             <ListItemButton
-                                key={item.segment}
+                                key={index}
                                 component={RouterLink}
                                 to={{
                                     pathname: `/common-list/${item?.title}`,
@@ -258,7 +208,6 @@ const DrawerMenu = () => {
                         ))}
                     </List>
                 </Box>
-
                 <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <Box
                         sx={{
@@ -275,8 +224,8 @@ const DrawerMenu = () => {
                     <Collapse in={opeSportsEntire} timeout="auto" unmountOnExit>
                         <List>
 
-                            {filteredSports.map((sport) => (
-                                <React.Fragment key={sport.segment}>
+                            {filteredSports?.map((sport, index) => (
+                                <React.Fragment key={index}>
                                     <ListItemButton onClick={() => handleSportClick(sport.segment)} sx={{ justifyContent: "space-between", margin: "5px 0px", borderRadius: "5px", padding: "3px 10px", bgcolor: "white" }}>
                                         <Box sx={{ display: "flex", alignItems: "center", gap: "7px", cursor: "pointer" }}>
                                             <sport.icon sx={{ color: 'inherit' }} />
@@ -303,8 +252,8 @@ const DrawerMenu = () => {
                                         unmountOnExit
                                     >
                                         <List component="div" disablePadding>
-                                            {sport.leagues.map((league) => (
-                                                <React.Fragment key={league.segment}>
+                                            {sport.leagues?.map((league, index) => (
+                                                <React.Fragment key={index}>
                                                     <ListItemButton
                                                         sx={{
                                                             justifyContent: "space-between",
@@ -339,9 +288,9 @@ const DrawerMenu = () => {
                                                         unmountOnExit
                                                     >
                                                         <List component="div" disablePadding>
-                                                            {league.matches.map((match) => (
+                                                            {league.matches?.map((match, index) => (
                                                                 <ListItemButton
-                                                                    key={match.segment}
+                                                                    key={index}
                                                                     component={Link}
                                                                     to={`/common-list/${match.segment}`}
                                                                     // to={`/common-page`}
@@ -384,8 +333,9 @@ const DrawerMenu = () => {
 
                     <Collapse in={openCategories} timeout="auto" unmountOnExit>
                         <List>
-                            {categoriesData.categories.items.map((item) => (
+                            {categoriesData.categories.items?.map((item, index) => (
                                 <CommonNavLink
+                                    key={index}
                                     onClick={handleClose}
                                     to={'common-page'}
                                     item={{
@@ -410,7 +360,6 @@ const DrawerMenu = () => {
                                                 image={item.icon} alt="Logo"
                                                 height={"20px"}
                                                 width={"20px"}
-                                            // sx={{ height: { lg: '40px', md: '40px', sm: '30px', xs: '20px' } }}
                                             />
                                         </Box>
                                         <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>{item.title}</Typography>
@@ -427,9 +376,6 @@ const DrawerMenu = () => {
                         </List>
                     </Collapse>
                 </Box>
-
-                {/* Providers Section */}
-                {/* <Divider /> */}
                 <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <Box
                         sx={{
@@ -445,11 +391,10 @@ const DrawerMenu = () => {
                     </Box>
                     <Collapse in={openProviders} timeout="auto" unmountOnExit>
                         <List>
-                            {providersData.providers.items.map((item) => (
+                            {providersData.providers.items?.map((item, index) => (
                                 <ListItemButton
-                                    key={item.segment}
+                                    key={index}
                                     component={Link}
-                                    // to={`/provider/${item.segment}`}
                                     to={`/common-page`}
                                     onClick={handleClose}
                                     sx={{

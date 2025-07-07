@@ -1,6 +1,5 @@
-import { Box, Grid, IconButton, Link, TextField, Typography } from "@mui/material"
-import { LeftArrowIcon, BoldFireIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
-import { useRef } from "react";
+import { Box, Grid, Link, TextField, Typography } from "@mui/material"
+import { LeftArrowIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
 
 const CardHeader = (
     {
@@ -12,22 +11,18 @@ const CardHeader = (
         icon = "", containerRef = ""
     }
 ) => {
-    // console.log(scroll, "sdfghjk")
     const scrollLeft = () => {
         if (containerRef.current) {
-            console.log("scroll left")
             containerRef.current.scrollBy({
-                left: -161, // 145px (card width) + 16px (margin/gap)
+                left: -161,
                 behavior: 'smooth',
             });
         }
     };
-    // console.log(containerRef)
     const scrollRight = () => {
         if (containerRef.current) {
-            console.log("scroll right")
             containerRef.current.scrollBy({
-                left: 161, // 145px (card width) + 16px (margin/gap)
+                left: 161,
                 behavior: 'smooth',
             });
         }

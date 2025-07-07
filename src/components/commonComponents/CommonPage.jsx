@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 const CommonPage = ({ data: propsData = [] }) => {
     const location = useLocation();
     const { data, info } = location.state || {};
-    console.log(info)
     return (
         <>
             <h1>

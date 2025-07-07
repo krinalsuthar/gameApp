@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     Box,
     Button,
@@ -9,13 +9,11 @@ import {
     TextField,
     Typography,
     Paper,
-    Link,
     CardMedia,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import logo from '../assets/logo.png';
-import { Link as RouterLink } from 'react-router-dom';
 import CommonNavLink from '../components/commonComponents/CommonNavLink';
 
 const RegisterPage = () => {
@@ -30,7 +28,6 @@ const RegisterPage = () => {
             alert('Please confirm that you are 18+ years old.');
             return;
         }
-        console.log('Register clicked');
     };
 
     return (

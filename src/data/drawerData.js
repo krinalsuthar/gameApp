@@ -12,13 +12,13 @@ export const drawerData = {
             sport: 'cricket',
             icon: CricketIcon,
             segment: 'cricket',
-            count: 3, // Number of leagues
+            count: 3,
             leagues: [
                 {
                     title: 'one day internationals',
                     icon: BlackIcon,
                     segment: 'one-day-internationals',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'one day internationals', icon: HollowCircleIcon, segment: 'onedayinternationals', count: 0 },
                         { name: 'pakistan vs england', icon: HollowCircleIcon, segment: 'pakistan-vs-england', count: 0 },
@@ -28,7 +28,7 @@ export const drawerData = {
                     title: 'test matches',
                     icon: BlackIcon,
                     segment: 'test-matches',
-                    count: 3, // Number of matches
+                    count: 3,
                     matches: [
                         { name: 'test matches', icon: HollowCircleIcon, segment: 'test-matches', count: 0 },
                         { name: 'england vs india', icon: HollowCircleIcon, segment: 'england-vs-india', count: 0 },
@@ -39,7 +39,7 @@ export const drawerData = {
                     title: 'irish inter provincial t20 trophy',
                     icon: BlackIcon,
                     segment: 'irish-inter-provincial-t20-trophy',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'north-west warriors vs munster reds', icon: HollowCircleIcon, segment: 'north-west-warriors-vs-munster-reds', count: 0 },
                         { name: 'noethern knights vs leinter lightning', icon: HollowCircleIcon, segment: 'noethern-knights-vs-leinter-lightning', count: 0 },
@@ -51,13 +51,13 @@ export const drawerData = {
             sport: 'soccer',
             icon: SoccerIcon,
             segment: 'soccer',
-            count: 5, // Number of leagues
+            count: 5,
             leagues: [
                 {
                     title: 'chinese super league',
                     icon: BlackIcon,
                     segment: 'chinese-super-league',
-                    count: 3, // Number of matches
+                    count: 3,
                     matches: [
                         { name: 'beijing guoan yunnan yukun', icon: HollowCircleIcon, segment: 'beijing-guoan-yunnan-yukun', count: 0 },
                         { name: 'henan songshan longmen shandong taishan', icon: HollowCircleIcon, segment: 'henan-songshan-longmen-shandong-taishan', count: 0 },
@@ -68,7 +68,7 @@ export const drawerData = {
                     title: 'us mls',
                     icon: BlackIcon,
                     segment: 'us-mls',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'los angeles fc vancouver with caps', icon: HollowCircleIcon, segment: 'los-angeles-fc-vancouver-with-caps', count: 0 },
                         { name: 'columbus vs phinladelphia', icon: HollowCircleIcon, segment: 'columbus-vs-phinladelphia', count: 0 },
@@ -78,7 +78,7 @@ export const drawerData = {
                     title: 'swedish all svenskan',
                     icon: BlackIcon,
                     segment: 'swedish-all-svenskan',
-                    count: 4, // Number of matches
+                    count: 4,
                     matches: [
                         { name: 'varnamo vs elfsborg', icon: HollowCircleIcon, segment: 'varnamo-vs-elfsborg', count: 0 },
                         { name: 'djurgardens vs norrkoping', icon: HollowCircleIcon, segment: 'djurgardens-vs-norrkoping', count: 0 },
@@ -90,7 +90,7 @@ export const drawerData = {
                     title: "friendlies women's international",
                     icon: BlackIcon,
                     segment: 'friendlies-womens-international',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'england vs jamaica', icon: HollowCircleIcon, segment: 'england-vs-jamaica', count: 0 },
                         { name: 'algeria vs congo', icon: HollowCircleIcon, segment: 'algeria-vs-congo', count: 0 },
@@ -100,7 +100,7 @@ export const drawerData = {
                     title: 'norwegian eliteserien',
                     icon: BlackIcon,
                     segment: 'norwegian-eliteserien',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'beijing guoan yunnan yukun', icon: HollowCircleIcon, segment: 'beijing-guoan-yunnan-yukun', count: 0 },
                         { name: 'columbus vs phinladelphia', icon: HollowCircleIcon, segment: 'columbus-vs-phinladelphia', count: 0 },
@@ -112,13 +112,13 @@ export const drawerData = {
             sport: 'tennis',
             icon: TennisIcon,
             segment: 'tennis',
-            count: 3, // Number of leagues
+            count: 3,
             leagues: [
                 {
                     title: 'chinese super league',
                     icon: BlackIcon,
                     segment: 'chinese-super-league',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'beljing guoan yunnan yukun', icon: HollowCircleIcon, segment: 'beljing-guoan-yunnan-yukun', count: 0 },
                         { name: 'henan songshan longmen vs shandong taishan', icon: HollowCircleIcon, segment: 'henan-songshan-longmen-vs-shandong-taishan', count: 0 },
@@ -128,7 +128,7 @@ export const drawerData = {
                     title: 'us mls',
                     icon: BlackIcon,
                     segment: 'us-mls',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'los angeles fcv vancouver whitecaps', icon: HollowCircleIcon, segment: 'los-angeles-fcv-vancouver-whitecaps', count: 0 },
                         { name: 'columbus vs philadelphia', icon: HollowCircleIcon, segment: 'columbus-vs-philadelphia', count: 0 },
@@ -138,7 +138,7 @@ export const drawerData = {
                     title: 'swedish all svenskan',
                     icon: BlackIcon,
                     segment: 'swedish-all-svenskan',
-                    count: 2, // Number of matches
+                    count: 2,
                     matches: [
                         { name: 'varnamo vs elfsborg', icon: HollowCircleIcon, segment: 'varnamo-vs-elfsborg', count: 0 },
                         { name: 'djurgardens vs norrkoping', icon: HollowCircleIcon, segment: 'djurgardens-vs-norrkoping', count: 0 },

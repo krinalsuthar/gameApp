@@ -148,21 +148,6 @@ const DesktopComponent = () => {
                 <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <List>
                         {startingData?.starting?.items?.map((item) => (
-                            // <ListItemButton
-                            //     key={item.segment}
-                            //     component={Link}
-                            //     to={`/provider/${item.segment}`}
-                            //     onClick={handleClose}
-                            //     sx={{
-                            //         justifyContent: "space-between",
-                            //         alignItems: "center",
-                            //         margin: "5px 0px",
-                            //         borderRadius: "5px",
-                            //         padding: "6px 12px",
-                            //         bgcolor: "white",
-                            //         cursor: "pointer",
-                            //     }}
-                            // >
                             <CommonNavLink to={`/provider/${item.segment}`}
                                 sx={{
                                     justifyContent: "space-between",
@@ -186,8 +171,6 @@ const DesktopComponent = () => {
                                     {item.count}
                                 </Typography>
                             </CommonNavLink>
-                            // </ListItemButton>
-
                         ))}
                     </List>
                 </Box>

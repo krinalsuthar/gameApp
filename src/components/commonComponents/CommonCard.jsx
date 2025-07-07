@@ -12,7 +12,6 @@ const CommonCard = ({ data, containerRef = "" }) => {
             [id]: !prev[id],
         }));
     };
-    console.log(data, "asdfg")
     return (
         <Box
             sx={{
@@ -30,7 +29,6 @@ const CommonCard = ({ data, containerRef = "" }) => {
                     gap: 1,
                     justifyContent: "flex-start",
                     scrollbarWidth: 'none',
-                    '-ms-overflow-style': 'none',
                     '&::-webkit-scrollbar': {
                         display: 'none',
                     },
@@ -43,7 +41,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
                             key={idx}
                             sx={{
                                 position: 'relative',
-                                backgroundImage: `linear-gradient(0deg, ${game.color} 10%, transparent 80%), url(${game.image})`,
+                                backgroundImage: `linear-gradient(0deg, ${game?.color} 10%, transparent 80%), url(${game?.image})`,
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundPosition: 'center',
@@ -62,6 +60,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
                                 flexShrink: 0,
                             }}
                         >
+                            {/* <img src={game?.image} /> */}
                             <Box
                                 sx={{
                                     position: 'absolute',
@@ -81,7 +80,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
 
                             <Box sx={{ borderRadius: 1 }}>
                                 <Typography variant="subtitle1" fontWeight={600} noWrap>
-                                    {game.title}
+                                    {game?.title}
                                 </Typography>
                                 <Typography
                                     variant="body2"
@@ -93,7 +92,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
                                         WebkitBoxOrient: 'vertical',
                                     }}
                                 >
-                                    {game.text}
+                                    {game?.text}
                                 </Typography>
                             </Box>
                         </Box>

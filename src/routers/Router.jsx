@@ -16,7 +16,6 @@ const AppRoutes = () => (
         <Route path="/common-page" element={<CommonPage />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="/common-list/casino" element={<Casion />} /> */}
         <Route path="/common-list/:data" element={<CommonList />} />
     </Routes>
 );

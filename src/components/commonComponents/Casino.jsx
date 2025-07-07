@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import CardHeader from "./CardHeader";
 import CommonCard from "./CommonCard";

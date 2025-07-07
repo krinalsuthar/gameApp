@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     Box,
     Button,
@@ -14,9 +14,7 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import logo from "../assets/logo.png"
-import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { BestSoultionIcon } from '../assets/SVGs/allSVGs';
 import CommonNavLink from '../components/commonComponents/CommonNavLink';
 
 
@@ -28,7 +26,6 @@ const LogInPage = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log('Login clicked');
     };
 
     return (

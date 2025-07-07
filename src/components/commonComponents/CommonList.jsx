@@ -42,7 +42,6 @@ const CommonList = ({ data: propsData = [] }) => {
     const isLoggedIN = location.state?.isLoggin ?? true;
     const data = propsData.length ? propsData : locationData || [];
     const navigate = useNavigate()
-    console.log(data, "wertyui")
 
     const sportIcons = {
         Cricket: <CricketIcon sx={{ color: 'red' }} />,
@@ -60,7 +59,6 @@ const CommonList = ({ data: propsData = [] }) => {
             {Array.isArray(data) && data.length > 0 ? (
                 data.map((sport, sportIndex) => (
                     <Box key={sportIndex} mb={3}>
-                        {console.log(sport.matches[0].categories)}
                         <Box
                             sx={{
                                 display: 'flex',

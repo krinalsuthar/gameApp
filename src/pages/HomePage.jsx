@@ -1,6 +1,6 @@
-import { Box, Button, CardMedia, Grid, Link, TextField, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Link, Typography } from "@mui/material";
 import { ImageCarousel } from "../components/commonComponents/ImageCarousel";
-import { BoldFireIcon, GiftBoxIcon, LeftArrowIcon, RightArrowIcon } from "../assets/SVGs/allSVGs";
+import { BoldFireIcon, GiftBoxIcon } from "../assets/SVGs/allSVGs";
 import { useRef, useState } from "react";
 import { sportsData, TopGamesData, TrendingGamesData } from "../data/dashboardData";
 import CardHeader from "../components/commonComponents/CardHeader";
@@ -12,25 +12,12 @@ import CommonCard from "../components/commonComponents/CommonCard";
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const containerRef = useRef(null);
-
-    console.log(TopGamesData.data?.map((item) => item.title))
-    const [likedItems, setLikedItems] = useState({});
-
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
-
     const filteredGames = TrendingGamesData.data.filter((game) =>
         game.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    const toggleLike = (id) => {
-        setLikedItems((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
-    };
-
-
     return (
         <Box >
             <Box mb="30px">
@@ -38,45 +25,8 @@ const HomePage = () => {
             </Box>
             <CardHeader handleSearchChange={handleSearchChange} searchTerm={searchTerm} search="true" title="Trending Games" scroll="true" icon={<BoldFireIcon />} containerRef={containerRef} />
             <CommonCard data={filteredGames} containerRef={containerRef} />
-            <Box mt={2}>
-                <CardHeader search="false" title="Top Sports" scroll="true" icon={<BoldFireIcon />} />
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 1,
-                        justifyContent: "flex-start",
-
-                    }}
-                >
-
-                    {TopGamesData.data?.map((data, index) => (
-                        <Box
-                            key={index}
-                            sx={{
-                                backgroundImage: ` url(${data.image})`,
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat',
-                                backgroundPosition: 'center',
-                                border: '1px solid #ccc',
-                                borderRadius: 2,
-                                textAlign: 'center',
-                                width: { xs: '100%', sm: '45%', md: '145px', lg: '145px' },
-                                minWidth: '145px',
-                                // height: '170px',
-                                height: { lg: "170px", md: "170px", sm: "300px", xs: "400px" },
-                                color: 'white',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'flex-end',
-                                boxSizing: 'border-box',
-                                p: 1,
-
-                            }}
-                        ></Box>
-                    ))}
-                </Box>
-            </Box>
+            <CardHeader search="false" title="Top Sports" scroll="true" icon={<BoldFireIcon />} data={filteredGames} containerRef={containerRef} />
+            <CommonCard data={TopGamesData?.data} containerRef={containerRef} />
             <Box mt={2}>
                 <CardHeader title="In-Play Matches" search="false" scroll="false" icon={<YouTubeIcon />} />
             </Box>

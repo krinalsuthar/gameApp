@@ -72,7 +72,7 @@ const Header = () => {
             <Grid item>
                 <Box sx={{ display: { lg: 'flex', md: 'flex', sm: 'none', xs: 'none' }, justifyContent: 'space-evenly' }}>
                     {headerData?.map((item, index) => (
-                        <Box sx={commonBoxStyle}>
+                        <Box key={index} sx={commonBoxStyle}>
                             <CommonNavLink
                                 to={`common-list/${item?.title.toLowerCase()}`}
                                 item={{ data: item.data, isLoggin: item.isLoggedIn }}

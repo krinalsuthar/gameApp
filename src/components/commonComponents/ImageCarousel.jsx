@@ -67,7 +67,7 @@ export const ImageCarouselWithHeader = () => {
         speed: 800,
         slidesToShow: 2,
         slidesToScroll: 1,
-        arrows: false, // arrows hidden inside carousel
+        arrows: false,
         pauseOnHover: true,
         responsive: [
             {
@@ -82,36 +82,6 @@ export const ImageCarouselWithHeader = () => {
 
     return (
         <Box sx={{ width: '100%', mx: 'auto' }}>
-            {/* Header with arrows */}
-            {/* <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    mb: 2,
-                    px: 2,
-                }}
-            >
-                <Typography variant="h6" fontWeight={600}>
-                    Dashboard Carousel
-                </Typography>
-                <Box sx={{ display: 'flex', gap: 1 }}>
-                    <IconButton
-                        onClick={() => sliderRef.current?.slickPrev()}
-                        sx={{ backgroundColor: '#ffc107', border: '1px solid black' }}
-                    >
-                        <ArrowBackIosNewIcon />
-                    </IconButton>
-                    <IconButton
-                        onClick={() => sliderRef.current?.slickNext()}
-                        sx={{ backgroundColor: '#ffc107', border: '1px solid black' }}
-                    >
-                        <ArrowForwardIosIcon />
-                    </IconButton>
-                </Box>
-            </Box> */}
-
-            {/* Slick Carousel */}
             <Slider {...settings} ref={sliderRef}>
                 {images.map((src, index) => (
                     <Box key={index} sx={{ px: 1 }}>
