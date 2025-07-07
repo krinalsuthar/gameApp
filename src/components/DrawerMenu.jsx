@@ -35,15 +35,31 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { CricketIcon } from '../assets/SVGs/allSVGs';
 import { useMediaQuery, useTheme } from "@mui/material";
 import { sportData } from '../data/dashboardData';
+import CommonNavLink from './commonComponents/CommonNavLink';
 
 const DrawerMenu = () => {
     const open = useSelector((state) => state.drawer.open);
     const dispatch = useDispatch();
+    const [dataSate, setDataState] = useState({ title: "", icon: "" })
     const [searchTerm, setSearchTerm] = useState('');
     const [openSports, setOpenSports] = useState({});
     const [openLeagues, setOpenLeagues] = useState({});
-
     const handleClose = () => dispatch(closeDrawer())
+    const [openCategories, setOpenCategories] = useState(true);
+    const [openProviders, setOpenProviders] = useState(true);
+    const [opeSportsEntire, setOpenSportsEntire] = useState(true);
+    const [language, setLanguage] = React.useState('English');
+    const casionData = categoriesData?.categories?.items?.map(item => ({
+        info: item?.info,
+        title: item?.title,
+        icon: item?.icon
+    }));
+    console.log(casionData, "casionData")
+    const data1 = [{ sport: sportData, title: "Sports", type: "list" },
+    { sport: casionData, title: "Casion", type: "cards" },
+    { sport: sportData, title: "Sports", type: "list" },
+    { sport: sportData, title: "Sports", type: "list" }]
+    console.log(sportData, "sportData")
 
     const handleSportClick = (sport) => {
         setOpenSports((prev) => ({
@@ -57,18 +73,12 @@ const DrawerMenu = () => {
             [`${sport}-${league}`]: !prev[`${sport}-${league}`],
         }));
     };
-    const [openCategories, setOpenCategories] = useState(true);
-
     const handleToggleCategories = () => {
         setOpenCategories((prev) => !prev);
     };
-    const [openProviders, setOpenProviders] = useState(true);
-
     const handleToggleProviders = () => {
         setOpenProviders((prev) => !prev);
     };
-    const [opeSportsEntire, setOpenSportsEntire] = useState(true);
-
     const handleToggleSportsEntire = () => {
         setOpenSportsEntire((prev) => !prev);
     };
@@ -81,15 +91,15 @@ const DrawerMenu = () => {
             ),
         })).filter((league) => league.matches.length > 0),
     })).filter((sport) => sport.leagues.length > 0);
-
-    const [language, setLanguage] = React.useState('English');
-
     const handleChange = (event) => {
         setLanguage(event.target.value);
     };
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
+    const abc = categoriesData.categories?.items?.map((data) => {
+        return data.info
+    })
     return (
         <Drawer
             anchor={isMobile ? 'bottom' : 'left'}
@@ -136,41 +146,82 @@ const DrawerMenu = () => {
                 onKeyDown={handleClose}
             >
                 <Grid container spacing={1} sx={{ padding: 2, bgcolor: "#f5f5f5de" }}>
-                    {["Sports", "Casino", "Promotions", "Refer & Earn"]?.map((item) => (
+                    {/* {["sport", "Casino", "Promotions", "Refer & Earn"]?.map((item) => (
                         <Grid item lg={5} md={5} key={item} sx={{ padding: "0px" }}>
-                            <Card
-                                sx={{
-                                    bgcolor: "#43727a",
-                                    cursor: "pointer",
-                                    padding: "0px",
-                                    border: '1px solid #ccc',
-                                    borderRadius: 2,
-                                    boxShadow: 1,
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    minWidth: 150,
-                                    width: '100%',
-                                    '&:hover': {
-                                        boxShadow: 3,
-                                    },
-                                }}
-                                component={RouterLink}
-                                to={`/common-list/${item.toLowerCase()}`}
-                                state={{ data: sportData }}
-                                onClick={handleClose}
-                            >
-                                <CardContent sx={{
-                                    padding: "5px !important"
-                                }}>
-                                    <Typography variant="h7" component="div" sx={{ textAlign: 'center', color: 'white' }}>
-                                        {item}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
+                            {console.log(item.trim().toLowerCase().concat('Data') === 'sportData')}
+                            <CommonNavLink
+                                to={`common-list/${item.toLowerCase()}`}
+                                item={{ data: item.toLowerCase().concat('Data') }}>
+                                <Card
+                                    sx={{
+                                        bgcolor: "#43727a",
+                                        cursor: "pointer",
+                                        padding: "0px",
+                                        border: '1px solid #ccc',
+                                        borderRadius: 2,
+                                        boxShadow: 1,
+                                        height: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
+                                        minWidth: 150,
+                                        width: '100%',
+                                        '&:hover': {
+                                            boxShadow: 3,
+                                        },
+                                    }}
+                                    onClick={handleClose}
+                                >
+                                    <CardContent sx={{
+                                        padding: "5px !important"
+                                    }}>
+                                        <Typography variant="h7" component="div" sx={{ textAlign: 'center', color: 'white' }}>
+                                            {item}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </CommonNavLink>
                         </Grid>
-                    ))}
+                    ))} */}
+                    {data1?.map((item, index) => {
+                        return (
+                            <Grid item lg={5} md={5} key={index} sx={{ padding: "0px" }}>
+                                <CommonNavLink
+                                    to={item.type === "list" ? `common-list/${item.title}` : `common-card/${item.title}`}
+                                    state={{ data: item.sport }}
+                                >
+                                    <Card
+                                        sx={{
+                                            bgcolor: "#43727a",
+                                            cursor: "pointer",
+                                            padding: "0px",
+                                            border: '1px solid #ccc',
+                                            borderRadius: 2,
+                                            boxShadow: 1,
+                                            height: '100%',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'center',
+                                            minWidth: 150,
+                                            width: '100%',
+                                            '&:hover': {
+                                                boxShadow: 3,
+                                            },
+                                        }}
+                                        onClick={handleClose}
+                                    >
+                                        <CardContent sx={{ padding: "5px !important" }}>
+                                            <Typography variant="h7" component="div" sx={{ textAlign: 'center', color: 'white' }}>
+                                                {item.title}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </CommonNavLink>
+                            </Grid>
+                        );
+                    })}
+
+
                 </Grid>
                 <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <List>
@@ -292,7 +343,7 @@ const DrawerMenu = () => {
                                                                 <ListItemButton
                                                                     key={match.segment}
                                                                     component={Link}
-                                                                    to={`/match/${match.segment}`}
+                                                                    to={`/common-list/${match.segment}`}
                                                                     // to={`/common-page`}
                                                                     sx={{ bgcolor: "white", m: "5px 0px 5px 20px", p: "3px 10px" }}
                                                                     onClick={handleClose}
@@ -334,29 +385,26 @@ const DrawerMenu = () => {
                     <Collapse in={openCategories} timeout="auto" unmountOnExit>
                         <List>
                             {categoriesData.categories.items.map((item) => (
-                                <ListItemButton
-                                    key={item.segment}
-                                    component={Link}
-                                    to={{
-                                        pathname: `/common-page`,
-
-                                    }}
-                                    state={{
+                                <CommonNavLink
+                                    onClick={handleClose}
+                                    to={'common-page'}
+                                    item={{
                                         data: item.segment,
                                         info: item.info,
                                     }}
-                                    onClick={handleClose}
                                     sx={{
+                                        display: "flex",
+                                        color: "black",
                                         justifyContent: "space-between",
                                         margin: "5px 0px",
                                         borderRadius: "5px",
-                                        padding: "3px 10px",
+                                        padding: "6px 12px",
                                         bgcolor: "white",
                                     }}
                                 >
+
                                     <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
                                         <Box>
-                                            {/* <item.icon sx={{ color: "inherit" }} /> */}
                                             <CardMedia
                                                 component="img"
                                                 image={item.icon} alt="Logo"
@@ -365,7 +413,7 @@ const DrawerMenu = () => {
                                             // sx={{ height: { lg: '40px', md: '40px', sm: '30px', xs: '20px' } }}
                                             />
                                         </Box>
-                                        <Typography>{item.title}</Typography>
+                                        <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>{item.title}</Typography>
                                     </Box>
                                     <Box>
                                         <Typography
@@ -374,8 +422,7 @@ const DrawerMenu = () => {
                                             {item.count}
                                         </Typography>
                                     </Box>
-                                </ListItemButton>
-
+                                </CommonNavLink>
                             ))}
                         </List>
                     </Collapse>

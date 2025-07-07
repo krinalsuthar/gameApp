@@ -1,38 +1,10 @@
-import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
-import SportsTennisIcon from '@mui/icons-material/SportsTennis';
 import CasinoIcon from '@mui/icons-material/Casino';
-import LiveTvIcon from '@mui/icons-material/LiveTv';
-import TableChartIcon from '@mui/icons-material/TableChart';
-import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { CricketIcon, SoccerIcon, TennisIcon, BlackIcon, HollowCircleIcon, TeenPattiIcon, OaksGamingIcon, AEGameIcon, AviatrixIcon, BestSoultionIcon, BitIcon, CharismaticIcon, EvolutionIcon, EzugiIcon, FantasmaGamesIcon, GamzixIcon, HabaneroIcon, JiliGameIcon, KingmidasIcon, NetEntIcon, NoLimitCityIcon, OneGameIcon, PgSoftIcon, PlaysGoIcon, PlayTechIcon, PragmenticGameIcon, QuickPinIcon, RedTigerIcon, RelexGamingIcon, RoyalGamingIcon, SmartSoftIcon, SpinomenalIcon, SpriteIcon, TvBetIcon, VoltEntIcon } from '../assets/SVGs/allSVGs';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import teenpatti from "../assets/drawerIcons/teenpatti.png"
-import _32Cards from "../assets/drawerIcons/32Cards.png";
-import bacarret from "../assets/drawerIcons/bacarret.png";
-import Blackjack from "../assets/drawerIcons/Blackjack.png";
-import casualGame from "../assets/drawerIcons/casualGame.png";
-import dregonTiger from "../assets/drawerIcons/dregonTiger.png";
-import LiveBaccarat from "../assets/drawerIcons/LiveBaccarat.png";
-import LiveBlackjack from "../assets/drawerIcons/LiveBlackjack.png";
-import liveDealer from "../assets/drawerIcons/liveDealer.jpg";
-import livegame from "../assets/drawerIcons/livegame.png";
-import livePoker from "../assets/drawerIcons/livePoker.jpg";
-import LiveRoulette from "../assets/drawerIcons/LiveRoulette.png";
-import luckey7 from "../assets/drawerIcons/luckey7.png";
-import poker from "../assets/drawerIcons/poker.png";
-import roulette from "../assets/drawerIcons/roulette.png";
-import tableGames from "../assets/drawerIcons/tableGames.png";
-import virtual from "../assets/drawerIcons/virtual.png";
-
-
+import * as allImages from "../assets"
 
 export const drawerData = {
     sports: [
@@ -227,58 +199,106 @@ export const categoriesData = {
         segment: 'categories',
         count: 29,
         items: [
+            { title: 'Continue Playing', icon: allImages.ContinuePlaying, segment: 'continue-playing ', count: 34, info: [] },
             {
-                title: 'teen patti', icon: teenpatti, segment: 'teen-patti', count: 0, info: [
+                title: 'teen patti', icon: allImages.teenpatti, segment: 'teen-patti', count: 0, info: [
                     {
-                        image: '/images/info/bet-range.png',
-                        heading: 'Flexible Bet Range',
-                        title: 'Bet from ₹10 to ₹1,000',
+                        image: allImages.thumb1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(246, 55, 83)"
                     },
                     {
-                        image: '/images/info/real-dealer.png',
-                        heading: 'Real Dealers',
-                        title: 'Experience live Teen Patti with real hosts',
+                        image: allImages.thumb2,
+                        title: 'Real Dealers',
+                        text: 'Experience live Teen Patti with real hosts',
+                        color: "rgb(69, 141, 250)"
                     },
                     {
-                        image: '/images/info/languages.png',
-                        heading: 'Multi-Language Support',
-                        title: 'Available in Hindi, English, and more',
+                        image: allImages.thumb3,
+                        title: 'Multi-Language Support',
+                        text: 'Available in Hindi, English, and more',
+                        color: "rgb(190, 59, 250)"
                     },
                     {
-                        image: '/images/info/multiplayer.png',
-                        heading: 'Multiplayer Gameplay',
-                        title: 'Play with friends or join public tables',
+                        image: allImages.thumb4,
+                        title: 'Multiplayer Gameplay',
+                        text: 'Play with friends or join public tables',
+                        color: "rgb(31, 178, 252)"
+                    },
+                    {
+                        image: allImages.thumb1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(246, 55, 83)"
+                    },
+                    {
+                        image: allImages.thumb2,
+                        title: 'Real Dealers',
+                        text: 'Experience live Teen Patti with real hosts',
+                        color: "rgb(69, 141, 250)"
+                    },
+                    {
+                        image: allImages.thumb3,
+                        title: 'Multi-Language Support',
+                        text: 'Available in Hindi, English, and more',
+                        color: "rgb(190, 59, 250)"
+                    },
+                    {
+                        image: allImages.thumb4,
+                        title: 'Multiplayer Gameplay',
+                        text: 'Play with friends or join public tables',
+                        color: "rgb(31, 178, 252)"
                     },
                 ],
             },
-            { title: 'live', icon: livegame, segment: '32Cards', count: 12 },
-            { title: 'virtual', icon: virtual, segment: 'virtual', count: 34 },
-            { title: 'roulette', icon: roulette, segment: 'roulette', count: 56 },
-            { title: 'live baccarat', icon: LiveBaccarat, segment: 'live-baccarat', count: 0 },
-            { title: 'live roulette', icon: LiveRoulette, segment: 'live-roulette', count: 0 },
-            { title: 'live sic bo', icon: teenpatti, segment: 'live-sic-bo', count: 100 },
-            { title: 'live blackjack', icon: LiveBlackjack, segment: 'live-blackjack', count: 101 },
-            { title: 'table game', icon: tableGames, segment: 'table-game', count: 23 },
-            { title: 'live poker', icon: livePoker, segment: 'live-poker', count: 45 },
+            {
+                title: 'live', icon: allImages.livegame, segment: '32Cards', count: 12, info: [{
+                    image: allImages.thumb5,
+                    title: 'Flexible Bet Range',
+                    text: 'Bet from ₹10 to ₹1,000',
+                    color: " rgb(238, 97, 89)"
+                },
+                {
+                    image: allImages.thumb7,
+                    title: 'Multi-Language Support',
+                    text: 'Available in Hindi, English, and more',
+                    color: "rgba(39, 201, 44, 0.8)"
+                },
+                {
+                    image: allImages.thumb1,
+                    title: 'Multiplayer Gameplay',
+                    text: 'Play with friends or join public tables',
+                    color: " rgb(238, 97, 89)"
+                },]
+            },
+            { title: 'virtual', icon: allImages.virtual, segment: 'virtual', count: 34 },
+            { title: 'roulette', icon: allImages.roulette, segment: 'roulette', count: 56 },
+            { title: 'live baccarat', icon: allImages.LiveBaccarat, segment: 'live-baccarat', count: 0 },
+            { title: 'live roulette', icon: allImages.LiveRoulette, segment: 'live-roulette', count: 0 },
+            { title: 'live sic bo', icon: allImages.teenpatti, segment: 'live-sic-bo', count: 100 },
+            { title: 'live blackjack', icon: allImages.LiveBlackjack, segment: 'live-blackjack', count: 101 },
+            { title: 'table game', icon: allImages.tableGames, segment: 'table-game', count: 23 },
+            { title: 'live poker', icon: allImages.livePoker, segment: 'live-poker', count: 45 },
             // { title: 'live dealer', icon: liveDealer, segment: 'live-dealer', count: 0 },
-            { title: 'baccarat', icon: bacarret, segment: 'baccarat', count: 45 },
-            { title: 'poker', icon: poker, segment: 'poker', count: 56 },
-            { title: 'blackjack', icon: Blackjack, segment: 'blackjack', count: 67 },
-            { title: 'lucky7', icon: luckey7, segment: 'lucky7', count: 0 },
-            { title: '32cards', icon: _32Cards, segment: '32cards', count: 3 },
-            { title: 'casual games', icon: casualGame, segment: 'casual-games', count: 0 },
-            { title: 'dragon tiger', icon: dregonTiger, segment: 'dragon-tiger', count: 0 },
-            { title: 'game show', icon: teenpatti, segment: 'game-show', count: 5 },
-            { title: 'Live Dragon Tiger', icon: teenpatti, segment: 'live-dragon-tiger', count: 0 },
-            { title: 'Top Card', icon: teenpatti, segment: 'top-card', count: 8 },
-            { title: 'Video slots', icon: teenpatti, segment: 'video-slots', count: 10 },
-            { title: 'Crash games', icon: teenpatti, segment: 'crash-games', count: 20 },
-            { title: 'Lottery', icon: teenpatti, segment: 'lottery', count: 30 },
-            { title: 'LivLOttery', icon: teenpatti, segment: 'livlottery', count: 40 },
-            { title: 'Fishing game', icon: teenpatti, segment: 'fishing-game', count: 50 },
-            { title: 'scratch card', icon: teenpatti, segment: 'scratch-card', count: 60 },
-            { title: 'visual sports', icon: teenpatti, segment: 'visual-sports', count: 0 },
-            { title: 'sportsbook', icon: teenpatti, segment: 'sportsbook', count: 0 },
+            { title: 'baccarat', icon: allImages.bacarret, segment: 'baccarat', count: 45 },
+            { title: 'poker', icon: allImages.poker, segment: 'poker', count: 56 },
+            { title: 'blackjack', icon: allImages.Blackjack, segment: 'blackjack', count: 67 },
+            { title: 'lucky7', icon: allImages.luckey7, segment: 'lucky7', count: 0 },
+            { title: '32cards', icon: allImages._32Cards, segment: '32cards', count: 3 },
+            { title: 'casual games', icon: allImages.casualGame, segment: 'casual-games', count: 0 },
+            { title: 'dragon tiger', icon: allImages.dregonTiger, segment: 'dragon-tiger', count: 0 },
+            { title: 'game show', icon: allImages.teenpatti, segment: 'game-show', count: 5 },
+            { title: 'Live Dragon Tiger', icon: allImages.teenpatti, segment: 'live-dragon-tiger', count: 0 },
+            { title: 'Top Card', icon: allImages.teenpatti, segment: 'top-card', count: 8 },
+            { title: 'Video slots', icon: allImages.teenpatti, segment: 'video-slots', count: 10 },
+            { title: 'Crash games', icon: allImages.teenpatti, segment: 'crash-games', count: 20 },
+            { title: 'Lottery', icon: allImages.teenpatti, segment: 'lottery', count: 30 },
+            { title: 'LivLOttery', icon: allImages.teenpatti, segment: 'livlottery', count: 40 },
+            { title: 'Fishing game', icon: allImages.teenpatti, segment: 'fishing-game', count: 50 },
+            { title: 'scratch card', icon: allImages.teenpatti, segment: 'scratch-card', count: 60 },
+            { title: 'visual sports', icon: allImages.teenpatti, segment: 'visual-sports', count: 0 },
+            { title: 'sportsbook', icon: allImages.teenpatti, segment: 'sportsbook', count: 0 },
         ],
     },
 };

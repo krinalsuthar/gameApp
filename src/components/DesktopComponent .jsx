@@ -33,6 +33,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { CricketIcon } from '../assets/SVGs/allSVGs';
 import { useMediaQuery, useTheme } from "@mui/material";
+import CommonNavLink from './commonComponents/CommonNavLink';
 
 
 const DesktopComponent = () => {
@@ -147,11 +148,22 @@ const DesktopComponent = () => {
                 <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <List>
                         {startingData?.starting?.items?.map((item) => (
-                            <ListItemButton
-                                key={item.segment}
-                                component={Link}
-                                to={`/provider/${item.segment}`}
-                                onClick={handleClose}
+                            // <ListItemButton
+                            //     key={item.segment}
+                            //     component={Link}
+                            //     to={`/provider/${item.segment}`}
+                            //     onClick={handleClose}
+                            //     sx={{
+                            //         justifyContent: "space-between",
+                            //         alignItems: "center",
+                            //         margin: "5px 0px",
+                            //         borderRadius: "5px",
+                            //         padding: "6px 12px",
+                            //         bgcolor: "white",
+                            //         cursor: "pointer",
+                            //     }}
+                            // >
+                            <CommonNavLink to={`/provider/${item.segment}`}
                                 sx={{
                                     justifyContent: "space-between",
                                     alignItems: "center",
@@ -162,6 +174,7 @@ const DesktopComponent = () => {
                                     cursor: "pointer",
                                 }}
                             >
+
                                 <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                     <item.icon sx={{ fontSize: 20, color: "inherit" }} />
                                     <Typography sx={{ fontSize: "14px", fontWeight: 500, lineHeight: 1 }}>
@@ -172,7 +185,8 @@ const DesktopComponent = () => {
                                 <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
                                     {item.count}
                                 </Typography>
-                            </ListItemButton>
+                            </CommonNavLink>
+                            // </ListItemButton>
 
                         ))}
                     </List>

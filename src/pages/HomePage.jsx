@@ -7,7 +7,6 @@ import CardHeader from "../components/commonComponents/CardHeader";
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import CommonList from "../components/commonComponents/CommonList";
 import refer from "../assets/referimage.png"
-import underline from "../assets/underline.png"
 import CommonCard from "../components/commonComponents/CommonCard";
 
 const HomePage = () => {

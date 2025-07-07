@@ -2,21 +2,15 @@ import { Box, useTheme } from '@mui/material';
 import image1 from "../../assets/dashboardImage1.jpg"
 import image2 from "../../assets/dashboardImage2.jpg"
 import image3 from "../../assets/dashboardImage3.jpg"
-import React, { useRef } from 'react';
 import Slider from 'react-slick';
-import { IconButton, Typography } from '@mui/material';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 
 const images = [
     image1,
     image2,
     image3
 ];
-
 
 export const ImageCarousel = () => {
     const theme = useTheme();

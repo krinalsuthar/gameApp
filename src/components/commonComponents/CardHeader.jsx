@@ -3,25 +3,29 @@ import { LeftArrowIcon, BoldFireIcon, RightArrowIcon } from "../../assets/SVGs/a
 import { useRef } from "react";
 
 const CardHeader = (
-    { searchTerm = "",
+    {
+        searchTerm = "",
         handleSearchChange = "",
         search = "false",
         title = "",
         scroll = "false",
-        icon = "", containerRef = "" }
+        icon = "", containerRef = ""
+    }
 ) => {
-
+    // console.log(scroll, "sdfghjk")
     const scrollLeft = () => {
         if (containerRef.current) {
+            console.log("scroll left")
             containerRef.current.scrollBy({
                 left: -161, // 145px (card width) + 16px (margin/gap)
                 behavior: 'smooth',
             });
         }
     };
-
+    // console.log(containerRef)
     const scrollRight = () => {
         if (containerRef.current) {
+            console.log("scroll right")
             containerRef.current.scrollBy({
                 left: 161, // 145px (card width) + 16px (margin/gap)
                 behavior: 'smooth',
@@ -94,50 +98,10 @@ const CardHeader = (
                                     <RightArrowIcon />
                                 </Box>
                             </Box>
-                            // <Box
-                            //     sx={{
-                            //         display: 'flex',
-                            //         alignItems: 'center',
-                            //         justifyContent: 'space-between',
-                            //         mb: 2,
-                            //         px: 2,
-                            //         color: 'white',
-                            //     }}
-                            // >
-                            //     <Typography variant="h6">lazy-loading</Typography>
-                            //     <Box sx={{ display: 'flex', gap: 1 }}>
-                            //         <IconButton
-                            //             onClick={scrollLeft}
-                            //             sx={{
-                            //                 color: 'white',
-                            //                 backgroundColor: '#fff',
-                            //                 borderRadius: '50%',
-                            //                 width: 30,
-                            //                 height: 30,
-                            //                 '&:hover': { backgroundColor: '#e0e0e0' },
-                            //             }}
-                            //         >
-                            //             <LeftArrowIcon />
-                            //         </IconButton>
-                            //         <IconButton
-                            //             onClick={scrollRight}
-                            //             sx={{
-                            //                 color: '#007bff',
-                            //                 backgroundColor: '#fff',
-                            //                 borderRadius: '50%',
-                            //                 width: 30,
-                            //                 height: 30,
-                            //                 '&:hover': { backgroundColor: '#e0e0e0' },
-                            //             }}
-                            //         >
-                            //             <RightArrowIcon />
-                            //         </IconButton>
-                            //     </Box>
-                            // </Box>
                         )}
-                    </Box>
-                </Grid>
-            </Grid>
+                    </Box >
+                </Grid >
+            </Grid >
         </>
     )
 }

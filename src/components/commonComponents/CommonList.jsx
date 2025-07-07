@@ -1,4 +1,4 @@
-import { Box, Typography, Chip, Grid } from '@mui/material';
+import { Box, Typography, Chip, Grid, Badge } from '@mui/material';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import { CricketIcon, TennisIcon } from '../../assets/SVGs/allSVGs';
@@ -42,7 +42,7 @@ const CommonList = ({ data: propsData = [] }) => {
     const isLoggedIN = location.state?.isLoggin ?? true;
     const data = propsData.length ? propsData : locationData || [];
     const navigate = useNavigate()
-    console.log(locationData, "wertyui")
+    console.log(data, "wertyui")
 
     const sportIcons = {
         Cricket: <CricketIcon sx={{ color: 'red' }} />,
@@ -60,6 +60,7 @@ const CommonList = ({ data: propsData = [] }) => {
             {Array.isArray(data) && data.length > 0 ? (
                 data.map((sport, sportIndex) => (
                     <Box key={sportIndex} mb={3}>
+                        {console.log(sport.matches[0].categories)}
                         <Box
                             sx={{
                                 display: 'flex',
@@ -114,10 +115,48 @@ const CommonList = ({ data: propsData = [] }) => {
                                         {match.teams}
                                     </Typography>
                                 </Box>
-
-                                <LiveTvIcon sx={{ fontSize: 18, color: 'green', mx: 1 }} />
-
-                                <Grid container spacing={1} sx={{ width: 'auto', flexWrap: 'nowrap' }}>
+                                <LiveTvIcon sx={{ fontSize: 20, color: 'green', mx: 1 }} />
+                                {match?.categories?.map((item, index) => (
+                                    item?.value !== 0 && (
+                                        <Badge
+                                            key={index}
+                                            badgeContent={`${item?.value}`}
+                                            sx={{
+                                                '& .MuiBadge-badge': {
+                                                    fontSize: '10px',
+                                                    height: 15,
+                                                    minWidth: 15,
+                                                    padding: '0 4px',
+                                                    right: 6,
+                                                    borderRadius: '50%',
+                                                },
+                                            }}
+                                            color="primary"
+                                        >
+                                            <Chip
+                                                label={`${item?.label}`}
+                                                size="small"
+                                                sx={{
+                                                    borderRadius: '5px',
+                                                    mx: '5px',
+                                                    fontWeight: 500,
+                                                    fontSize: '10px',
+                                                    bgcolor:
+                                                        item?.label === 'M'
+                                                            ? '#bbdefb'
+                                                            : item?.label === 'F'
+                                                                ? '#c8e6c9'
+                                                                : item?.label === 'MO'
+                                                                    ? '#ffe0b2'
+                                                                    : item?.label === 'O'
+                                                                        ? '#d1c4e9'
+                                                                        : 'grey.300',
+                                                }}
+                                            />
+                                        </Badge>
+                                    )
+                                ))}
+                                <Grid container spacing={1} sx={{ width: 'auto', flexWrap: 'nowrap', ml: 2 }}>
                                     {match.odds.map((odd, i) => (
                                         <Grid item key={i}>
                                             <OddsBox value={odd} index={i} />

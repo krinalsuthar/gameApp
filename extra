@@ -2,9 +2,22 @@ import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-const CommonCard = ({ data, containerRef = "" }) => {
+const CommonCard = ({ data: propsData = [] }) => {
+    const location = useLocation();
+    const locationData = location.state?.data;
+    const data = propsData.length ? propsData : locationData || [];
+    console.log(data, "datadata")
     const [likedItems, setLikedItems] = useState({});
+    // const normalizedData = Array.isArray(data)
+    //     ? data.flatMap(item => Array.isArray(item) ? item : [item]) // flatten only arrays, skip nulls
+    //     : [];
+    const normalizedData = Array.isArray(data)
+        ? data
+            .flatMap(item => Array.isArray(item) ? item : [item])  // flatten nested arrays
+            .filter(Boolean) // remove null, undefined, false
+        : [];
 
     const toggleLike = (id) => {
         setLikedItems((prev) => ({
@@ -12,7 +25,8 @@ const CommonCard = ({ data, containerRef = "" }) => {
             [id]: !prev[id],
         }));
     };
-    console.log(data, "asdfg")
+    console.log(normalizedData, "normalizedData")
+
     return (
         <Box
             sx={{
@@ -23,7 +37,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
             }}
         >
             <Box
-                ref={containerRef}
+                // ref={containerRef}
                 sx={{
                     display: "flex",
                     overflowX: "scroll",
@@ -37,13 +51,13 @@ const CommonCard = ({ data, containerRef = "" }) => {
                     paddingBottom: 2,
                 }}
             >
-                {data?.length > 0 ? (
-                    data?.map((game, idx) => (
+                {normalizedData?.length > 0 ? (
+                    normalizedData?.map((game, idx) => (
                         <Box
                             key={idx}
                             sx={{
                                 position: 'relative',
-                                backgroundImage: `linear-gradient(0deg, ${game.color} 10%, transparent 80%), url(${game.image})`,
+                                backgroundImage: `linear-gradient(0deg, ${game?.color} 10%, transparent 80%), url(${game?.image})`,
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundPosition: 'center',
@@ -81,7 +95,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
 
                             <Box sx={{ borderRadius: 1 }}>
                                 <Typography variant="subtitle1" fontWeight={600} noWrap>
-                                    {game.title}
+                                    {game?.title}
                                 </Typography>
                                 <Typography
                                     variant="body2"
@@ -93,7 +107,7 @@ const CommonCard = ({ data, containerRef = "" }) => {
                                         WebkitBoxOrient: 'vertical',
                                     }}
                                 >
-                                    {game.text}
+                                    {game?.text}
                                 </Typography>
                             </Box>
                         </Box>

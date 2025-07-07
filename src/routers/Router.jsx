@@ -5,17 +5,18 @@ import CommonPage from '../components/commonComponents/CommonPage';
 import LogInPage from '../pages/LogInPage';
 import RegisterPage from '../pages/RegisterPage';
 import CommonList from '../components/commonComponents/CommonList';
+import Casion from '../components/commonComponents/Casino';
 
 
 const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/common-card" element={<CommonCard />} /> */}
+        <Route path="/common-card/:item" element={<Casion />} />
         <Route path="/category/:segment" element={<CommonCard />} />
         <Route path="/common-page" element={<CommonPage />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="/common-list" element={<CommonList />} /> */}
+        {/* <Route path="/common-list/casino" element={<Casion />} /> */}
         <Route path="/common-list/:data" element={<CommonList />} />
     </Routes>
 );

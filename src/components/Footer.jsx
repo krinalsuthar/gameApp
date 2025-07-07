@@ -91,7 +91,6 @@ const Footer = () => {
                     {footerLinks.map((item, i) => (
                         <Box key={i}>
                             <CommonNavLink to={'common-page'} sx={{ color: '#535558', display: 'block' }}>
-                                {console.log(item)}
                                 <Typography variant="caption">{item}</Typography>
                             </CommonNavLink>
                         </Box>
