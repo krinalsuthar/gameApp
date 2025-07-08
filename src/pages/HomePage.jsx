@@ -11,7 +11,8 @@ import CommonCard from "../components/commonComponents/CommonCard";
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("");
-    const containerRef = useRef(null);
+    const topSport = useRef(null);
+    const containerRef = useRef(null)
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
@@ -23,8 +24,8 @@ const HomePage = () => {
             <Box mb="30px">
                 <ImageCarousel />
             </Box>
-            <CardHeader handleSearchChange={handleSearchChange} searchTerm={searchTerm} search="true" title="Trending Games" scroll="true" icon={<BoldFireIcon />} containerRef={containerRef} />
-            <CommonCard data={filteredGames} containerRef={containerRef} />
+            <CardHeader handleSearchChange={handleSearchChange} searchTerm={searchTerm} search="true" title="Trending Games" scroll="true" icon={<BoldFireIcon />} containerRef={topSport} />
+            <CommonCard data={filteredGames} containerRef={topSport} />
             <CardHeader search="false" title="Top Sports" scroll="true" icon={<BoldFireIcon />} data={filteredGames} containerRef={containerRef} />
             <CommonCard data={TopGamesData?.data} containerRef={containerRef} />
             <Box mt={2}>
