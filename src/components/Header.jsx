@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer } from '../features/drawer/drawerSlice';
 import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon } from '../assets/SVGs/allSVGs';
 import { Link as RouterLink } from 'react-router-dom';
-import { sportData, sportsData } from '../data/dashboardData';
+import { liveSportsData, sportData, sportsData } from '../data/dashboardData';
 import CloseIcon from '@mui/icons-material/Close';
 import CommonNavLink from './commonComponents/CommonNavLink';
 
@@ -26,10 +26,11 @@ const commonBoxStyle = {
 };
 const headerData = [
     { title: 'SPORTS', icon: <CricketIcon />, data: sportData, isLoggedIn: true },
-    { title: 'IN PLAY', icon: <InPlayIcon />, data: sportsData, isLoggedIn: true },
+    { title: 'IN PLAY', icon: <InPlayIcon />, data: liveSportsData, isLoggedIn: true },
     { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: false },
     { title: 'CASINO', icon: <CasinoIcon />, data: "", isLoggedIn: false },
 ];
+
 
 const Header = () => {
     const isDrawerOpen = useSelector((state) => state.drawer.open);

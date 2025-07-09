@@ -1,4 +1,4 @@
-import { Box, useTheme } from '@mui/material';
+import { Box, useTheme, keyframes } from '@mui/material';
 import image1 from "../../assets/dashboardImage1.jpg"
 import image2 from "../../assets/dashboardImage2.jpg"
 import image3 from "../../assets/dashboardImage3.jpg"
@@ -6,15 +6,15 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const images = [
+const image = [
     image1,
     image2,
     image3
 ];
 
-export const ImageCarousel = () => {
+export const ImageCarousel = ({ images }) => {
+    const img = images ? images : image
     const theme = useTheme();
-
     const settings = {
         lazyLoad: 'ondemand',
         dots: true,
@@ -40,7 +40,7 @@ export const ImageCarousel = () => {
     return (
         <Box sx={{ width: '100%', mx: 'auto' }}>
             <Slider {...settings}>
-                {images.map((src, index) => (
+                {img.map((src, index) => (
                     <Box key={index} sx={{ px: 1, width: "100%" }}>
                         <img
                             src={src}
@@ -101,4 +101,50 @@ export const ImageCarouselWithHeader = () => {
     );
 };
 
-export default ImageCarouselWithHeader;
+
+const rotate = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+export const CircularAnimatedImageLayout = ({ images, radius = 100, size = 50, duration = 10 }) => {
+    const centerOffset = radius + size / 2;
+
+    return (
+        <Box
+            sx={{
+                position: 'relative',
+                width: centerOffset * 2,
+                height: centerOffset * 2,
+                animation: `${rotate} ${duration}s linear infinite`,
+                transformOrigin: 'center center',
+            }}
+        >
+            {images.map((img, index) => {
+                const angle = (index / images.length) * 2 * Math.PI;
+                const x = Math.cos(angle) * radius + centerOffset - size / 2;
+                const y = Math.sin(angle) * radius + centerOffset - size / 2;
+
+                return (
+                    <Box
+                        key={index}
+                        component="img"
+                        src={img}
+                        alt={`Image ${index}`}
+                        sx={{
+                            position: 'absolute',
+                            left: `${x}px`,
+                            top: `${y}px`,
+                            width: `${size}px`,
+                            height: `${size}px`,
+                            borderRadius: '50%',
+                            objectFit: 'cover',
+                            border: '2px solid white',
+                            boxShadow: 2,
+                        }}
+                    />
+                );
+            })}
+        </Box>
+    );
+};

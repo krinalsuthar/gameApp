@@ -8,6 +8,16 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import CommonList from "../components/commonComponents/CommonList";
 import refer from "../assets/referimage.png"
 import CommonCard from "../components/commonComponents/CommonCard";
+import image1 from "../assets/dashboardImage1.jpg"
+import image2 from "../assets/dashboardImage2.jpg"
+import image3 from "../assets/dashboardImage3.jpg"
+
+
+const images = [
+    image1,
+    image2,
+    image3
+];
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +32,7 @@ const HomePage = () => {
     return (
         <Box >
             <Box mb="30px">
-                <ImageCarousel />
+                <ImageCarousel images={images} />
             </Box>
             <CardHeader handleSearchChange={handleSearchChange} searchTerm={searchTerm} search="true" title="Trending Games" scroll="true" icon={<BoldFireIcon />} containerRef={topSport} />
             <CommonCard data={filteredGames} containerRef={topSport} />

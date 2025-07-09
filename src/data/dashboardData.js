@@ -32,14 +32,141 @@ export const sportsData = [
             {
                 tag: 'LIVE',
                 series: 'Test Matches',
-                teams: 'England 🆚 India',
-                odds: ['13', '13.5', '2.46', '2.48', '1.92', '1.93'],
+                time: '',
+                teams: 'Zimbabwe 🆚 South Africa',
+                odds: ['10', '10.5', '18.5', '19', '1.17', '1.18'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 9 },
+                    { label: 'MO', value: 2 },
+                ],
             },
             {
-                tag: 'LIVE',
-                series: 'Womens International Twenty20 Matches',
-                teams: 'England W A 🆚 New Zealand W A',
-                odds: ['1.38', '1.44', '-', '-', '3.25', '3.7'],
+                tag: 'Today',
+                series: 'Test Matches',
+                time: '03:30 PM',
+                teams: 'England 🆚 India',
+                odds: ['100', '110', '5.9', '6', '1.21', '1.22'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 6 },
+                    { label: 'MO', value: 1 },
+                ],
+            },
+            {
+                tag: 'Today',
+                series: "Women's T20 Blast",
+                time: '04:30 PM',
+                teams: 'Surrey W 🆚 Essex W',
+                odds: ['1.46', '1.62', '-', '-', '2.6', '3.3'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'MO', value: 2 },
+                    { label: 'O', value: 0 },
+                ],
+            },
+            {
+                tag: 'Today',
+                series: "Women's T20 Blast Div 2",
+                time: '07:00 PM',
+                teams: 'Leicestershire Foxes W 🆚 Derbyshire Falcons W',
+                odds: ['2.24', '2.86', '-', '-', '1.54', '1.8'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'MO', value: 1 },
+                    { label: 'O', value: 2 },
+                ],
+            },
+            {
+                tag: 'Today',
+                series: 'Tamil Nadu Premier League',
+                time: '07:15 PM',
+                teams: 'Tiruppur Tamizhans 🆚 Dindigul Dragons',
+                odds: ['1.8', '1.81', '-', '-', '2.22', '2.24'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 0 },
+                    { label: 'MO', value: 2 },
+                    { label: 'O', value: 5 },
+                ],
+            },
+            {
+                tag: 'Today',
+                series: 'T20 Blast',
+                time: '07:30 PM',
+                teams: 'Northamptonshire 🆚 Worcestershire',
+                odds: ['2.42', '2.46', '-', '-', '1.69', '1.7'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 48 },
+                    { label: 'MO', value: 2 },
+                    { label: 'O', value: 0 },
+                ],
+            },
+            {
+                tag: 'Today',
+                series: 'Test Matches',
+                time: '07:30 PM',
+                teams: 'West Indies 🆚 Australia',
+                odds: ['1.15', '1.16', '75', '80', '7.8', '8'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 7 },
+                    { label: 'MO', value: 1 },
+                    { label: 'O', value: 0 },
+                ],
+            },
+            {
+                tag: 'Today',
+                series: 'T20 Blast',
+                time: '09:00 PM',
+                teams: 'Surrey 🆚 Essex',
+                odds: ['3.3', '3.6', '-', '-', '1.39', '1.43'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 48 },
+                    { label: 'MO', value: 2 },
+                    { label: 'O', value: 3 },
+                ],
+            },
+            {
+                tag: 'Tomorrow',
+                series: 'Major League Cricket',
+                time: '12:30 AM',
+                teams: 'Washington Freedom 🆚 Mi New York',
+                odds: ['1.6', '2.22', '-', '-', '1.82', '2.64'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 5 },
+                    { label: 'MO', value: 1 },
+                    { label: 'O', value: 0 },
+                ],
+            },
+            {
+                tag: 'Tomorrow',
+                series: 'Major League Cricket',
+                time: '04:30 AM',
+                teams: 'Los Angeles Knight Riders 🆚 San Francisco Unicorns',
+                odds: ['1.46', '7', '-', '-', '1.4', '2.68'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 0 },
+                    { label: 'MO', value: 1 },
+                    { label: 'O', value: 0 },
+                ],
+            },
+            {
+                tag: 'Tuesday',
+                series: 'Irish Inter Provincial T20 Trophy',
+                time: '03:15 PM',
+                teams: 'Leinster Lightning 🆚 Munster Reds',
+                odds: ['3.65', '3.85', '-', '-', '1.35', '1.38'],
+                categories: [
+                    { label: 'M', value: 1 },
+                    { label: 'F', value: 0 },
+                    { label: 'MO', value: 1 },
+                    { label: 'O', value: 0 },
+                ],
             },
         ],
     },
@@ -227,3 +354,15 @@ export const sportData = [
 ];
 
 
+export const liveSportsData = sportsData
+    .map((sport) => {
+        const liveMatches = sport.matches?.filter((match) => match.tag === "LIVE") || [];
+        if (liveMatches.length > 0) {
+            return {
+                sport: sport.sport,
+                matches: liveMatches,
+            };
+        }
+        return null; // remove sport with no live matches
+    })
+    .filter(Boolean); 

@@ -29,7 +29,7 @@ import {
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useMediaQuery, useTheme } from "@mui/material";
-import { sportData } from '../data/dashboardData';
+import { liveSportsData, sportsData } from '../data/dashboardData';
 import CommonNavLink from './commonComponents/CommonNavLink';
 
 const DrawerMenu = () => {
@@ -48,10 +48,25 @@ const DrawerMenu = () => {
         title: item?.title,
         icon: item?.icon
     }));
+    // const inPlayFilterData = 
+    const sportData = ([sportsData.find((item) => item.sport === "Cricket")])
+    // const liveSportsData = sportsData
+    //     .map((sport) => {
+    //         const liveMatches = sport.matches?.filter((match) => match.tag === "LIVE") || [];
+    //         if (liveMatches.length > 0) {
+    //             return {
+    //                 sport: sport.sport,
+    //                 matches: liveMatches,
+    //             };
+    //         }
+    //         return null; // remove sport with no live matches
+    //     })
+    //     .filter(Boolean); // removes nulls
+
     const data1 = [{ sport: sportData, title: "Sports", type: "list" },
     { sport: casionData, title: "Casion", type: "cards" },
-    { sport: sportData, title: "Sports", type: "list" },
-    { sport: sportData, title: "Sports", type: "list" }]
+    { sport: true, title: "Promotion", type: "" },
+    { sport: false, title: "Refer&Earn", type: "" }]
 
     const handleSportClick = (sport) => {
         setOpenSports((prev) => ({
@@ -86,6 +101,7 @@ const DrawerMenu = () => {
     const handleChange = (event) => {
         setLanguage(event.target.value);
     };
+    const countData = liveSportsData?.flatMap((item) => item?.matches?.filter((match) => match?.tag === "LIVE"))
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
@@ -139,7 +155,13 @@ const DrawerMenu = () => {
                         return (
                             <Grid item lg={5} md={5} key={index} sx={{ padding: "0px" }}>
                                 <CommonNavLink
-                                    to={item.type === "list" ? `common-list/${item.title}` : `common-card/${item.title}`}
+                                    to={
+                                        item.type === "list"
+                                            ? `common-list/${item.title}`
+                                            : item.type === "card"
+                                                ? `common-card/${item.title}`
+                                                : `promotion-refer/${item.title}`
+                                    }
                                     state={{ data: item.sport }}
                                 >
                                     <Card
@@ -182,6 +204,7 @@ const DrawerMenu = () => {
                                 to={{
                                     pathname: `/common-list/${item?.title}`,
                                 }}
+                                state={{ data: liveSportsData, isImageCarousel: true }}
                                 onClick={handleClose}
                                 sx={{
                                     justifyContent: "space-between",
@@ -201,7 +224,7 @@ const DrawerMenu = () => {
                                 </Box>
 
                                 <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
-                                    {item.count}
+                                    {countData?.length}
                                 </Typography>
                             </ListItemButton>
 
@@ -371,7 +394,7 @@ const DrawerMenu = () => {
                                         <Typography
                                             sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}
                                         >
-                                            {item.count}
+                                            {item?.info?.length}
                                         </Typography>
                                     </Box>
                                 </CommonNavLink>

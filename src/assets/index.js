@@ -364,3 +364,12 @@ export { default as virtualSports7 } from './casinoImage/virtualSports/virtualSp
 export { default as virtualSports8 } from './casinoImage/virtualSports/virtualSports8.webp';
 export { default as virtualSports9 } from './casinoImage/virtualSports/virtualSports9.png';
 export { default as virtualSports10 } from './casinoImage/virtualSports/virtualSports10.png';
+//promotion images
+export { default as promotion1 } from "./promotion/promotion1.png"
+export { default as promotion2 } from "./promotion/promotion2.png"
+export { default as promotion3 } from "./promotion/promotion3.png"
+export { default as promotion4 } from "./promotion/promotion4.png"
+export { default as promotion5 } from "./promotion/promotion5.png"
+export { default as link } from "./promotion/link.png"
+export { default as email } from "./promotion/email.png"
+export { default as coinIcon } from "./promotion/coinIcon.png"

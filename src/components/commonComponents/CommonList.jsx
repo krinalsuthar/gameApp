@@ -4,6 +4,7 @@ import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite
 import { CricketIcon, TennisIcon } from '../../assets/SVGs/allSVGs';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { ImageCarousel } from './ImageCarousel';
 
 const OddsBox = ({ value, index }) => (
     <Box
@@ -40,7 +41,10 @@ const CommonList = ({ data: propsData = [] }) => {
     const location = useLocation();
     const locationData = location.state?.data;
     const isLoggedIN = location.state?.isLoggin ?? true;
+    const isImageCarousel = location.state?.isImageCarousel ?? false;
+    console.log(isImageCarousel)
     const data = propsData.length ? propsData : locationData || [];
+    console.log(data, "data")
     const navigate = useNavigate()
 
     const sportIcons = {
@@ -54,8 +58,10 @@ const CommonList = ({ data: propsData = [] }) => {
     }, [isLoggedIN, navigate]);
 
     return (
-
         <Box >
+            {isImageCarousel && (
+                <ImageCarousel />
+            )}
             {Array.isArray(data) && data.length > 0 ? (
                 data.map((sport, sportIndex) => (
                     <Box key={sportIndex} mb={3}>
@@ -73,7 +79,7 @@ const CommonList = ({ data: propsData = [] }) => {
                             }}
                         >
                             {sportIcons[sport.sport] || null}
-                            <Typography fontWeight={600}>{sport.sport}</Typography>
+                            <Typography fontWeight={600}>{sport?.sport}</Typography>
                         </Box>
 
                         {sport.matches.map((match, matchIndex) => (

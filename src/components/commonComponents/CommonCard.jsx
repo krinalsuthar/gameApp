@@ -90,12 +90,13 @@ const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
                                     )}
                                 </Box>
 
-                                <Typography variant="subtitle1" fontWeight={600} noWrap>
+                                <Typography variant="subtitle1" fontWeight={600} sx={{ textAlign: "center" }} noWrap>
                                     {game?.title}
                                 </Typography>
                                 <Typography
                                     variant="body2"
                                     sx={{
+                                        textAlign: "center",
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         display: '-webkit-box',
