@@ -16,7 +16,7 @@ import {
     MenuItem,
     CardMedia,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDrawer } from '../features/drawer/drawerSlice';
 import { Link as RouterLink } from 'react-router-dom';
@@ -337,10 +337,14 @@ const DrawerMenu = () => {
                                 <CommonNavLink
                                     key={index}
                                     onClick={handleClose}
-                                    to={'common-page'}
+                                    to={`common-page/${item?.segment}`}
                                     item={{
                                         data: item.segment,
                                         info: item.info,
+                                        icon: item?.icon,
+                                        isImage: false,
+                                        isScroll: false,
+                                        isHeader: true
                                     }}
                                     sx={{
                                         display: "flex",
@@ -352,7 +356,6 @@ const DrawerMenu = () => {
                                         bgcolor: "white",
                                     }}
                                 >
-
                                     <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
                                         <Box>
                                             <CardMedia

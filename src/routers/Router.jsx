@@ -13,7 +13,7 @@ const AppRoutes = () => (
         <Route path="/" element={<HomePage />} />
         <Route path="/common-card/:item" element={<Casion />} />
         <Route path="/category/:segment" element={<CommonCard />} />
-        <Route path="/common-page" element={<CommonPage />} />
+        <Route path="/common-page/:segment" element={<CommonCard />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/common-list/:data" element={<CommonList />} />

@@ -1,5 +1,6 @@
-import { Box, Grid, Link, TextField, Typography } from "@mui/material"
+import { Box, CardMedia, Grid, Link, TextField, Typography } from "@mui/material"
 import { LeftArrowIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
+import image from "../../assets/TrendingGamesImages/cricket.png"
 
 const CardHeader = (
     {
@@ -8,9 +9,14 @@ const CardHeader = (
         search = "false",
         title = "",
         scroll = "false",
-        icon = "", containerRef = ""
+        icon = "",
+        containerRef = "",
+        isImage = "true",
+        showMore = "true",
+        count = ""
     }
 ) => {
+    console.log(isImage, "showMore")
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({
@@ -44,14 +50,29 @@ const CardHeader = (
                     }}
                 >
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                        {icon}
+                        {isImage ? (
+                            icon
+                        ) : (
+                            <Box>
+                                <CardMedia
+                                    component="img"
+                                    image={icon} alt="Logo"
+                                    height={"20px"}
+                                    width={"20px"}
+                                />
+                            </Box>
+                        )}
                         <Typography variant="h6">{title}</Typography>
                     </Box>
 
                     <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                        <Link href="/common-page" variant="body2">
-                            Show more
-                        </Link>
+                        {showMore ? (
+                            <Link href="/common-page" variant="body2">
+                                Show more
+                            </Link>
+                        ) : (
+                            <Typography variant="caption">{count} results</Typography>
+                        )}
                         {search == "true" && (
                             <TextField
                                 size="small"
