@@ -1830,3 +1830,7 @@ export const VoltEntIcon = () => (
         </defs>
     </svg>
 )
+
+export const ClockIcon = () => (
+    <svg _ngcontent-goy-c56="" width="12" height="12" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-1"><path _ngcontent-goy-c56="" d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-goy-c56="" d="M11 6V12L15 14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="black"></path></svg>
+) 
