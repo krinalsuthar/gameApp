@@ -7,6 +7,7 @@ import RegisterPage from '../pages/RegisterPage';
 import CommonList from '../components/commonComponents/CommonList';
 import Casion from '../components/commonComponents/Casino';
 import PromotionRefer from '../components/commonComponents/PromotionRefer';
+import CommonMatch from '../components/commonComponents/CommonMatch';
 
 
 const AppRoutes = () => (
@@ -16,6 +17,7 @@ const AppRoutes = () => (
         <Route path="/common-card/:item" element={<Casion />} />
         <Route path="/category/:segment" element={<CommonCard />} />
         <Route path="/common-page/:segment" element={<CommonCard />} />
+        <Route path="/common-match/:segment" element={<CommonMatch />} />
         <Route path="/promotion-refer/:item" element={<PromotionRefer />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />

@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routers/Router';
 import Dashboard from './pages/Dashboard';
 import AllIconsDisplay from './pages/AllSvgs';
+import T20MatchHeader from './pages/AllSvgs';
 
 const App = () => {
 
@@ -10,6 +11,7 @@ const App = () => {
 
     <BrowserRouter>
       <Dashboard />
+      {/* <AllIconsDisplay /> */}
     </BrowserRouter>
   );
 };

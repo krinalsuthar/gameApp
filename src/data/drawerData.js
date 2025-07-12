@@ -16,34 +16,136 @@ export const drawerData = {
             count: 3,
             leagues: [
                 {
-                    title: 'one day internationals',
+                    title: ' WOMENS INTERNATIONAL TWENTY20 MATCHES',
                     icon: BlackIcon,
-                    segment: 'one-day-internationals',
+                    segment: 'WOMENS-INTERNATIONAL-TWENTY20-MATCHES ',
                     count: 2,
+                    info: [
+                        {
+                            "key": "matchOdds",
+                            "title": "MATCH ODDS",
+                            "type": "team",
+                            "data": {
+                                "Bangladesh": {
+                                    "back": [3.15, 3.2, 3.25],
+                                    "lay": [3.35, 3.4, 3.5]
+                                },
+                                "Sri Lanka": {
+                                    "back": [1.4, 1.42, 1.43],
+                                    "lay": [1.44, 1.45, 1.46]
+                                }
+                            }
+                        },
+                        {
+                            "key": "bookmaker",
+                            "title": "BOOKMAKER",
+                            "type": "bookmaker",
+                            "data": {
+                                "Bangladesh": {
+                                    "status": "SUSPENDED"
+                                },
+                                "Sri Lanka": {
+                                    "back": [1.42],
+                                    "lay": [1.45]
+                                }
+                            }
+                        },
+                        {
+                            "key": "toss",
+                            "title": "TOSS",
+                            "type": "team",
+                            "data": {
+                                "BAN": {
+                                    "back": [1.98],
+                                    "lay": [1]
+                                },
+                                "SL": {
+                                    "back": [1.98],
+                                    "lay": [1]
+                                }
+                            }
+                        },
+                        {
+                            "key": "fancy",
+                            "title": "FANCY BET (SRI LANKA V BANGLADESH)",
+                            "type": "fancy",
+                            "stakeLimit": "50 - 50000",
+                            "maxProfit": 200000,
+                            "data": [
+                                {
+                                    "label": "6 OVER RUN BAN",
+                                    "back": { "odds": 45, "stake": 100 },
+                                    "lay": { "odds": 47, "stake": 100 }
+                                },
+                                {
+                                    "label": "6 OVER RUN SL",
+                                    "back": { "odds": 51, "stake": 100 },
+                                    "lay": { "odds": 53, "stake": 100 }
+                                },
+                                {
+                                    "label": "10 OVER RUN BAN",
+                                    "back": { "odds": 73, "stake": 100 },
+                                    "lay": { "odds": 75, "stake": 100 }
+                                },
+                                {
+                                    "label": "10 OVER RUN SL",
+                                    "back": { "odds": 83, "stake": 100 },
+                                    "lay": { "odds": 85, "stake": 100 }
+                                },
+                                {
+                                    "label": "20 OVER RUN BAN",
+                                    "back": { "odds": 178, "stake": 100 },
+                                    "lay": { "odds": 181, "stake": 100 }
+                                },
+                                {
+                                    "label": "20 OVER RUN SL",
+                                    "back": { "odds": 160, "stake": 100 },
+                                    "lay": { "odds": 163, "stake": 100 }
+                                }
+                            ]
+                        }
+                    ],
                     matches: [
-                        { name: 'one day internationals', icon: HollowCircleIcon, segment: 'onedayinternationals', count: 0 },
-                        { name: 'pakistan vs england', icon: HollowCircleIcon, segment: 'pakistan-vs-england', count: 0 },
+                        { name: 'ENGLAND V INDIA', icon: HollowCircleIcon, count: 0 },
+                        { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
                     ],
                 },
                 {
-                    title: 'test matches',
+                    title: 'INTERNATIONAL TWENTY20 MATCHES ',
                     icon: BlackIcon,
-                    segment: 'test-matches',
+                    segment: 'INTERNATIONAL-TWENTY20-MATCHES ',
                     count: 3,
                     matches: [
-                        { name: 'test matches', icon: HollowCircleIcon, segment: 'test-matches', count: 0 },
-                        { name: 'england vs india', icon: HollowCircleIcon, segment: 'england-vs-india', count: 0 },
-                        { name: 'westindies vs australia', icon: HollowCircleIcon, segment: 'westindies-vs-australia', count: 0 },
+                        { name: 'SRILANKA V BANGLADESH ', icon: HollowCircleIcon, count: 0 },
+                        { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
+                        { name: 'ZIMBABWE V SOUTH AFRICA ', icon: HollowCircleIcon, count: 0 },
                     ],
                 },
                 {
-                    title: 'irish inter provincial t20 trophy',
+                    title: 'ENGLAND V INDIA',
                     icon: BlackIcon,
-                    segment: 'irish-inter-provincial-t20-trophy',
+                    segment: 'ENGLAND-INDIA ',
                     count: 2,
                     matches: [
-                        { name: 'north-west warriors vs munster reds', icon: HollowCircleIcon, segment: 'north-west-warriors-vs-munster-reds', count: 0 },
-                        { name: 'noethern knights vs leinter lightning', icon: HollowCircleIcon, segment: 'noethern-knights-vs-leinter-lightning', count: 0 },
+                        { name: 'ENGLAND V INDIA', icon: HollowCircleIcon, count: 0 },
+                        { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
+                        { name: 'BOOKMARKES', icon: HollowCircleIcon, count: 0 },
+                        { name: 'LOKESH RAHUL BOUNDARIES', icon: HollowCircleIcon, count: 0 },
+                        { name: 'LOKESH RAHUL RUNS', icon: HollowCircleIcon, count: 0 },
+                        { name: '1ST INNINGS RUN IND', icon: HollowCircleIcon, count: 0 },
+                        { name: 'FALL OF 4TH WKT IND', icon: HollowCircleIcon, count: 0 },
+                        { name: 'RISHABH PANT RUNS', icon: HollowCircleIcon, count: 0 },
+                        { name: '45 OVER RUN IND', icon: HollowCircleIcon, count: 0 },
+                    ],
+                },
+                {
+                    title: 'GLOBAL SUPER LEAGUE T20 ',
+                    icon: BlackIcon,
+                    segment: 'GLOBAL-SUPER-LEAGUE-T20  ',
+                    count: 2,
+                    matches: [
+                        { name: 'RANGPUR RIDERS V HOBART HURRICANES ', icon: HollowCircleIcon, count: 0 },
+                        { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
                     ],
                 },
             ],

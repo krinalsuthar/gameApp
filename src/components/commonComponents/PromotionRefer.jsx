@@ -14,7 +14,6 @@ const images = [
 const PromotionRefer = () => {
     const location = useLocation();
     const promotion = location?.state?.data;
-    console.log(promotion, "data")
     return (
         <>
             {promotion ? (

@@ -16,7 +16,6 @@ const CardHeader = (
         count = ""
     }
 ) => {
-    console.log(isImage, "showMore")
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({

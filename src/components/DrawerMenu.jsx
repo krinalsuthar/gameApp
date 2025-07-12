@@ -16,7 +16,7 @@ import {
     MenuItem,
     CardMedia,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDrawer } from '../features/drawer/drawerSlice';
 import { Link as RouterLink } from 'react-router-dom';
@@ -31,6 +31,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useMediaQuery, useTheme } from "@mui/material";
 import { liveSportsData, sportsData } from '../data/dashboardData';
 import CommonNavLink from './commonComponents/CommonNavLink';
+import CollapsibleSection from './commonComponents/CollapsibleSection';
 
 const DrawerMenu = () => {
     const open = useSelector((state) => state.drawer.open);
@@ -39,8 +40,6 @@ const DrawerMenu = () => {
     const [openSports, setOpenSports] = useState({});
     const [openLeagues, setOpenLeagues] = useState({});
     const handleClose = () => dispatch(closeDrawer())
-    const [openCategories, setOpenCategories] = useState(true);
-    const [openProviders, setOpenProviders] = useState(true);
     const [opeSportsEntire, setOpenSportsEntire] = useState(true);
     const [language, setLanguage] = React.useState('English');
     const casionData = categoriesData?.categories?.items?.map(item => ({
@@ -48,26 +47,11 @@ const DrawerMenu = () => {
         title: item?.title,
         icon: item?.icon
     }));
-    // const inPlayFilterData = 
     const sportData = ([sportsData.find((item) => item.sport === "Cricket")])
-    // const liveSportsData = sportsData
-    //     .map((sport) => {
-    //         const liveMatches = sport.matches?.filter((match) => match.tag === "LIVE") || [];
-    //         if (liveMatches.length > 0) {
-    //             return {
-    //                 sport: sport.sport,
-    //                 matches: liveMatches,
-    //             };
-    //         }
-    //         return null; // remove sport with no live matches
-    //     })
-    //     .filter(Boolean); // removes nulls
-
     const data1 = [{ sport: sportData, title: "Sports", type: "list" },
     { sport: casionData, title: "Casion", type: "cards" },
     { sport: true, title: "Promotion", type: "" },
     { sport: false, title: "Refer&Earn", type: "" }]
-
     const handleSportClick = (sport) => {
         setOpenSports((prev) => ({
             ...prev,
@@ -79,12 +63,6 @@ const DrawerMenu = () => {
             ...prev,
             [`${sport}-${league}`]: !prev[`${sport}-${league}`],
         }));
-    };
-    const handleToggleCategories = () => {
-        setOpenCategories((prev) => !prev);
-    };
-    const handleToggleProviders = () => {
-        setOpenProviders((prev) => !prev);
     };
     const handleToggleSportsEntire = () => {
         setOpenSportsEntire((prev) => !prev);
@@ -158,7 +136,7 @@ const DrawerMenu = () => {
                                     to={
                                         item.type === "list"
                                             ? `common-list/${item.title}`
-                                            : item.type === "card"
+                                            : item.type === "cards"
                                                 ? `common-card/${item.title}`
                                                 : `promotion-refer/${item.title}`
                                     }
@@ -262,7 +240,7 @@ const DrawerMenu = () => {
                                             <Typography
                                                 sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}
                                             >
-                                                {`${sport.leagues.reduce((acc, league) => acc + league.count, 0)}`}
+                                                {`${sport.leagues.reduce((acc, league) => acc + (league.matches?.length || 0), 0)}`}
                                             </Typography>
                                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                                 {openSports[sport.segment] ? <ExpandLess /> : <ExpandMore />}
@@ -295,7 +273,7 @@ const DrawerMenu = () => {
                                                         </Box>
                                                         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                                             <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
-                                                                {league.count}
+                                                                {league?.matches?.length}
                                                             </Typography>
                                                             {openLeagues[`${sport.segment}-${league.segment}`] ? (
                                                                 <ExpandLess />
@@ -315,8 +293,9 @@ const DrawerMenu = () => {
                                                                 <ListItemButton
                                                                     key={index}
                                                                     component={Link}
-                                                                    to={`/common-list/${match.segment}`}
+                                                                    to={`/common-match/${league?.segment}`}
                                                                     // to={`/common-page`}
+                                                                    state={{ data: league.info, info: league?.matches[0]?.name }}
                                                                     sx={{ bgcolor: "white", m: "5px 0px 5px 20px", p: "3px 10px" }}
                                                                     onClick={handleClose}
 
@@ -340,21 +319,8 @@ const DrawerMenu = () => {
                     </Collapse>
                 </Box>
 
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            cursor: 'pointer',
-                        }}
-                        onClick={handleToggleCategories}
-                    >
-                        <Typography sx={{ mb: 1 }}>CATEGORIES</Typography>
-                        {openCategories ? <ExpandLess /> : <ExpandMore />}
-                    </Box>
-
-                    <Collapse in={openCategories} timeout="auto" unmountOnExit>
+                <Box sx={{ bgcolor: '#f5f5f5de' }}>
+                    <CollapsibleSection sectionKey={categoriesData?.categories?.title || 'categories'} title="CATEGORIES" sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                         <List>
                             {categoriesData.categories.items?.map((item, index) => (
                                 <CommonNavLink
@@ -367,128 +333,107 @@ const DrawerMenu = () => {
                                         icon: item?.icon,
                                         isImage: false,
                                         isScroll: false,
-                                        isHeader: true
+                                        isHeader: true,
                                     }}
                                     sx={{
-                                        display: "flex",
-                                        color: "black",
-                                        justifyContent: "space-between",
-                                        margin: "5px 0px",
-                                        borderRadius: "5px",
-                                        padding: "6px 12px",
-                                        bgcolor: "white",
+                                        display: 'flex',
+                                        color: 'black',
+                                        justifyContent: 'space-between',
+                                        margin: '5px 0px',
+                                        borderRadius: '5px',
+                                        padding: '6px 12px',
+                                        bgcolor: 'white',
                                     }}
                                 >
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
-                                        <Box>
-                                            <CardMedia
-                                                component="img"
-                                                image={item.icon} alt="Logo"
-                                                height={"20px"}
-                                                width={"20px"}
-                                            />
-                                        </Box>
-                                        <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>{item.title}</Typography>
-                                    </Box>
-                                    <Box>
-                                        <Typography
-                                            sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}
-                                        >
-                                            {item?.info?.length}
-                                        </Typography>
-                                    </Box>
-                                </CommonNavLink>
-                            ))}
-                        </List>
-                    </Collapse>
-                </Box>
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            cursor: 'pointer',
-                        }}
-                        onClick={handleToggleProviders}
-                    >
-                        <Typography sx={{ mb: 1, fontSize: "15px", fontWeight: 500 }}>PROVIDERS</Typography>
-                        {openProviders ? <ExpandLess /> : <ExpandMore />}
-                    </Box>
-                    <Collapse in={openProviders} timeout="auto" unmountOnExit>
-                        <List>
-                            {providersData.providers.items?.map((item, index) => (
-                                <ListItemButton
-                                    key={index}
-                                    component={Link}
-                                    to={`/common-page`}
-                                    onClick={handleClose}
-                                    sx={{
-                                        justifyContent: "space-between",
-                                        margin: "5px 0px",
-                                        borderRadius: "5px",
-                                        padding: "6px 12px",
-                                        bgcolor: "white",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
-                                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                                            <item.icon sx={{ fontSize: "20px", color: "inherit" }} />
-                                        </Box>
-                                        <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                        <CardMedia
+                                            sx={{ width: 20, height: 20, objectFit: 'contain' }}
+                                            component="img"
+                                            image={item.icon}
+                                            alt="Logo"
+                                        />
+                                        <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
                                             {item.title}
                                         </Typography>
                                     </Box>
-
-                                    <Typography
-                                        sx={{
-                                            fontSize: "12px",
-                                            fontWeight: 600,
-                                            color: "#92928e",
-                                            whiteSpace: "nowrap",
-                                        }}
-                                    >
-                                        {item.count}
+                                    <Typography sx={{ fontSize: '12px', fontWeight: 600, color: '#92928e' }}>
+                                        {item?.info?.length}
                                     </Typography>
-                                </ListItemButton>
-
+                                </CommonNavLink>
                             ))}
                         </List>
-                    </Collapse>
-                    <Box sx={{
-                        padding: "3px 10px", bgcolor: "#43727a", borderRadius: "5px", color: "white"
-                    }}>
-                        < Typography sx={{ textAlign: "center" }}>Blog</Typography>
-                    </Box>
-                    <Typography sx={{ m: "10px 0px", fontSize: "15px", fontWeight: 500 }}>SETTINGS</Typography>
-                    <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth size='small'>
-                            <InputLabel id="demo-simple-select-label">{language}</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={language}
-                                label="language"
-                                onChange={handleChange}
-                            >
-                                <MenuItem value="ENglish">English</MenuItem>
-                                <MenuItem value="Hindi">Hindi</MenuItem>
-                                <MenuItem value="Gujarati">Gujarati</MenuItem>
-                                <MenuItem value="Kannada">Kannada</MenuItem>
-                                <MenuItem value="Tamil">Tamil</MenuItem>
-                                <MenuItem value="Telugu">Telugu</MenuItem>
-                                <MenuItem value="Marathi">Marathi</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
-                    {/* remain for future */}
-                    {/* <Box sx={{
-                        padding: "3px 10px", bgcolor: "#43727a", borderRadius: "5px", color: "white"
-                    }}>
-                        < Typography>Light Mode</Typography>
-                    </Box> */}
+                    </CollapsibleSection>
+
                 </Box>
+
+
+                <CollapsibleSection sectionKey={providersData?.providers?.title || 'providers'} title="PROVIDERS" sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+                    <List>
+                        {providersData.providers.items?.map((item, index) => (
+                            <ListItemButton
+                                key={index}
+                                component={Link}
+                                to={`/common-page`}
+                                onClick={handleClose}
+                                sx={{
+                                    justifyContent: "space-between",
+                                    margin: "5px 0px",
+                                    borderRadius: "5px",
+                                    padding: "6px 12px",
+                                    bgcolor: "white",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
+                                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                                        <item.icon sx={{ fontSize: "20px", color: "inherit" }} />
+                                    </Box>
+                                    <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
+                                        {item.title}
+                                    </Typography>
+                                </Box>
+                                <Typography
+                                    sx={{
+                                        fontSize: "12px",
+                                        fontWeight: 600,
+                                        color: "#92928e",
+                                        whiteSpace: "nowrap",
+                                    }}
+                                >
+                                    {item.count}
+                                </Typography>
+                            </ListItemButton>
+                        ))}
+                    </List>
+                </CollapsibleSection>
+
+                <Box sx={{
+                    padding: "3px 10px", bgcolor: "#43727a", borderRadius: "5px", color: "white", m: 1
+                }}>
+                    < Typography sx={{ textAlign: "center" }}>Blog</Typography>
+                </Box>
+                <Typography sx={{ m: "10px 0px", fontSize: "15px", fontWeight: 500, m: 1 }}>SETTINGS</Typography>
+                <Box sx={{ minWidth: 120, m: 1 }}>
+                    <FormControl fullWidth size='small'>
+                        <InputLabel id="demo-simple-select-label">{language}</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={language}
+                            label="language"
+                            onChange={handleChange}
+                        >
+                            <MenuItem value="ENglish">English</MenuItem>
+                            <MenuItem value="Hindi">Hindi</MenuItem>
+                            <MenuItem value="Gujarati">Gujarati</MenuItem>
+                            <MenuItem value="Kannada">Kannada</MenuItem>
+                            <MenuItem value="Tamil">Tamil</MenuItem>
+                            <MenuItem value="Telugu">Telugu</MenuItem>
+                            <MenuItem value="Marathi">Marathi</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+
             </Box >
         </Drawer >
     );

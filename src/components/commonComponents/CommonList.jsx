@@ -42,9 +42,7 @@ const CommonList = ({ data: propsData = [] }) => {
     const locationData = location.state?.data;
     const isLoggedIN = location.state?.isLoggin ?? true;
     const isImageCarousel = location.state?.isImageCarousel ?? false;
-    console.log(isImageCarousel)
     const data = propsData.length ? propsData : locationData || [];
-    console.log(data, "data")
     const navigate = useNavigate()
 
     const sportIcons = {

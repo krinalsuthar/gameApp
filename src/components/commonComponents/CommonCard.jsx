@@ -10,11 +10,9 @@ const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
     const [likedItems, setLikedItems] = useState({});
     const { state } = useLocation();
     const { category } = useParams();
-    console.log(state?.isScroll, "state?.isImage")
     // const isScroll = state?.isScroll
     const data = propsData.length ? propsData : state?.info || [];
     const isScroll = state?.isScroll != "" ? true : false
-    console.log(state?.icon, "isScroll")
 
     const toggleLike = (id) => {
         setLikedItems((prev) => ({

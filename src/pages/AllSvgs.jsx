@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import {
     Box, Paper, IconButton, Switch,
     Typography,
-    Button,
-    ToggleButtonGroup,
-    ToggleButton,
     Tab,
     Tabs,
-    Divider,
     Collapse,
 } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AddIcon from "@mui/icons-material/Add";
-import headingImage from "../assets/headingImage.png"; // make sure image path is correct
 import CommonChartSwitcher from "../components/commonComponents/CommonChart";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import CollapsibleSection from "../components/commonComponents/CollapsibleSection";
 
 const AllIconsDisplay = () => {
+    const dispatch = useDispatch();
+    const open = useSelector((state) => state.drawer.open);
+    const activeSections = useSelector((state) => state.drawer.activeSections);
     const inningsList = ["1st INNS", "2nd INNS"];
     const [clickBetting, setClickBetting] = useState(false);
     const [acceptOdds, setAcceptOdds] = useState(false);
@@ -27,8 +27,6 @@ const AllIconsDisplay = () => {
     const handleToggleSportsEntire = () => {
         setOpenSportsEntire((prev) => !prev);
     };
-    // const [clickBetting, setClickBetting] = useState(false);
-    // const [acceptOdds, setAcceptOdds] = useState(false);
     const [tab, setTab] = useState(0);
 
     const fancyData = [
@@ -39,7 +37,6 @@ const AllIconsDisplay = () => {
         { label: "20 OVER RUN BAN", pink: 178, blue: 181 },
         { label: "20 OVER RUN SL", pink: 160, blue: 163 },
     ];
-
 
     const lineChartData = {
         "1st INNS": [
@@ -104,7 +101,6 @@ const AllIconsDisplay = () => {
                             alignItems: "center",
                             px: 1.5,
                             mb: 2,
-                            // py: 1.5,
                             borderRadius: 2,
                             minHeight: 60,
                         }}
@@ -126,10 +122,10 @@ const AllIconsDisplay = () => {
                             T20 Blast
                         </Typography>
                         <Box display="flex" gap={1}>
-                            <IconButton size="small">
+                            <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }}>
                                 <BarChartIcon />
                             </IconButton>
-                            <IconButton size="small">
+                            <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }}>
                                 <AddIcon />
                             </IconButton>
                         </Box>
@@ -141,6 +137,8 @@ const AllIconsDisplay = () => {
                                 justifyContent: "space-between",
                                 alignItems: "center",
                                 mb: 2,
+                                px: 3,
+                                py: 1
                             }}
                         >
                             <Box
@@ -153,6 +151,7 @@ const AllIconsDisplay = () => {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     fontWeight: "bold",
+                                    p: 2
                                 }}
                             >
                                 SL
@@ -182,9 +181,10 @@ const AllIconsDisplay = () => {
                                     alignItems: "center",
                                     justifyContent: "center",
                                     fontWeight: "bold",
+                                    p: 2
                                 }}
                             >
-                                BAN
+                                BA
                             </Box>
                         </Box>
                         <Box>
@@ -195,313 +195,6 @@ const AllIconsDisplay = () => {
                             />
                         </Box>
                         <Box sx={{ background: "#f5f5f5", borderRadius: 2 }}>
-                            <Tabs
-                                value={tab}
-                                onChange={(e, v) => setTab(v)}
-                                // variant="fullWidth"
-                                sx={{ mt: 2 }}
-                            // TabIndicatorProps={{ style: { display: "none" } }}
-                            >
-                                {["All", "Match Odd", "Bookmakers"].map((label, idx) => (
-                                    <Tab
-                                        key={idx}
-                                        label={label}
-                                        sx={{
-                                            border: "1px solid #ffcc00",
-                                            fontWeight: 600,
-                                            color: "black",
-                                            // color: tab === idx ? "#000" : "#000",
-                                            bgcolor: tab === idx ? "#ffcc00" : "#fff",
-                                            py: 0
-                                            // borderRight: idx < 2 ? "1px solid #ccc" : "none",
-                                        }}
-                                    />
-                                ))}
-                            </Tabs>
-                            <Box sx={{ bgcolor: "#fff", borderRadius: 1, p: 2, mb: 2 }} onClick={handleToggleSportsEntire}>
-                                <Typography fontWeight="bold" mb={1}>
-                                    MATCH ODDS
-                                </Typography>
-                                {opeSportsEntire ? <ExpandLess /> : <ExpandMore />}
-
-                                <Collapse in={opeSportsEntire} timeout="auto" unmountOnExit>
-                                    {["Bangladesh", "Sri Lanka"].map((team) => (
-                                        <>
-                                            <Box sx={{ display: "flex", justifyContent: "space-between" }} key={team} mb={1}>
-                                                <Box>
-                                                    <Typography fontWeight={500}>{team}</Typography>
-                                                    <Typography color="green">0</Typography>
-                                                </Box>
-                                                <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
-                                                    {[3.15, 3.2, 3.25].map((odd, i) => (
-                                                        <Box sx={{
-                                                            bgcolor: "#bbdefb",
-                                                            px: 1.5,
-                                                            // py: 0.5,
-                                                            borderRadius: 1,
-                                                            fontWeight: 500,
-                                                            height: "fit-content",
-                                                            minWidth: "30px"
-                                                        }}>
-                                                            <Typography
-                                                                variant="subtitle2"
-                                                                sx={{ height: "13px" }}
-                                                            >
-                                                                {odd}
-                                                            </Typography>
-                                                            <Typography variant="caption">1.5</Typography>
-                                                        </Box>
-                                                    ))}
-                                                    {[3.35, 3.4, 3.5].map((odd, i) => (
-                                                        <Box sx={{
-                                                            bgcolor: "#ffcdd2",
-                                                            px: 1.5,
-                                                            // py: 0.5,
-                                                            borderRadius: 1,
-                                                            fontWeight: 500,
-                                                            minWidth: "30px"
-                                                            // height: "fit-content"
-                                                        }}>
-                                                            <Typography
-                                                                variant="subtitle2"
-                                                                sx={{ height: "13px" }}
-                                                            >
-                                                                {odd}
-                                                            </Typography>
-                                                            <Typography variant="caption">1.5</Typography>
-                                                        </Box>
-
-                                                    ))}
-                                                </Box>
-                                            </Box>
-                                            <Divider />
-                                        </>
-                                    ))}
-                                </Collapse>
-                            </Box>
-                            <Box sx={{ bgcolor: "#fff", borderRadius: 1, p: 2, mb: 2 }}>
-                                <Typography fontWeight="bold" mb={1}>
-                                    BOOKMAKER
-                                </Typography>
-                                {["Bangladesh", "Sri Lanka"].map((team) => (
-                                    <React.Fragment key={team}>
-                                        <Box
-                                            sx={{
-                                                display: "flex",
-                                                justifyContent: "space-between",
-                                                alignItems: "flex-start",
-                                                mb: 1,
-                                            }}
-                                        >
-                                            {/* Team Info */}
-                                            <Box>
-                                                <Typography fontWeight={500}>{team}</Typography>
-                                                <Typography color="green">0</Typography>
-                                            </Box>
-
-                                            {/* Odds or Suspended */}
-                                            {team === "Bangladesh" ? (
-                                                <Box
-                                                    sx={{
-                                                        background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
-                                                        borderRadius: 1,
-                                                        textAlign: "center",
-                                                        px: 2,
-                                                        py: 0.5,
-                                                        border: "1px solid #ddd",
-                                                        fontWeight: 600,
-                                                        fontSize: "14px",
-                                                        // minWidth: "120px",
-                                                    }}
-                                                >
-                                                    SUSPENDED
-                                                </Box>
-                                            ) : (
-                                                <Box
-                                                    display="flex"
-                                                    sx={{ height: "fit-content", textAlign: "center" }}
-                                                    gap={1}
-                                                    flexWrap="wrap"
-                                                    mt={1}
-                                                >
-                                                    {[3.15, 3.2, 3.25].map((odd, i) => (
-                                                        <Box
-                                                            key={`blue-${i}`}
-                                                            sx={{
-                                                                bgcolor: "#bbdefb",
-                                                                px: 1.5,
-                                                                borderRadius: 1,
-                                                                fontWeight: 500,
-                                                                minWidth: "30px",
-                                                            }}
-                                                        >
-                                                            <Typography variant="subtitle2" sx={{ height: "13px" }}>
-                                                                {odd}
-                                                            </Typography>
-                                                            <Typography variant="caption">1.5</Typography>
-                                                        </Box>
-                                                    ))}
-                                                    {[3.35, 3.4, 3.5].map((odd, i) => (
-                                                        <Box
-                                                            key={`red-${i}`}
-                                                            sx={{
-                                                                bgcolor: "#ffcdd2",
-                                                                px: 1.5,
-                                                                borderRadius: 1,
-                                                                fontWeight: 500,
-                                                                minWidth: "30px",
-                                                            }}
-                                                        >
-                                                            <Typography variant="subtitle2" sx={{ height: "13px" }}>
-                                                                {odd}
-                                                            </Typography>
-                                                            <Typography variant="caption">1.5</Typography>
-                                                        </Box>
-                                                    ))}
-                                                </Box>
-                                            )}
-                                        </Box>
-                                        <Divider />
-                                    </React.Fragment>
-                                ))}
-
-                            </Box>
-                            <Box sx={{ bgcolor: "#fff", borderRadius: 1, p: 2, mb: 2 }}>
-                                <Typography fontWeight="bold" mb={1}>
-                                    TOSS
-                                </Typography>
-                                {["BAN", "SL"].map((team) => (
-                                    <>
-                                        <Box sx={{ display: "flex", justifyContent: "space-between" }} key={team} mb={1}>
-                                            <Box>
-                                                <Typography fontWeight={500}>{team}</Typography>
-                                                <Typography color="green">0</Typography>
-                                            </Box>
-                                            <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
-                                                {[3.15, 3.2, 3.25].map((odd, i) => (
-                                                    <Box sx={{
-                                                        bgcolor: "#bbdefb",
-                                                        px: 1.5,
-                                                        // py: 0.5,
-                                                        borderRadius: 1,
-                                                        fontWeight: 500,
-                                                        height: "fit-content",
-                                                        minWidth: "30px"
-                                                    }}>
-                                                        <Typography
-                                                            variant="subtitle2"
-                                                            sx={{ height: "13px" }}
-                                                        >
-                                                            {odd}
-                                                        </Typography>
-                                                        <Typography variant="caption">1.5</Typography>
-                                                    </Box>
-                                                ))}
-                                                {[3.35, 3.4, 3.5].map((odd, i) => (
-                                                    <Box sx={{
-                                                        bgcolor: "#ffcdd2",
-                                                        px: 1.5,
-                                                        // py: 0.5,
-                                                        borderRadius: 1,
-                                                        fontWeight: 500,
-                                                        minWidth: "30px"
-                                                        // height: "fit-content"
-                                                    }}>
-                                                        <Typography
-                                                            variant="subtitle2"
-                                                            sx={{ height: "13px" }}
-                                                        >
-                                                            {odd}
-                                                        </Typography>
-                                                        <Typography variant="caption">1.5</Typography>
-                                                    </Box>
-
-                                                ))}
-                                            </Box>
-                                        </Box>
-                                        <Divider />
-                                    </>
-                                ))}
-                            </Box>
-                            <Button
-                                variant="contained"
-                                sx={{
-                                    backgroundColor: "#ffc107",
-                                    color: "#000",
-                                    fontWeight: 600,
-                                    mb: 1,
-                                }}
-                            >
-                                FANCY
-                            </Button>
-                            <Box sx={{ bgcolor: "#fff", borderRadius: 1, p: 2 }}>
-                                <Typography fontWeight="bold" mb={1}>
-                                    FANCY BET (SRI LANKA V BANGLADESH)
-                                </Typography>
-                                {fancyData.map((item, index) => (
-                                    <Box
-                                        key={index}
-                                        display="flex"
-                                        justifyContent="space-between"
-                                        alignItems="center"
-                                        py={1}
-                                        borderBottom="1px solid #ddd"
-                                    >
-                                        <Box>
-                                            <Typography fontSize="14px">{item.label}</Typography>
-
-                                        </Box>
-                                        <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
-                                            <Typography fontSize="12px" color="gray" mr={2}>
-                                                Stake Limit: 50 - 50000<br />Max Profit: 200000
-                                            </Typography>
-                                            <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
-
-
-                                                {[3.15, 3.2, 3.25].map((odd, i) => (
-                                                    <Box sx={{
-                                                        bgcolor: "#bbdefb",
-                                                        px: 1.5,
-                                                        // py: 0.5,
-                                                        borderRadius: 1,
-                                                        fontWeight: 500,
-                                                        height: "fit-content",
-                                                        minWidth: "30px"
-                                                    }}>
-                                                        <Typography
-                                                            variant="subtitle2"
-                                                            sx={{ height: "13px" }}
-                                                        >
-                                                            {odd}
-                                                        </Typography>
-                                                        <Typography variant="caption">1.5</Typography>
-                                                    </Box>
-                                                ))}
-                                                {[3.35, 3.4, 3.5].map((odd, i) => (
-                                                    <Box sx={{
-                                                        bgcolor: "#ffcdd2",
-                                                        px: 1.5,
-                                                        // py: 0.5,
-                                                        borderRadius: 1,
-                                                        fontWeight: 500,
-                                                        minWidth: "30px"
-                                                        // height: "fit-content"
-                                                    }}>
-                                                        <Typography
-                                                            variant="subtitle2"
-                                                            sx={{ height: "13px" }}
-                                                        >
-                                                            {odd}
-                                                        </Typography>
-                                                        <Typography variant="caption">1.5</Typography>
-                                                    </Box>
-
-                                                ))}
-                                            </Box>
-                                        </Box>
-                                    </Box>
-                                ))}
-                            </Box>
                         </Box>
                     </Paper>
                 </Box>
@@ -526,6 +219,9 @@ const AllIconsDisplay = () => {
                                 />
                                 <Typography >Accept any ODDS</Typography>
                             </Box>
+                        </Box>
+                        <Box>
+                            <Typography>scvbm,sdfghjertyuio</Typography>
                         </Box>
                     </Paper>
                     <Paper>
@@ -571,8 +267,6 @@ const AllIconsDisplay = () => {
                                 My Bets
                             </Box>
                         </Box>
-
-                        {/* Content Area */}
                         <Box
                             sx={{
                                 backgroundColor: "#fff",
@@ -589,6 +283,242 @@ const AllIconsDisplay = () => {
                     </Paper>
                 </Box>
             </Box >
+            <Box sx={{ display: "flex", gap: 2 }}>
+                <Box sx={{ flex: 1 }}>
+                    <Tabs
+                        value={tab}
+                        onChange={(e, v) => setTab(v)}
+                        sx={{ mt: 2 }}
+                        TabIndicatorProps={{
+                            style: { display: 'none' }
+                        }}
+                    >
+                        {["All", "Match Odd", "Bookmakers"].map((label, idx) => (
+                            <Tab
+                                key={idx}
+                                label={label}
+                                sx={{
+                                    border: "1px solid #ffcc00",
+                                    fontWeight: 600,
+                                    color: "black",
+                                    bgcolor: tab === idx ? "#ffcc00" : "#fff",
+                                    py: 0,
+                                    "&.Mui-selected": {
+                                        borderBottom: "none",
+                                        color: "#fff",
+                                    },
+                                }}
+                            />
+                        ))}
+                    </Tabs>
+                    <Box>
+                        <CollapsibleSection sectionKey={'MATCHODDS'} title="MATCH ODDS" sx={{ bgcolor: "#fff", borderRadius: 1, mb: 2, p: 2 }}>
+                            {["Bangladesh", "Sri Lanka"].map((team) => (
+                                <React.Fragment key={team}>
+                                    <Box sx={{
+                                        display: "flex", justifyContent: "space-between", borderBottom: "1px solid #ddd",
+                                        "&:last-child": {
+                                            borderBottom: "none",
+
+                                        },
+                                    }} mb={1}>
+                                        <Box>
+                                            <Typography fontWeight={500}>{team}</Typography>
+                                            <Typography color="green">0</Typography>
+                                        </Box>
+                                        <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
+                                            {[3.15, 3.2, 3.25].map((odd, i) => (
+                                                <Box key={`blue-${i}`} sx={{ bgcolor: "#bbdefb", px: 1.5, borderRadius: 1, fontWeight: 500, minWidth: "30px" }}>
+                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                    <Typography variant="caption">1.5</Typography>
+                                                </Box>
+                                            ))}
+                                            {[3.35, 3.4, 3.5].map((odd, i) => (
+                                                <Box key={`red-${i}`} sx={{ bgcolor: "#ffcdd2", px: 1.5, borderRadius: 1, fontWeight: 500, minWidth: "30px" }}>
+                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                    <Typography variant="caption">1.5</Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
+                                    </Box>
+                                </React.Fragment>
+                            ))}
+                        </CollapsibleSection>
+                    </Box>
+                    <Box>
+                        <CollapsibleSection sectionKey={'BOOKMAKER'} title="BOOKMAKER" sx={{ bgcolor: "#fff", borderRadius: 1, mb: 2, p: 2 }}>
+                            {["Bangladesh", "Sri Lanka"].map((team) => (
+                                <React.Fragment key={team}>
+                                    <Box sx={{
+                                        display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 1, borderBottom: "1px solid #ddd",
+                                        "&:last-child": {
+                                            borderBottom: "none",
+                                        },
+                                    }}>
+                                        <Box>
+                                            <Typography fontWeight={500}>{team}</Typography>
+                                            <Typography color="green">0</Typography>
+                                        </Box>
+                                        {team === "Bangladesh" ? (
+                                            <Box sx={{
+                                                background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
+                                                borderRadius: 1,
+                                                textAlign: "center",
+                                                px: 2,
+                                                py: 0.5,
+                                                border: "1px solid #ddd",
+                                                fontWeight: 600,
+                                                fontSize: "14px",
+                                            }}>
+                                                SUSPENDED
+                                            </Box>
+                                        ) : (
+                                            <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
+                                                {[3.15, 3.2, 3.25].map((odd, i) => (
+                                                    <Box key={`bm-blue-${i}`} sx={{ bgcolor: "#bbdefb", px: 1.5, borderRadius: 1, fontWeight: 500, minWidth: "30px" }}>
+                                                        <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                        <Typography variant="caption">1.5</Typography>
+                                                    </Box>
+                                                ))}
+                                                {[3.35, 3.4, 3.5].map((odd, i) => (
+                                                    <Box key={`bm-red-${i}`} sx={{ bgcolor: "#ffcdd2", px: 1.5, borderRadius: 1, fontWeight: 500, minWidth: "30px" }}>
+                                                        <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                        <Typography variant="caption">1.5</Typography>
+                                                    </Box>
+                                                ))}
+                                            </Box>
+                                        )}
+                                    </Box>
+                                </React.Fragment>
+                            ))}
+                        </CollapsibleSection>
+                    </Box>
+                    <Box>
+                        <CollapsibleSection sectionKey={'TOSS'} title="TOSS" sx={{ bgcolor: "#fff", borderRadius: 1, mb: 2, p: 2 }}>
+                            {["BAN", "SL"].map((team) => (
+                                <React.Fragment key={team}>
+                                    <Box sx={{
+                                        display: "flex", justifyContent: "space-between", borderBottom: "1px solid #ddd",
+                                        "&:last-child": {
+                                            borderBottom: "none",
+                                        },
+                                    }} mb={1}>
+                                        <Box>
+                                            <Typography fontWeight={500}>{team}</Typography>
+                                            <Typography color="green">0</Typography>
+                                        </Box>
+                                        <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
+                                            {[3.15, 3.2, 3.25].map((odd, i) => (
+                                                <Box key={`toss-blue-${i}`} sx={{ bgcolor: "#bbdefb", px: 1.5, borderRadius: 1, fontWeight: 500, minWidth: "30px" }}>
+                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                    <Typography variant="caption">1.5</Typography>
+                                                </Box>
+                                            ))}
+                                            {[3.35, 3.4, 3.5].map((odd, i) => (
+                                                <Box key={`toss-red-${i}`} sx={{ bgcolor: "#ffcdd2", px: 1.5, borderRadius: 1, fontWeight: 500, minWidth: "30px" }}>
+                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                    <Typography variant="caption">1.5</Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
+                                    </Box>
+                                </React.Fragment>
+                            ))}
+                        </CollapsibleSection>
+                    </Box>
+                </Box>
+                <Box sx={{ flex: 1 }}>
+                    <Tabs
+                        value={tab}
+                        onChange={(e, v) => setTab(v)}
+                        sx={{ mt: 2 }}
+                        TabIndicatorProps={{
+                            style: { display: 'none' }
+                        }}
+                    >
+                        {["FANCY"].map((label, idx) => (
+                            <Tab
+                                key={idx}
+                                label={label}
+                                sx={{
+                                    border: "1px solid #ffcc00",
+                                    fontWeight: 600,
+                                    color: "black !important",
+                                    bgcolor: "#fff",
+                                    py: 0,
+                                    "&.Mui-selected": {
+                                        color: "#ffcc00",
+                                    },
+                                }}
+                            />
+                        ))}
+                    </Tabs>
+
+                    <Box>
+                        <CollapsibleSection sectionKey={'FANCYBET'} title="FANCY BET" sx={{ bgcolor: "#fff", borderRadius: 1, mb: 2, p: 2 }}>
+                            {fancyData.map((item, index) => (
+                                <Box
+                                    key={index}
+                                    display="flex"
+                                    justifyContent="space-between"
+                                    alignItems="center"
+                                    py={1}
+                                    sx={{
+                                        borderBottom: "1px solid #ddd",
+                                        "&:last-child": {
+                                            borderBottom: "none",
+                                        },
+                                    }}
+                                >
+                                    <Box>
+                                        <Typography fontSize="14px">{item.label}</Typography>
+                                    </Box>
+
+                                    <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
+                                        <Typography fontSize="12px" color="gray" mr={2}>
+                                            Stake Limit: 50 - 50000<br />Max Profit: 200000
+                                        </Typography>
+
+                                        <Box display="flex" sx={{ height: "fit-content", textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
+                                            {[3.15, 3.2, 3.25].map((odd, i) => (
+                                                <Box
+                                                    key={`fancy-blue-${i}`}
+                                                    sx={{
+                                                        bgcolor: "#bbdefb",
+                                                        px: 1.5,
+                                                        borderRadius: 1,
+                                                        fontWeight: 500,
+                                                        minWidth: "30px"
+                                                    }}
+                                                >
+                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                    <Typography variant="caption">1.5</Typography>
+                                                </Box>
+                                            ))}
+                                            {[3.35, 3.4, 3.5].map((odd, i) => (
+                                                <Box
+                                                    key={`fancy-red-${i}`}
+                                                    sx={{
+                                                        bgcolor: "#ffcdd2",
+                                                        px: 1.5,
+                                                        borderRadius: 1,
+                                                        fontWeight: 500,
+                                                        minWidth: "30px"
+                                                    }}
+                                                >
+                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
+                                                    <Typography variant="caption">1.5</Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            ))}
+                        </CollapsibleSection>
+                    </Box>
+                </Box>
+
+            </Box>
         </Box >
     );
 };

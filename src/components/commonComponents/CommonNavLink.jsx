@@ -4,7 +4,6 @@ import { Link } from '@mui/material';
 
 const CommonNavLink = ({ item = null, children, to = "", sx = {}, ...props }) => {
     // if (!item?.title) return null;
-    // console.log(item, "item")
     return (
         <Link
             component={RouterLink}
