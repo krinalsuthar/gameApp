@@ -16,6 +16,7 @@ const CardHeader = (
         count = ""
     }
 ) => {
+    console.log("🚀 ~ icon:", icon)
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({
@@ -32,6 +33,7 @@ const CardHeader = (
             });
         }
     };
+
     return (
         <>
             <Grid container sx={{ flexWrap: "wrap", }}>

@@ -328,7 +328,7 @@ const DrawerMenu = () => {
                                     onClick={handleClose}
                                     to={`common-page/${item?.segment}`}
                                     item={{
-                                        data: item.segment,
+                                        data: item.title,
                                         info: item.info,
                                         icon: item?.icon,
                                         isImage: false,
@@ -370,18 +370,28 @@ const DrawerMenu = () => {
                 <CollapsibleSection sectionKey={providersData?.providers?.title || 'providers'} title="PROVIDERS" sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <List>
                         {providersData.providers.items?.map((item, index) => (
-                            <ListItemButton
+
+                            <CommonNavLink
                                 key={index}
-                                component={Link}
-                                to={`/common-page`}
                                 onClick={handleClose}
+                                to={`common-page/${item?.segment}`}
+                                item={{
+                                    data: item.title,
+                                    info: item.info,
+                                    icon: "",
+                                    isImage: true,
+                                    isScroll: false,
+                                    isHeader: true,
+                                    providerDataIcons: true
+                                }}
                                 sx={{
-                                    justifyContent: "space-between",
-                                    margin: "5px 0px",
-                                    borderRadius: "5px",
-                                    padding: "6px 12px",
-                                    bgcolor: "white",
-                                    alignItems: "center",
+                                    display: 'flex',
+                                    color: 'black',
+                                    justifyContent: 'space-between',
+                                    margin: '5px 0px',
+                                    borderRadius: '5px',
+                                    padding: '6px 12px',
+                                    bgcolor: 'white',
                                 }}
                             >
                                 <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
@@ -402,7 +412,7 @@ const DrawerMenu = () => {
                                 >
                                     {item.count}
                                 </Typography>
-                            </ListItemButton>
+                            </CommonNavLink>
                         ))}
                     </List>
                 </CollapsibleSection>

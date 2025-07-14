@@ -344,38 +344,966 @@ export const providersData = {
         segment: 'providers',
         count: 32,
         items: [
-            { title: 'aura', icon: TeenPattiIcon, segment: 'aura', count: 12 },
-            { title: '3 oaks gaming', icon: OaksGamingIcon, segment: '3-oaks-gaming', count: 10 },
-            { title: 'ae sexy', icon: AEGameIcon, segment: 'ae-sexy', count: 4 },
-            { title: 'aviatrix', icon: AviatrixIcon, segment: 'aviatrix', count: 5 },
-            { title: 'bestsolution', icon: BestSoultionIcon, segment: 'bestsolution', count: 30 },
-            { title: 'bti', icon: BitIcon, segment: 'bti', count: 10 },
-            { title: 'charismatic', icon: CharismaticIcon, segment: 'charismatic', count: 0 },
-            { title: 'evolution gaming', icon: EvolutionIcon, segment: 'evolution-gaming', count: 0 },
-            { title: 'ezugi', icon: EzugiIcon, segment: 'ezugi', count: 6 },
-            { title: 'fantasma games', icon: FantasmaGamesIcon, segment: 'fantasma-games', count: 8 },
-            { title: 'gamzix', icon: GamzixIcon, segment: 'gamzix', count: 9 },
-            { title: 'habanero', icon: HabaneroIcon, segment: 'habanero', count: 15 },
-            { title: 'jili games', icon: JiliGameIcon, segment: 'jili-games', count: 36 },
-            { title: 'kingnidas', icon: KingmidasIcon, segment: 'kingnidas', count: 45 },
-            { title: 'netEnt', icon: NetEntIcon, segment: 'netent', count: 0 },
-            { title: 'nolimit city', icon: NoLimitCityIcon, segment: 'nolimit-city', count: 33 },
-            { title: 'one game', icon: OneGameIcon, segment: 'one-game', count: 100 },
-            { title: 'pg soft', icon: PgSoftIcon, segment: 'pg-soft', count: 231 },
-            { title: "play's go", icon: PlaysGoIcon, segment: 'plays-go', count: 23 },
-            { title: 'playtech', icon: PlayTechIcon, segment: 'playtech', count: 45 },
-            { title: 'playtechLive', icon: PlayTechIcon, segment: 'playtechlive', count: 56 },
-            { title: 'pragmatic play', icon: PragmenticGameIcon, segment: 'pragmatic-play', count: 67 },
-            { title: 'pragmatic play live', icon: PragmenticGameIcon, segment: 'pragmatic-play-live', count: 0 },
-            { title: 'quickspin', icon: QuickPinIcon, segment: 'quickspin', count: 0 },
-            { title: 'red tiger', icon: RedTigerIcon, segment: 'red-tiger', count: 43 },
-            { title: 'relax gaming', icon: RelexGamingIcon, segment: 'relax-gaming', count: 56 },
-            { title: 'royal gaming', icon: RoyalGamingIcon, segment: 'royal-gaming', count: 67 },
-            { title: 'smartsoft gaming', icon: SmartSoftIcon, segment: 'smartsoft-gaming', count: 7 },
-            { title: 'spinomenal', icon: SpinomenalIcon, segment: 'spinomenal', count: 10 },
-            { title: 'spribe', icon: SpriteIcon, segment: 'spribe', count: 1 },
-            { title: 'TVBet', icon: TvBetIcon, segment: 'tvbet', count: 2 },
-            { title: 'voltEnt', icon: VoltEntIcon, segment: 'voltent', count: 3 },
+            {
+                title: 'aura', icon: TeenPattiIcon, segment: 'aura', count: 12, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: '3 oaks gaming', icon: OaksGamingIcon, segment: '3-oaks-gaming', count: 10, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'ae sexy', icon: AEGameIcon, segment: 'ae-sexy', count: 4, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'aviatrix', icon: AviatrixIcon, segment: 'aviatrix', count: 5, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'bestsolution', icon: BestSoultionIcon, segment: 'bestsolution', count: 30, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'bti', icon: BitIcon, segment: 'bti', count: 10, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'charismatic', icon: CharismaticIcon, segment: 'charismatic', count: 0, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'evolution gaming', icon: EvolutionIcon, segment: 'evolution-gaming', count: 0, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'ezugi', icon: EzugiIcon, segment: 'ezugi', count: 6, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'fantasma games', icon: FantasmaGamesIcon, segment: 'fantasma-games', count: 8, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'gamzix', icon: GamzixIcon, segment: 'gamzix', count: 9, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'habanero', icon: HabaneroIcon, segment: 'habanero', count: 15, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'jili games', icon: JiliGameIcon, segment: 'jili-games', count: 36, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'kingnidas', icon: KingmidasIcon, segment: 'kingnidas', count: 45, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'netEnt', icon: NetEntIcon, segment: 'netent', count: 0, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'nolimit city', icon: NoLimitCityIcon, segment: 'nolimit-city', count: 33, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'one game', icon: OneGameIcon, segment: 'one-game', count: 100, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'pg soft', icon: PgSoftIcon, segment: 'pg-soft', count: 231, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: "play go", icon: PlaysGoIcon, segment: 'plays-go', count: 23, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'playtech', icon: PlayTechIcon, segment: 'playtech', count: 45, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'playtechLive', icon: PlayTechIcon, segment: 'playtechlive', count: 56, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'pragmatic play', icon: PragmenticGameIcon, segment: 'pragmatic-play', count: 67, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'pragmatic play live', icon: PragmenticGameIcon, segment: 'pragmatic-play-live', count: 0, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'quickspin', icon: QuickPinIcon, segment: 'quickspin', count: 0, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'red tiger', icon: RedTigerIcon, segment: 'red-tiger', count: 43, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'relax gaming', icon: RelexGamingIcon, segment: 'relax-gaming', count: 56, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'royal gaming', icon: RoyalGamingIcon, segment: 'royal-gaming', count: 67, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'smartsoft gaming', icon: SmartSoftIcon, segment: 'smartsoft-gaming', count: 7, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'spinomenal', icon: SpinomenalIcon, segment: 'spinomenal', count: 10, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'spribe', icon: SpriteIcon, segment: 'spribe', count: 1, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'TVBet', icon: TvBetIcon, segment: 'tvbet', count: 2, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
+            {
+                title: 'voltEnt', icon: VoltEntIcon, segment: 'voltent', count: 3, info: [
+                    {
+                        image: allImages.continuePlaying1,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgba(39, 201, 44, 0.8)"
+                    }, {
+                        image: allImages.continuePlaying2,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(251, 53, 101)"
+                    }, {
+                        image: allImages.continuePlaying3,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: " rgb(238, 97, 89)"
+                    }, {
+                        image: allImages.continuePlaying4,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(31, 178, 252)"
+                    }, {
+                        image: allImages.continuePlaying5,
+                        title: 'Flexible Bet Range',
+                        text: 'Bet from ₹10 to ₹1,000',
+                        color: "rgb(190, 59, 250)"
+                    },
+                ]
+            },
         ],
     },
 };
