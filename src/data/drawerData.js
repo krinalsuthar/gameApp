@@ -115,6 +115,91 @@ export const drawerData = {
                     icon: BlackIcon,
                     segment: 'INTERNATIONAL-TWENTY20-MATCHES ',
                     count: 3,
+                    info: [
+                        {
+                            "key": "matchOdds",
+                            "title": "MATCH ODDS",
+                            "type": "team",
+                            "data": {
+                                "Bangladesh": {
+                                    "back": [3.15, 3.2, 3.25],
+                                    "lay": [3.35, 3.4, 3.5]
+                                },
+                                "Sri Lanka": {
+                                    "back": [1.4, 1.42, 1.43],
+                                    "lay": [1.44, 1.45, 1.46]
+                                }
+                            }
+                        },
+                        {
+                            "key": "bookmaker",
+                            "title": "BOOKMAKER",
+                            "type": "bookmaker",
+                            "data": {
+                                "Bangladesh": {
+                                    "status": "SUSPENDED"
+                                },
+                                "Sri Lanka": {
+                                    "back": [1.42],
+                                    "lay": [1.45]
+                                }
+                            }
+                        },
+                        {
+                            "key": "toss",
+                            "title": "TOSS",
+                            "type": "team",
+                            "data": {
+                                "BAN": {
+                                    "back": [1.98],
+                                    "lay": [1]
+                                },
+                                "SL": {
+                                    "back": [1.98],
+                                    "lay": [1]
+                                }
+                            }
+                        },
+                        {
+                            "key": "fancy",
+                            "title": "FANCY BET (SRI LANKA V BANGLADESH)",
+                            "type": "fancy",
+                            "stakeLimit": "50 - 50000",
+                            "maxProfit": 200000,
+                            "data": [
+                                {
+                                    "label": "6 OVER RUN BAN",
+                                    "back": { "odds": 45, "stake": 100 },
+                                    "lay": { "odds": 47, "stake": 100 }
+                                },
+                                {
+                                    "label": "6 OVER RUN SL",
+                                    "back": { "odds": 51, "stake": 100 },
+                                    "lay": { "odds": 53, "stake": 100 }
+                                },
+                                {
+                                    "label": "10 OVER RUN BAN",
+                                    "back": { "odds": 73, "stake": 100 },
+                                    "lay": { "odds": 75, "stake": 100 }
+                                },
+                                {
+                                    "label": "10 OVER RUN SL",
+                                    "back": { "odds": 83, "stake": 100 },
+                                    "lay": { "odds": 85, "stake": 100 }
+                                },
+                                {
+                                    "label": "20 OVER RUN BAN",
+                                    "back": { "odds": 178, "stake": 100 },
+                                    "lay": { "odds": 181, "stake": 100 }
+                                },
+                                {
+                                    "label": "20 OVER RUN SL",
+                                    "back": { "odds": 160, "stake": 100 },
+                                    "lay": { "odds": 163, "stake": 100 }
+                                }
+                            ]
+                        }
+                    ],
                     matches: [
                         { name: 'SRILANKA V BANGLADESH ', icon: HollowCircleIcon, count: 0 },
                         { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },

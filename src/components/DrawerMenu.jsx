@@ -412,7 +412,7 @@ const DrawerMenu = () => {
                 }}>
                     < Typography sx={{ textAlign: "center" }}>Blog</Typography>
                 </Box>
-                <Typography sx={{ m: "10px 0px", fontSize: "15px", fontWeight: 500, m: 1 }}>SETTINGS</Typography>
+                <Typography sx={{ fontSize: "15px", fontWeight: 500, m: 1 }}>SETTINGS</Typography>
                 <Box sx={{ minWidth: 120, m: 1 }}>
                     <FormControl fullWidth size='small'>
                         <InputLabel id="demo-simple-select-label">{language}</InputLabel>
