@@ -20,9 +20,9 @@ export const TrendingGamesData = {
 }
 export const TopGamesData = {
     data: [
-        { image: image8, color: "rgba(0, 0, 0, 0.5)" },
-        { image: image9, color: "rgba(0, 0, 0, 0.5)" },
-        { image: image10, color: "rgba(0, 0, 0, 0.5)" },
+        { image: image8, color: "rgba(0, 0, 0, 0.5)", title: "cricket" },
+        { image: image9, color: "rgba(0, 0, 0, 0.5)", title: "soccer" },
+        { image: image10, color: "rgba(0, 0, 0, 0.5)", title: "tennis" },
     ]
 }
 export const sportsData = [

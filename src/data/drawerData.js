@@ -2860,9 +2860,9 @@ export const startingData = {
         segment: 'startingData',
         count: 29,
         items: [
-            { title: 'In Play', icon: YouTubeIcon, segment: 'teen-patti', count: 1 },
-            { title: 'Upcoming', icon: CalendarMonthIcon, segment: 'live', count: 112 },
-            { title: 'Favourites', icon: FavoriteBorderIcon, segment: 'virtual', count: 0 },
+            { title: 'In Play', icon: YouTubeIcon, segment: 'in_play', count: 1 },
+            { title: 'Upcoming', icon: CalendarMonthIcon, segment: 'upcoming', count: 112 },
+            { title: 'Favourites', icon: FavoriteBorderIcon, segment: 'favourite', count: 0 },
         ],
     },
 };

@@ -19,8 +19,11 @@ const Casino = () => {
                                 title={game?.title}
                                 scroll="true"
                                 containerRef={containerRef}
+                                isImage={false}
+                                icon={game?.icon}
+                                showMoreData={game?.info}
                             />
-                            <CommonCard data={game?.info} containerRef={containerRef} />
+                            <CommonCard data={game?.info} title={game?.title} containerRef={containerRef} isImage={false} />
                         </Box>
                     );
                 })

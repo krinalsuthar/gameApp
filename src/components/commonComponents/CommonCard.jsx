@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import CardHeader from "./CardHeader";
 import {
@@ -36,15 +36,16 @@ import {
     TvBetIcon,
     VoltEntIcon,
 } from '../../assets/SVGs/allSVGs';
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../features/drawer/drawerSlice";
 
-const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
-
-    const [likedItems, setLikedItems] = useState({});
+const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle = "" }) => {
+    const { favouriteItems } = useSelector((state) => state.drawer);
+    const dispatch = useDispatch();
+    const [favouriteData, setFavouriteData] = useState({})
     const { state } = useLocation();
-    console.log("🚀 ~ CommonCard ~ state:", state)
-    const { category } = useParams();
-    // const isScroll = state?.isScroll
-    const data = propsData.length ? propsData : state?.info || [];
+    const data = propsData.length ? propsData : state?.info;
+    const title = propsTitle != "" ? propsTitle : state?.data;
     const isScroll = state?.isScroll != "" ? true : false
     const iconMap = {
         aura: TeenPattiIcon,
@@ -81,17 +82,18 @@ const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
         voltEnt: VoltEntIcon,
     };
     const toggleLike = (id) => {
-        setLikedItems((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
+        dispatch(toggleFavorite(id));
     };
+    useEffect(() => {
+        localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
+        localStorage.setItem('favoriteCount', Object.values(favouriteItems).filter(Boolean).length.toString());
+    }, [favouriteItems]);
     const Icon = state?.data ? iconMap[state.data] : null;
-    console.log("🚀 ~ CommonCard ~ icon:", Icon)
     return (
         <>
             {state?.isHeader && (
-                <CardHeader title={state?.data} isImage={state?.isImage} showMore={false} count={state?.info?.length} icon={state?.isImage ? <Icon /> : state?.icon} />
+                <CardHeader title={state?.data} showMoreData={data}
+                    isImage={state?.isImage} showMore={false} count={state?.info?.length} icon={state?.isImage ? <Icon /> : state?.icon} />
             )}
             <Box sx={{ width: '100%' }}>
                 <Box
@@ -147,9 +149,9 @@ const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
                                         zIndex: 2,
                                         cursor: 'pointer',
                                     }}
-                                    onClick={() => toggleLike(idx)}
+                                    onClick={() => toggleLike(game?.title)}
                                 >
-                                    {likedItems[idx] ? (
+                                    {favouriteItems[game?.title] ? (
                                         <FavoriteIcon sx={{ color: 'red' }} />
                                     ) : (
                                         <FavoriteBorderIcon sx={{ color: '#fff' }} />
@@ -158,6 +160,7 @@ const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
 
                                 <Typography variant="subtitle1" fontWeight={600} sx={{ textAlign: "center" }} noWrap>
                                     {game?.title}
+                                    {/* {title} */}
                                 </Typography>
                                 <Typography
                                     variant="body2"
@@ -170,7 +173,8 @@ const CommonCard = ({ data: propsData = [], containerRef = "" }) => {
                                         WebkitBoxOrient: 'vertical',
                                     }}
                                 >
-                                    {game?.text}
+                                    {/* {game?.text} */}
+                                    {title}
                                 </Typography>
                             </Box>
                         ))

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Drawer,
     List,
@@ -34,7 +34,7 @@ import CommonNavLink from './commonComponents/CommonNavLink';
 import CollapsibleSection from './commonComponents/CollapsibleSection';
 
 const DrawerMenu = () => {
-    const open = useSelector((state) => state.drawer.open);
+    const { open, count } = useSelector((state) => state.drawer);
     const dispatch = useDispatch();
     const [searchTerm, setSearchTerm] = useState('');
     const [openSports, setOpenSports] = useState({});
@@ -83,7 +83,30 @@ const DrawerMenu = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
+    const [favouriteItems, setFavouriteItems] = useState({});
 
+    // Initialize favouriteItems from localStorage
+    useEffect(() => {
+        const savedItems = localStorage.getItem('favouriteItems');
+        if (savedItems) {
+            setFavouriteItems(JSON.parse(savedItems));
+        }
+    }, []);
+
+    const flattenedItems = [
+        ...(categoriesData?.categories?.items?.flatMap(item => item?.info) || []),
+        ...(providersData?.providers?.items?.flatMap(item => item?.info) || [])
+    ].filter(item => item && item.title);
+    const seen = new Set();
+
+    const favouriteData = flattenedItems.filter((item) => {
+        const title = item.title;
+        if (favouriteItems[title] && !seen.has(title)) {
+            seen.add(title);
+            return true;
+        }
+        return false;
+    });
     return (
         <Drawer
             anchor={isMobile ? 'bottom' : 'left'}
@@ -180,9 +203,13 @@ const DrawerMenu = () => {
                                 key={index}
                                 component={RouterLink}
                                 to={{
-                                    pathname: `/common-list/${item?.title}`,
+                                    pathname: item?.segment === "favourite" ? `/common-page/${item?.title}` : `/common-list/${item?.title}`,
                                 }}
-                                state={{ data: liveSportsData, isImageCarousel: true }}
+                                state={item?.segment === "in_play"
+                                    ? { data: liveSportsData, isImageCarousel: true }
+                                    : item?.segment === "upcoming"
+                                        ? { data: sportsData, isImageCarousel: true }
+                                        : item?.segment === "favourite" ? { info: favouriteData } : ""}
                                 onClick={handleClose}
                                 sx={{
                                     justifyContent: "space-between",
@@ -202,7 +229,7 @@ const DrawerMenu = () => {
                                 </Box>
 
                                 <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
-                                    {countData?.length}
+                                    {item?.segment == "favourite" ? count : countData?.length}
                                 </Typography>
                             </ListItemButton>
 

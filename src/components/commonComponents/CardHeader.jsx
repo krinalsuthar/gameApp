@@ -1,6 +1,7 @@
 import { Box, CardMedia, Grid, Link, TextField, Typography } from "@mui/material"
 import { LeftArrowIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
 import image from "../../assets/TrendingGamesImages/cricket.png"
+import CommonNavLink from "./CommonNavLink"
 
 const CardHeader = (
     {
@@ -13,10 +14,11 @@ const CardHeader = (
         containerRef = "",
         isImage = "true",
         showMore = "true",
-        count = ""
+        count = "",
+        showMoreData = ""
     }
 ) => {
-    console.log("🚀 ~ icon:", icon)
+    console.log("🚀 ~ showMoreData:", showMoreData)
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({
@@ -66,11 +68,19 @@ const CardHeader = (
                         <Typography variant="h6">{title}</Typography>
                     </Box>
 
-                    <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                    <Box sx={{ display: "flex", gap: 2, alignItems: "center", cursor: "pointer" }}>
                         {showMore ? (
-                            <Link href="/common-page" variant="body2">
+                            <CommonNavLink to={`show-more`}
+                                item={{
+                                    data: "item.title",
+                                    info: showMoreData,
+                                    icon: "",
+                                    isHeader: false,
+                                    isScroll: false
+                                }}
+                                variant="body2">
                                 Show more
-                            </Link>
+                            </CommonNavLink>
                         ) : (
                             <Typography variant="caption">{count} results</Typography>
                         )}

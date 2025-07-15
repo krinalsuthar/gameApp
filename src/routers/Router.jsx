@@ -16,6 +16,7 @@ const AppRoutes = () => (
         <Route path="/common-list/:data" element={<CommonList />} />
         <Route path="/common-card/:item" element={<Casion />} />
         <Route path="/category/:segment" element={<CommonCard />} />
+        <Route path="/show-more" element={<CommonCard />} />
         <Route path="/common-page/:segment" element={<CommonCard />} />
         <Route path="/common-match/:segment" element={<CommonMatch />} />
         <Route path="/promotion-refer/:item" element={<PromotionRefer />} />

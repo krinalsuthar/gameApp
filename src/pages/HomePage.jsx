@@ -34,10 +34,12 @@ const HomePage = () => {
             <Box mb="30px">
                 <ImageCarousel images={images} />
             </Box>
-            <CardHeader handleSearchChange={handleSearchChange} searchTerm={searchTerm} search="true" title="Trending Games" scroll="true" icon={<BoldFireIcon />} containerRef={topSport} />
-            <CommonCard data={filteredGames} containerRef={topSport} />
-            <CardHeader search="false" title="Top Sports" scroll="true" icon={<BoldFireIcon />} data={filteredGames} containerRef={containerRef} />
-            <CommonCard data={TopGamesData?.data} containerRef={containerRef} />
+            <CardHeader handleSearchChange={handleSearchChange} showMoreData={filteredGames}
+                searchTerm={searchTerm} search="true" title="Trending Games" scroll="true" icon={<BoldFireIcon />} containerRef={topSport} />
+            <CommonCard data={filteredGames} title="Trending Games" containerRef={topSport} />
+            <CardHeader search="false" title="Top Sports" showMoreData={TopGamesData?.data}
+                scroll="true" icon={<BoldFireIcon />} data={filteredGames} containerRef={containerRef} />
+            <CommonCard data={TopGamesData?.data} title="Top Sports" containerRef={containerRef} favourite={false} />
             <Box mt={2}>
                 <CardHeader title="In-Play Matches" search="false" scroll="false" icon={<YouTubeIcon />} />
             </Box>
