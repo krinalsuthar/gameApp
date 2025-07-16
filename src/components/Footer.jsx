@@ -1,16 +1,12 @@
-import { Box, CardMedia, Drawer, Link, Typography } from "@mui/material";
+import { Box, CardMedia, Typography } from "@mui/material";
 import logo from "../assets/logo.png";
-import { Link as RouterLink } from 'react-router-dom';
 import { BhimIcon, DiscortIcon, EmailIcon, FacebookIcon, GPayIcon, InstagramIcon, LinkedInIcon, PaytmIcon, PhonePeIcon, PinterestIcon, TelegramIcon, TelephoneIcon, TwitterIcon, VisaCardIcon, WhatsAppIcon, YouTubeIcon } from '../assets/SVGs/allSVGs';
 import CommonNavLink from "./commonComponents/CommonNavLink";
-
-
 const imageModules = import.meta.glob('/src/assets/footerImages/footer*.{png,jpg,jpeg,svg}', {
     eager: true,
     import: 'default',
 });
 const paymentIcons = [GPayIcon, BhimIcon, PhonePeIcon, PaytmIcon, VisaCardIcon];
-
 const images = Object.values(imageModules);
 const footerLinks = ["Sports", "Casino", "Cricket", "Teen Patti", "Andar Bahar", "Roulette", "Promotions", "Live Betting", "Deposit", "Withdraw"];
 const socialIcons = [
@@ -26,8 +22,6 @@ const socialIcons = [
     EmailIcon,
     TelephoneIcon
 ];
-
-
 const Footer = () => {
     return (
         <Box sx={{ m: "5px 0px", p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px" }}>
@@ -120,8 +114,6 @@ const Footer = () => {
                         ))}
                     </Box>
                 </Box>
-
-                {/* Contact */}
                 <Box sx={{ maxWidth: "300px" }}>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Contact Us</Typography>
                     <Typography sx={{ fontSize: 12, color: '#535558', mt: 1 }}>+16616752327</Typography>

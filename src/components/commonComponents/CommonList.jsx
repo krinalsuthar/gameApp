@@ -44,7 +44,6 @@ const CommonList = ({ data: propsData = [] }) => {
     const isImageCarousel = location.state?.isImageCarousel ?? false;
     const data = propsData.length ? propsData : locationData || [];
     const navigate = useNavigate()
-
     const sportIcons = {
         Cricket: <CricketIcon sx={{ color: 'red' }} />,
         Tennis: <TennisIcon sx={{ color: '#33cc00' }} />,
@@ -54,7 +53,6 @@ const CommonList = ({ data: propsData = [] }) => {
             navigate('/login');
         }
     }, [isLoggedIN, navigate]);
-
     return (
         <Box >
             {isImageCarousel && (

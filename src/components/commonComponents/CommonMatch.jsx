@@ -17,11 +17,8 @@ import AddIcon from "@mui/icons-material/Add";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CommonChartSwitcher from "./CommonChart";
 import { useLocation } from "react-router-dom";
-// import AddIcon from '@mui/icons-material/Add';
-import SummarizeIcon from '@mui/icons-material/Summarize';
 import RemoveIcon from '@mui/icons-material/Remove';
 import CommonDialog from "./CommonDialog";
-import { ruleData, titleRules } from "../../data/gameData";
 import { drawerData } from "../../data/drawerData";
 import CollapsibleSection from "./CollapsibleSection";
 
@@ -387,8 +384,6 @@ const CommonMatch = () => {
                                         <CollapsibleSection sectionKey={section.title} title={`${section?.title || "data"} rule`}
                                             sx={{ bgcolor: '#fff', borderRadius: 1, p: 2, mb: 2 }} >
                                             <>
-                                                {/* FANCY */}
-
                                                 {section.type === "fancy" ? (
                                                     section.data.map((bet, index) => (
                                                         <Box
@@ -628,8 +623,6 @@ const CommonMatch = () => {
                                     <Typography fontWeight={600}>{bestSliptData.odds}</Typography>
                                     <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }}><AddIcon /></Button>
                                 </Box>
-
-                                {/* Stake Input */}
                                 <Box display="flex" alignItems="center" mt={2} sx={{ borderRadius: 1, border: "1px solid #000" }}>
                                     <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }} onClick={decrementStake}><RemoveIcon /></Button>
                                     <TextField
@@ -643,8 +636,6 @@ const CommonMatch = () => {
                                     />
                                     <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }} onClick={incrementStake}><AddIcon /></Button>
                                 </Box>
-
-                                {/* Preset Buttons */}
                                 <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={1} mt={2}>
                                     {presetAmounts.map((val, idx) => (
                                         <Button
@@ -666,8 +657,6 @@ const CommonMatch = () => {
                                         Clear
                                     </Button>
                                 </Box>
-
-                                {/* Action Buttons */}
                                 <Box display="flex" justifyContent="space-between" gap={1} mt={2}>
                                     <Button
                                         fullWidth

@@ -85,7 +85,6 @@ const DrawerMenu = () => {
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
     const [favouriteItems, setFavouriteItems] = useState({});
 
-    // Initialize favouriteItems from localStorage
     useEffect(() => {
         const savedItems = localStorage.getItem('favouriteItems');
         if (savedItems) {
@@ -390,10 +389,7 @@ const DrawerMenu = () => {
                             ))}
                         </List>
                     </CollapsibleSection>
-
                 </Box>
-
-
                 <CollapsibleSection sectionKey={providersData?.providers?.title || 'providers'} title="PROVIDERS" sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
                     <List>
                         {providersData.providers.items?.map((item, index) => (

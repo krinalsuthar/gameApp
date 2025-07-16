@@ -2,7 +2,9 @@ import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { IconButton } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import CardHeader from "./CardHeader";
 import {
     TeenPattiIcon,
@@ -38,11 +40,11 @@ import {
 } from '../../assets/SVGs/allSVGs';
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../features/drawer/drawerSlice";
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
 const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle = "" }) => {
     const { favouriteItems } = useSelector((state) => state.drawer);
     const dispatch = useDispatch();
-    const [favouriteData, setFavouriteData] = useState({})
     const { state } = useLocation();
     const data = propsData.length ? propsData : state?.info;
     const title = propsTitle != "" ? propsTitle : state?.data;
@@ -92,8 +94,14 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
     return (
         <>
             {state?.isHeader && (
-                <CardHeader title={state?.data} showMoreData={data}
-                    isImage={state?.isImage} showMore={false} count={state?.info?.length} icon={state?.isImage ? <Icon /> : state?.icon} />
+                <CardHeader
+                    title={state?.data}
+                    showMoreData={data}
+                    isImage={state?.isImage}
+                    showMore={false}
+                    count={state?.info?.length}
+                    icon={state?.isImage ? <Icon /> : state?.icon}
+                />
             )}
             <Box sx={{ width: '100%' }}>
                 <Box
@@ -139,6 +147,10 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                     minWidth: isScroll ? '145px' : 'auto',
                                     width: isScroll ? '145px' : 'auto',
                                     flexShrink: isScroll ? 0 : undefined,
+                                    cursor: 'pointer',
+                                    '&:hover .play-icon': {
+                                        opacity: 1,
+                                    },
                                 }}
                             >
                                 <Box
@@ -154,18 +166,38 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                     {favouriteItems[game?.title] ? (
                                         <FavoriteIcon sx={{ color: 'red' }} />
                                     ) : (
-                                        <FavoriteBorderIcon sx={{ color: '#fff' }} />
+                                        <FavoriteBorderIcon sx={{ color: '#ffc107' }} />
                                     )}
                                 </Box>
+                                <IconButton
+                                    component={RouterLink}
+                                    to={'/aura-game'}
+                                    className="play-icon"
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 8,
+                                        right: 8,
+                                        backgroundColor: '#FFD600',
+                                        color: '#000',
+                                        borderRadius: '8px 0% 8px 0%',
+                                        opacity: 0,
+                                        transition: 'opacity 0.3s ease-in-out',
+                                        zIndex: 2,
+                                        '&:hover': {
+                                            backgroundColor: '#FFEB3B',
+                                        },
+                                    }}
+                                >
+                                    <PlayArrowRoundedIcon />
+                                </IconButton>
 
-                                <Typography variant="subtitle1" fontWeight={600} sx={{ textAlign: "center" }} noWrap>
+                                <Typography variant="subtitle1" fontWeight={600} sx={{ textAlign: 'center' }} noWrap>
                                     {game?.title}
-                                    {/* {title} */}
                                 </Typography>
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        textAlign: "center",
+                                        textAlign: 'center',
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         display: '-webkit-box',
@@ -173,7 +205,6 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                         WebkitBoxOrient: 'vertical',
                                     }}
                                 >
-                                    {/* {game?.text} */}
                                     {title}
                                 </Typography>
                             </Box>
@@ -183,7 +214,6 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                     )}
                 </Box>
             </Box>
-
         </>
     );
 }

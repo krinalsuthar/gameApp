@@ -1,6 +1,5 @@
-import { Box, CardMedia, Grid, Link, TextField, Typography } from "@mui/material"
+import { Box, CardMedia, Grid, TextField, Typography } from "@mui/material"
 import { LeftArrowIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
-import image from "../../assets/TrendingGamesImages/cricket.png"
 import CommonNavLink from "./CommonNavLink"
 
 const CardHeader = (
@@ -18,7 +17,6 @@ const CardHeader = (
         showMoreData = ""
     }
 ) => {
-    console.log("🚀 ~ showMoreData:", showMoreData)
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({

@@ -11,7 +11,6 @@ const image = [
     image2,
     image3
 ];
-
 export const ImageCarousel = ({ images }) => {
     const img = images ? images : image
     const theme = useTheme();

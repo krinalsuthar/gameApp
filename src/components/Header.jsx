@@ -31,7 +31,6 @@ const headerData = [
     { title: 'CASINO', icon: <CasinoIcon />, data: "", isLoggedIn: false },
 ];
 
-
 const Header = () => {
     const isDrawerOpen = useSelector((state) => state.drawer.open);
     const dispatch = useDispatch();
@@ -83,7 +82,6 @@ const Header = () => {
                                     <Typography sx={typoStyle}>{item.title}</Typography>
                                 </Box>
                             </CommonNavLink>
-
                         </Box>
                     ))}
                 </Box>

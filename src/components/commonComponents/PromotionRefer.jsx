@@ -1,5 +1,4 @@
 import { Box, Button, CardMedia, Typography } from "@mui/material"
-import { CircularAnimatedImageLayout } from "./ImageCarousel"
 import refer from "../../assets/referimage.png"
 import { Link, useLocation } from "react-router-dom"
 import * as allImages from "../../assets"

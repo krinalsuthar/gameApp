@@ -1,13 +1,10 @@
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import { Box, IconButton, Button, Divider } from '@mui/material';
+import { Box, IconButton, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { titleRules } from '../../data/gameData';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -50,7 +47,6 @@ const CommonDialog = ({ open, handleClose, data = [] }) => {
                             </Typography>
                         ))}
                         {data1?.map((item, index) => (
-                            // <DialogContent key={index} dividers>
                             <Box px={2}>
                                 <Typography variant='h6' mt={2} >
                                     {index + 1} {item?.sport}
@@ -75,7 +71,6 @@ const CommonDialog = ({ open, handleClose, data = [] }) => {
                                     </Box>
                                 ))}
                             </Box>
-                            // </DialogContent>
                         ))}
                     </>
                 ) : (
@@ -83,14 +78,11 @@ const CommonDialog = ({ open, handleClose, data = [] }) => {
                         <Box sx={{ borderRadius: 2, width: '100%' }}>
                             {Object.entries(data)?.map(([sport, leagues]) => (
                                 <Box key={sport} sx={{ mb: 2 }}>
-                                    {/* Sport Title */}
                                     <Box sx={{ px: 2, py: 1, borderBottom: '1px solid #444' }}>
                                         <Typography variant="h6" fontWeight="bold">
                                             {sport.charAt(0).toUpperCase() + sport.slice(1)}
                                         </Typography>
                                     </Box>
-
-                                    {/* League Blocks */}
                                     {leagues.map((league, index) => (
                                         <Box
                                             key={`${sport}-${index}`}
@@ -103,7 +95,6 @@ const CommonDialog = ({ open, handleClose, data = [] }) => {
                                                 gap: 1,
                                             }}
                                         >
-                                            {/* League Title Row with "All" Button */}
                                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                 <Typography fontWeight="bold">{league.title}</Typography>
 
@@ -124,8 +115,6 @@ const CommonDialog = ({ open, handleClose, data = [] }) => {
                                                     All
                                                 </Button>
                                             </Box>
-
-                                            {/* Subtitle rows, each with its own + icon */}
                                             {league.subtitle.length > 0 ? (
                                                 league.subtitle.map((sub, idx) => (
                                                     <Box
@@ -153,8 +142,6 @@ const CommonDialog = ({ open, handleClose, data = [] }) => {
                                 </Box>
                             ))}
                         </Box>
-
-
                     </>
                 )
             }

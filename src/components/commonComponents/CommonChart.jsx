@@ -101,7 +101,6 @@ const CommonChartSwitcher = ({
                             </MenuItem>
                         ))}
                     </Select>
-
                     <IconButton onClick={() => setChartType("line")} size="small">
                         <ShowChartIcon sx={{ color: chartType === "line" ? "#fff" : "#888" }} />
                     </IconButton>
