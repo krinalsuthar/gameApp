@@ -9,12 +9,14 @@ import PromotionRefer from '../components/commonComponents/PromotionRefer';
 import CommonMatch from '../components/commonComponents/CommonMatch';
 import AuraGame from '../components/gameUI/AuraGame';
 import UserProfile from '../pages/UserProfile';
+import CommonTable from '../components/commonComponents/CommonTable';
 
 const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LogInPage />} />
+        <Route path="/common-table" element={<CommonTable />} />
         <Route path="/show-more" element={<CommonCard />} />
         <Route path="/aura-game" element={<AuraGame />} />
         <Route path="/user-profile" element={<UserProfile />} />

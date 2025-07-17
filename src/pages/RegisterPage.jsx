@@ -31,7 +31,6 @@ const RegisterPage = () => {
         mobile: '',
         password: '',
     });
-    console.log("🚀 ~ RegisterPage ~ formData:", formData)
     const [referralUsed, setReferralUsed] = useState(false);
     const [ageConfirmed, setAgeConfirmed] = useState(false);
     const [formErrors, setFormErrors] = useState({});

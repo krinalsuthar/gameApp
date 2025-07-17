@@ -34,7 +34,6 @@ const Header = () => {
     const [selectedProfileAction, setSelectedProfileAction] = useState('');
     const isDrawerOpen = useSelector((state) => state.drawer.open);
     const user = useSelector((state) => state.auth.user);
-    console.log("🚀 ~ Header ~ user:", user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -44,7 +43,6 @@ const Header = () => {
         { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: isLoggedIn },
         { title: 'CASINO', icon: <CasinoIcon />, data: "", isLoggedIn: false },
     ];
-    console.log("🚀 ~ Header ~ isLogged yp[]lIn:", isLoggedIn)
     return (
         <Grid
             container
@@ -206,7 +204,6 @@ const Header = () => {
                                     ))}
                                     {userProfileData.map((item, i) => (
                                         <MenuItem key={i} value={item?.value} component={Link} state={{ data: item?.data }} to={`${item?.to}`}>
-                                            {console.log(item?.to, "item?.to")}
                                             <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
                                             <Typography>{item.label}</Typography>
                                         </MenuItem>

@@ -371,8 +371,6 @@ export const sportData = [
         ],
     },
 ];
-
-
 export const userProfileData = [
     {
         label: 'Profile',
@@ -396,8 +394,145 @@ export const userProfileData = [
     {
         label: 'Account Statement',
         value: 'accountStatement',
-        to: '/login',
-        icon: Description
+        to: '/common-table',
+        icon: Description,
+        data: [
+            {
+                tableCol: [
+                    {
+                        id: 'date',
+                        numeric: false,
+                        disablePadding: true,
+                        label: 'Date',
+                        rowSpan: 2,
+                        value: "10-12-2003"
+                    },
+                    {
+                        id: 'type',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Type',
+                        rowSpan: 2,
+                        value: "online"
+                    },
+                    {
+                        id: 'gameName',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Game Name',
+                        rowSpan: 2,
+                        value: "casino"
+                    },
+                    {
+                        id: 'sport',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Sport',
+                        rowSpan: 2,
+                        value: ""
+                    },
+                    {
+                        id: 'description',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Description',
+                        rowSpan: 2,
+                        value: "win"
+                    },
+                    {
+                        id: 'mainWallet',
+                        label: 'Main Wallet',
+                        colSpan: 2,
+                        children: [
+                            { id: 'mainWalletCredit', label: 'Credit', numeric: true, value: "100" },
+                            { id: 'mainWalletDebit', label: 'Debit', numeric: true, value: "20" },
+                        ],
+                    },
+                    {
+                        id: 'bonusWallet',
+                        label: 'Bonus Wallet',
+                        colSpan: 2,
+                        children: [
+                            { id: 'bonusWalletCredit', label: 'Credit', numeric: true, value: "10" },
+                            { id: 'bonusWalletDebit', label: 'Debit', numeric: true, value: "5" },
+                        ],
+                    },
+                    {
+                        id: 'balance',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Balance',
+                        rowSpan: 2,
+                        value: "20"
+                    },
+                ],
+                tableRows: [{
+                    date: "10-12-2003", type: "online", gameName: "casino", sport: "cricket",
+                    description: "win", mainWalletCredit: "100", mainWalletDebit: "20",
+                    bonusWalletCredit: "10", bonusWalletDebit: "5", balance: "85"
+                },
+                {
+                    date: "11-12-2003", type: "offline", gameName: "poker", sport: "football",
+                    description: "loss", mainWalletCredit: "200", mainWalletDebit: "50",
+                    bonusWalletCredit: "30", bonusWalletDebit: "10", balance: "170"
+                },
+                {
+                    date: "11-12-2003", type: "offline", gameName: "poker", sport: "football",
+                    description: "loss", mainWalletCredit: "200", mainWalletDebit: "50",
+                    bonusWalletCredit: "30", bonusWalletDebit: "10", balance: "170"
+                },
+                {
+                    date: "12-12-2003", type: "online", gameName: "roulette", sport: "",
+                    description: "draw", mainWalletCredit: "300", mainWalletDebit: "100",
+                    bonusWalletCredit: "40", bonusWalletDebit: "20", balance: "220"
+                },
+                {
+                    date: "13-12-2003", type: "offline", gameName: "blackjack", sport: "hockey",
+                    description: "win", mainWalletCredit: "150", mainWalletDebit: "60",
+                    bonusWalletCredit: "20", bonusWalletDebit: "15", balance: "95"
+                },
+                {
+                    date: "14-12-2003", type: "online", gameName: "slots", sport: "tennis",
+                    description: "loss", mainWalletCredit: "180", mainWalletDebit: "80",
+                    bonusWalletCredit: "25", bonusWalletDebit: "10", balance: "115"
+                },
+                {
+                    date: "15-12-2003", type: "offline", gameName: "casino", sport: "kabaddi",
+                    description: "win", mainWalletCredit: "220", mainWalletDebit: "30",
+                    bonusWalletCredit: "35", bonusWalletDebit: "20", balance: "205"
+                },
+                {
+                    date: "16-12-2003", type: "online", gameName: "teen patti", sport: "rugby",
+                    description: "draw", mainWalletCredit: "110", mainWalletDebit: "90",
+                    bonusWalletCredit: "10", bonusWalletDebit: "5", balance: "25"
+                },
+                {
+                    date: "17-12-2003", type: "offline", gameName: "andar bahar", sport: "cricket",
+                    description: "win", mainWalletCredit: "300", mainWalletDebit: "100",
+                    bonusWalletCredit: "50", bonusWalletDebit: "30", balance: "220"
+                },
+                {
+                    date: "18-12-2003", type: "online", gameName: "ludo", sport: "football",
+                    description: "loss", mainWalletCredit: "90", mainWalletDebit: "60",
+                    bonusWalletCredit: "15", bonusWalletDebit: "5", balance: "40"
+                },
+                {
+                    date: "19-12-2003", type: "offline", gameName: "snake", sport: "basketball",
+                    description: "win", mainWalletCredit: "130", mainWalletDebit: "50",
+                    bonusWalletCredit: "20", bonusWalletDebit: "10", balance: "90"
+                },
+                {
+                    date: "20-12-2003", type: "online", gameName: "chess", sport: "chess",
+                    description: "win", mainWalletCredit: "80", mainWalletDebit: "20",
+                    bonusWalletCredit: "5", bonusWalletDebit: "2", balance: "63"
+                },
+                {
+                    date: "21-12-2003", type: "offline", gameName: "carrom", sport: "table tennis",
+                    description: "loss", mainWalletCredit: "100", mainWalletDebit: "50",
+                    bonusWalletCredit: "10", bonusWalletDebit: "5", balance: "55"
+                }]
+            }
+        ]
     },
     {
         label: 'Transaction History',

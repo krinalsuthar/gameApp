@@ -19,6 +19,7 @@ import {
 } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLocation } from 'react-router-dom';
+import CommonTable from '../components/commonComponents/CommonTable';
 
 const menuItems = [
     { label: "Profile", icon: <AccountCircle /> },
@@ -243,6 +244,7 @@ const Dashboard = () => {
                     ))}
                 </Box>
             </Grid>
+            <CommonTable />
         </Box>
     );
 };

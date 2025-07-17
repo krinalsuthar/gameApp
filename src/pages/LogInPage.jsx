@@ -63,7 +63,6 @@ const LogInPage = () => {
         } else {
             alert('Invalid credentials');
         }
-        console.log("🚀 ~ handleLogin ~ login:", login)
     };
 
     return (
