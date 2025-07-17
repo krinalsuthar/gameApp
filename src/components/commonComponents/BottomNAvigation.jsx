@@ -113,13 +113,12 @@ const BottomNavWithRadialMenu = () => {
                     width: "100%",
                     height: 70,
                     bgcolor: "#ffc107",
-                    display: "flex",
                     justifyContent: "space-around",
                     alignItems: "center",
                     zIndex: 20,
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
-                    transform: 'translateX(-16px)',
+                    // transform: 'translateX(-16px)',
                     display: { lg: 'none', md: 'none', sm: 'flex', xs: 'flex' },
                 }}
             >

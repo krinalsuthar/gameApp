@@ -8,20 +8,22 @@ import Casion from '../components/commonComponents/Casino';
 import PromotionRefer from '../components/commonComponents/PromotionRefer';
 import CommonMatch from '../components/commonComponents/CommonMatch';
 import AuraGame from '../components/gameUI/AuraGame';
+import UserProfile from '../pages/UserProfile';
 
 const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LogInPage />} />
+        <Route path="/show-more" element={<CommonCard />} />
+        <Route path="/aura-game" element={<AuraGame />} />
+        <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/common-list/:data" element={<CommonList />} />
         <Route path="/common-card/:item" element={<Casion />} />
         <Route path="/category/:segment" element={<CommonCard />} />
-        <Route path="/show-more" element={<CommonCard />} />
-        <Route path="/aura-game" element={<AuraGame />} />
         <Route path="/common-page/:segment" element={<CommonCard />} />
         <Route path="/common-match/:segment" element={<CommonMatch />} />
         <Route path="/promotion-refer/:item" element={<PromotionRefer />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/register" element={<RegisterPage />} />
     </Routes>
 );
 

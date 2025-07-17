@@ -24,7 +24,7 @@ const socialIcons = [
 ];
 const Footer = () => {
     return (
-        <Box sx={{ m: "5px 0px", p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px" }}>
+        <Box sx={{ p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px", m: { lg: "5px 0px", md: "5px 0px", sm: "110px 0px", xs: "110px 0px" } }}>
             <Box>
                 <CommonNavLink to={''} >
                     <CardMedia

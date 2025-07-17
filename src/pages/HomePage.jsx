@@ -77,7 +77,7 @@ const HomePage = () => {
                     </Box>
                 </Box>
             </Box>
-            <BottomNavWithRadialMenu />
+            {/* <BottomNavWithRadialMenu /> */}
         </Box >
     );
 };

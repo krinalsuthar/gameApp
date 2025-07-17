@@ -5,6 +5,7 @@ import React from 'react';
 import { Box, CssBaseline, useMediaQuery, useTheme } from '@mui/material';
 import { useSelector } from 'react-redux';
 import AppRoutes from '../routers/Router';
+import BottomNavWithRadialMenu from '../components/commonComponents/BottomNAvigation';
 
 const App = () => {
     const theme = useTheme();
@@ -42,8 +43,8 @@ const App = () => {
                 >
                     <AppRoutes />
                 </Box>
-
                 <Footer />
+                <BottomNavWithRadialMenu />
             </Box>
         </Box>
     );

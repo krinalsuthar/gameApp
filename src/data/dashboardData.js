@@ -9,6 +9,25 @@ import image7 from "../assets/TrendingGamesImages/thumb7.png"
 import image8 from "../assets/TrendingGamesImages/cricket.png"
 import image9 from "../assets/TrendingGamesImages/soccer.png"
 import image10 from "../assets/TrendingGamesImages/tennis.png"
+import {
+    AccountCircle,
+    AttachMoney,
+    MoneyOff,
+    Description,
+    ReceiptLong,
+    Wallet,
+    TrendingUp,
+    GroupAdd,
+    LocalOffer,
+    Report,
+    History,
+    Redeem,
+    SportsScore,
+    Settings,
+    LockReset,
+} from '@mui/icons-material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { faScroll, faCoins, faMoneyBill1, faGift, faGifts, faBaseball, faDice, faEquals, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 export const TrendingGamesData = {
     data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)" },
     { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)" },
@@ -354,6 +373,105 @@ export const sportData = [
 ];
 
 
+export const userProfileData = [
+    {
+        label: 'Profile',
+        value: 'profile',
+        to: '/user-profile',
+        icon: AccountCircle,
+        data: [[{ icon: faCoins, text: "Balance", bal: 0.00 }, { icon: faScroll, text: "Withdrawable", bal: 0.00 }, { icon: faMoneyBill1, text: "Liability / Outstanding", bal: 0.00 }, { icon: faGift, text: "Bonus", bal: 0.00 }, { icon: faGifts, text: "Wager Bonus", bal: 0.00 }], [{ icon: faBaseball, text: "Sport (0 bets)", bal: 0.00 }, { icon: faDice, text: "Casino (0 bets)", bal: 0.00 }, { icon: faEquals, text: "Total (0 bets)", bal: 0.00 }], [{ icon: faHandHoldingUsd, text: "Deposit (0 times)", bal: 0.00 }, { icon: faHandHoldingUsd, text: "Last Deposit (0 times)", bal: 0.00 }], [{ icon: faScroll, text: "Withdraw (0 times)", bal: 0.00 }, { icon: faBaseball, text: "Last Withdraw (0 bets)", bal: 0.00 }]]
+    },
+    {
+        label: 'Deposit',
+        value: 'deposit',
+        to: '/login',
+        icon: AttachMoney
+    },
+    {
+        label: 'Withdraw',
+        value: 'withdraw',
+        to: '/login',
+        icon: MoneyOff
+    },
+    {
+        label: 'Account Statement',
+        value: 'accountStatement',
+        to: '/login',
+        icon: Description
+    },
+    {
+        label: 'Transaction History',
+        value: 'transactionHistory',
+        to: '/login',
+        icon: ReceiptLong
+    },
+    {
+        label: 'Staking Wallet',
+        value: 'stakingWallet',
+        to: '/login',
+        icon: Wallet
+    },
+    {
+        label: 'P/L Report',
+        value: 'plReport',
+        to: '/login',
+        icon: TrendingUp
+    },
+    {
+        label: 'My Referrals',
+        value: 'myReferrals',
+        to: '/login',
+        icon: GroupAdd
+    },
+    {
+        label: 'Promotion Center',
+        value: 'promotionCenter',
+        to: '/login',
+        icon: LocalOffer
+    },
+    {
+        label: 'Manual Deposit Report',
+        value: 'manualDepositReport',
+        to: '/login',
+        icon: Report
+    },
+    {
+        label: 'Bet History',
+        value: 'betHistory',
+        to: '/login',
+        icon: History
+    },
+    {
+        label: 'Bonus Report',
+        value: 'bonusReport',
+        to: '/login',
+        icon: Redeem
+    },
+    {
+        label: 'Sport Result Report',
+        value: 'sportResultReport',
+        to: '/login',
+        icon: SportsScore
+    },
+    {
+        label: 'Chip Setting',
+        value: 'chipSetting',
+        to: '/login',
+        icon: Settings
+    },
+    {
+        label: 'Change Password',
+        value: 'changePassword',
+        to: '/login',
+        icon: LockReset
+    },
+    {
+        label: 'LogOut',
+        value: 'logout',
+        to: '/login',
+        icon: LogoutIcon
+    }
+];
 export const liveSportsData = sportsData
     .map((sport) => {
         const liveMatches = sport.matches?.filter((match) => match.tag === "LIVE") || [];
@@ -365,4 +483,5 @@ export const liveSportsData = sportsData
         }
         return null; // remove sport with no live matches
     })
-    .filter(Boolean); 
+    .filter(Boolean);
+
