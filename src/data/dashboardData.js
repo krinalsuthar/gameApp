@@ -397,6 +397,7 @@ export const userProfileData = [
         to: '/common-table',
         icon: Description,
         data: [
+            { title: "Account Statement" },
             {
                 tableCol: [
                     {

@@ -35,7 +35,7 @@ function EnhancedTableHead(props) {
     return (
         <TableHead>
             <TableRow>
-                {data[0]?.tableCol?.map((headCell) =>
+                {data[1]?.tableCol?.map((headCell) =>
                     headCell.children ? (
                         <TableCell
                             key={headCell.id}
@@ -59,7 +59,7 @@ function EnhancedTableHead(props) {
             </TableRow>
 
             <TableRow>
-                {data[0]?.tableCol?.flatMap((headCell) =>
+                {data[1]?.tableCol?.flatMap((headCell) =>
                     headCell.children?.map((child) => (
                         <TableCell
                             key={child.id}
@@ -101,7 +101,8 @@ EnhancedTableHead.propTypes = {
 };
 
 function EnhancedTableToolbar(props) {
-    const { numSelected, rowsPerPage, page, count, onPageChange, onRowsPerPageChange } = props;
+    const { numSelected, rowsPerPage, page, count, onPageChange, onRowsPerPageChange, title } = props;
+    console.log("🚀 ~ EnhancedTableToolbar ~ data:", title)
     return (
         <Toolbar
             sx={[
@@ -121,11 +122,10 @@ function EnhancedTableToolbar(props) {
             ]}
         >
             <Typography
-                variant={numSelected > 0 ? "subtitle1" : "h6"}
-                color={numSelected > 0 ? "inherit" : "text.primary"}
                 component="div"
+                sx={{ fontWeight: "bold" }}
             >
-                {numSelected > 0 ? `${numSelected} selected` : "Nutrition"}
+                {title}
             </Typography>
             <TablePagination
                 rowsPerPageOptions={[5, 10, 25]}
@@ -148,13 +148,13 @@ EnhancedTableToolbar.propTypes = {
     count: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
     onRowsPerPageChange: PropTypes.func.isRequired,
+    title: PropTypes.string.title
 };
 
 const CommonTable = () => {
     const location = useLocation();
     const { data } = location?.state || {};
-    const tableRows = data?.[0]?.tableRows || [];
-
+    const tableRows = data[1]?.tableRows || [];
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
@@ -225,6 +225,7 @@ const CommonTable = () => {
                     count={tableRows.length}
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
+                    title={data[0]?.title}
                 />
                 <TableContainer>
                     <Table
@@ -241,8 +242,8 @@ const CommonTable = () => {
                             data={data}
                         />
                         <TableBody>
-                            {visibleRows?.length > 0 ? (
-                                visibleRows?.map((row, index) => {
+                            {visibleRows.length > 0 ? (
+                                visibleRows.map((row, index) => {
                                     const isItemSelected = selected.includes(row.id);
                                     const labelId = `enhanced-table-checkbox-${index}`;
                                     return (
@@ -252,7 +253,7 @@ const CommonTable = () => {
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={index}
+                                            key={row.id}
                                             selected={isItemSelected}
                                             sx={{ cursor: 'pointer' }}
                                         >
@@ -283,7 +284,7 @@ const CommonTable = () => {
                     </Table>
                 </TableContainer>
             </Paper>
-        </Box >
+        </Box>
     );
 };
 
