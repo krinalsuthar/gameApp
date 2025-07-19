@@ -4,6 +4,7 @@ import AppRoutes from './routers/Router';
 import Dashboard from './pages/Dashboard';
 import AllIconsDisplay from './pages/AllSvgs';
 import T20MatchHeader from './pages/AllSvgs';
+import Extra from './components/DesktopComponent ';
 
 const App = () => {
 

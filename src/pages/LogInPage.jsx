@@ -57,7 +57,8 @@ const LogInPage = () => {
             } else {
                 sessionStorage.setItem('token', token);
             }
-            dispatch(login());
+            // dispatch(login());
+            dispatch(login(formData))
             alert('Login successful!');
             navigate('/');
         } else {
@@ -71,7 +72,7 @@ const LogInPage = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minHeight: '100vh',
+                // minHeight: '100vh',
                 p: 2,
                 bgcolor: "#f5f5f5"
             }}

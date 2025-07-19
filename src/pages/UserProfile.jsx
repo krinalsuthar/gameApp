@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
     Box,
     Grid,
@@ -18,8 +18,9 @@ import {
     Edit
 } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import CommonTable from '../components/commonComponents/CommonTable';
+import { userProfileData } from '../data/dashboardData';
 
 const menuItems = [
     { label: "Profile", icon: <AccountCircle /> },
@@ -34,54 +35,12 @@ const menuItems = [
 ];
 
 const Dashboard = () => {
-    const [selected, setSelected] = useState("Profile");
+
     const location = useLocation();
     const data = location?.state?.data
     return (
         <Box sx={{ bgcolor: '#f4f4f4' }}>
-            <Box sx={{ overflowX: "auto", width: "100%", p: 1, scrollbarWidth: "none", mb: 2, bgcolor: "#fff" }}>
-                <Stack direction="row" spacing={1} sx={{ minWidth: "max-content" }}>
-                    {menuItems.map((item, index) => (
-                        <Paper
-                            key={index}
-                            onClick={() => setSelected(item.label)}
-                            elevation={0}
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 1,
-                                px: 2,
-                                py: 1,
-                                borderRadius: 2,
-                                bgcolor: selected === item.label ? "#ffc107" : "#f2f2f2",
-                                cursor: "pointer",
-                                whiteSpace: "nowrap"
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    bgcolor: "#121212",
-                                    color: "white",
-                                    p: 0.5,
-                                    borderRadius: 1.5,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    width: 32,
-                                    height: 32
-                                }}
-                            >
-                                {item.icon}
-                            </Box>
-                            {item.label && (
-                                <Typography fontWeight={600} fontSize={14}>
-                                    {item.label}
-                                </Typography>
-                            )}
-                        </Paper>
-                    ))}
-                </Stack>
-            </Box>
+            <HeaderData />
             <Grid container spacing={2} sx={{ display: "flex", width: "100%", flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" }, flexWrap: "nowrap", pt: "0px" }}>
                 <Paper sx={{
                     width: { lg: "29%", md: "29%", sm: "39%", xs: "100%" }, mx: "auto", height: "fit-content", p: 2, bgcolor: "#fff", borderRadius: 4,
@@ -244,10 +203,60 @@ const Dashboard = () => {
                     ))}
                 </Box>
             </Grid>
-            <CommonTable />
         </Box>
     );
 };
 
 export default Dashboard;
 
+export function HeaderData() {
+    const [selected, setSelected] = useState("Profile");
+    return (
+
+        <Box sx={{ overflowX: "auto", width: "100%", p: 1, scrollbarWidth: "none", mb: 2, bgcolor: "#fff" }}>
+            <Stack direction="row" spacing={1} sx={{ minWidth: "max-content" }}>
+                {userProfileData?.map((item, index) => (
+                    <Paper
+                        key={index}
+                        onClick={() => setSelected(item.label)}
+                        elevation={0}
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                            px: 2,
+                            py: 1,
+                            borderRadius: 2,
+                            bgcolor: selected === item.label ? "#ffc107" : "#f2f2f2",
+                            cursor: "pointer",
+                            whiteSpace: "nowrap",
+                            textDecoration: "none",
+                        }}
+                        component={Link} state={{ data: item?.data }} to={`${item?.to}`}
+                    >
+                        <Box
+                            sx={{
+                                bgcolor: "#121212",
+                                color: "white",
+                                p: 0.5,
+                                borderRadius: 1.5,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 32,
+                                height: 32
+                            }}
+                        >
+                            <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit" }} />
+                        </Box>
+                        {item.label && (
+                            <Typography fontWeight={600} fontSize={14}>
+                                {item.label}
+                            </Typography>
+                        )}
+                    </Paper>
+                ))}
+            </Stack>
+        </Box >
+    )
+}

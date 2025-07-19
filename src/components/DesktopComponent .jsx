@@ -1,440 +1,279 @@
-import React, { useState } from 'react';
-import {
-    Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-    Box,
-    TextField,
-    Collapse,
-    Divider,
-    Typography,
-    Grid,
-    CardContent,
-    Card,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
-    CardMedia,
-} from '@mui/material';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeDrawer } from '../features/drawer/drawerSlice';
-import {
-    drawerData,
-    providersData,
-    categoriesData,
-    startingData
-} from '../data/drawerData';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import { CricketIcon } from '../assets/SVGs/allSVGs';
-import { useMediaQuery, useTheme } from "@mui/material";
-import CommonNavLink from './commonComponents/CommonNavLink';
+import { Box, Typography, Button, Divider, List, ListItem, ListItemText, Tab, Tabs, IconButton } from "@mui/material";
+import { useState } from "react";
+import video from "../assets/gameVideos/aviators.mp4"
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
+const Extra = () => {
+    const bets = [
+        { player: 'p****6', bet: 6343.55, multiplier: '1.33x', win: 8436.92 },
+        { player: '2****e', bet: 5000.00, multiplier: '', win: 0 },
+        { player: '3****6', bet: 3171.77, multiplier: '', win: 0 },
+        { player: '4****e', bet: 3000.00, multiplier: '', win: 0 },
+        { player: '5****a', bet: 2466.93, multiplier: '', win: 0 },
+        { player: 'k****#', bet: 2138.03, multiplier: '', win: 0 },
+        { player: '3****c', bet: 2114.51, multiplier: '', win: 0 },
+        { player: '4****m', bet: 2114.51, multiplier: '', win: 0 },
+        { player: '2****e', bet: 1500.00, multiplier: '', win: 0 },
+        { player: '5****1', bet: 1498.38, multiplier: '', win: 0 },
+        { player: '1****4', bet: 1496.62, multiplier: '', win: 0 },
+    ];
+    const [tabValue, setTabValue] = useState(0);
+    const [amount, setAmount] = useState(5.00);
 
-const DesktopComponent = () => {
-    const open = useSelector((state) => state.drawer.open);
-    const dispatch = useDispatch();
-    const [searchTerm, setSearchTerm] = useState('');
-    const [openSports, setOpenSports] = useState({});
-    const [openLeagues, setOpenLeagues] = useState({});
-
-    const handleClose = () => dispatch(closeDrawer())
-
-    const handleSportClick = (sport) => {
-        setOpenSports((prev) => ({
-            ...prev,
-            [sport]: !prev[sport],
-        }));
-    };
-
-    const handleLeagueClick = (sport, league) => {
-        setOpenLeagues((prev) => ({
-            ...prev,
-            [`${sport}-${league}`]: !prev[`${sport}-${league}`],
-        }));
-    };
-    const [openCategories, setOpenCategories] = useState(true);
-
-    const handleToggleCategories = () => {
-        setOpenCategories((prev) => !prev);
-    };
-    const [openProviders, setOpenProviders] = useState(true);
-
-    const handleToggleProviders = () => {
-        setOpenProviders((prev) => !prev);
-    };
-    const [opeSportsEntire, setOpenSportsEntire] = useState(true);
-
-    const handleToggleSportsEntire = () => {
-        setOpenSportsEntire((prev) => !prev);
-    };
-    const filteredSports = drawerData.sports.map((sport) => ({
-        ...sport,
-        leagues: sport.leagues.map((league) => ({
-            ...league,
-            matches: league.matches.filter((match) =>
-                match.name.toLowerCase().includes(searchTerm.toLowerCase())
-            ),
-        })).filter((league) => league.matches.length > 0),
-    })).filter((sport) => sport.leagues.length > 0);
-
-    const [language, setLanguage] = React.useState('English');
-
-    const handleChange = (event) => {
-        setLanguage(event.target.value);
+    const handleTabChange = (_, newValue) => setTabValue(newValue);
+    const handleAmountChange = (delta) => {
+        setAmount(prev => Math.max(0, (parseFloat(prev) + delta).toFixed(2)));
     };
 
     return (
-        <Drawer
-            anchor="left"
-            open={open}
-            onClose={handleClose}
-            variant="persistent"
-            sx={{
-                '& .MuiDrawer-paper': {
-                    top: '50px',
-                    width: 350,
-                    height: 'calc(100vh - 50px)',
-                    boxSizing: 'border-box',
-                    zIndex: 1200,
-                    overflowX: "hidden",
-                },
-
-            }}
-        >
-            <Box
-                sx={{ width: 350, overflowY: 'auto', scrollbarWidth: "none", overflowX: "hidden", bgcolor: "#f5f5f5de", pb: "50px" }}
-                role="presentation"
-                onKeyDown={handleClose}
-            >
-                <Grid container spacing={1} sx={{ padding: 2, bgcolor: "#f5f5f5de" }}>
-                    {["Sport", "Casino", "Promotions", "Refer & Earn"]?.map((item) => (
-                        <Grid item lg={6} md={6} key={item} sx={{ padding: "0px" }}>
-                            <Card
-                                sx={{
-                                    bgcolor: "#43727a",
-                                    cursor: "pointer",
-                                    padding: "0px",
-                                    border: '1px solid #ccc',
-                                    borderRadius: 2,
-                                    boxShadow: 1,
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    minWidth: 150,
-                                    width: '100%',
-                                    '&:hover': {
-                                        boxShadow: 3,
-                                    },
-                                }}
-                            >
-                                <CardContent sx={{
-                                    padding: "5px !important"
-                                }}>
-                                    <Typography variant="h7" component="div" sx={{ textAlign: 'center', color: 'white' }}>
-                                        {item}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+        <>
+            <Box sx={{ display: "flex", gap: 1, bgcolor: "black", height: "100vh", mb: 3, borderRadius: "30px" }}>
+                {/* Sidebar */}
+                <Box sx={{ width: "40%", bgcolor: "#111", p: 3, overflowY: 'auto', scrollbarWidth: "none", color: "#fff", borderRadius: "10px" }}>
+                    <Box sx={{ borderColor: 'divider' }}>
+                        <Tabs value={tabValue} onChange={handleTabChange} aria-label="sidebar tabs" TabIndicatorProps={{ style: { backgroundColor: '#fff' } }}
+                            sx={{
+                                '& .MuiTab-root': {
+                                    color: '#ccc', // Unselected tab color
+                                    fontWeight: 500,
+                                    textTransform: 'none'
+                                },
+                                '& .Mui-selected': {
+                                    color: '#fff', // Selected tab color
+                                },
+                            }}>
+                            <Tab label="All Bets" />
+                            <Tab label="Previous" />
+                            <Tab label="Top" />
+                        </Tabs>
+                    </Box>
+                    <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                        All Bets
+                    </Typography>
+                    <Typography variant="body2" color="#fff">
+                        14,045.87 Total win INR
+                    </Typography>
+                    <Divider sx={{ my: 1, bgcolor: '#fff' }} />
                     <List>
-                        {startingData?.starting?.items?.map((item) => (
-                            <CommonNavLink to={`/provider/${item.segment}`}
-                                sx={{
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    margin: "5px 0px",
-                                    borderRadius: "5px",
-                                    padding: "6px 12px",
-                                    bgcolor: "white",
-                                    cursor: "pointer",
-                                }}
-                            >
-
-                                <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                    <item.icon sx={{ fontSize: 20, color: "inherit" }} />
-                                    <Typography sx={{ fontSize: "14px", fontWeight: 500, lineHeight: 1 }}>
-                                        {item.title}
-                                    </Typography>
-                                </Box>
-
-                                <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
-                                    {item.count}
-                                </Typography>
-                            </CommonNavLink>
+                        {bets.map((bet, index) => (
+                            <ListItem key={index} sx={{ py: 0.5 }}>
+                                <ListItemText
+                                    color="#fff"
+                                    primary={bet.player}
+                                    secondary={
+                                        <>
+                                            <Typography component="span" variant="body2" color="#fff">
+                                                {bet.bet.toLocaleString()} INR
+                                            </Typography>
+                                            {' x' + bet.multiplier}
+                                            {' '}
+                                            <Typography component="span" variant="body2" color="#fff">
+                                                {bet.win.toLocaleString()} INR
+                                            </Typography>
+                                        </>
+                                    }
+                                />
+                            </ListItem>
                         ))}
                     </List>
                 </Box>
 
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+                <Box sx={{ width: "60%", height: "100vh", display: 'flex', flexDirection: 'column', gap: 1 }}>
+                    <Box sx={{ height: "70vh", display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: "30px" }}>
+                        <video
+                            src={video}
+                            width="100%"
+                            height="100%"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            style={{ borderRadius: 10, objectFit: "cover" }}
+                        />
+
+                    </Box>
                     <Box
                         sx={{
+                            bgcolor: "#111", // Dark background
+                            width: '100%',
+                            mx: "auto",
+                            borderRadius: 2,
                             display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            cursor: 'pointer',
+                            gap: 2,
+                            justifyContent: 'center',
+                            alignItems: 'center'
                         }}
-                        onClick={handleToggleSportsEntire}
                     >
-                        <Typography sx={{ mb: 1, fontSize: "15px", fontWeight: 500 }}>SPORTS</Typography>
-                        {opeSportsEntire ? <ExpandLess /> : <ExpandMore />}
-                    </Box>
-                    <Collapse in={opeSportsEntire} timeout="auto" unmountOnExit>
-                        <List>
-
-                            {filteredSports.map((sport) => (
-                                <React.Fragment key={sport.segment}>
-                                    <ListItemButton onClick={() => handleSportClick(sport.segment)} sx={{ justifyContent: "space-between", margin: "5px 0px", borderRadius: "5px", padding: "3px 10px", bgcolor: "white" }}>
-                                        <Box sx={{ display: "flex", alignItems: "center", gap: "7px", cursor: "pointer" }}>
-                                            <sport.icon sx={{ color: 'inherit' }} />
-                                            <Box>
-                                                <ListItemText
-                                                    primary={`${sport.sport}`}
-                                                />
-                                            </Box>
-                                        </Box>
-                                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                                            <Typography
-                                                sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}
-                                            >
-                                                {`${sport.leagues.reduce((acc, league) => acc + league.count, 0)}`}
-                                            </Typography>
-                                            <Box sx={{ display: "flex", alignItems: "center" }}>
-                                                {openSports[sport.segment] ? <ExpandLess /> : <ExpandMore />}
-                                            </Box>
-                                        </Box>
-                                    </ListItemButton>
-                                    <Collapse
-                                        in={openSports[sport.segment]}
-                                        timeout="auto"
-                                        unmountOnExit
-                                    >
-                                        <List component="div" disablePadding>
-                                            {sport.leagues.map((league) => (
-                                                <React.Fragment key={league.segment}>
-                                                    <ListItemButton
-                                                        sx={{
-                                                            justifyContent: "space-between",
-                                                            margin: "5px 0px",
-                                                            borderRadius: "5px",
-                                                            padding: "3px 10px",
-                                                            bgcolor: "white",
-                                                        }}
-                                                        onClick={() => handleLeagueClick(sport.segment, league.segment)}
-                                                    >
-                                                        <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
-                                                            <league.icon sx={{ color: "inherit" }} />
-                                                            <Box>
-                                                                <ListItemText primary={`${league.title}`} />
-                                                            </Box>
-                                                        </Box>
-                                                        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                                                            <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
-                                                                {league.count}
-                                                            </Typography>
-                                                            {openLeagues[`${sport.segment}-${league.segment}`] ? (
-                                                                <ExpandLess />
-                                                            ) : (
-                                                                <ExpandMore />
-                                                            )}
-                                                        </Box>
-                                                    </ListItemButton>
-
-                                                    <Collapse
-                                                        in={openLeagues[`${sport.segment}-${league.segment}`]}
-                                                        timeout="auto"
-                                                        unmountOnExit
-                                                    >
-                                                        <List component="div" disablePadding>
-                                                            {league.matches.map((match) => (
-                                                                <ListItemButton
-                                                                    key={match.segment}
-                                                                    component={Link}
-                                                                    to={`/match/${match.segment}`}
-                                                                    sx={{ bgcolor: "white", m: "5px 0px 5px 20px", p: "3px 10px" }}
-                                                                    onClick={handleClose}
-
-                                                                >
-                                                                    <Box sx={{ mr: "5px" }}>
-                                                                        <match.icon sx={{ color: "inherit" }} />
-                                                                    </Box>
-                                                                    <ListItemText primary={match.name} />
-                                                                </ListItemButton>
-                                                            ))}
-                                                        </List>
-                                                    </Collapse>
-                                                </React.Fragment>
-                                            ))}
-
-                                        </List>
-                                    </Collapse>
-                                </React.Fragment>
-                            ))}
-                        </List>
-                    </Collapse>
-                </Box>
-
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            cursor: 'pointer',
-                        }}
-                        onClick={handleToggleCategories}
-                    >
-                        <Typography sx={{ mb: 1 }}>CATEGORIES</Typography>
-                        {openCategories ? <ExpandLess /> : <ExpandMore />}
-                    </Box>
-
-                    <Collapse in={openCategories} timeout="auto" unmountOnExit>
-                        <List>
-                            {categoriesData.categories.items.map((item) => (
-                                <ListItemButton
-                                    key={item.segment}
-                                    component={Link}
-                                    to={{
-                                        pathname: `/category/${item.segment}`,
-                                    }}
-                                    state={{
-                                        data: item.segment,
-                                        info: item.info,
-                                    }}
-                                    onClick={handleClose}
-                                    sx={{
-                                        justifyContent: "space-between",
-                                        margin: "5px 0px",
-                                        borderRadius: "5px",
-                                        padding: "3px 10px",
-                                        bgcolor: "white",
-                                    }}
-                                >
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
-                                        <Box>
-                                            <CardMedia
-                                                component="img"
-                                                image={item.icon} alt="Logo"
-                                                height={"20px"}
-                                                width={"20px"}
-                                            // sx={{ height: { lg: '40px', md: '40px', sm: '30px', xs: '20px' } }}
-                                            />
-                                        </Box>
-                                        <Typography>{item.title}</Typography>
-                                    </Box>
-                                    <Box>
-                                        <Typography
-                                            sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}
-                                        >
-                                            {item.count}
-                                        </Typography>
-                                    </Box>
-                                </ListItemButton>
-
-                            ))}
-                        </List>
-                    </Collapse>
-                </Box>
-
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            cursor: 'pointer',
-                        }}
-                        onClick={handleToggleProviders}
-                    >
-                        <Typography sx={{ mb: 1, fontSize: "15px", fontWeight: 500 }}>PROVIDERS</Typography>
-                        {openProviders ? <ExpandLess /> : <ExpandMore />}
-                    </Box>
-                    <Collapse in={openProviders} timeout="auto" unmountOnExit>
-                        <List>
-                            {providersData.providers.items.map((item) => (
-                                <ListItemButton
-                                    key={item.segment}
-                                    component={Link}
-                                    to={`/provider/${item.segment}`}
-                                    onClick={handleClose}
-                                    sx={{
-                                        justifyContent: "space-between",
-                                        margin: "5px 0px",
-                                        borderRadius: "5px",
-                                        padding: "6px 12px",
-                                        bgcolor: "white",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
-                                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                                            <item.icon sx={{ fontSize: "20px", color: "inherit" }} />
-                                        </Box>
-                                        <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
-                                            {item.title}
-                                        </Typography>
-                                    </Box>
-
-                                    <Typography
-                                        sx={{
-                                            fontSize: "12px",
-                                            fontWeight: 600,
-                                            color: "#92928e",
-                                            whiteSpace: "nowrap",
-                                        }}
-                                    >
-                                        {item.count}
-                                    </Typography>
-                                </ListItemButton>
-
-                            ))}
-                        </List>
-                    </Collapse>
-                    <Box sx={{
-                        padding: "3px 10px", bgcolor: "#43727a", borderRadius: "5px", color: "white"
-                    }}>
-                        < Typography sx={{ textAlign: "center" }}>Blog</Typography>
-                    </Box>
-                    <Typography sx={{ m: "10px 0px", fontSize: "15px", fontWeight: 500 }}>SETTINGS</Typography>
-                    <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth size='small'>
-                            <InputLabel id="demo-simple-select-label">{language}</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={language}
-                                label="language"
-                                onChange={handleChange}
+                        <Box
+                            sx={{
+                                bgcolor: "#1a1a1a",
+                                borderRadius: 2,
+                                p: 2,
+                                // width: "100%",
+                                // maxWidth: 300
+                            }}
+                        >
+                            <Tabs
+                                value={tabValue}
+                                onChange={handleTabChange}
+                                textColor="inherit"
+                                TabIndicatorProps={{ style: { display: "none" } }}
+                                sx={{
+                                    bgcolor: "#2a2a2a",
+                                    borderRadius: "999px",
+                                    mb: 2,
+                                    "& .MuiTab-root": {
+                                        color: "#aaa",
+                                        fontWeight: 600,
+                                        textTransform: "none",
+                                        flex: 1
+                                    },
+                                    "& .Mui-selected": {
+                                        color: "#fff",
+                                        bgcolor: "#111",
+                                        borderRadius: "999px"
+                                    }
+                                }}
                             >
-                                <MenuItem value="ENglish">English</MenuItem>
-                                <MenuItem value="Hindi">Hindi</MenuItem>
-                                <MenuItem value="Gujarati">Gujarati</MenuItem>
-                                <MenuItem value="Kannada">Kannada</MenuItem>
-                                <MenuItem value="Tamil">Tamil</MenuItem>
-                                <MenuItem value="Telugu">Telugu</MenuItem>
-                                <MenuItem value="Marathi">Marathi</MenuItem>
-                            </Select>
-                        </FormControl>
+                                <Tab label="Bet" />
+                                <Tab label="Auto" />
+                            </Tabs>
+
+                            {/* Amount Selector */}
+                            <Box display="flex" alignItems="center" justifyContent="center" gap={1} mb={2}>
+                                <IconButton size="small" sx={{ bgcolor: "#333", color: "#fff" }} onClick={() => handleAmountChange(-1)}>
+                                    <RemoveIcon />
+                                </IconButton>
+                                <Typography sx={{ color: "#fff", width: 60, textAlign: 'center' }}>{amount.toFixed(2)}</Typography>
+                                <IconButton size="small" sx={{ bgcolor: "#333", color: "#fff" }} onClick={() => handleAmountChange(1)}>
+                                    <AddIcon />
+                                </IconButton>
+                            </Box>
+
+                            {/* Quick Amounts */}
+                            <Box display="flex" flexWrap="wrap" gap={1} mb={2}>
+                                {[100, 200, 500, 1000].map(val => (
+                                    <Button
+                                        key={val}
+                                        variant="contained"
+                                        sx={{
+                                            bgcolor: "#222",
+                                            color: "#fff",
+                                            fontWeight: 600,
+                                            borderRadius: "999px",
+                                            px: 2,
+                                            minWidth: 60,
+                                            textTransform: "none",
+                                            "&:hover": { bgcolor: "#444" }
+                                        }}
+                                        onClick={() => setAmount(val)}
+                                    >
+                                        {val}
+                                    </Button>
+                                ))}
+                            </Box>
+
+                            {/* Green Bet Button */}
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                sx={{
+                                    bgcolor: "limegreen",
+                                    color: "#000",
+                                    fontWeight: 700,
+                                    borderRadius: 2,
+                                    py: 1.5,
+                                    fontSize: "1.1rem",
+                                    textTransform: "none"
+                                }}
+                            >
+                                Bet {amount.toFixed(2)} INR
+                            </Button>
+                        </Box>
+                        <Box
+                            sx={{
+                                bgcolor: "#1a1a1a",
+                                borderRadius: 2,
+                                p: 2,
+                            }}
+                        >
+                            <Tabs
+                                value={tabValue}
+                                onChange={handleTabChange}
+                                textColor="inherit"
+                                TabIndicatorProps={{ style: { display: "none" } }}
+                                sx={{
+                                    bgcolor: "#2a2a2a",
+                                    borderRadius: "999px",
+                                    mb: 2,
+                                    "& .MuiTab-root": {
+                                        color: "#aaa",
+                                        fontWeight: 600,
+                                        textTransform: "none",
+                                        flex: 1
+                                    },
+                                    "& .Mui-selected": {
+                                        color: "#fff",
+                                        bgcolor: "#111",
+                                        borderRadius: "999px"
+                                    }
+                                }}
+                            >
+                                <Tab label="Bet" />
+                                <Tab label="Auto" />
+                            </Tabs>
+                            <Box display="flex" alignItems="center" justifyContent="center" gap={1} mb={2}>
+                                <IconButton size="small" sx={{ bgcolor: "#333", color: "#fff" }} onClick={() => handleAmountChange(-1)}>
+                                    <RemoveIcon />
+                                </IconButton>
+                                <Typography sx={{ color: "#fff", width: 60, textAlign: 'center' }}>{amount.toFixed(2)}</Typography>
+                                <IconButton size="small" sx={{ bgcolor: "#333", color: "#fff" }} onClick={() => handleAmountChange(1)}>
+                                    <AddIcon />
+                                </IconButton>
+                            </Box>
+                            <Box display="flex" flexWrap="wrap" gap={1} mb={2}>
+                                {[100, 200, 500, 1000].map(val => (
+                                    <Button
+                                        key={val}
+                                        variant="contained"
+                                        sx={{
+                                            bgcolor: "#222",
+                                            color: "#fff",
+                                            fontWeight: 600,
+                                            borderRadius: "999px",
+                                            px: 2,
+                                            minWidth: 60,
+                                            textTransform: "none",
+                                            "&:hover": { bgcolor: "#444" }
+                                        }}
+                                        onClick={() => setAmount(val)}
+                                    >
+                                        {val}
+                                    </Button>
+                                ))}
+                            </Box>
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                sx={{
+                                    bgcolor: "limegreen",
+                                    color: "#000",
+                                    fontWeight: 700,
+                                    borderRadius: 2,
+                                    py: 1.5,
+                                    fontSize: "1.1rem",
+                                    textTransform: "none"
+                                }}
+                            >
+                                Bet {amount.toFixed(2)} INR
+                            </Button>
+                        </Box>
                     </Box>
-                    {/* remain for future */}
-                    {/* <Box sx={{
-                        padding: "3px 10px", bgcolor: "#43727a", borderRadius: "5px", color: "white"
-                    }}>
-                        < Typography>Light Mode</Typography>
-                    </Box> */}
                 </Box>
             </Box >
-        </Drawer >
+        </>
     );
 };
 
-export default DesktopComponent;
+export default Extra;

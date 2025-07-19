@@ -1,13 +1,18 @@
-// features/drawer/authSlice.jsx
 import { createSlice } from '@reduxjs/toolkit';
 
-// Check if token exists in sessionStorage (for tab-session persistence)
-const token = sessionStorage.getItem('token');
-const user = JSON.parse(sessionStorage.getItem('user'));
+const token = sessionStorage.getItem('token') || localStorage.getItem('token');
+const userString = sessionStorage.getItem('user') || localStorage.getItem('user');
+
+let user = null;
+try {
+    user = userString ? JSON.parse(userString) : null;
+} catch (e) {
+    console.error("Failed to parse user from storage:", e);
+}
 
 const initialState = {
     isLoggedIn: !!token,
-    user: user || null,
+    user: user,
 };
 
 const authSlice = createSlice({
@@ -17,14 +22,14 @@ const authSlice = createSlice({
         login: (state, action) => {
             state.isLoggedIn = true;
             state.user = action.payload;
-            sessionStorage.setItem('token', 'session-jwt');
-            sessionStorage.setItem('user', JSON.stringify(action.payload));
+            // Don't store here — let UI handle it based on rememberMe
         },
         logout: (state) => {
             state.isLoggedIn = false;
             state.user = null;
-            sessionStorage.removeItem('token');
-            sessionStorage.removeItem('user');
+            sessionStorage.clear();
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
         },
     },
 });

@@ -13,6 +13,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { useLocation } from 'react-router-dom';
+import { HeaderData } from '../../pages/UserProfile';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -102,7 +103,6 @@ EnhancedTableHead.propTypes = {
 
 function EnhancedTableToolbar(props) {
     const { numSelected, rowsPerPage, page, count, onPageChange, onRowsPerPageChange, title } = props;
-    console.log("🚀 ~ EnhancedTableToolbar ~ data:", title)
     return (
         <Toolbar
             sx={[
@@ -217,6 +217,7 @@ const CommonTable = () => {
 
     return (
         <Box>
+            <HeaderData />
             <Paper sx={{ width: "-webkit-fill-available", p: 2 }}>
                 <EnhancedTableToolbar
                     numSelected={selected.length}
@@ -266,10 +267,10 @@ const CommonTable = () => {
                                     );
                                 })
                             ) : (
-                                <TableRow>
+                                <TableRow sx={{ width: "100%" }}>
                                     <TableCell
                                         align="center"
-                                        colSpan={data?.[0]?.tableCol?.reduce((acc, item) => acc + (item.children?.length || 1), 0) || 1}
+                                        colSpan={data?.[1]?.tableCol?.length}
                                     >
                                         No data available
                                     </TableCell>
@@ -284,7 +285,7 @@ const CommonTable = () => {
                     </Table>
                 </TableContainer>
             </Paper>
-        </Box>
+        </Box >
     );
 };
 

@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IconButton } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import CardHeader from "./CardHeader";
@@ -48,6 +48,7 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
     const { state } = useLocation();
     const data = propsData.length ? propsData : state?.info;
     const title = propsTitle != "" ? propsTitle : state?.data;
+    const navigate = useNavigate()
     const isScroll = state?.isScroll != "" ? true : false
     const iconMap = {
         aura: TeenPattiIcon,
@@ -152,6 +153,7 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                         opacity: 1,
                                     },
                                 }}
+                            // onClick={() => navigate(game?.to)}
                             >
                                 <Box
                                     sx={{
@@ -169,9 +171,11 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                         <FavoriteBorderIcon sx={{ color: '#ffc107' }} />
                                     )}
                                 </Box>
+                                {console.log(game?.video, "game?.video")}
                                 <IconButton
                                     component={RouterLink}
-                                    to={'/aura-game'}
+                                    to={`${game?.to}`}
+                                    state={{ data: game?.video }}
                                     className="play-icon"
                                     sx={{
                                         position: 'absolute',
@@ -191,7 +195,7 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                     <PlayArrowRoundedIcon />
                                 </IconButton>
 
-                                <Typography variant="subtitle1" fontWeight={600} sx={{ textAlign: 'center' }} noWrap>
+                                <Typography variant="subtitle2" fontWeight={600} sx={{ textAlign: 'center' }} >
                                     {game?.title}
                                 </Typography>
                                 <Typography

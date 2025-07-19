@@ -29,13 +29,13 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import { faScroll, faCoins, faMoneyBill1, faGift, faGifts, faBaseball, faDice, faEquals, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 export const TrendingGamesData = {
-    data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)" },
+    data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)", to: '/aviator' },
     { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)" },
-    { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)" },
+    { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)", to: '/aviator' },
     { title: "Dragon Tiger", text: "Evolution Gaming", image: image4, color: "rgb(31, 178, 252)" },
     { title: "Andar Bahar.", text: "Aura", image: image5, color: " rgb(238, 97, 89)" },
-    { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)" },
-    { title: "7 up & down", text: "Aura", image: image7, color: "rgba(39, 201, 44, 0.8)" }]
+    { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)", to: "/aura-game" },
+    { title: "7 up & down", text: "Aura", image: image7, color: "rgba(39, 201, 44, 0.8)", to: "/aura-game" }]
 }
 export const TopGamesData = {
     data: [
@@ -538,20 +538,155 @@ export const userProfileData = [
     {
         label: 'Transaction History',
         value: 'transactionHistory',
-        to: '/login',
-        icon: ReceiptLong
+        to: '/common-table',
+        icon: ReceiptLong,
+        data: [
+            { title: "Transaction History" },
+            {
+                tableCol: [
+                    {
+                        id: 'date',
+                        numeric: false,
+                        disablePadding: true,
+                        label: 'Date',
+                        rowSpan: 2,
+                        value: "10-12-2003"
+                    },
+                    {
+                        id: 'D/Wtype',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'D/W Type',
+                        rowSpan: 2,
+                        value: "online"
+                    },
+                    {
+                        id: 'Description',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Description',
+                        rowSpan: 2,
+                        value: "casino"
+                    },
+                    {
+                        id: 'Amount',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Amount',
+                        rowSpan: 2,
+                        value: ""
+                    },
+                    {
+                        id: 'Bank Details',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Bank Details',
+                        rowSpan: 2,
+                        value: "win"
+                    },
+                    {
+                        id: 'Mobile No',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Mobile No',
+                        rowSpan: 2,
+                        value: "20"
+                    },
+                    {
+                        id: 'Status',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Status',
+                        rowSpan: 2,
+                        value: "20"
+                    },
+                    {
+                        id: 'Remark',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Remark',
+                        rowSpan: 2,
+                        value: "20"
+                    },
+                    {
+                        id: 'Action',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Actions',
+                        rowSpan: 2,
+                        value: "20"
+                    },
+                ]
+            }
+        ]
     },
     {
         label: 'Staking Wallet',
         value: 'stakingWallet',
         to: '/login',
-        icon: Wallet
+        icon: Wallet,
     },
     {
         label: 'P/L Report',
-        value: 'plReport',
+        value: 'profit/loss Report',
         to: '/login',
-        icon: TrendingUp
+        icon: TrendingUp,
+        data: [
+            { title: "P/L Report" },
+            {
+                tableCol: [
+                    {
+                        id: 'sportGame',
+                        numeric: false,
+                        disablePadding: true,
+                        label: 'Sport/Game',
+                        rowSpan: 2,
+                        value: 'Cricket'
+                    },
+                    {
+                        id: 'market',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Market',
+                        rowSpan: 2,
+                        value: 'Match Odds'
+                    },
+                    {
+                        id: 'result',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Result',
+                        rowSpan: 2,
+                        value: 'Team A Won'
+                    },
+                    {
+                        id: 'gameName',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Gamename',
+                        rowSpan: 2,
+                        value: 'Qualifier 1'
+                    },
+                    {
+                        id: 'pl',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'P/L',
+                        rowSpan: 2,
+                        value: '+1500'
+                    },
+                    {
+                        id: 'startedDate',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Started Date',
+                        rowSpan: 2,
+                        value: '2025-07-17'
+                    }
+                ]
+
+            }
+        ]
     },
     {
         label: 'My Referrals',
@@ -562,32 +697,340 @@ export const userProfileData = [
     {
         label: 'Promotion Center',
         value: 'promotionCenter',
-        to: '/login',
+        to: '/promotion-refer',
         icon: LocalOffer
     },
     {
         label: 'Manual Deposit Report',
         value: 'manualDepositReport',
-        to: '/login',
-        icon: Report
+        to: '/common-table',
+        icon: Report,
+        data: [
+            { title: "Manual Deposit Report" },
+            {
+                tableCol: [
+                    {
+                        id: 'date',
+                        numeric: false,
+                        disablePadding: true,
+                        label: 'Date',
+                        rowSpan: 2,
+                        value: '2025-07-17'
+                    },
+                    {
+                        id: 'utrNo',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'UTR No',
+                        rowSpan: 2,
+                        value: 'UTR123456'
+                    },
+                    {
+                        id: 'amount',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Amount',
+                        rowSpan: 2,
+                        value: '₹5000'
+                    },
+                    {
+                        id: 'paymentProof',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Payment Proof',
+                        rowSpan: 2,
+                        value: 'Uploaded'
+                    },
+                    {
+                        id: 'status',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Status',
+                        rowSpan: 2,
+                        value: 'Pending'
+                    },
+                    {
+                        id: 'reason',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Reason',
+                        rowSpan: 2,
+                        value: 'Verification Required'
+                    },
+                    {
+                        id: 'action',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Action',
+                        rowSpan: 2,
+                        value: 'Approve/Reject'
+                    }
+                ]
+            }
+        ]
     },
     {
         label: 'Bet History',
         value: 'betHistory',
-        to: '/login',
-        icon: History
+        to: '/common-table',
+        icon: History,
+        data: [
+            { title: "Manual Deposit Report" },
+            {
+                tableCol: [
+                    {
+                        id: 'betId',
+                        numeric: false,
+                        disablePadding: true,
+                        label: 'Bet Id',
+                        rowSpan: 2,
+                        value: 'B123456'
+                    },
+                    {
+                        id: 'market',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Market',
+                        rowSpan: 2,
+                        value: 'Match Odds'
+                    },
+                    {
+                        id: 'type',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Type',
+                        rowSpan: 2,
+                        value: 'Back'
+                    },
+                    {
+                        id: 'odds',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Odds',
+                        rowSpan: 2,
+                        value: '2.5'
+                    },
+                    {
+                        id: 'stake',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Stake',
+                        rowSpan: 2,
+                        value: '1000'
+                    },
+                    {
+                        id: 'run',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Run',
+                        rowSpan: 2,
+                        value: '50'
+                    },
+                    {
+                        id: 'selection',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Selection',
+                        rowSpan: 2,
+                        value: 'Team A'
+                    },
+                    {
+                        id: 'pl',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'P&L',
+                        rowSpan: 2,
+                        value: '+2500'
+                    },
+                    {
+                        id: 'status',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Status',
+                        rowSpan: 2,
+                        value: 'Won'
+                    },
+                    {
+                        id: 'betTakenDate',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Bet Taken Date',
+                        rowSpan: 2,
+                        value: '2025-07-17'
+                    }
+                ]
+            }
+        ]
     },
     {
         label: 'Bonus Report',
         value: 'bonusReport',
-        to: '/login',
-        icon: Redeem
+        to: '/common-table',
+        icon: Redeem,
+        data: [
+            { title: "Bonus Report" },
+            {
+                tableCol: [
+                    {
+                        id: 'srNo',
+                        numeric: true,
+                        disablePadding: true,
+                        label: 'Sr.no',
+                        rowSpan: 2,
+                        value: '1'
+                    },
+                    {
+                        id: 'playerName',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Player Name',
+                        rowSpan: 2,
+                        value: 'John Doe'
+                    },
+                    {
+                        id: 'bonusName',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Bonus Name',
+                        rowSpan: 2,
+                        value: 'Welcome Bonus'
+                    },
+                    {
+                        id: 'bonusCode',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Bonus Code',
+                        rowSpan: 2,
+                        value: 'WELCOME100'
+                    },
+                    {
+                        id: 'balance',
+                        numeric: true,
+                        disablePadding: false,
+                        label: 'Balance',
+                        rowSpan: 2,
+                        value: '₹1500'
+                    },
+                    {
+                        id: 'dateTime',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Date/Time',
+                        rowSpan: 2,
+                        value: '2025-07-17 14:30'
+                    }
+                ]
+
+            }
+        ]
     },
     {
         label: 'Sport Result Report',
         value: 'sportResultReport',
-        to: '/login',
-        icon: SportsScore
+        to: '/common-table',
+        icon: SportsScore,
+        data: [
+            { title: "Sport Result Report" },
+            {
+                tableCol: [
+                    {
+                        id: 'date',
+                        numeric: false,
+                        disablePadding: true,
+                        label: 'Date',
+                        rowSpan: 2,
+                        value: '17 Jul 2025 11:15 PM'
+                    },
+                    {
+                        id: 'marketType',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Market Type',
+                        rowSpan: 2,
+                        value: 'WIN'
+                    },
+                    {
+                        id: 'marketName',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Market Name',
+                        rowSpan: 2,
+                        value: 'Horse Racing / GB / Worcester 17th Jul / 2m4f Hcap Chs'
+                    },
+                    {
+                        id: 'result',
+                        numeric: false,
+                        disablePadding: false,
+                        label: 'Result',
+                        rowSpan: 2,
+                        value: 'King Of The Story'
+                    }
+                ],
+                tableRows: [
+                    {
+                        date: '17 Jul 2025 11:15 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / GB / Worcester 17th Jul / 2m4f Hcap Chs',
+                        result: 'King Of The Story'
+                    },
+                    {
+                        date: '17 Jul 2025 11:15 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / GB / Worcester 17th Jul / 2m7f Nov Hcap Chs',
+                        result: 'Jubilant'
+                    },
+                    {
+                        date: '17 Jul 2025 11:15 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / GB / Worcester 17th Jul / 2m7f Hcap Chs',
+                        result: 'Grillon De Monty'
+                    },
+                    {
+                        date: '17 Jul 2025 11:07 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / IE / Killarney 17th Jul / 2m4f Mdn Hrd',
+                        result: 'Nitty Gritty'
+                    },
+                    {
+                        date: '17 Jul 2025 11:07 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / IE / Killarney 17th Jul / 2m4f Hrd',
+                        result: 'Emily Love'
+                    },
+                    {
+                        date: '17 Jul 2025 11:07 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / IE / Killarney 17th Jul / 2m4f Hcap Hrd',
+                        result: 'Swelltime'
+                    },
+                    {
+                        date: '17 Jul 2025 11:07 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / IE / Killarney 17th Jul / To Be Placed',
+                        result: 'Hees Dynamite'
+                    },
+                    {
+                        date: '17 Jul 2025 11:03 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / FR / Vichy (FRA) 17th Jul / 1m1f Stks',
+                        result: 'Hungry Heart'
+                    },
+                    {
+                        date: '17 Jul 2025 11:03 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / FR / Vichy (FRA) 17th Jul / 1m Stks',
+                        result: 'Dropshot'
+                    },
+                    {
+                        date: '17 Jul 2025 11:03 PM',
+                        marketType: 'WIN',
+                        marketName: 'Horse Racing / FR / Vichy (FRA) 17th Jul / 1m2f Listed',
+                        result: 'Al Uqda'
+                    }
+                ]
+            }
+        ]
+
     },
     {
         label: 'Chip Setting',
@@ -595,18 +1038,18 @@ export const userProfileData = [
         to: '/login',
         icon: Settings
     },
-    {
-        label: 'Change Password',
-        value: 'changePassword',
-        to: '/login',
-        icon: LockReset
-    },
-    {
-        label: 'LogOut',
-        value: 'logout',
-        to: '/login',
-        icon: LogoutIcon
-    }
+    // {
+    //     label: 'Change Password',
+    //     value: 'changePassword',
+    //     to: '/login',
+    //     icon: LockReset
+    // },
+    // {
+    //     label: 'LogOut',
+    //     value: 'logout',
+    //     to: '/login',
+    //     icon: LogoutIcon
+    // }
 ];
 export const liveSportsData = sportsData
     .map((sport) => {
@@ -620,4 +1063,3 @@ export const liveSportsData = sportsData
         return null; // remove sport with no live matches
     })
     .filter(Boolean);
-
