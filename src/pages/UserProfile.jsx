@@ -22,20 +22,9 @@ import { Link, useLocation } from 'react-router-dom';
 import CommonTable from '../components/commonComponents/CommonTable';
 import { userProfileData } from '../data/dashboardData';
 
-const menuItems = [
-    { label: "Profile", icon: <AccountCircle /> },
-    { label: "Deposit", icon: <AccountBalanceWallet /> },
-    { label: "Withdraw", icon: <LocalAtm /> },
-    { label: "Account Statement", icon: <MonetizationOn /> },
-    { label: "Transaction History", icon: <TrendingUp /> },
-    { label: "Staking Wallet", icon: <Savings /> },
-    { label: "P/L Report", icon: <Equalizer /> },
-    { label: "My Referrals", icon: <People /> },
-    { label: "Setting", icon: <Settings /> }
-];
-
 const Dashboard = () => {
-
+    const user = sessionStorage.getItem('username')
+    console.log("🚀 ~ LogInPage ~ user1:", user)
     const location = useLocation();
     const data = location?.state?.data
     return (
@@ -83,7 +72,7 @@ const Dashboard = () => {
                                     display: "inline-block",
                                 }}
                             >
-                                Demo8
+                                {user}
                             </Typography>
                         </Box>
 

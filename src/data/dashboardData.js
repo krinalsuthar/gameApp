@@ -629,7 +629,7 @@ export const userProfileData = [
     {
         label: 'P/L Report',
         value: 'profit/loss Report',
-        to: '/login',
+        to: '/common-table',
         icon: TrendingUp,
         data: [
             { title: "P/L Report" },

@@ -67,6 +67,7 @@ const RegisterPage = () => {
 
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
+        // sessionStorage.setItem('users', JSON.stringify(users));
         alert('Registration successful! You can now log in.');
         navigate('/login');
     };

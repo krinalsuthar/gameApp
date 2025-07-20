@@ -50,8 +50,11 @@ const LogInPage = () => {
                 u.username === formData.username &&
                 u.password === formData.password
         );
+        console.log("🚀 ~ handleLogin ~ match:", match)
         if (match) {
             const token = 'mock-jwt-token-' + Date.now();
+            const data = sessionStorage.setItem('username', match?.username)
+            console.log("🚀 ~ handleLogin ~ data:", data)
             if (rememberMe) {
                 localStorage.setItem('token', token);
             } else {

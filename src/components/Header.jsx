@@ -55,7 +55,8 @@ const Header = () => {
         title: item?.title,
         icon: item?.icon
     }));
-    const user = useSelector((state) => state.auth.user);
+    const user = sessionStorage.getItem('username')
+    console.log("🚀 ~ Header ~ user:", user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -83,7 +84,7 @@ const Header = () => {
                 </Box>
 
                 <DialogContent dividers>
-                    <Typography sx={{ mb: 2 }}><strong>User name:</strong>{user?.username}</Typography>
+                    <Typography sx={{ mb: 2 }}><strong>User name:</strong>{user}</Typography>
                     <TextField
                         fullWidth
                         type="password"
@@ -166,7 +167,7 @@ const Header = () => {
                     </Box>
                 </Grid>
                 <Grid item>
-                    <Box sx={{ display: { lg: 'flex', md: 'flex', sm: 'none', xs: 'none' }, justifyContent: 'space-evenly' }}>
+                    <Box sx={{ display: { lg: 'flex', md: 'none', sm: 'none', xs: 'none' }, justifyContent: 'space-evenly' }}>
                         {headerData?.map((item, index) => (
                             <Box key={index} sx={commonBoxStyle}>
                                 <CommonNavLink
@@ -272,7 +273,7 @@ const Header = () => {
                                         renderValue={() => (
                                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                                                 <AccountCircleIcon fontSize="small" />
-                                                <Typography>{user?.username}</Typography>
+                                                <Typography>{user}</Typography>
                                             </Box>
                                         )}
                                         MenuProps={{

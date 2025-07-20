@@ -24,15 +24,18 @@
     "@reduxjs/toolkit": "^2.8.2",
     "apexcharts": "^5.2.0",
     "flag-icons": "^7.5.0",
+    "framer-motion": "^12.23.6",
     "lodash": "^4.17.21",
     "react": "^19.1.0",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^19.1.0",
     "react-horizontal-scrolling-menu": "^8.2.0",
+    "react-loading-indicators": "^1.0.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.3",
     "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "styled-jsx": "^5.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
