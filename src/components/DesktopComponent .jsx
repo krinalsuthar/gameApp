@@ -29,18 +29,17 @@ const Extra = () => {
     return (
         <>
             <Box sx={{ display: "flex", gap: 1, bgcolor: "black", height: "100vh", mb: 3, borderRadius: "30px" }}>
-                {/* Sidebar */}
                 <Box sx={{ width: "40%", bgcolor: "#111", p: 3, overflowY: 'auto', scrollbarWidth: "none", color: "#fff", borderRadius: "10px" }}>
                     <Box sx={{ borderColor: 'divider' }}>
                         <Tabs value={tabValue} onChange={handleTabChange} aria-label="sidebar tabs" TabIndicatorProps={{ style: { backgroundColor: '#fff' } }}
                             sx={{
                                 '& .MuiTab-root': {
-                                    color: '#ccc', // Unselected tab color
+                                    color: '#ccc',
                                     fontWeight: 500,
                                     textTransform: 'none'
                                 },
                                 '& .Mui-selected': {
-                                    color: '#fff', // Selected tab color
+                                    color: '#fff',
                                 },
                             }}>
                             <Tab label="All Bets" />
@@ -110,8 +109,6 @@ const Extra = () => {
                                 bgcolor: "#1a1a1a",
                                 borderRadius: 2,
                                 p: 2,
-                                // width: "100%",
-                                // maxWidth: 300
                             }}
                         >
                             <Tabs
@@ -139,8 +136,6 @@ const Extra = () => {
                                 <Tab label="Bet" />
                                 <Tab label="Auto" />
                             </Tabs>
-
-                            {/* Amount Selector */}
                             <Box display="flex" alignItems="center" justifyContent="center" gap={1} mb={2}>
                                 <IconButton size="small" sx={{ bgcolor: "#333", color: "#fff" }} onClick={() => handleAmountChange(-1)}>
                                     <RemoveIcon />
@@ -150,8 +145,6 @@ const Extra = () => {
                                     <AddIcon />
                                 </IconButton>
                             </Box>
-
-                            {/* Quick Amounts */}
                             <Box display="flex" flexWrap="wrap" gap={1} mb={2}>
                                 {[100, 200, 500, 1000].map(val => (
                                     <Button
@@ -173,8 +166,6 @@ const Extra = () => {
                                     </Button>
                                 ))}
                             </Box>
-
-                            {/* Green Bet Button */}
                             <Button
                                 fullWidth
                                 variant="contained"

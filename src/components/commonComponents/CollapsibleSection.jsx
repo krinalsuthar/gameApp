@@ -28,7 +28,6 @@ const CollapsibleSection = ({ sectionKey, title, sx, children }) => {
                 data={{ data: ruleData, data1: titleRules }}
                 handleClose={handleCloseDialog}
             />
-            {/* Header */}
             <Box
                 sx={{
                     display: 'flex',

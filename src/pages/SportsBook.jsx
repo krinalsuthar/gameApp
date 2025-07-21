@@ -737,7 +737,6 @@ const SportsBook = () => {
     const getMatches = () => {
         const sport = sportsCategories.find((s) => s.name === selectedCategory);
         if (selectedCategory === 'Live') {
-            console.log("🚀 ~ getMatches ~ selectedCategory:", selectedCategory)
             return sportsCategories
                 .flatMap((s) =>
                     Object.values(s.matches).flatMap((region) =>
@@ -813,7 +812,6 @@ const SportsBook = () => {
                     gap: 1
                 }}
             >
-                {console.log(matches, "matches")}
                 {icon}
                 <Typography fontWeight="bold">{title}</Typography>
                 <Typography sx={{ ml: 'auto' }}>{`(${matches.length})`}</Typography>

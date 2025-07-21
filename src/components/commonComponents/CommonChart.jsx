@@ -51,7 +51,7 @@ const CommonChartSwitcher = ({
         legend: {
             labels: { colors: "#ccc" },
         },
-        colors: ["#00E396", "#FEB019"], // Customize as needed
+        colors: ["#00E396", "#FEB019"],
     };
 
     const getSeries = () => {

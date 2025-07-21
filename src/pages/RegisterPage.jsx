@@ -37,7 +37,6 @@ const RegisterPage = () => {
     const [ageConfirmed, setAgeConfirmed] = useState(false);
     const [formErrors, setFormErrors] = useState({});
     const navigate = useNavigate();
-    const username = sessionStorage.getItem('username')
     const [open, setOpen] = useState(false);
     const [toastText, setToastText] = useState({ text: "", color: "" });
     const handleTogglePassword = () => setShowPassword(!showPassword);
@@ -67,12 +66,10 @@ const RegisterPage = () => {
         const exists = users.find((u) => u.username === formData.username);
 
         if (exists) {
-            // alert('User already exists!');
             setOpen(true);
             setToastText({ text: "User already exists!❗️👤", color: "error" })
             return;
         }
-
         const newUser = {
             ...formData,
             referralUsed,
@@ -80,14 +77,11 @@ const RegisterPage = () => {
 
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
-        // sessionStorage.setItem('users', JSON.stringify(users));
-        // alert('Registration successful! You can now log in.');
         setOpen(true);
         setToastText({ text: "Registration successful! You can now log in. 📝✅", color: "success" })
         setTimeout(() => {
-            navigate('/login');
+            navigate('/');
         }, 2000);
-        // navigate('/login');
     };
 
     return (
@@ -101,14 +95,14 @@ const RegisterPage = () => {
                 px: 2
             }}
         >
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                 <Alert
                     onClose={handleClose}
-                    severity="success"
+                    severity={toastText.color}
                     variant="filled"
                     sx={{ width: '100%' }}
                 >
-                    This is a success Alert inside a Snackbar!
+                    {toastText.text}
                 </Alert>
             </Snackbar>
             <Paper
@@ -150,8 +144,6 @@ const RegisterPage = () => {
                 >
                     WhatsApp Now
                 </Button>
-
-                {/* Username */}
                 <FormControl fullWidth margin="normal" error={!!formErrors.username}>
                     <TextField
                         label="Username"
@@ -161,8 +153,6 @@ const RegisterPage = () => {
                     />
                     {formErrors.username && <FormHelperText>{formErrors.username}</FormHelperText>}
                 </FormControl>
-
-                {/* Mobile */}
                 <FormControl fullWidth margin="normal" error={!!formErrors.mobile}>
                     <TextField
                         label="Mobile Number"
@@ -173,8 +163,6 @@ const RegisterPage = () => {
                     />
                     {formErrors.mobile && <FormHelperText>{formErrors.mobile}</FormHelperText>}
                 </FormControl>
-
-                {/* Password */}
                 <FormControl fullWidth margin="normal" error={!!formErrors.password}>
                     <InputLabel>Password</InputLabel>
                     <OutlinedInput
@@ -192,8 +180,6 @@ const RegisterPage = () => {
                     />
                     {formErrors.password && <FormHelperText>{formErrors.password}</FormHelperText>}
                 </FormControl>
-
-                {/* Referral Checkbox */}
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -203,8 +189,6 @@ const RegisterPage = () => {
                     }
                     label="Referral Code (Optional)"
                 />
-
-                {/* Age Confirmation Checkbox */}
                 <FormControl error={!!formErrors.ageConfirmed} sx={{ mt: 1 }}>
                     <FormControlLabel
                         control={
@@ -223,8 +207,6 @@ const RegisterPage = () => {
                     />
                     {formErrors.ageConfirmed && <FormHelperText>{formErrors.ageConfirmed}</FormHelperText>}
                 </FormControl>
-
-                {/* Register Button */}
                 <Button
                     fullWidth
                     onClick={handleRegister}
@@ -240,8 +222,6 @@ const RegisterPage = () => {
                 >
                     REGISTER
                 </Button>
-
-                {/* Demo Login Button */}
                 <Button
                     fullWidth
                     variant="contained"
@@ -269,8 +249,6 @@ const RegisterPage = () => {
                 >
                     LOGIN WITH DEMO ID
                 </Button>
-
-                {/* Already have account */}
                 <Typography
                     variant="body2"
                     textAlign="center"

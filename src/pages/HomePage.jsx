@@ -69,14 +69,12 @@ const HomePage = () => {
                         refer & Earn
                     </Button>
                     <Box mt={2}>
-                        {/* CommonNavLink used remain */}
                         <Link href="/common-page" variant="body2">
                             Show more
                         </Link>
                     </Box>
                 </Box>
             </Box>
-            {/* <BottomNavWithRadialMenu /> */}
         </Box >
     );
 };

@@ -50,14 +50,11 @@ const AuraGame = () => {
                                     Lobby
                                 </Typography>
                             </Box>
-
-                            {/* Team Buttons */}
                         </Box>
                         <Box sx={{ width: { lg: "50%", md: "50%", sm: "100%", xs: "100%" }, height: "100%" }}>
                             <video
                                 src={data}
                                 width="100%"
-                                // height="100%"
                                 autoPlay
                                 muted
                                 loop
@@ -83,12 +80,8 @@ const AuraGame = () => {
                                     </Typography>
                                 ))}
                             </Box>
-
-                            {/* Match Title */}
                             <Typography variant='h6' fontWeight="bold" mb={0.5}>TEENPATTI T20</Typography>
                             <Typography variant='body2' color="text.secondary" mb={2}>#161392395</Typography>
-
-                            {/* Match Odds Section */}
                             <Typography variant="subtitle1" mb={1}>Match Odds</Typography>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: 1, mb: 2 }}>
                                 {["Player A", "Player B"].map((player, index) => (
@@ -111,8 +104,6 @@ const AuraGame = () => {
                                     </Box>
                                 ))}
                             </Box>
-
-                            {/* Pair Plus Section */}
                             <Typography variant="subtitle1" mb={1}>Pair Plus</Typography>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
                                 {["Player A+", "Player B+"].map((player, index) => (
@@ -137,7 +128,6 @@ const AuraGame = () => {
                             </Box>
                         </Box>
                         <Box sx={{ width: { lg: "30%", md: "30%", sm: "100%", xs: "100%", pb: 2 }, bgcolor: "#F5F5F5", height: "100%", p: 2, overflowY: 'auto' }}>
-                            {/* Credit Dropdown */}
                             <Box
                                 sx={{
                                     bgcolor: '#214C46',
@@ -155,8 +145,6 @@ const AuraGame = () => {
                                     <option>▼</option>
                                 </select>
                             </Box>
-
-                            {/* Betting Profit and Loss Button */}
                             <Button
                                 variant="contained"
                                 fullWidth
@@ -172,8 +160,6 @@ const AuraGame = () => {
                             >
                                 Betting Profit and Loss
                             </Button>
-
-                            {/* Betslip Tabs */}
                             <Box sx={{ mb: 2 }}>
                                 <Box sx={{ display: 'flex', borderBottom: 1, borderColor: 'divider' }}>
                                     <Button sx={{ flex: 1, borderBottom: '2px solid #ccc', borderRadius: 0 }}>Betslip</Button>
@@ -199,8 +185,6 @@ const AuraGame = () => {
                                     </Typography>
                                 </Box>
                             </Box>
-
-                            {/* Pair Plus Rules */}
                             <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
                                 Pair Plus Rules
                             </Typography>
@@ -227,8 +211,6 @@ const AuraGame = () => {
                                     ))}
                                 </tbody>
                             </Box>
-
-                            {/* Game Rules Button */}
                             <Button
                                 variant="contained"
                                 fullWidth

@@ -24,7 +24,6 @@ import { liveSportsData, sportData, userProfileData } from "../../data/dashboard
 import { Link as RouterLink } from 'react-router-dom';
 import { categoriesData } from "../../data/drawerData";
 
-
 const popupItems = [
     { label: "Download App", icon: <DownloadIcon /> },
     { label: "Promotions", icon: <CardGiftcardIcon /> },

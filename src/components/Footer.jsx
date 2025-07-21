@@ -54,7 +54,7 @@ const Footer = () => {
                 </Typography>
 
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mt: 2, alignItems: "center", justifyContent: "center" }}>
-                    {images.map((imgSrc, idx) => (
+                    {images?.map((imgSrc, idx) => (
                         <CardMedia
                             key={idx}
                             component="img"
@@ -82,7 +82,7 @@ const Footer = () => {
             >
                 <Box>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Quick Link</Typography>
-                    {footerLinks.map((item, i) => (
+                    {footerLinks?.map((item, i) => (
                         <Box key={i}>
                             <CommonNavLink to={'common-page'} sx={{ color: '#535558', display: 'block' }}>
                                 <Typography variant="caption">{item}</Typography>
@@ -109,8 +109,8 @@ const Footer = () => {
                         Accepted Modes Of Payments
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 1, mt: 1, flexWrap: 'wrap', cursor: "pointer" }}>
-                        {paymentIcons.map((Icons, i) => (
-                            <Icons />
+                        {paymentIcons?.map((Icons, i) => (
+                            <Icons key={i} />
                         ))}
                     </Box>
                 </Box>
@@ -119,8 +119,8 @@ const Footer = () => {
                     <Typography sx={{ fontSize: 12, color: '#535558', mt: 1 }}>+16616752327</Typography>
                     <Typography sx={{ fontSize: 12, color: '#535558' }}>support@gamekhelo.com</Typography>
                     <Box sx={{ display: 'flex', gap: 2, mt: 2, flexWrap: 'wrap', cursor: "pointer" }}>
-                        {socialIcons.map((Icons, i) => (
-                            <Icons />
+                        {socialIcons?.map((Icons, i) => (
+                            <Icons key={i} />
                         ))}
                     </Box>
                 </Box>

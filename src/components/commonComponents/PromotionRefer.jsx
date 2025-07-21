@@ -19,9 +19,6 @@ const PromotionRefer = () => {
                 <>
                     <Box sx={{ bgcolor: "white", textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
                         <Typography variant="h5">PROMOTIONS</Typography>
-                        {/* <CircularAnimatedImageLayout images={images} radius={50}   // 🔽 Shrinks the overall circle
-                    size={40}     // 🔽 Shrinks each image
-                    duration={8} /> */}
                     </Box>
                     <Box sx={{ bgcolor: "white", textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
                         <Typography variant="h5">We regret to inform you that no promotions are currently available.</Typography>

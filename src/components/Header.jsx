@@ -41,15 +41,6 @@ const Header = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [open, setOpen] = useState(false);
-    const handleSave = () => {
-        // Add your password validation or API call here
-        if (newPassword !== confirmPassword) {
-            alert('New passwords do not match.');
-            return;
-        }
-        onSave({ oldPassword, newPassword });
-        onClose();
-    };
     const casionData = categoriesData?.categories?.items?.map(item => ({
         info: item?.info,
         title: item?.title,
@@ -290,7 +281,7 @@ const Header = () => {
                                                 <Typography variant="subtitle1">{item} (&#8377;) : </Typography> <Typography>0.00</Typography>
                                             </MenuItem>
                                         ))}
-                                        {userProfileData.map((item, i) => (
+                                        {userProfileData?.map((item, i) => (
                                             <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}>
                                                 <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
                                                 <Typography>{item.label}</Typography>

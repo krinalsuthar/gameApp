@@ -43,8 +43,6 @@ const LogInPage = () => {
         if (!formData.password.trim()) temp.password = 'Password is required';
         return temp;
     };
-    const username = sessionStorage.getItem('username')
-
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -71,16 +69,13 @@ const LogInPage = () => {
             } else {
                 sessionStorage.setItem('token', token);
             }
-            // dispatch(login());
             dispatch(login(formData))
-            // alert('Login successful!');
             setOpen(true);
             setToastText({ text: "Login successful! ✔️🔓", color: "success" })
             setTimeout(() => {
                 navigate('/');
             }, 2000);
         } else {
-            // alert('Invalid credentials');
             setOpen(true);
             setToastText({ text: "Invalid credentials! ❌🔐", color: "error" })
 
@@ -93,7 +88,6 @@ const LogInPage = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                // minHeight: '100vh',
                 p: 2,
                 bgcolor: "#f5f5f5"
             }}

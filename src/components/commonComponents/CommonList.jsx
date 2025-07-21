@@ -96,7 +96,6 @@ const CommonList = ({ data: propsData = [] }) => {
                                     color: "#000"
                                 }}
                                 component={RouterLink}
-                                // onClick={() => console.log(match?.teams, "match")}
                                 to={`/common-match/${match?.tag}`}
                                 state={{ data: match?.info, info: match?.teams }}
                             >

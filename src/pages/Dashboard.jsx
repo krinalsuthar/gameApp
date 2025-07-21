@@ -1,7 +1,6 @@
 import Header from '../components/Header';
 import DrawerMenu from '../components/DrawerMenu';
 import Footer from '../components/Footer';
-import React from 'react';
 import { Box, Button, CssBaseline, useMediaQuery, useTheme } from '@mui/material';
 import { useSelector } from 'react-redux';
 import AppRoutes from '../routers/Router';
@@ -11,17 +10,15 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 
 const App = () => {
     const theme = useTheme();
-    const isXs = useMediaQuery(theme.breakpoints.down('sm')); // <600
-    const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md')); // 600-900
-    const isMdUp = useMediaQuery(theme.breakpoints.up('md')); // >=900
+    const isXs = useMediaQuery(theme.breakpoints.down('sm'));
+    const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+    const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
     const open = useSelector((state) => state.drawer.open);
     const drawerWidth = isXs ? 0 : isSm ? 250 : 350;
     const headerHeight = '35px';
     const navigate = useNavigate()
     const location = useLocation();
-    // Define all paths where header/footer should be hidden
     const hideLayoutPaths = ['/aura-game', '/aviator'];
-    // Check if current path is in the list
     const shouldHideLayout = hideLayoutPaths.some((path) =>
         location.pathname.startsWith(path)
     );

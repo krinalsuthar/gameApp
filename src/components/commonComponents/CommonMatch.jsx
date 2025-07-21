@@ -135,10 +135,8 @@ const CommonMatch = () => {
     }
     const matchName = typeof info === 'string' ? info : '';
     const teams = matchName.includes('🆚') ? matchName.split('🆚') : [];
-
     const teamA = teams[0]?.trim() ?? '';
     const teamB = teams[1]?.trim() ?? '';
-
     const country1 = teamA.toUpperCase();
     const country2 = teamB.toUpperCase();
     const shortA = teamA.slice(0, 2).toUpperCase();
@@ -198,7 +196,7 @@ const CommonMatch = () => {
             <Dialog
                 open={open}
                 onClose={handleDecline}
-                scroll="body" // ensures it's not fixed to the top
+                scroll="body"
                 PaperProps={{
                     sx: {
                         borderRadius: 2,
@@ -589,7 +587,6 @@ const CommonMatch = () => {
 
                     </Paper>
                     <Paper sx={{ borderRadius: 2, overflow: "hidden", bgcolor: "#b2ebf2" }}>
-                        {/* Tabs */}
                         <Box display="flex">
                             <Box
                                 onClick={() => setSelectedTab("betSlip")}
