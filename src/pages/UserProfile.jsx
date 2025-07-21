@@ -16,9 +16,10 @@ import {
     Edit
 } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, useLocation } from 'react-router-dom';
-import CommonTable from '../components/commonComponents/CommonTable';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { userProfileData } from '../data/dashboardData';
+import { logout } from '../features/drawer/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Dashboard = () => {
     const user = sessionStorage.getItem('username')
@@ -195,6 +196,8 @@ const Dashboard = () => {
 export default Dashboard;
 
 export function HeaderData() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [selected, setSelected] = useState("Profile");
     return (
         <Box sx={{ overflowX: "auto", width: "100%", p: 1, scrollbarWidth: "none", mb: 2, bgcolor: "#fff" }}>
@@ -216,7 +219,7 @@ export function HeaderData() {
                             whiteSpace: "nowrap",
                             textDecoration: "none",
                         }}
-                        component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}
+                        component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={item.label === "LogOut" ? `${item?.to}` : `${item?.to}/${item?.label.trim().toLowerCase()}`}
                     >
                         <Box
                             sx={{
@@ -233,10 +236,18 @@ export function HeaderData() {
                         >
                             <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit" }} />
                         </Box>
-                        {item.label && (
+                        {!item.label === "LogOut" ? (
                             <Typography fontWeight={600} fontSize={14}>
                                 {item.label}
                             </Typography>
+                        ) : (
+                            <>
+                                <Typography fontWeight={600} fontSize={14} onClick={() => {
+                                    dispatch(logout())
+                                }}>
+                                    {item.label}
+                                </Typography>
+                            </>
                         )}
                     </Paper>
                 ))}

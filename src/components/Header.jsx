@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer } from '../features/drawer/drawerSlice';
 import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon } from '../assets/SVGs/allSVGs';
 import { useNavigate } from 'react-router-dom';
-import { liveSportsData, sportData, sportsData, userProfileData } from '../data/dashboardData';
+import { liveSportsData, sportsData, userProfileData } from '../data/dashboardData';
 import CloseIcon from '@mui/icons-material/Close';
 import CommonNavLink from './commonComponents/CommonNavLink';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
@@ -15,7 +15,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link } from 'react-router-dom';
 import { LockReset } from '@mui/icons-material';
 import { logout } from '../features/drawer/authSlice';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { categoriesData } from '../data/drawerData';
 
 const typoStyle = {
@@ -56,10 +55,6 @@ const Header = () => {
         { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: isLoggedIn, to: "sports-book" },
         { title: 'CASINO', icon: <CasinoIcon />, data: casionData, isLoggedIn: isLoggedIn, to: "common-card" },
     ];
-    const handleLogout = () => {
-        dispatch(logout());
-        navigate("/")
-    };
     return (
         <>
             <Dialog open={open} >
@@ -282,13 +277,18 @@ const Header = () => {
                                             </MenuItem>
                                         ))}
                                         {userProfileData?.map((item, i) => (
-                                            <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}>
+                                            <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={item?.label === "LogOut" ? `${item?.to}` : `${item?.to}/${item?.label.trim().toLowerCase()}`}>
                                                 <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
-                                                <Typography>{item.label}</Typography>
+                                                {!item.label === "LogOut" ? (
+                                                    <Typography>{item.label}</Typography>
+                                                ) : (
+                                                    <Typography onClick={() => {
+                                                        dispatch(logout())
+                                                    }}>{item.label}</Typography>
+                                                )}
                                             </MenuItem>
                                         ))}
                                         <Button sx={{ ml: 1, color: "black" }} onClick={() => setOpen(true)}><LockReset sx={{ fontSize: 20, color: "inherit", mr: 1 }} /> Change Password</Button>
-                                        <Button sx={{ ml: 1, color: "black" }} onClick={handleLogout}><LogoutIcon sx={{ fontSize: 20, color: "inherit", mr: 1 }} /> logout</Button>
                                     </Select>
                                 </FormControl>
                             </>

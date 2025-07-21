@@ -32,7 +32,7 @@ const popupItems = [
     { label: "Talk to us?", icon: <ChatIcon /> },
     { label: "Deposit", icon: <AccountBalanceWalletIcon /> },
 ];
-const data = ["asd", "dsa", "ewr", "fdf"]
+const data = ["in-paly", "sports", "casino", "profile"]
 const casionData = categoriesData?.categories?.items?.map(item => ({
     info: item?.info,
     title: item?.title,
@@ -42,7 +42,7 @@ const BottomNavWithRadialMenu = () => {
     const [open, setOpen] = useState(false);
     const handleToggle = () => setOpen((prev) => !prev);
     const handleNavClick = () => setOpen(false);
-    const navigate = useNavigate()
+    const user = sessionStorage.getItem('username')
     const profileData = userProfileData.find(item => item.value === 'profile');
     return (
         <>
@@ -164,9 +164,8 @@ const BottomNavWithRadialMenu = () => {
                     <NavItem icon={<CasinoIcon />} label="Casino" onClick={handleNavClick} />
                 </Box>
                 <Box sx={{ textDecoration: "none" }} component={RouterLink}
-                    to={`/user-profile`} state={{ data: profileData?.data }} >
-
-                    <NavItem icon={<PersonOutlineIcon />} label="Demo6" onClick={() => navigate("/user-profile")} />
+                    to={`/user-profile/${data[3]}`} state={{ data: profileData?.data }} >
+                    <NavItem icon={<PersonOutlineIcon />} label={user || "user"} />
                 </Box>
             </Box >
         </>

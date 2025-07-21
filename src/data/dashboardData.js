@@ -24,6 +24,7 @@ import {
     Redeem,
     SportsScore,
     Settings,
+    Logout
 } from '@mui/icons-material';
 import * as allImages from "../assets"
 import { faScroll, faCoins, faMoneyBill1, faGift, faGifts, faBaseball, faDice, faEquals, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
@@ -1241,12 +1242,12 @@ export const userProfileData = [
     //     to: '/login',
     //     icon: LockReset
     // },
-    // {
-    //     label: 'LogOut',
-    //     value: 'logout',
-    //     to: '/login',
-    //     icon: LogoutIcon
-    // }
+    {
+        label: 'LogOut',
+        value: 'logout',
+        to: '/',
+        icon: Logout
+    }
 ];
 export const liveSportsData = sportsData
     .map((sport) => {
