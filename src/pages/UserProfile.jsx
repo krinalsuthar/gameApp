@@ -73,7 +73,6 @@ const Dashboard = () => {
                             </Typography>
                         </Box>
 
-                        {/* Editable Fields */}
                         <Box mt={2} display="flex" flexDirection="column" gap={1}>
                             {[
                                 {
@@ -89,7 +88,7 @@ const Dashboard = () => {
                                     label: "Enter your Mobile No",
                                     trailing: <VerifiedUser sx={{ color: "green", fontSize: 16 }} />,
                                 },
-                            ].map((item, idx) => (
+                            ]?.map((item, idx) => (
                                 <Box
                                     key={idx}
                                     sx={{
@@ -105,12 +104,12 @@ const Dashboard = () => {
                                     <Box display="flex" alignItems="center" gap={1}>
                                         {item.icon}
                                         <Typography fontSize={14} fontWeight={500}>
-                                            {item.label}
+                                            {item?.label}
                                         </Typography>
                                     </Box>
                                     <Box display="flex" alignItems="center" gap={0.5}>
                                         <Edit fontSize="small" />
-                                        {item.trailing}
+                                        {item?.trailing}
                                     </Box>
                                 </Box>
                             ))}
@@ -217,7 +216,7 @@ export function HeaderData() {
                             whiteSpace: "nowrap",
                             textDecoration: "none",
                         }}
-                        component={Link} state={{ data: item?.label }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}
+                        component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}
                     >
                         <Box
                             sx={{

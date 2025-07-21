@@ -51,10 +51,10 @@ const Header = () => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const headerData = [
-        { title: 'SPORTS', icon: <CricketIcon />, data: sportsData, isLoggedIn: true },
-        { title: 'IN PLAY', icon: <InPlayIcon />, data: liveSportsData, isLoggedIn: true },
-        { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: isLoggedIn },
-        { title: 'CASINO', icon: <CasinoIcon />, data: casionData, isLoggedIn: isLoggedIn },
+        { title: 'SPORTS', icon: <CricketIcon />, data: sportsData, isLoggedIn: true, to: "common-list" },
+        { title: 'IN PLAY', icon: <InPlayIcon />, data: liveSportsData, isLoggedIn: true, to: "common-list" },
+        { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: isLoggedIn, to: "sports-book" },
+        { title: 'CASINO', icon: <CasinoIcon />, data: casionData, isLoggedIn: isLoggedIn, to: "common-card" },
     ];
     const handleLogout = () => {
         dispatch(logout());
@@ -161,7 +161,7 @@ const Header = () => {
                         {headerData?.map((item, index) => (
                             <Box key={index} sx={commonBoxStyle}>
                                 <CommonNavLink
-                                    to={item?.title === "CASINO" ? `common-card/${item?.title.toLowerCase()}` : `common-list/${item?.title.toLowerCase()}`}
+                                    to={`${item?.to}/${item?.title.toLowerCase()}`}
                                     item={{ data: item.data, isLoggin: item.isLoggedIn }}
                                 >
                                     <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>

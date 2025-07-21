@@ -382,3 +382,4 @@ export { default as muflis_teenpattiVideo } from "./gameVideos/muflis-teenpatti.
 export { default as teenpatti_one_dayVideo } from "./gameVideos/teenpatti-one-day.mp4"
 export { default as teenpatti_testVideo } from "./gameVideos/teenpatti-test.mp4"
 export { default as teenpattiT20Video } from "./gameVideos/teenpattit20.mp4"
+export { default as jextVideo } from "./gameVideos/jetx.mp4"

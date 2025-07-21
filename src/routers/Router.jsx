@@ -11,6 +11,7 @@ import AuraGame from '../components/gameUI/AuraGame';
 import UserProfile from '../pages/UserProfile';
 import CommonTable from '../components/commonComponents/CommonTable';
 import Extra from '../components/DesktopComponent ';
+import SportsBook from '../pages/SportsBook';
 
 const AppRoutes = () => (
     <Routes>
@@ -21,6 +22,7 @@ const AppRoutes = () => (
         <Route path="/show-more" element={<CommonCard />} />
         <Route path="/aura-game" element={<AuraGame />} />
         <Route path="/login-default/:data" element={<LoginDeposit />} />
+        <Route path="/sports-book/:data" element={<SportsBook />} />
         <Route path="/aviator" element={<Extra />} />
         <Route path="/user-profile/:data" element={<UserProfile />} />
         <Route path="/common-list/:data" element={<CommonList />} />
@@ -28,7 +30,7 @@ const AppRoutes = () => (
         <Route path="/category/:segment" element={<CommonCard />} />
         <Route path="/common-page/:segment" element={<CommonCard />} />
         <Route path="/common-match/:segment" element={<CommonMatch />} />
-        <Route path="/promotion-refer" element={<PromotionRefer />} />
+        <Route path="/promotion-refer/:data" element={<PromotionRefer />} />
     </Routes>
 );
 

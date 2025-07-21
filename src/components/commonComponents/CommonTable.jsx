@@ -74,8 +74,7 @@ function EnhancedTableHead(props) {
             </TableRow>
 
             <TableRow>
-                {data
-                    .filter((cell) => cell.children)
+                {data?.filter((cell) => cell.children)
                     .flatMap((cell) => cell.children)
                     .map((child) => (
                         <TableCell
@@ -154,7 +153,9 @@ EnhancedTableToolbar.propTypes = {
 const CommonTable = () => {
     const location = useLocation();
     const { data } = location?.state || {};
+    console.log("🚀 ~ CommonTable ~ data:", data)
     const tableRows = data[1]?.tableRows || [];
+    console.log("🚀 ~ CommonTable ~ tableRows:", tableRows)
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
@@ -169,7 +170,7 @@ const CommonTable = () => {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelected = tableRows.map((n) => n.id);
+            const newSelected = tableRows?.map((n) => n.id);
             setSelected(newSelected);
             return;
         }

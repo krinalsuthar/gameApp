@@ -66,7 +66,7 @@ export const drawerData = {
                         },
                         {
                             "key": "fancy",
-                            "title": "FANCY BET (SRI LANKA V BANGLADESH)",
+                            "title": "FANCY BET (SRI LANKA vs BANGLADESH)",
                             "type": "fancy",
                             "stakeLimit": "50 - 50000",
                             "maxProfit": 200000,
@@ -105,7 +105,7 @@ export const drawerData = {
                         }
                     ],
                     matches: [
-                        { name: 'ENGLAND V INDIA', icon: HollowCircleIcon, count: 0 },
+                        { name: 'ENGLAND vs INDIA', icon: HollowCircleIcon, count: 0 },
                         { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
                     ],
                 },
@@ -161,7 +161,7 @@ export const drawerData = {
                         },
                         {
                             "key": "fancy",
-                            "title": "FANCY BET (SRI LANKA V BANGLADESH)",
+                            "title": "FANCY BET (SRI LANKA vs BANGLADESH)",
                             "type": "fancy",
                             "stakeLimit": "50 - 50000",
                             "maxProfit": 200000,
@@ -200,18 +200,18 @@ export const drawerData = {
                         }
                     ],
                     matches: [
-                        { name: 'SRILANKA V BANGLADESH ', icon: HollowCircleIcon, count: 0 },
+                        { name: 'SRILANKA vs BANGLADESH ', icon: HollowCircleIcon, count: 0 },
                         { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
-                        { name: 'ZIMBABWE V SOUTH AFRICA ', icon: HollowCircleIcon, count: 0 },
+                        { name: 'ZIMBABWE vs SOUTH AFRICA ', icon: HollowCircleIcon, count: 0 },
                     ],
                 },
                 {
-                    title: 'ENGLAND V INDIA',
+                    title: 'ENGLAND vs INDIA',
                     icon: BlackIcon,
                     segment: 'ENGLAND-INDIA ',
                     count: 2,
                     matches: [
-                        { name: 'ENGLAND V INDIA', icon: HollowCircleIcon, count: 0 },
+                        { name: 'ENGLAND vs INDIA', icon: HollowCircleIcon, count: 0 },
                         { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
                         { name: 'BOOKMARKES', icon: HollowCircleIcon, count: 0 },
                         { name: 'LOKESH RAHUL BOUNDARIES', icon: HollowCircleIcon, count: 0 },
@@ -228,7 +228,7 @@ export const drawerData = {
                     segment: 'GLOBAL-SUPER-LEAGUE-T20  ',
                     count: 2,
                     matches: [
-                        { name: 'RANGPUR RIDERS V HOBART HURRICANES ', icon: HollowCircleIcon, count: 0 },
+                        { name: 'RANGPUR RIDERS vs HOBART HURRICANES ', icon: HollowCircleIcon, count: 0 },
                         { name: 'MATCH ODDS', icon: HollowCircleIcon, count: 0 },
                     ],
                 },

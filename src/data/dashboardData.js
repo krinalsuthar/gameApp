@@ -28,10 +28,10 @@ import {
 import * as allImages from "../assets"
 import { faScroll, faCoins, faMoneyBill1, faGift, faGifts, faBaseball, faDice, faEquals, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 export const TrendingGamesData = {
-    data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)", to: '/aviator' },
+    data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)", video: allImages.aviatorsVideo, to: '/aviator' },
     { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)", to: "/aura-game" },
-    { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)", to: '/aviator' },
-    { title: "Dragon Tiger", text: "Evolution Gaming", image: image4, color: "rgb(31, 178, 252)", to: "/aura-game" },
+    { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)", video: allImages.jextVideo, to: '/aviator' },
+    { title: "Teenpatti mulis", text: "Aura", image: image4, color: "rgb(31, 178, 252)", video: allImages.muflis_teenpattiVideo, to: "/aura-game" },
     { title: "Andar Bahar.", text: "Aura", image: image5, color: " rgb(238, 97, 89)", to: "/aura-game" },
     { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)", video: allImages.teenpattiT20Video, to: "/aura-game" },
     {
@@ -46,7 +46,7 @@ export const sportsData = [
                 tag: 'LIVE',
                 series: 'Test Matches',
                 time: '',
-                teams: 'Zimbabwe 🆚 South Africa',
+                teams: 'Zimbabwe vs South Africa',
                 odds: ['10', '10.5', '18.5', '19', '1.17', '1.18'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -100,7 +100,7 @@ export const sportsData = [
                 },
                 {
                     key: "fancy",
-                    title: "FANCY BET (ZIMBABWE V SOUTH AFRICA)",
+                    title: "FANCY BET (ZIMBABWE vs SOUTH AFRICA)",
                     type: "fancy",
                     stakeLimit: "100 - 100000",
                     maxProfit: 300000,
@@ -133,7 +133,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: 'Test Matches',
                 time: '03:30 PM',
-                teams: 'England 🆚 India',
+                teams: 'England vs India',
                 odds: ['100', '110', '5.9', '6', '1.21', '1.22'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -186,7 +186,7 @@ export const sportsData = [
                 },
                 {
                     key: "fancy",
-                    title: "FANCY BET (ENGLAND V INDIA)",
+                    title: "FANCY BET (ENGLAND vs INDIA)",
                     type: "fancy",
                     stakeLimit: "100 - 100000",
                     maxProfit: 500000,
@@ -209,7 +209,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: "Women's T20 Blast",
                 time: '04:30 PM',
-                teams: 'Surrey W 🆚 Essex W',
+                teams: 'Surrey W vs Essex W',
                 odds: ['1.46', '1.62', '-', '-', '2.6', '3.3'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -237,7 +237,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: "Women's T20 Blast Div 2",
                 time: '07:00 PM',
-                teams: 'Leicestershire Foxes W 🆚 Derbyshire Falcons W',
+                teams: 'Leicestershire Foxes W vs Derbyshire Falcons W',
                 odds: ['2.24', '2.86', '-', '-', '1.54', '1.8'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -265,7 +265,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: 'Tamil Nadu Premier League',
                 time: '07:15 PM',
-                teams: 'Tiruppur Tamizhans 🆚 Dindigul Dragons',
+                teams: 'Tiruppur Tamizhans vs Dindigul Dragons',
                 odds: ['1.8', '1.81', '-', '-', '2.22', '2.24'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -294,7 +294,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: 'T20 Blast',
                 time: '07:30 PM',
-                teams: 'Northamptonshire 🆚 Worcestershire',
+                teams: 'Northamptonshire vs Worcestershire',
                 odds: ['2.42', '2.46', '-', '-', '1.69', '1.7'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -307,7 +307,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: 'Test Matches',
                 time: '07:30 PM',
-                teams: 'West Indies 🆚 Australia',
+                teams: 'West Indies vs Australia',
                 odds: ['1.15', '1.16', '75', '80', '7.8', '8'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -320,7 +320,7 @@ export const sportsData = [
                 tag: 'Today',
                 series: 'T20 Blast',
                 time: '09:00 PM',
-                teams: 'Surrey 🆚 Essex',
+                teams: 'Surrey vs Essex',
                 odds: ['3.3', '3.6', '-', '-', '1.39', '1.43'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -333,7 +333,7 @@ export const sportsData = [
                 tag: 'Tomorrow',
                 series: 'Major League Cricket',
                 time: '12:30 AM',
-                teams: 'Washington Freedom 🆚 Mi New York',
+                teams: 'Washington Freedom vs Mi New York',
                 odds: ['1.6', '2.22', '-', '-', '1.82', '2.64'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -362,7 +362,7 @@ export const sportsData = [
                 tag: 'Tomorrow',
                 series: 'Major League Cricket',
                 time: '04:30 AM',
-                teams: 'Los Angeles Knight Riders 🆚 San Francisco Unicorns',
+                teams: 'Los Angeles Knight Riders vs San Francisco Unicorns',
                 odds: ['1.46', '7', '-', '-', '1.4', '2.68'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -375,7 +375,7 @@ export const sportsData = [
                 tag: 'Tuesday',
                 series: 'Irish Inter Provincial T20 Trophy',
                 time: '03:15 PM',
-                teams: 'Leinster Lightning 🆚 Munster Reds',
+                teams: 'Leinster Lightning vs Munster Reds',
                 odds: ['3.65', '3.85', '-', '-', '1.35', '1.38'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -392,31 +392,31 @@ export const sportsData = [
             {
                 tag: 'LIVE',
                 series: "Men's Wimbledon 2025",
-                teams: 'Dimitrov 🆚 Moutet',
+                teams: 'Dimitrov vs Moutet',
                 odds: ['1.36', '1.38', '-', '-', '3.7', '3.75'],
             },
             {
                 tag: 'LIVE',
                 series: "Men's Wimbledon 2025",
-                teams: 'Marozsan 🆚 Munar',
+                teams: 'Marozsan vs Munar',
                 odds: ['22', '26', '-', '-', '1.04', '1.05'],
             },
             {
                 tag: 'LIVE',
                 series: "Men's Wimbledon 2025",
-                teams: 'Evans 🆚 Djokovic',
+                teams: 'Evans vs Djokovic',
                 odds: ['-', '1.01', '-', '-', '1000', '-'],
             },
             {
                 tag: 'LIVE',
                 series: "Women's Wimbledon 2024",
-                teams: 'H Baptiste 🆚 Vict Mboko',
+                teams: 'H Baptiste vs Vict Mboko',
                 odds: ['1.04', '1.05', '-', '-', '23', '25'],
             },
             {
                 tag: 'LIVE',
                 series: 'Troyes Challenger 2025',
-                teams: 'Trungelliti 🆚 Martineau',
+                teams: 'Trungelliti vs Martineau',
                 odds: ['1.55', '1.63', '-', '-', '2.58', '2.82'],
             },
         ],
@@ -430,7 +430,7 @@ export const sportData = [
                 tag: 'LIVE',
                 series: 'Test Matches',
                 time: '',
-                teams: 'Zimbabwe 🆚 South Africa',
+                teams: 'Zimbabwe vs South Africa',
                 odds: ['10', '10.5', '18.5', '19', '1.17', '1.18'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -442,7 +442,7 @@ export const sportData = [
                 tag: 'Today',
                 series: 'Test Matches',
                 time: '03:30 PM',
-                teams: 'England 🆚 India',
+                teams: 'England vs India',
                 odds: ['100', '110', '5.9', '6', '1.21', '1.22'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -454,7 +454,7 @@ export const sportData = [
                 tag: 'Today',
                 series: "Women's T20 Blast",
                 time: '04:30 PM',
-                teams: 'Surrey W 🆚 Essex W',
+                teams: 'Surrey W vs Essex W',
                 odds: ['1.46', '1.62', '-', '-', '2.6', '3.3'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -466,7 +466,7 @@ export const sportData = [
                 tag: 'Today',
                 series: "Women's T20 Blast Div 2",
                 time: '07:00 PM',
-                teams: 'Leicestershire Foxes W 🆚 Derbyshire Falcons W',
+                teams: 'Leicestershire Foxes W vs Derbyshire Falcons W',
                 odds: ['2.24', '2.86', '-', '-', '1.54', '1.8'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -478,7 +478,7 @@ export const sportData = [
                 tag: 'Today',
                 series: 'Tamil Nadu Premier League',
                 time: '07:15 PM',
-                teams: 'Tiruppur Tamizhans 🆚 Dindigul Dragons',
+                teams: 'Tiruppur Tamizhans vs Dindigul Dragons',
                 odds: ['1.8', '1.81', '-', '-', '2.22', '2.24'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -491,7 +491,7 @@ export const sportData = [
                 tag: 'Today',
                 series: 'T20 Blast',
                 time: '07:30 PM',
-                teams: 'Northamptonshire 🆚 Worcestershire',
+                teams: 'Northamptonshire vs Worcestershire',
                 odds: ['2.42', '2.46', '-', '-', '1.69', '1.7'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -504,7 +504,7 @@ export const sportData = [
                 tag: 'Today',
                 series: 'Test Matches',
                 time: '07:30 PM',
-                teams: 'West Indies 🆚 Australia',
+                teams: 'West Indies vs Australia',
                 odds: ['1.15', '1.16', '75', '80', '7.8', '8'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -517,7 +517,7 @@ export const sportData = [
                 tag: 'Today',
                 series: 'T20 Blast',
                 time: '09:00 PM',
-                teams: 'Surrey 🆚 Essex',
+                teams: 'Surrey vs Essex',
                 odds: ['3.3', '3.6', '-', '-', '1.39', '1.43'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -530,7 +530,7 @@ export const sportData = [
                 tag: 'Tomorrow',
                 series: 'Major League Cricket',
                 time: '12:30 AM',
-                teams: 'Washington Freedom 🆚 Mi New York',
+                teams: 'Washington Freedom vs Mi New York',
                 odds: ['1.6', '2.22', '-', '-', '1.82', '2.64'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -543,7 +543,7 @@ export const sportData = [
                 tag: 'Tomorrow',
                 series: 'Major League Cricket',
                 time: '04:30 AM',
-                teams: 'Los Angeles Knight Riders 🆚 San Francisco Unicorns',
+                teams: 'Los Angeles Knight Riders vs San Francisco Unicorns',
                 odds: ['1.46', '7', '-', '-', '1.4', '2.68'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -556,7 +556,7 @@ export const sportData = [
                 tag: 'Tuesday',
                 series: 'Irish Inter Provincial T20 Trophy',
                 time: '03:15 PM',
-                teams: 'Leinster Lightning 🆚 Munster Reds',
+                teams: 'Leinster Lightning vs Munster Reds',
                 odds: ['3.65', '3.85', '-', '-', '1.35', '1.38'],
                 categories: [
                     { label: 'M', value: 1 },
@@ -824,7 +824,7 @@ export const userProfileData = [
         icon: Wallet,
     },
     {
-        label: 'P/L Report',
+        label: 'PL Report',
         value: 'profit/loss Report',
         to: '/common-table',
         icon: TrendingUp,
@@ -1271,7 +1271,7 @@ export const TopGamesData = {
                         tag: 'LIVE',
                         series: 'Test Matches',
                         time: '',
-                        teams: 'Zimbabwe 🆚 South Africa',
+                        teams: 'Zimbabwe vs South Africa',
                         odds: ['10', '10.5', '18.5', '19', '1.17', '1.18'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1283,7 +1283,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: 'Test Matches',
                         time: '03:30 PM',
-                        teams: 'England 🆚 India',
+                        teams: 'England vs India',
                         odds: ['100', '110', '5.9', '6', '1.21', '1.22'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1295,7 +1295,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: "Women's T20 Blast",
                         time: '04:30 PM',
-                        teams: 'Surrey W 🆚 Essex W',
+                        teams: 'Surrey W vs Essex W',
                         odds: ['1.46', '1.62', '-', '-', '2.6', '3.3'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1307,7 +1307,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: "Women's T20 Blast Div 2",
                         time: '07:00 PM',
-                        teams: 'Leicestershire Foxes W 🆚 Derbyshire Falcons W',
+                        teams: 'Leicestershire Foxes W vs Derbyshire Falcons W',
                         odds: ['2.24', '2.86', '-', '-', '1.54', '1.8'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1319,7 +1319,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: 'Tamil Nadu Premier League',
                         time: '07:15 PM',
-                        teams: 'Tiruppur Tamizhans 🆚 Dindigul Dragons',
+                        teams: 'Tiruppur Tamizhans vs Dindigul Dragons',
                         odds: ['1.8', '1.81', '-', '-', '2.22', '2.24'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1332,7 +1332,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: 'T20 Blast',
                         time: '07:30 PM',
-                        teams: 'Northamptonshire 🆚 Worcestershire',
+                        teams: 'Northamptonshire vs Worcestershire',
                         odds: ['2.42', '2.46', '-', '-', '1.69', '1.7'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1345,7 +1345,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: 'Test Matches',
                         time: '07:30 PM',
-                        teams: 'West Indies 🆚 Australia',
+                        teams: 'West Indies vs Australia',
                         odds: ['1.15', '1.16', '75', '80', '7.8', '8'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1358,7 +1358,7 @@ export const TopGamesData = {
                         tag: 'Today',
                         series: 'T20 Blast',
                         time: '09:00 PM',
-                        teams: 'Surrey 🆚 Essex',
+                        teams: 'Surrey vs Essex',
                         odds: ['3.3', '3.6', '-', '-', '1.39', '1.43'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1371,7 +1371,7 @@ export const TopGamesData = {
                         tag: 'Tomorrow',
                         series: 'Major League Cricket',
                         time: '12:30 AM',
-                        teams: 'Washington Freedom 🆚 Mi New York',
+                        teams: 'Washington Freedom vs Mi New York',
                         odds: ['1.6', '2.22', '-', '-', '1.82', '2.64'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1384,7 +1384,7 @@ export const TopGamesData = {
                         tag: 'Tomorrow',
                         series: 'Major League Cricket',
                         time: '04:30 AM',
-                        teams: 'Los Angeles Knight Riders 🆚 San Francisco Unicorns',
+                        teams: 'Los Angeles Knight Riders vs San Francisco Unicorns',
                         odds: ['1.46', '7', '-', '-', '1.4', '2.68'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1397,7 +1397,7 @@ export const TopGamesData = {
                         tag: 'Tuesday',
                         series: 'Irish Inter Provincial T20 Trophy',
                         time: '03:15 PM',
-                        teams: 'Leinster Lightning 🆚 Munster Reds',
+                        teams: 'Leinster Lightning vs Munster Reds',
                         odds: ['3.65', '3.85', '-', '-', '1.35', '1.38'],
                         categories: [
                             { label: 'M', value: 1 },
@@ -1416,49 +1416,49 @@ export const TopGamesData = {
                     {
                         tag: 'LIVE',
                         series: 'UEFA Champions League 2025',
-                        teams: 'Real Madrid 🆚 Bayern Munich',
+                        teams: 'Real Madrid vs Bayern Munich',
                         odds: ['1.90', '2.00', '-', '-', '3.40', '3.50'],
                     },
                     {
                         tag: 'LIVE',
                         series: 'English Premier League 2025',
-                        teams: 'Manchester United 🆚 Chelsea',
+                        teams: 'Manchester United vs Chelsea',
                         odds: ['2.10', '2.20', '-', '-', '3.10', '3.30'],
                     },
                     {
                         tag: 'LIVE',
                         series: 'La Liga 2025',
-                        teams: 'Barcelona 🆚 Atletico Madrid',
+                        teams: 'Barcelona vs Atletico Madrid',
                         odds: ['1.75', '1.80', '-', '-', '4.00', '4.10'],
                     },
                     {
                         tag: 'LIVE',
                         series: 'Serie A 2025',
-                        teams: 'Juventus 🆚 AC Milan',
+                        teams: 'Juventus vs AC Milan',
                         odds: ['2.25', '2.30', '-', '-', '2.90', '3.00'],
                     },
                     {
                         tag: 'LIVE',
                         series: 'Bundesliga 2025',
-                        teams: 'Borussia Dortmund 🆚 RB Leipzig',
+                        teams: 'Borussia Dortmund vs RB Leipzig',
                         odds: ['2.00', '2.10', '-', '-', '3.20', '3.35'],
                     },
                     {
                         tag: 'LIVE',
                         series: 'Ligue 1 2025',
-                        teams: 'PSG 🆚 Marseille',
+                        teams: 'PSG vs Marseille',
                         odds: ['1.60', '1.65', '-', '-', '4.80', '5.00'],
                     },
                     {
                         tag: 'TOMMORROW',
                         series: 'MLS 2025',
-                        teams: 'LA Galaxy 🆚 Inter Miami',
+                        teams: 'LA Galaxy vs Inter Miami',
                         odds: ['2.40', '2.50', '-', '-', '2.60', '2.70'],
                     },
                     {
                         tag: 'TOMMORROW',
                         series: 'Eredivisie 2025',
-                        teams: 'Ajax 🆚 PSV Eindhoven',
+                        teams: 'Ajax vs PSV Eindhoven',
                         odds: ['2.00', '2.10', '-', '-', '3.10', '3.25'],
                     },
                 ],
@@ -1472,31 +1472,31 @@ export const TopGamesData = {
                     {
                         tag: 'LIVE',
                         series: "Men's Wimbledon 2025",
-                        teams: 'Dimitrov 🆚 Moutet',
+                        teams: 'Dimitrov vs Moutet',
                         odds: ['1.36', '1.38', '-', '-', '3.7', '3.75'],
                     },
                     {
                         tag: 'LIVE',
                         series: "Men's Wimbledon 2025",
-                        teams: 'Marozsan 🆚 Munar',
+                        teams: 'Marozsan vs Munar',
                         odds: ['22', '26', '-', '-', '1.04', '1.05'],
                     },
                     {
                         tag: 'LIVE',
                         series: "Men's Wimbledon 2025",
-                        teams: 'Evans 🆚 Djokovic',
+                        teams: 'Evans vs Djokovic',
                         odds: ['-', '1.01', '-', '-', '1000', '-'],
                     },
                     {
                         tag: 'LIVE',
                         series: "Women's Wimbledon 2024",
-                        teams: 'H Baptiste 🆚 Vict Mboko',
+                        teams: 'H Baptiste vs Vict Mboko',
                         odds: ['1.04', '1.05', '-', '-', '23', '25'],
                     },
                     {
                         tag: 'TOMORROW',
                         series: 'Troyes Challenger 2025',
-                        teams: 'Trungelliti 🆚 Martineau',
+                        teams: 'Trungelliti vs Martineau',
                         odds: ['1.55', '1.63', '-', '-', '2.58', '2.82'],
                     },
                 ],

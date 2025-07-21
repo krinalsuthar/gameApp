@@ -160,7 +160,7 @@ const DrawerMenu = () => {
                                             ? `common-list/${item.title}`
                                             : item.type === "cards"
                                                 ? `common-card/${item.title}`
-                                                : `promotion-refer
+                                                : `promotion-refer/${item?.title}
 `
                                     }
                                     state={{ data: item.sport }}

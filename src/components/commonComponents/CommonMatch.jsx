@@ -134,9 +134,11 @@ const CommonMatch = () => {
         setCollapse((prev) => !prev)
     }
     const matchName = typeof info === 'string' ? info : '';
-    const teams = matchName.includes('🆚') ? matchName.split('🆚') : [];
+    const teams = matchName.includes('vs') ? matchName.split('vs') : [];
     const teamA = teams[0]?.trim() ?? '';
     const teamB = teams[1]?.trim() ?? '';
+    console.log("🚀 ~ CommonMatch ~ teamB:", teamB)
+    console.log("🚀 ~ CommonMatch ~ teamA:", teamA)
     const country1 = teamA.toUpperCase();
     const country2 = teamB.toUpperCase();
     const shortA = teamA.slice(0, 2).toUpperCase();
@@ -393,14 +395,14 @@ const CommonMatch = () => {
                             </Tabs>
                             {data?.filter((section) => {
                                 if (section.type === "fancy") return true;
-                                if (tab === 0) return true; // All
-                                if (tab === 1) return section.type === "team"; // Match Odds
-                                if (tab === 2) return section.type === "bookmaker"; // Bookmakers
+                                if (tab === 0) return true;
+                                if (tab === 1) return section.type === "team";
+                                if (tab === 2) return section.type === "bookmaker";
                                 return false;
                             })
                                 .map((section, index) => (
-                                    <Box key={index} sx={{}}>
-                                        <CollapsibleSection sectionKey={section.title} title={`${section?.title || "data"} rule`}
+                                    <Box key={index} s>
+                                        <CollapsibleSection sectionKey={section.title} title={`${section?.title || "data"} `}
                                             sx={{ bgcolor: '#fff', borderRadius: 1, p: 2, mb: 2 }} >
                                             <>
                                                 {section.type === "fancy" ? (

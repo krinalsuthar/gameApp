@@ -3,8 +3,12 @@ import { useState } from "react";
 import video from "../assets/gameVideos/aviators.mp4"
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { useLocation } from "react-router-dom";
 
 const Extra = () => {
+    const location = useLocation();
+    const { data } = location?.state
+    console.log("🚀 ~ Extra ~ data:", data)
     const bets = [
         { player: 'p****6', bet: 6343.55, multiplier: '1.33x', win: 8436.92 },
         { player: '2****e', bet: 5000.00, multiplier: '', win: 0 },
@@ -79,16 +83,16 @@ const Extra = () => {
                 </Box>
 
                 <Box sx={{ width: "60%", height: "100vh", display: 'flex', flexDirection: 'column', gap: 1 }}>
-                    <Box sx={{ height: "70vh", display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: "30px" }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: "30px" }}>
                         <video
-                            src={video}
+                            src={data}
                             width="100%"
                             height="100%"
                             autoPlay
                             muted
                             loop
                             playsInline
-                            style={{ borderRadius: 10, objectFit: "cover" }}
+                            style={{ borderRadius: 10 }}
                         />
 
                     </Box>

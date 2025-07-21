@@ -74,13 +74,12 @@ const RegisterPage = () => {
             ...formData,
             referralUsed,
         };
-
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
         setOpen(true);
         setToastText({ text: "Registration successful! You can now log in. 📝✅", color: "success" })
         setTimeout(() => {
-            navigate('/');
+            navigate('/login');
         }, 2000);
     };
 
