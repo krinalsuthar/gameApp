@@ -6,7 +6,6 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import * as allImages from "../assets"
 
-
 export const drawerData = {
     sports: [
         {
@@ -1782,7 +1781,6 @@ export const categoriesData = {
                 {
                     image: allImages.live9,
                     title: '7 UP&DOWN',
-                    video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
                     video: allImages._7Up_DownVideo, to: "/aura-game",

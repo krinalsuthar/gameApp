@@ -41,6 +41,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../features/drawer/drawerSlice";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import { sportsData } from "../../data/dashboardData";
 
 const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle = "" }) => {
     const { favouriteItems } = useSelector((state) => state.drawer);
@@ -171,11 +172,10 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                         <FavoriteBorderIcon sx={{ color: '#ffc107' }} />
                                     )}
                                 </Box>
-                                {console.log(game?.video, "game?.video")}
                                 <IconButton
                                     component={RouterLink}
                                     to={`${game?.to}`}
-                                    state={{ data: game?.video }}
+                                    state={game?.state ? { data: game?.data } : { data: game?.video }}
                                     className="play-icon"
                                     sx={{
                                         position: 'absolute',

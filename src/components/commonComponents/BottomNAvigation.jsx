@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
     Box,
     Typography,
     IconButton,
-    Paper,
     Fade,
 } from "@mui/material";
 
@@ -20,6 +19,11 @@ import ChatIcon from "@mui/icons-material/Chat";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import { useNavigate } from "react-router-dom";
+import { liveSportsData, sportData, userProfileData } from "../../data/dashboardData";
+import { Link as RouterLink } from 'react-router-dom';
+import { categoriesData } from "../../data/drawerData";
+
 
 const popupItems = [
     { label: "Download App", icon: <DownloadIcon /> },
@@ -29,12 +33,18 @@ const popupItems = [
     { label: "Talk to us?", icon: <ChatIcon /> },
     { label: "Deposit", icon: <AccountBalanceWalletIcon /> },
 ];
-
+const data = ["asd", "dsa", "ewr", "fdf"]
+const casionData = categoriesData?.categories?.items?.map(item => ({
+    info: item?.info,
+    title: item?.title,
+    icon: item?.icon
+}));
 const BottomNavWithRadialMenu = () => {
     const [open, setOpen] = useState(false);
     const handleToggle = () => setOpen((prev) => !prev);
     const handleNavClick = () => setOpen(false);
-
+    const navigate = useNavigate()
+    const profileData = userProfileData.find(item => item.value === 'profile');
     return (
         <>
             <Fade in={open} >
@@ -118,12 +128,17 @@ const BottomNavWithRadialMenu = () => {
                     zIndex: 20,
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
-                    // transform: 'translateX(-16px)',
                     display: { lg: 'none', md: 'none', sm: 'flex', xs: 'flex' },
                 }}
             >
-                <NavItem icon={<PlayArrowIcon />} label="In-Play" onClick={handleNavClick} />
-                <NavItem icon={<SportsSoccerIcon />} label="Sports" onClick={handleNavClick} />
+                <Box sx={{ textDecoration: "none" }} component={RouterLink}
+                    to={`/common-list/${data[0]}`} state={{ data: liveSportsData }}>
+                    <NavItem icon={<PlayArrowIcon />} label="In-Play" />
+                </Box>
+                <Box sx={{ textDecoration: "none" }} component={RouterLink}
+                    to={`/common-list/${data[1]}`} state={{ data: sportData }}>
+                    <NavItem icon={<SportsSoccerIcon />} label="Sports" />
+                </Box>
                 <Box
                     sx={{
                         position: "absolute",
@@ -145,10 +160,16 @@ const BottomNavWithRadialMenu = () => {
                         {open ? <CloseIcon /> : <MenuIcon />}
                     </IconButton>
                 </Box>
+                <Box sx={{ textDecoration: "none" }} component={RouterLink}
+                    to={`/common-card/${data[2]}`} state={{ data: casionData }}>
+                    <NavItem icon={<CasinoIcon />} label="Casino" onClick={handleNavClick} />
+                </Box>
+                <Box sx={{ textDecoration: "none" }} component={RouterLink}
+                    to={`/user-profile`} state={{ data: profileData?.data }} >
 
-                <NavItem icon={<CasinoIcon />} label="Casino" onClick={handleNavClick} />
-                <NavItem icon={<PersonOutlineIcon />} label="Demo6" onClick={handleNavClick} />
-            </Box>
+                    <NavItem icon={<PersonOutlineIcon />} label="Demo6" onClick={() => navigate("/user-profile")} />
+                </Box>
+            </Box >
         </>
     );
 };

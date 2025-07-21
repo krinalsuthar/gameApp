@@ -14,6 +14,8 @@ import {
     Typography,
     Paper,
     CardMedia,
+    Alert,
+    Snackbar,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -35,7 +37,9 @@ const RegisterPage = () => {
     const [ageConfirmed, setAgeConfirmed] = useState(false);
     const [formErrors, setFormErrors] = useState({});
     const navigate = useNavigate();
-
+    const username = sessionStorage.getItem('username')
+    const [open, setOpen] = useState(false);
+    const [toastText, setToastText] = useState({ text: "", color: "" });
     const handleTogglePassword = () => setShowPassword(!showPassword);
 
     const validate = () => {
@@ -47,6 +51,13 @@ const RegisterPage = () => {
         return errors;
     };
 
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
     const handleRegister = () => {
         const errors = validate();
         setFormErrors(errors);
@@ -56,7 +67,9 @@ const RegisterPage = () => {
         const exists = users.find((u) => u.username === formData.username);
 
         if (exists) {
-            alert('User already exists!');
+            // alert('User already exists!');
+            setOpen(true);
+            setToastText({ text: "User already exists!❗️👤", color: "error" })
             return;
         }
 
@@ -68,8 +81,13 @@ const RegisterPage = () => {
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
         // sessionStorage.setItem('users', JSON.stringify(users));
-        alert('Registration successful! You can now log in.');
-        navigate('/login');
+        // alert('Registration successful! You can now log in.');
+        setOpen(true);
+        setToastText({ text: "Registration successful! You can now log in. 📝✅", color: "success" })
+        setTimeout(() => {
+            navigate('/login');
+        }, 2000);
+        // navigate('/login');
     };
 
     return (
@@ -83,6 +101,16 @@ const RegisterPage = () => {
                 px: 2
             }}
         >
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Alert
+                    onClose={handleClose}
+                    severity="success"
+                    variant="filled"
+                    sx={{ width: '100%' }}
+                >
+                    This is a success Alert inside a Snackbar!
+                </Alert>
+            </Snackbar>
             <Paper
                 elevation={6}
                 sx={{
@@ -232,6 +260,7 @@ const RegisterPage = () => {
                         };
                         // Optionally save token for demo login
                         localStorage.setItem('token', 'demo-token');
+                        sessionStorage.setItem('username', demoUser?.username)
                         // Update redux auth state
                         dispatch(login(demoUser));
                         // Redirect

@@ -1,10 +1,11 @@
 import { Box, Typography, Chip, Grid, Badge } from '@mui/material';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import { CricketIcon, TennisIcon } from '../../assets/SVGs/allSVGs';
+import { CricketIcon, TennisIcon, SoccerIcon } from '../../assets/SVGs/allSVGs';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { ImageCarousel } from './ImageCarousel';
+import { Link as RouterLink } from 'react-router-dom';
 
 const OddsBox = ({ value, index }) => (
     <Box
@@ -47,6 +48,7 @@ const CommonList = ({ data: propsData = [] }) => {
     const sportIcons = {
         Cricket: <CricketIcon sx={{ color: 'red' }} />,
         Tennis: <TennisIcon sx={{ color: '#33cc00' }} />,
+        Soccer: <SoccerIcon sx={{ color: 'red' }} />
     };
     useEffect(() => {
         if (!isLoggedIN) {
@@ -90,7 +92,13 @@ const CommonList = ({ data: propsData = [] }) => {
                                     mb: 1,
                                     borderRadius: 1,
                                     boxShadow: 1,
+                                    textDecoration: "none",
+                                    color: "#000"
                                 }}
+                                component={RouterLink}
+                                // onClick={() => console.log(match?.teams, "match")}
+                                to={`/common-match/${match?.tag}`}
+                                state={{ data: match?.info, info: match?.teams }}
                             >
                                 <Chip
                                     label={match.tag || 'LIVE'}

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer } from '../features/drawer/drawerSlice';
 import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon } from '../assets/SVGs/allSVGs';
 import { useNavigate } from 'react-router-dom';
-import { liveSportsData, sportData, userProfileData } from '../data/dashboardData';
+import { liveSportsData, sportData, sportsData, userProfileData } from '../data/dashboardData';
 import CloseIcon from '@mui/icons-material/Close';
 import CommonNavLink from './commonComponents/CommonNavLink';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
@@ -56,12 +56,11 @@ const Header = () => {
         icon: item?.icon
     }));
     const user = sessionStorage.getItem('username')
-    console.log("🚀 ~ Header ~ user:", user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const headerData = [
-        { title: 'SPORTS', icon: <CricketIcon />, data: sportData, isLoggedIn: true },
+        { title: 'SPORTS', icon: <CricketIcon />, data: sportsData, isLoggedIn: true },
         { title: 'IN PLAY', icon: <InPlayIcon />, data: liveSportsData, isLoggedIn: true },
         { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: isLoggedIn },
         { title: 'CASINO', icon: <CasinoIcon />, data: casionData, isLoggedIn: isLoggedIn },
@@ -292,7 +291,7 @@ const Header = () => {
                                             </MenuItem>
                                         ))}
                                         {userProfileData.map((item, i) => (
-                                            <MenuItem key={i} value={item?.value} component={Link} state={{ data: item?.data }} to={`${item?.to}`}>
+                                            <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}>
                                                 <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
                                                 <Typography>{item.label}</Typography>
                                             </MenuItem>

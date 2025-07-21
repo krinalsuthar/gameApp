@@ -21,7 +21,6 @@ const AuraGame = () => {
     const theme = useTheme();
     const location = useLocation();
     const { data } = location?.state
-    console.log("🚀 ~ AuraGame ~ data:", data)
     const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // For mobile layout control
     return (
         <>

@@ -24,25 +24,19 @@ import {
     Redeem,
     SportsScore,
     Settings,
-    LockReset,
 } from '@mui/icons-material';
-import LogoutIcon from '@mui/icons-material/Logout';
+import * as allImages from "../assets"
 import { faScroll, faCoins, faMoneyBill1, faGift, faGifts, faBaseball, faDice, faEquals, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 export const TrendingGamesData = {
     data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)", to: '/aviator' },
-    { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)" },
+    { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)", to: "/aura-game" },
     { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)", to: '/aviator' },
-    { title: "Dragon Tiger", text: "Evolution Gaming", image: image4, color: "rgb(31, 178, 252)" },
-    { title: "Andar Bahar.", text: "Aura", image: image5, color: " rgb(238, 97, 89)" },
-    { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)", to: "/aura-game" },
-    { title: "7 up & down", text: "Aura", image: image7, color: "rgba(39, 201, 44, 0.8)", to: "/aura-game" }]
-}
-export const TopGamesData = {
-    data: [
-        { image: image8, color: "rgba(0, 0, 0, 0.5)", title: "cricket" },
-        { image: image9, color: "rgba(0, 0, 0, 0.5)", title: "soccer" },
-        { image: image10, color: "rgba(0, 0, 0, 0.5)", title: "tennis" },
-    ]
+    { title: "Dragon Tiger", text: "Evolution Gaming", image: image4, color: "rgb(31, 178, 252)", to: "/aura-game" },
+    { title: "Andar Bahar.", text: "Aura", image: image5, color: " rgb(238, 97, 89)", to: "/aura-game" },
+    { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)", video: allImages.teenpattiT20Video, to: "/aura-game" },
+    {
+        title: "7 up & down", text: "Aura", image: image7, color: "rgba(39, 201, 44, 0.8)", video: allImages._7Up_DownVideo, to: "/aura-game"
+    }]
 }
 export const sportsData = [
     {
@@ -59,6 +53,81 @@ export const sportsData = [
                     { label: 'F', value: 9 },
                     { label: 'MO', value: 2 },
                 ],
+                info: [{
+                    key: "matchOdds",
+                    title: "MATCH ODDS",
+                    type: "team",
+                    data: {
+                        "Zimbabwe": {
+                            back: [4.2, 4.4, 4.5],
+                            lay: [4.6, 4.8, 5.0]
+                        },
+                        "South Africa": {
+                            back: [1.22, 1.24, 1.26],
+                            lay: [1.28, 1.30, 1.32]
+                        }
+                    }
+                },
+                {
+                    key: "bookmaker",
+                    title: "BOOKMAKER",
+                    type: "bookmaker",
+                    data: {
+                        "Zimbabwe": {
+                            back: [4.3],
+                            lay: [4.6]
+                        },
+                        "South Africa": {
+                            back: [1.25],
+                            lay: [1.27]
+                        }
+                    }
+                },
+                {
+                    key: "toss",
+                    title: "TOSS",
+                    type: "team",
+                    data: {
+                        "ZIM": {
+                            back: [1.98],
+                            lay: [2.0]
+                        },
+                        "SA": {
+                            back: [1.95],
+                            lay: [1.97]
+                        }
+                    }
+                },
+                {
+                    key: "fancy",
+                    title: "FANCY BET (ZIMBABWE V SOUTH AFRICA)",
+                    type: "fancy",
+                    stakeLimit: "100 - 100000",
+                    maxProfit: 300000,
+                    data: [
+                        {
+                            label: "6 OVER RUN ZIM",
+                            back: { odds: 40, stake: 200 },
+                            lay: { odds: 42, stake: 200 }
+                        },
+                        {
+                            label: "6 OVER RUN SA",
+                            back: { odds: 50, stake: 200 },
+                            lay: { odds: 52, stake: 200 }
+                        },
+                        {
+                            label: "20 OVER RUN ZIM",
+                            back: { odds: 160, stake: 200 },
+                            lay: { odds: 165, stake: 200 }
+                        },
+                        {
+                            label: "20 OVER RUN SA",
+                            back: { odds: 190, stake: 200 },
+                            lay: { odds: 195, stake: 200 }
+                        }
+                    ]
+                }
+                ]
             },
             {
                 tag: 'Today',
@@ -71,6 +140,70 @@ export const sportsData = [
                     { label: 'F', value: 6 },
                     { label: 'MO', value: 1 },
                 ],
+                info: [{
+                    key: "matchOdds",
+                    title: "MATCH ODDS",
+                    type: "team",
+                    data: {
+                        "England": {
+                            back: [2.00, 2.05, 2.10],
+                            lay: [2.12, 2.15, 2.20]
+                        },
+                        "India": {
+                            back: [1.75, 1.78, 1.80],
+                            lay: [1.82, 1.84, 1.86]
+                        }
+                    }
+                },
+                {
+                    key: "bookmaker",
+                    title: "BOOKMAKER",
+                    type: "bookmaker",
+                    data: {
+                        "England": {
+                            back: [2.05],
+                            lay: [2.15]
+                        },
+                        "India": {
+                            status: "SUSPENDED"
+                        }
+                    }
+                },
+                {
+                    key: "toss",
+                    title: "TOSS",
+                    type: "team",
+                    data: {
+                        "ENG": {
+                            back: [1.92],
+                            lay: [1.94]
+                        },
+                        "IND": {
+                            back: [1.88],
+                            lay: [1.90]
+                        }
+                    }
+                },
+                {
+                    key: "fancy",
+                    title: "FANCY BET (ENGLAND V INDIA)",
+                    type: "fancy",
+                    stakeLimit: "100 - 100000",
+                    maxProfit: 500000,
+                    data: [
+                        {
+                            label: "6 OVER RUN ENG",
+                            back: { odds: 48, stake: 100 },
+                            lay: { odds: 50, stake: 100 }
+                        },
+                        {
+                            label: "6 OVER RUN IND",
+                            back: { odds: 52, stake: 100 },
+                            lay: { odds: 55, stake: 100 }
+                        }
+                    ]
+                }
+                ]
             },
             {
                 tag: 'Today',
@@ -83,6 +216,22 @@ export const sportsData = [
                     { label: 'MO', value: 2 },
                     { label: 'O', value: 0 },
                 ],
+                info: [{
+                    key: "matchOdds",
+                    title: "MATCH ODDS",
+                    type: "team",
+                    data: {
+                        "Surrey W": {
+                            back: [1.45, 1.48, 1.50],
+                            lay: [1.52, 1.54, 1.56]
+                        },
+                        "Essex W": {
+                            back: [2.65, 2.70, 2.75],
+                            lay: [2.78, 2.80, 2.85]
+                        }
+                    }
+                }
+                ]
             },
             {
                 tag: 'Today',
@@ -95,6 +244,22 @@ export const sportsData = [
                     { label: 'MO', value: 1 },
                     { label: 'O', value: 2 },
                 ],
+                info: [{
+                    key: "matchOdds",
+                    title: "MATCH ODDS",
+                    type: "team",
+                    data: {
+                        "Leicestershire Foxes W": {
+                            back: [2.10, 2.15, 2.20],
+                            lay: [2.25, 2.30, 2.35]
+                        },
+                        "Derbyshire Falcons W": {
+                            back: [1.60, 1.63, 1.65],
+                            lay: [1.68, 1.70, 1.72]
+                        }
+                    }
+                }
+                ]
             },
             {
                 tag: 'Today',
@@ -108,6 +273,22 @@ export const sportsData = [
                     { label: 'MO', value: 2 },
                     { label: 'O', value: 5 },
                 ],
+                info: [{
+                    key: "matchOdds",
+                    title: "MATCH ODDS",
+                    type: "team",
+                    data: {
+                        "Chepauk Super Gillies": {
+                            back: [1.80, 1.83, 1.85],
+                            lay: [1.88, 1.90, 1.92]
+                        },
+                        "Lyca Kovai Kings": {
+                            back: [2.00, 2.05, 2.10],
+                            lay: [2.15, 2.20, 2.25]
+                        }
+                    }
+                }
+                ]
             },
             {
                 tag: 'Today',
@@ -160,6 +341,22 @@ export const sportsData = [
                     { label: 'MO', value: 1 },
                     { label: 'O', value: 0 },
                 ],
+                info: [{
+                    key: "matchOdds",
+                    title: "MATCH ODDS",
+                    type: "team",
+                    data: {
+                        "Washington Freedom": {
+                            back: [1.95, 2.00, 2.05],
+                            lay: [2.08, 2.10, 2.12]
+                        },
+                        "Mi New York": {
+                            back: [1.75, 1.78, 1.80],
+                            lay: [1.82, 1.84, 1.86]
+                        }
+                    }
+                }
+                ]
             },
             {
                 tag: 'Tomorrow',
@@ -382,13 +579,13 @@ export const userProfileData = [
     {
         label: 'Deposit',
         value: 'deposit',
-        to: '/login',
+        to: '/login-default',
         icon: AttachMoney
     },
     {
         label: 'Withdraw',
         value: 'withdraw',
-        to: '/login',
+        to: '/login-default',
         icon: MoneyOff
     },
     {
@@ -623,7 +820,7 @@ export const userProfileData = [
     {
         label: 'Staking Wallet',
         value: 'stakingWallet',
-        to: '/login',
+        to: '/login-default',
         icon: Wallet,
     },
     {
@@ -691,7 +888,7 @@ export const userProfileData = [
     {
         label: 'My Referrals',
         value: 'myReferrals',
-        to: '/login',
+        to: '/login-default',
         icon: GroupAdd
     },
     {
@@ -1035,7 +1232,7 @@ export const userProfileData = [
     {
         label: 'Chip Setting',
         value: 'chipSetting',
-        to: '/login',
+        to: '/login-default',
         icon: Settings
     },
     // {
@@ -1063,3 +1260,247 @@ export const liveSportsData = sportsData
         return null; // remove sport with no live matches
     })
     .filter(Boolean);
+
+export const TopGamesData = {
+    data: [
+        {
+            image: image8, color: "rgba(0, 0, 0, 0.5)", title: "cricket", to: "/common-list/cricket", state: "data", data: [{
+                sport: 'Cricket',
+                matches: [
+                    {
+                        tag: 'LIVE',
+                        series: 'Test Matches',
+                        time: '',
+                        teams: 'Zimbabwe 🆚 South Africa',
+                        odds: ['10', '10.5', '18.5', '19', '1.17', '1.18'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 9 },
+                            { label: 'MO', value: 2 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: 'Test Matches',
+                        time: '03:30 PM',
+                        teams: 'England 🆚 India',
+                        odds: ['100', '110', '5.9', '6', '1.21', '1.22'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 6 },
+                            { label: 'MO', value: 1 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: "Women's T20 Blast",
+                        time: '04:30 PM',
+                        teams: 'Surrey W 🆚 Essex W',
+                        odds: ['1.46', '1.62', '-', '-', '2.6', '3.3'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'MO', value: 2 },
+                            { label: 'O', value: 0 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: "Women's T20 Blast Div 2",
+                        time: '07:00 PM',
+                        teams: 'Leicestershire Foxes W 🆚 Derbyshire Falcons W',
+                        odds: ['2.24', '2.86', '-', '-', '1.54', '1.8'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'MO', value: 1 },
+                            { label: 'O', value: 2 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: 'Tamil Nadu Premier League',
+                        time: '07:15 PM',
+                        teams: 'Tiruppur Tamizhans 🆚 Dindigul Dragons',
+                        odds: ['1.8', '1.81', '-', '-', '2.22', '2.24'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 0 },
+                            { label: 'MO', value: 2 },
+                            { label: 'O', value: 5 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: 'T20 Blast',
+                        time: '07:30 PM',
+                        teams: 'Northamptonshire 🆚 Worcestershire',
+                        odds: ['2.42', '2.46', '-', '-', '1.69', '1.7'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 48 },
+                            { label: 'MO', value: 2 },
+                            { label: 'O', value: 0 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: 'Test Matches',
+                        time: '07:30 PM',
+                        teams: 'West Indies 🆚 Australia',
+                        odds: ['1.15', '1.16', '75', '80', '7.8', '8'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 7 },
+                            { label: 'MO', value: 1 },
+                            { label: 'O', value: 0 },
+                        ],
+                    },
+                    {
+                        tag: 'Today',
+                        series: 'T20 Blast',
+                        time: '09:00 PM',
+                        teams: 'Surrey 🆚 Essex',
+                        odds: ['3.3', '3.6', '-', '-', '1.39', '1.43'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 48 },
+                            { label: 'MO', value: 2 },
+                            { label: 'O', value: 3 },
+                        ],
+                    },
+                    {
+                        tag: 'Tomorrow',
+                        series: 'Major League Cricket',
+                        time: '12:30 AM',
+                        teams: 'Washington Freedom 🆚 Mi New York',
+                        odds: ['1.6', '2.22', '-', '-', '1.82', '2.64'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 5 },
+                            { label: 'MO', value: 1 },
+                            { label: 'O', value: 0 },
+                        ],
+                    },
+                    {
+                        tag: 'Tomorrow',
+                        series: 'Major League Cricket',
+                        time: '04:30 AM',
+                        teams: 'Los Angeles Knight Riders 🆚 San Francisco Unicorns',
+                        odds: ['1.46', '7', '-', '-', '1.4', '2.68'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 0 },
+                            { label: 'MO', value: 1 },
+                            { label: 'O', value: 0 },
+                        ],
+                    },
+                    {
+                        tag: 'Tuesday',
+                        series: 'Irish Inter Provincial T20 Trophy',
+                        time: '03:15 PM',
+                        teams: 'Leinster Lightning 🆚 Munster Reds',
+                        odds: ['3.65', '3.85', '-', '-', '1.35', '1.38'],
+                        categories: [
+                            { label: 'M', value: 1 },
+                            { label: 'F', value: 0 },
+                            { label: 'MO', value: 1 },
+                            { label: 'O', value: 0 },
+                        ],
+                    },
+                ],
+            },]
+        },
+        {
+            image: image9, color: "rgba(0, 0, 0, 0.5)", title: "soccer", to: "/common-list/soccer", state: "data", data: [{
+                sport: 'Soccer',
+                matches: [
+                    {
+                        tag: 'LIVE',
+                        series: 'UEFA Champions League 2025',
+                        teams: 'Real Madrid 🆚 Bayern Munich',
+                        odds: ['1.90', '2.00', '-', '-', '3.40', '3.50'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: 'English Premier League 2025',
+                        teams: 'Manchester United 🆚 Chelsea',
+                        odds: ['2.10', '2.20', '-', '-', '3.10', '3.30'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: 'La Liga 2025',
+                        teams: 'Barcelona 🆚 Atletico Madrid',
+                        odds: ['1.75', '1.80', '-', '-', '4.00', '4.10'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: 'Serie A 2025',
+                        teams: 'Juventus 🆚 AC Milan',
+                        odds: ['2.25', '2.30', '-', '-', '2.90', '3.00'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: 'Bundesliga 2025',
+                        teams: 'Borussia Dortmund 🆚 RB Leipzig',
+                        odds: ['2.00', '2.10', '-', '-', '3.20', '3.35'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: 'Ligue 1 2025',
+                        teams: 'PSG 🆚 Marseille',
+                        odds: ['1.60', '1.65', '-', '-', '4.80', '5.00'],
+                    },
+                    {
+                        tag: 'TOMMORROW',
+                        series: 'MLS 2025',
+                        teams: 'LA Galaxy 🆚 Inter Miami',
+                        odds: ['2.40', '2.50', '-', '-', '2.60', '2.70'],
+                    },
+                    {
+                        tag: 'TOMMORROW',
+                        series: 'Eredivisie 2025',
+                        teams: 'Ajax 🆚 PSV Eindhoven',
+                        odds: ['2.00', '2.10', '-', '-', '3.10', '3.25'],
+                    },
+                ],
+            }
+            ]
+        },
+        {
+            image: image10, color: "rgba(0, 0, 0, 0.5)", title: "tennis", to: "/common-list/tennis", state: "data", data: [{
+                sport: 'Tennis',
+                matches: [
+                    {
+                        tag: 'LIVE',
+                        series: "Men's Wimbledon 2025",
+                        teams: 'Dimitrov 🆚 Moutet',
+                        odds: ['1.36', '1.38', '-', '-', '3.7', '3.75'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: "Men's Wimbledon 2025",
+                        teams: 'Marozsan 🆚 Munar',
+                        odds: ['22', '26', '-', '-', '1.04', '1.05'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: "Men's Wimbledon 2025",
+                        teams: 'Evans 🆚 Djokovic',
+                        odds: ['-', '1.01', '-', '-', '1000', '-'],
+                    },
+                    {
+                        tag: 'LIVE',
+                        series: "Women's Wimbledon 2024",
+                        teams: 'H Baptiste 🆚 Vict Mboko',
+                        odds: ['1.04', '1.05', '-', '-', '23', '25'],
+                    },
+                    {
+                        tag: 'TOMORROW',
+                        series: 'Troyes Challenger 2025',
+                        teams: 'Trungelliti 🆚 Martineau',
+                        odds: ['1.55', '1.63', '-', '-', '2.58', '2.82'],
+                    },
+                ],
+            },]
+        },
+    ]
+}

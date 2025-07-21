@@ -10,9 +10,7 @@ import {
     Stack
 } from '@mui/material';
 import {
-    Email, CalendarToday, Phone, AccountCircle, ExpandMore,
-    AccountBalanceWallet, LocalAtm, MonetizationOn,
-    Equalizer, TrendingUp, Savings, People, Settings,
+    Email, CalendarToday, Phone, ExpandMore,
     Person,
     VerifiedUser,
     Edit
@@ -24,7 +22,6 @@ import { userProfileData } from '../data/dashboardData';
 
 const Dashboard = () => {
     const user = sessionStorage.getItem('username')
-    console.log("🚀 ~ LogInPage ~ user1:", user)
     const location = useLocation();
     const data = location?.state?.data
     return (
@@ -133,7 +130,7 @@ const Dashboard = () => {
                     </Box>
                 </Paper>
                 <Box sx={{ width: { lg: "69%", md: "69%", sm: "59%", xs: "100%" } }}>
-                    {data.map((row, rowIndex) => (
+                    {data?.map((row, rowIndex) => (
                         <Paper
                             key={rowIndex}
                             sx={{
@@ -146,7 +143,7 @@ const Dashboard = () => {
                                 borderRadius: 4,
                             }}
                         >
-                            {row.map((item, index) => (
+                            {row?.map((item, index) => (
                                 <Paper
                                     key={index}
                                     elevation={4}
@@ -201,7 +198,6 @@ export default Dashboard;
 export function HeaderData() {
     const [selected, setSelected] = useState("Profile");
     return (
-
         <Box sx={{ overflowX: "auto", width: "100%", p: 1, scrollbarWidth: "none", mb: 2, bgcolor: "#fff" }}>
             <Stack direction="row" spacing={1} sx={{ minWidth: "max-content" }}>
                 {userProfileData?.map((item, index) => (
@@ -221,7 +217,7 @@ export function HeaderData() {
                             whiteSpace: "nowrap",
                             textDecoration: "none",
                         }}
-                        component={Link} state={{ data: item?.data }} to={`${item?.to}`}
+                        component={Link} state={{ data: item?.label }} to={`${item?.to}/${item?.label.trim().toLowerCase()}`}
                     >
                         <Box
                             sx={{

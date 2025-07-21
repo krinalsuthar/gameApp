@@ -13,10 +13,13 @@ import {
     Switch,
     FormControl,
     FormHelperText,
+    Alert,
+    Snackbar,
+    Stack,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import logo from "../assets/logo.png";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CommonNavLink from '../components/commonComponents/CommonNavLink';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/drawer/authSlice';
@@ -25,6 +28,8 @@ const LogInPage = () => {
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [toastText, setToastText] = useState({ text: "", color: "" });
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -38,6 +43,14 @@ const LogInPage = () => {
         if (!formData.password.trim()) temp.password = 'Password is required';
         return temp;
     };
+    const username = sessionStorage.getItem('username')
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
     const handleLogin = (e) => {
         e.preventDefault();
         const validationErrors = validate();
@@ -50,11 +63,9 @@ const LogInPage = () => {
                 u.username === formData.username &&
                 u.password === formData.password
         );
-        console.log("🚀 ~ handleLogin ~ match:", match)
         if (match) {
             const token = 'mock-jwt-token-' + Date.now();
             const data = sessionStorage.setItem('username', match?.username)
-            console.log("🚀 ~ handleLogin ~ data:", data)
             if (rememberMe) {
                 localStorage.setItem('token', token);
             } else {
@@ -62,10 +73,17 @@ const LogInPage = () => {
             }
             // dispatch(login());
             dispatch(login(formData))
-            alert('Login successful!');
-            navigate('/');
+            // alert('Login successful!');
+            setOpen(true);
+            setToastText({ text: "Login successful! ✔️🔓", color: "success" })
+            setTimeout(() => {
+                navigate('/');
+            }, 2000);
         } else {
-            alert('Invalid credentials');
+            // alert('Invalid credentials');
+            setOpen(true);
+            setToastText({ text: "Invalid credentials! ❌🔐", color: "error" })
+
         }
     };
 
@@ -80,6 +98,16 @@ const LogInPage = () => {
                 bgcolor: "#f5f5f5"
             }}
         >
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+                <Alert
+                    onClose={handleClose}
+                    severity={toastText?.color}
+                    variant="filled"
+                    sx={{ width: '100%' }}
+                >
+                    {toastText?.text}
+                </Alert>
+            </Snackbar>
             <Paper
                 elevation={6}
                 sx={{
@@ -188,11 +216,9 @@ const LogInPage = () => {
                                 username: 'demo',
                                 password: 'demo123'
                             };
-                            // Optionally save token for demo login
                             localStorage.setItem('token', 'demo-token');
-                            // Update redux auth state
+                            sessionStorage.setItem('username', demoUser?.username)
                             dispatch(login(demoUser));
-                            // Redirect
                             navigate('/');
                         }}
                     >
@@ -220,3 +246,59 @@ const LogInPage = () => {
 };
 
 export default LogInPage;
+
+
+export const LoginDeposit = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { data } = location?.state
+    return (
+        <>
+            <Paper
+                elevation={3}
+                sx={{
+                    p: 3,
+                    borderRadius: 2,
+                    textAlign: 'center',
+                    maxWidth: 400,
+                    mx: 'auto',
+                }}
+            >
+                <Typography variant="body1" fontWeight={400} mb={2}>
+                    For {data} Please <strong>LOGIN OR REGISTER</strong> From Real User
+                </Typography>
+
+                <Stack direction="row" spacing={2} justifyContent="center">
+                    <Button
+                        variant="contained"
+                        onClick={() => navigate('/login')}
+                        sx={{
+                            bgcolor: '#ffc400',
+                            color: '#000',
+                            fontWeight: 'bold',
+                            '&:hover': {
+                                bgcolor: '#ffb300',
+                            },
+                        }}
+                    >
+                        LOGIN
+                    </Button>
+                    <Button
+                        variant="contained"
+                        onClick={() => navigate('/register')}
+                        sx={{
+                            bgcolor: '#ffc400',
+                            color: '#000',
+                            fontWeight: 'bold',
+                            '&:hover': {
+                                bgcolor: '#ffb300',
+                            },
+                        }}
+                    >
+                        REGISTER
+                    </Button>
+                </Stack>
+            </Paper>
+        </>
+    )
+}

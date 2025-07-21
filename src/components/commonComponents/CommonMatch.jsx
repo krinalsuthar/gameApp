@@ -133,14 +133,18 @@ const CommonMatch = () => {
     const handleToggle = () => {
         setCollapse((prev) => !prev)
     }
-    const matchName = info;
-    const [teamA, , teamB] = matchName.split(" ");
-    const country1 = teamA.slice(0).toUpperCase();
-    const country2 = teamB.slice(0).toUpperCase();
+    const matchName = typeof info === 'string' ? info : '';
+    const teams = matchName.includes('🆚') ? matchName.split('🆚') : [];
+
+    const teamA = teams[0]?.trim() ?? '';
+    const teamB = teams[1]?.trim() ?? '';
+
+    const country1 = teamA.toUpperCase();
+    const country2 = teamB.toUpperCase();
     const shortA = teamA.slice(0, 2).toUpperCase();
     const shortB = teamB.slice(0, 2).toUpperCase();
-    const countryData = [country1, country2, shortA, shortB]
 
+    const countryData = [country1, country2, shortA, shortB];
     const lineChartData = {
         "1st INNS": [
             {
@@ -310,9 +314,9 @@ const CommonMatch = () => {
                             >
                                 <Typography fontWeight="bold">{countryData[0]}</Typography>
                                 <img
-                                    src="/icons/vs-yellow.svg"
+                                    src="https://img.freepik.com/premium-vector/versus-battle-illustration-logo-design-template-versus-vector-icon-vs-letters-sports_564974-202.jpg"
                                     alt="vs"
-                                    style={{ height: 20, width: 20 }}
+                                    style={{ height: 40, width: 40 }}
                                 />
                                 <Typography fontWeight="bold">{countryData[1]}</Typography>
                             </Box>
@@ -333,13 +337,30 @@ const CommonMatch = () => {
                             </Box>
                         </Box>
                         <Collapse in={collapse} timeout="auto" unmountOnExit>
-                            <Box>
-                                <CommonChartSwitcher
-                                    lineChartData={lineChartData}
-                                    barChartData={barChartData}
-                                    inningsList={inningsList}
-                                />
-                            </Box>
+                            {data ? (
+                                <Box>
+                                    <CommonChartSwitcher
+                                        lineChartData={lineChartData}
+                                        barChartData={barChartData}
+                                        inningsList={inningsList}
+                                    />
+                                </Box>
+                            ) : (
+                                <Box
+                                    sx={{
+                                        height: 200,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: '#fff',
+                                        fontSize: '1.2rem',
+                                        fontWeight: 500,
+                                        bgcolor: "#000"
+                                    }}
+                                >
+                                    No data available
+                                </Box>
+                            )}
                         </Collapse>
                         <Box sx={{ background: "#f5f5f5", borderRadius: 2 }}>
                         </Box>

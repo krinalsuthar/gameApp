@@ -11,7 +11,6 @@ import CommonCard from "../components/commonComponents/CommonCard";
 import image1 from "../assets/dashboardImage1.jpg"
 import image2 from "../assets/dashboardImage2.jpg"
 import image3 from "../assets/dashboardImage3.jpg"
-import BottomNavWithRadialMenu from "../components/commonComponents/BottomNAvigation";
 const images = [
     image1,
     image2,
