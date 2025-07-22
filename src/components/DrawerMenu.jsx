@@ -163,7 +163,7 @@ const DrawerMenu = () => {
                                                 : `promotion-refer/${item?.title}
 `
                                     }
-                                    state={{ data: item.sport }}
+                                    state={item?.title == "Sports" ? { data: item.sport, isImageCarousel: true } : { data: item.sport }}
                                 >
                                     <Card
                                         sx={{

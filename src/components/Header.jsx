@@ -15,7 +15,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link } from 'react-router-dom';
 import { LockReset } from '@mui/icons-material';
 import { logout } from '../features/drawer/authSlice';
-import { categoriesData } from '../data/drawerData';
+import { casionData, categoriesData } from '../data/drawerData';
 
 const typoStyle = {
     fontWeight: 600,
@@ -40,11 +40,11 @@ const Header = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [open, setOpen] = useState(false);
-    const casionData = categoriesData?.categories?.items?.map(item => ({
-        info: item?.info,
-        title: item?.title,
-        icon: item?.icon
-    }));
+    // const casionData = categoriesData?.categories?.items?.map(item => ({
+    //     info: item?.info,
+    //     title: item?.title,
+    //     icon: item?.icon
+    // }));
     const user = sessionStorage.getItem('username')
     const navigate = useNavigate()
     const dispatch = useDispatch();
@@ -279,12 +279,13 @@ const Header = () => {
                                         {userProfileData?.map((item, i) => (
                                             <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={item?.label === "LogOut" ? `${item?.to}` : `${item?.to}/${item?.label.trim().toLowerCase()}`}>
                                                 <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
-                                                {!item.label === "LogOut" ? (
-                                                    <Typography>{item.label}</Typography>
-                                                ) : (
+                                                {console.log(item?.label === "LogOut")}
+                                                {item?.label === "LogOut" ? (
                                                     <Typography onClick={() => {
                                                         dispatch(logout())
-                                                    }}>{item.label}</Typography>
+                                                    }}>{item?.label}</Typography>
+                                                ) : (
+                                                    <Typography>{item.label}</Typography>
                                                 )}
                                             </MenuItem>
                                         ))}

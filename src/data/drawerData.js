@@ -3499,3 +3499,10 @@ export const startingData = {
         ],
     },
 };
+
+export const casionData = categoriesData?.categories?.items?.map(item => ({
+    info: item?.info,
+    title: item?.title,
+    icon: item?.icon
+}));
+console.log("🚀 ~ casionData:", casionData)

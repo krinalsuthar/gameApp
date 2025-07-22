@@ -902,7 +902,8 @@ const SportsBook = () => {
                 height: "100vh",
                 overflowY: "hidden",
                 scrollbarWidth: 'none',
-                '&::-webkit-scrollbar': {
+                mb: 2
+                , '&::-webkit-scrollbar': {
                     height: '8px',
                 },
                 '&::-webkit-scrollbar-thumb': {
@@ -1019,7 +1020,7 @@ const SportsBook = () => {
                 flexShrink: 0,
                 scrollbarWidth: "none"
             }}>
-                <Box p={2} bgcolor="#f5f5f5">
+                <Box px={2} bgcolor="#f5f5f5">
                     <Grid container spacing={1} sx={{ overflowY: 'auto', flexWrap: 'nowrap', scrollbarWidth: 'none', }}>
                         {sportsCategories
                             .flatMap((s) =>
@@ -1030,7 +1031,7 @@ const SportsBook = () => {
                                 )
                             )
                             .map((match, i) => (
-                                <Box item key={i} pt={2} >
+                                <Box item key={i}>
                                     <LiveMatchCard match={match} />
                                 </Box>
                             ))}

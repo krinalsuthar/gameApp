@@ -137,8 +137,6 @@ const CommonMatch = () => {
     const teams = matchName.includes('vs') ? matchName.split('vs') : [];
     const teamA = teams[0]?.trim() ?? '';
     const teamB = teams[1]?.trim() ?? '';
-    console.log("🚀 ~ CommonMatch ~ teamB:", teamB)
-    console.log("🚀 ~ CommonMatch ~ teamA:", teamA)
     const country1 = teamA.toUpperCase();
     const country2 = teamB.toUpperCase();
     const shortA = teamA.slice(0, 2).toUpperCase();
@@ -265,10 +263,9 @@ const CommonMatch = () => {
                             </Typography>
                         </Box>
                         <Typography
-                            variant="h5"
                             fontWeight="bold"
                         >
-                            T20 Blast
+                            {matchName}
                         </Typography>
                         <Box display="flex" gap={1}>
                             <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }} onClick={handleToggle}>

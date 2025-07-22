@@ -31,6 +31,7 @@ const AppRoutes = () => (
         <Route path="/common-page/:segment" element={<CommonCard />} />
         <Route path="/common-match/:segment" element={<CommonMatch />} />
         <Route path="/promotion-refer/:data" element={<PromotionRefer />} />
+        <Route path="*" element={<HomePage />} />
     </Routes>
 );
 

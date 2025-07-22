@@ -236,15 +236,15 @@ export function HeaderData() {
                         >
                             <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit" }} />
                         </Box>
-                        {!item.label === "LogOut" ? (
-                            <Typography fontWeight={600} fontSize={14}>
+                        {item.label === "LogOut" ? (
+                            <Typography fontWeight={600} fontSize={14} onClick={() => {
+                                dispatch(logout())
+                            }}>
                                 {item.label}
                             </Typography>
                         ) : (
                             <>
-                                <Typography fontWeight={600} fontSize={14} onClick={() => {
-                                    dispatch(logout())
-                                }}>
+                                <Typography fontWeight={600} fontSize={14}>
                                     {item.label}
                                 </Typography>
                             </>

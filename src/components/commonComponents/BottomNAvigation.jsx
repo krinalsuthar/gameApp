@@ -19,30 +19,32 @@ import ChatIcon from "@mui/icons-material/Chat";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import ReceiptIcon from "@mui/icons-material/Receipt";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { liveSportsData, sportData, userProfileData } from "../../data/dashboardData";
 import { Link as RouterLink } from 'react-router-dom';
-import { categoriesData } from "../../data/drawerData";
+import { casionData, categoriesData } from "../../data/drawerData";
 
 const popupItems = [
-    { label: "Download App", icon: <DownloadIcon /> },
-    { label: "Promotions", icon: <CardGiftcardIcon /> },
-    { label: "Home", icon: <HomeIcon /> },
-    { label: "Bets", icon: <ReceiptIcon /> },
-    { label: "Talk to us?", icon: <ChatIcon /> },
-    { label: "Deposit", icon: <AccountBalanceWalletIcon /> },
+    { label: "Download App", icon: <DownloadIcon />, to: "" },
+    { label: "Promotions", icon: <CardGiftcardIcon />, to: "/promotion-refer" },
+    { label: "Home", icon: <HomeIcon />, to: "/" },
+    { label: "Bets", icon: <ReceiptIcon />, to: "" },
+    { label: "Talk to us?", icon: <ChatIcon />, to: "" },
+    { label: "deposit", icon: <AccountBalanceWalletIcon />, to: "/login-default", data: "deposit" },
 ];
 const data = ["in-paly", "sports", "casino", "profile"]
-const casionData = categoriesData?.categories?.items?.map(item => ({
-    info: item?.info,
-    title: item?.title,
-    icon: item?.icon
-}));
+// const casionData = categoriesData?.categories?.items?.map(item => ({
+//     info: item?.info,
+//     title: item?.title,
+//     icon: item?.icon
+// }));
+const navigatorName = 'sportsbook';
 const BottomNavWithRadialMenu = () => {
     const [open, setOpen] = useState(false);
     const handleToggle = () => setOpen((prev) => !prev);
     const handleNavClick = () => setOpen(false);
     const user = sessionStorage.getItem('username')
+    const navigate = useNavigate()
     const profileData = userProfileData.find(item => item.value === 'profile');
     return (
         <>
@@ -88,9 +90,14 @@ const BottomNavWithRadialMenu = () => {
                                     fontSize: 10,
                                     textAlign: "center",
                                     px: 1,
+                                    textDecoration: "none"
                                 }}
+                                component={Link}
+                                state={{ data: item?.data }}
+                                to={item?.label == "Home" ? `${item?.to}` : `${item?.to}/${item?.label}`}
                             >
                                 {item.icon}
+                                {console.log(item.label)}
                                 <Typography fontSize={9}>{item.label}</Typography>
                             </Box>
                         );
@@ -109,6 +116,7 @@ const BottomNavWithRadialMenu = () => {
                             position: "relative",
                             zIndex: 20,
                         }}
+                        onClick={() => navigate(`/sports-book/${navigatorName}`)}
                     >
                         <SportsEsportsIcon />
                         <Typography fontSize={10}>SportsBook</Typography>
@@ -135,7 +143,7 @@ const BottomNavWithRadialMenu = () => {
                     <NavItem icon={<PlayArrowIcon />} label="In-Play" />
                 </Box>
                 <Box sx={{ textDecoration: "none" }} component={RouterLink}
-                    to={`/common-list/${data[1]}`} state={{ data: sportData }}>
+                    to={`/common-list/${data[1]}`} state={{ data: sportData, isImageCarousel: true }}>
                     <NavItem icon={<SportsSoccerIcon />} label="Sports" />
                 </Box>
                 <Box

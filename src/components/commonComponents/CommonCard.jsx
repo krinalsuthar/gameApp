@@ -41,7 +41,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../features/drawer/drawerSlice";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
-import { sportsData } from "../../data/dashboardData";
 
 const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle = "" }) => {
     const { favouriteItems } = useSelector((state) => state.drawer);
@@ -49,7 +48,6 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
     const { state } = useLocation();
     const data = propsData.length ? propsData : state?.info;
     const title = propsTitle != "" ? propsTitle : state?.data;
-    const navigate = useNavigate()
     const isScroll = state?.isScroll != "" ? true : false
     const iconMap = {
         aura: TeenPattiIcon,

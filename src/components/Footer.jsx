@@ -2,13 +2,26 @@ import { Box, CardMedia, Typography } from "@mui/material";
 import logo from "../assets/logo.png";
 import { BhimIcon, DiscortIcon, EmailIcon, FacebookIcon, GPayIcon, InstagramIcon, LinkedInIcon, PaytmIcon, PhonePeIcon, PinterestIcon, TelegramIcon, TelephoneIcon, TwitterIcon, VisaCardIcon, WhatsAppIcon, YouTubeIcon } from '../assets/SVGs/allSVGs';
 import CommonNavLink from "./commonComponents/CommonNavLink";
+import { liveSportsData, sportData, sportsData } from "../data/dashboardData";
+import { casionData, categoriesData } from "../data/drawerData";
 const imageModules = import.meta.glob('/src/assets/footerImages/footer*.{png,jpg,jpeg,svg}', {
     eager: true,
     import: 'default',
 });
 const paymentIcons = [GPayIcon, BhimIcon, PhonePeIcon, PaytmIcon, VisaCardIcon];
 const images = Object.values(imageModules);
-const footerLinks = ["Sports", "Casino", "Cricket", "Teen Patti", "Andar Bahar", "Roulette", "Promotions", "Live Betting", "Deposit", "Withdraw"];
+const teenPattiData = (categoriesData?.categories?.items?.find((item) => item?.title === "teen patti"))
+console.log("🚀 ~ teenPattiData:", teenPattiData?.info)
+const footerLinks = [
+    { label: "Sports", data: sportsData, to: "common-list" },
+    { label: "Casino", data: casionData, to: "common-card" },
+    { label: "Cricket", data: sportData, to: "common-list" },
+    { label: "Teen Patti", data: teenPattiData?.info, to: "show-more" },
+    { label: "Promotions", to: "promotion-refer" },
+    { label: "Live Betting", data: liveSportsData, to: "common-list", },
+    { label: "Deposit", to: "login-default", },
+    { label: "Withdraw", to: "login-default", },
+];
 const socialIcons = [
     FacebookIcon,
     TwitterIcon,
@@ -24,7 +37,7 @@ const socialIcons = [
 ];
 const Footer = () => {
     return (
-        <Box sx={{ p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px", m: { lg: "5px 0px", md: "5px 0px", sm: "110px 0px", xs: "110px 0px" } }}>
+        <Box sx={{ p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px", m: { lg: "5px 0px", md: "5px 0px", sm: "0px 0px 110px 0px", xs: "0px 0px 110px 0px" } }}>
             <Box>
                 <CommonNavLink to={''} >
                     <CardMedia
@@ -84,8 +97,8 @@ const Footer = () => {
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Quick Link</Typography>
                     {footerLinks?.map((item, i) => (
                         <Box key={i}>
-                            <CommonNavLink to={'common-page'} sx={{ color: '#535558', display: 'block' }}>
-                                <Typography variant="caption">{item}</Typography>
+                            <CommonNavLink to={`${item?.to}/${item?.label}`} state={{ data: item?.data }} sx={{ color: '#535558', display: 'block' }}>
+                                <Typography variant="caption">{item.label}</Typography>
                             </CommonNavLink>
                         </Box>
                     ))}
