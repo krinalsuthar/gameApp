@@ -153,9 +153,7 @@ EnhancedTableToolbar.propTypes = {
 const CommonTable = () => {
     const location = useLocation();
     const { data } = location?.state || {};
-    console.log("🚀 ~ CommonTable ~ data:", data)
     const tableRows = data[1]?.tableRows || [];
-    console.log("🚀 ~ CommonTable ~ tableRows:", tableRows)
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);

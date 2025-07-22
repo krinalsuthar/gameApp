@@ -97,7 +97,6 @@ const BottomNavWithRadialMenu = () => {
                                 to={item?.label == "Home" ? `${item?.to}` : `${item?.to}/${item?.label}`}
                             >
                                 {item.icon}
-                                {console.log(item.label)}
                                 <Typography fontSize={9}>{item.label}</Typography>
                             </Box>
                         );

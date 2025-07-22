@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 const Extra = () => {
     const location = useLocation();
     const { data } = location?.state
-    console.log("🚀 ~ Extra ~ data:", data)
     const bets = [
         { player: 'p****6', bet: 6343.55, multiplier: '1.33x', win: 8436.92 },
         { player: '2****e', bet: 5000.00, multiplier: '', win: 0 },

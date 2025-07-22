@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
     Drawer,
     List,
@@ -88,24 +88,25 @@ const DrawerMenu = () => {
     useEffect(() => {
         const savedItems = localStorage.getItem('favouriteItems');
         if (savedItems) {
-            setFavouriteItems(JSON.parse(savedItems));
+            try {
+                setFavouriteItems(JSON.parse(savedItems.toLowerCase()));
+            } catch (e) {
+                console.error("Invalid JSON in localStorage");
+            }
         }
     }, []);
 
-    const flattenedItems = [
+    const flattenedItems = useMemo(() => [
         ...(categoriesData?.categories?.items?.flatMap(item => item?.info) || []),
         ...(providersData?.providers?.items?.flatMap(item => item?.info) || [])
-    ].filter(item => item && item.title);
-    const seen = new Set();
+    ].filter(item => item && item.title), [categoriesData, providersData]);
 
-    const favouriteData = flattenedItems.filter((item) => {
-        const title = item.title;
-        if (favouriteItems[title] && !seen.has(title)) {
-            seen.add(title);
-            return true;
-        }
-        return false;
-    });
+    const favouriteData = useMemo(() => {
+        return flattenedItems.filter(item => {
+            return favouriteItems[item.title?.toLowerCase()];
+        });
+    }, [flattenedItems, favouriteItems]);
+
     return (
         <Drawer
             anchor={isMobile ? 'bottom' : 'left'}
@@ -209,7 +210,7 @@ const DrawerMenu = () => {
                                     ? { data: liveSportsData, isImageCarousel: true }
                                     : item?.segment === "upcoming"
                                         ? { data: sportsData, isImageCarousel: true }
-                                        : item?.segment === "favourite" ? { info: favouriteData } : ""}
+                                        : item?.segment === "favourite" ? { info: favouriteData, isScroll: false } : ""}
                                 onClick={handleClose}
                                 sx={{
                                     justifyContent: "space-between",

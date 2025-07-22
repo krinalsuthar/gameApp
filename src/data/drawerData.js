@@ -346,6 +346,7 @@ export const providersData = {
             {
                 title: 'aura', icon: TeenPattiIcon, segment: 'aura', count: 12, info: [
                     {
+                        id: 1,
                         image: allImages.continuePlaying1,
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
@@ -353,6 +354,7 @@ export const providersData = {
                         to: "/aura-game",
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
+                        id: 2,
                         image: allImages.continuePlaying2,
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
@@ -3505,4 +3507,3 @@ export const casionData = categoriesData?.categories?.items?.map(item => ({
     title: item?.title,
     icon: item?.icon
 }));
-console.log("🚀 ~ casionData:", casionData)

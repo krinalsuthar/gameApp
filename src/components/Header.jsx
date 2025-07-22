@@ -279,7 +279,6 @@ const Header = () => {
                                         {userProfileData?.map((item, i) => (
                                             <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={item?.label === "LogOut" ? `${item?.to}` : `${item?.to}/${item?.label.trim().toLowerCase()}`}>
                                                 <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
-                                                {console.log(item?.label === "LogOut")}
                                                 {item?.label === "LogOut" ? (
                                                     <Typography onClick={() => {
                                                         dispatch(logout())

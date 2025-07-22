@@ -11,7 +11,6 @@ const imageModules = import.meta.glob('/src/assets/footerImages/footer*.{png,jpg
 const paymentIcons = [GPayIcon, BhimIcon, PhonePeIcon, PaytmIcon, VisaCardIcon];
 const images = Object.values(imageModules);
 const teenPattiData = (categoriesData?.categories?.items?.find((item) => item?.title === "teen patti"))
-console.log("🚀 ~ teenPattiData:", teenPattiData?.info)
 const footerLinks = [
     { label: "Sports", data: sportsData, to: "common-list" },
     { label: "Casino", data: casionData, to: "common-card" },

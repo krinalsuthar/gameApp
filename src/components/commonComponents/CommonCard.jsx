@@ -48,6 +48,7 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
     const { state } = useLocation();
     const data = propsData.length ? propsData : state?.info;
     const title = propsTitle != "" ? propsTitle : state?.data;
+    const navigate = useNavigate()
     const isScroll = state?.isScroll != "" ? true : false
     const iconMap = {
         aura: TeenPattiIcon,
