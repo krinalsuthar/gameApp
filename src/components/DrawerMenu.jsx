@@ -29,12 +29,12 @@ import {
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useMediaQuery, useTheme } from "@mui/material";
-import { liveSportsData, sportsData } from '../data/dashboardData';
+import { liveSportsData, sportsData, TrendingGamesData } from '../data/dashboardData';
 import CommonNavLink from './commonComponents/CommonNavLink';
 import CollapsibleSection from './commonComponents/CollapsibleSection';
 
 const DrawerMenu = () => {
-    const { open, count } = useSelector((state) => state.drawer);
+    const { open, count, favouriteItems } = useSelector((state) => state.drawer);
     const dispatch = useDispatch();
     const [searchTerm, setSearchTerm] = useState('');
     const [openSports, setOpenSports] = useState({});
@@ -83,29 +83,18 @@ const DrawerMenu = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
-    const [favouriteItems, setFavouriteItems] = useState({});
 
-    useEffect(() => {
-        const savedItems = localStorage.getItem('favouriteItems');
-        if (savedItems) {
-            try {
-                setFavouriteItems(JSON.parse(savedItems.toLowerCase()));
-            } catch (e) {
-                console.error("Invalid JSON in localStorage");
-            }
-        }
-    }, []);
-
-    const flattenedItems = useMemo(() => [
+    const flattenedItems = [
         ...(categoriesData?.categories?.items?.flatMap(item => item?.info) || []),
-        ...(providersData?.providers?.items?.flatMap(item => item?.info) || [])
-    ].filter(item => item && item.title), [categoriesData, providersData]);
+        ...(providersData?.providers?.items?.flatMap(item => item?.info) || []),
+        ...(TrendingGamesData?.data || [])
+    ].filter(item => item && item.title);
 
     const favouriteData = useMemo(() => {
         return flattenedItems.filter(item => {
-            return favouriteItems[item.title?.toLowerCase()];
+            return favouriteItems[item?.id];
         });
-    }, [flattenedItems, favouriteItems]);
+    }, [flattenedItems, favouriteItems, count]);
 
     return (
         <Drawer

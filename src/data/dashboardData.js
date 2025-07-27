@@ -29,14 +29,14 @@ import {
 import * as allImages from "../assets"
 import { faScroll, faCoins, faMoneyBill1, faGift, faGifts, faBaseball, faDice, faEquals, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 export const TrendingGamesData = {
-    data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)", video: allImages.aviatorsVideo, to: '/aviator' },
-    { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)", to: "/aura-game" },
-    { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)", video: allImages.jextVideo, to: '/aviator' },
-    { title: "Teenpatti mulis", text: "Aura", image: image4, color: "rgb(31, 178, 252)", video: allImages.muflis_teenpattiVideo, to: "/aura-game" },
-    { title: "Andar Bahar.", text: "Aura", image: image5, color: " rgb(238, 97, 89)", to: "/aura-game" },
-    { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)", video: allImages.teenpattiT20Video, to: "/aura-game" },
+    data: [{ title: "AVIATOR", text: "Spribe", image: image1, color: "rgb(246, 55, 83)", video: allImages.aviatorsVideo, to: '/aviator', id: 403, },
+    { title: "Crazy Time", text: "Evolution Gaming", image: image2, color: "rgb(69, 141, 250)", to: "/aura-game", id: 404 },
+    { title: "JetX", text: "Smartsoft Gaming", image: image3, color: "rgb(190, 59, 250)", video: allImages.jextVideo, to: '/aviator', id: 405 },
+    { title: "Teenpatti mulis", text: "Aura", image: image4, color: "rgb(31, 178, 252)", video: allImages.muflis_teenpattiVideo, to: "/aura-game", id: 406 },
+    { title: "Andar Bahar.", text: "Aura", image: image5, color: " rgb(238, 97, 89)", to: "/aura-game", id: 407 },
+    { title: "Teenpatti T20", text: "Aura", image: image6, color: " rgb(251, 53, 101)", video: allImages.teenpattiT20Video, to: "/aura-game", id: 408 },
     {
-        title: "7 up & down", text: "Aura", image: image7, color: "rgba(39, 201, 44, 0.8)", video: allImages._7Up_DownVideo, to: "/aura-game"
+        title: "7 up & down", text: "Aura", image: image7, color: "rgba(39, 201, 44, 0.8)", video: allImages._7Up_DownVideo, to: "/aura-game", id: 409
     }]
 }
 export const sportsData = [

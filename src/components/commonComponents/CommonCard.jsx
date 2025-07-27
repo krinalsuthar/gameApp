@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconButton } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import CardHeader from "./CardHeader";
+import { motion } from 'framer-motion';
 import {
     TeenPattiIcon,
     OaksGamingIcon,
@@ -43,7 +44,7 @@ import { toggleFavorite } from "../../features/drawer/drawerSlice";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
 const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle = "" }) => {
-    const { favouriteItems } = useSelector((state) => state.drawer);
+    const { favouriteItems, count } = useSelector((state) => state.drawer);
     const dispatch = useDispatch();
     const { state } = useLocation();
     const data = propsData.length ? propsData : state?.info;
@@ -90,7 +91,7 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
     useEffect(() => {
         localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
         localStorage.setItem('favoriteCount', Object.values(favouriteItems).filter(Boolean).length.toString());
-    }, [favouriteItems]);
+    }, [favouriteItems, count]);
     const Icon = state?.data ? iconMap[state.data] : null;
     return (
         <>
@@ -105,118 +106,126 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                 />
             )}
             <Box sx={{ width: '100%' }}>
-                <Box
+                <motion.div
                     ref={containerRef ?? null}
-                    sx={
-                        isScroll
-                            ? {
-                                display: 'flex',
-                                overflowX: 'auto',
-                                gap: 1,
-                                flexWrap: 'nowrap',
-                                paddingBottom: 2,
-                                scrollbarWidth: 'none',
-                                '&::-webkit-scrollbar': {
-                                    display: 'none',
-                                },
-                            }
-                            : {
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fill, minmax(145px, 1fr))',
-                                gap: 2,
-                            }
-                    }
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    style={{
+                        display: isScroll ? 'flex' : 'grid',
+                        overflowX: isScroll ? 'auto' : 'unset',
+                        gap: isScroll ? 8 : 16,
+                        flexWrap: isScroll ? 'nowrap' : 'wrap',
+                        paddingBottom: isScroll ? 16 : 0,
+                        scrollbarWidth: 'none',
+                    }}
                 >
                     {data?.length > 0 ? (
                         data.map((game, idx) => (
-                            <Box
+                            <motion.div
                                 key={idx}
-                                sx={{
-                                    backgroundImage: `linear-gradient(0deg, ${game?.color} 10%, transparent 80%), url(${game?.image})`,
-                                    backgroundSize: 'cover',
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundPosition: 'center',
-                                    border: '1px solid #ccc',
-                                    borderRadius: 2,
-                                    height: '170px',
-                                    color: 'white',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'flex-end',
-                                    p: 1,
-                                    position: 'relative',
-                                    minWidth: isScroll ? '145px' : 'auto',
-                                    width: isScroll ? '145px' : 'auto',
-                                    flexShrink: isScroll ? 0 : undefined,
-                                    cursor: 'pointer',
-                                    '&:hover .play-icon': {
-                                        opacity: 1,
-                                    },
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                whileHover={{
+                                    scale: 1.05,
+                                    boxShadow: '0 8px 20px rgba(255, 255, 255, 0.25)',
+                                    transition: { type: 'spring', stiffness: 300 }
                                 }}
-                            // onClick={() => navigate(game?.to)}
+                                style={{ borderRadius: '10px', overflow: 'hidden' }}
                             >
                                 <Box
                                     sx={{
-                                        position: 'absolute',
-                                        top: 8,
-                                        right: 8,
-                                        zIndex: 2,
+                                        backgroundImage: `linear-gradient(0deg, ${game?.color} 10%, transparent 80%), url(${game?.image})`,
+                                        backgroundSize: 'cover',
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundPosition: 'center',
+                                        border: '1px solid #ccc',
+                                        borderRadius: 2,
+                                        height: '170px',
+                                        color: 'white',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'flex-end',
+                                        p: 1,
+                                        position: 'relative',
+                                        minWidth: isScroll ? '145px' : 'auto',
+                                        width: isScroll ? '145px' : 'auto',
+                                        flexShrink: isScroll ? 0 : undefined,
                                         cursor: 'pointer',
-                                    }}
-                                    onClick={() => toggleLike(game?.title)}
-                                >
-                                    {favouriteItems[game?.title] ? (
-                                        <FavoriteIcon sx={{ color: 'red' }} />
-                                    ) : (
-                                        <FavoriteBorderIcon sx={{ color: '#ffc107' }} />
-                                    )}
-                                </Box>
-                                <IconButton
-                                    component={RouterLink}
-                                    to={`${game?.to}`}
-                                    state={game?.state ? { data: game?.data } : { data: game?.video }}
-                                    className="play-icon"
-                                    sx={{
-                                        position: 'absolute',
-                                        bottom: 8,
-                                        right: 8,
-                                        backgroundColor: '#FFD600',
-                                        color: '#000',
-                                        borderRadius: '8px 0% 8px 0%',
-                                        opacity: 0,
-                                        transition: 'opacity 0.3s ease-in-out',
-                                        zIndex: 2,
-                                        '&:hover': {
-                                            backgroundColor: '#FFEB3B',
+                                        '&:hover .play-icon': {
+                                            opacity: 1,
                                         },
                                     }}
                                 >
-                                    <PlayArrowRoundedIcon />
-                                </IconButton>
-
-                                <Typography variant="subtitle2" fontWeight={600} sx={{ textAlign: 'center' }} >
-                                    {game?.title}
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    sx={{
-                                        textAlign: 'center',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        display: '-webkit-box',
-                                        WebkitLineClamp: 2,
-                                        WebkitBoxOrient: 'vertical',
-                                    }}
-                                >
-                                    {title}
-                                </Typography>
-                            </Box>
+                                    <Box
+                                        sx={{
+                                            position: 'absolute',
+                                            top: 8,
+                                            right: 8,
+                                            zIndex: 2,
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={() => toggleLike(game?.id)}
+                                    >
+                                        {favouriteItems[game?.id] ? (
+                                            <FavoriteIcon sx={{ color: 'red' }} />
+                                        ) : (
+                                            <FavoriteBorderIcon sx={{ color: '#ffc107' }} />
+                                        )}
+                                    </Box>
+                                    <motion.button
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        style={{
+                                            position: 'absolute',
+                                            bottom: 8,
+                                            right: 8,
+                                            backgroundColor: '#FFD600',
+                                            color: '#000',
+                                            border: 'none',
+                                            borderRadius: '8px 0% 8px 0%',
+                                            opacity: 0,
+                                            zIndex: 2,
+                                            cursor: 'pointer',
+                                            padding: '6px 8px',
+                                        }}
+                                        onClick={() => {
+                                            // manual navigation to preserve RouterLink behavior
+                                            navigate(game?.to, {
+                                                state: game?.state ? { data: game?.data } : { data: game?.video },
+                                            });
+                                        }}
+                                    >
+                                        <PlayArrowRoundedIcon />
+                                    </motion.button>
+                                    <Typography variant="subtitle2" fontWeight={600} sx={{ textAlign: 'center' }} >
+                                        {game?.title}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            textAlign: 'center',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            display: '-webkit-box',
+                                            WebkitLineClamp: 2,
+                                            WebkitBoxOrient: 'vertical',
+                                        }}
+                                    >
+                                        {title}
+                                    </Typography>
+                                </Box>
+                            </motion.div>
                         ))
                     ) : (
                         <Typography>No matching games found.</Typography>
                     )}
-                </Box>
-            </Box>
+                </motion.div>
+            </Box >
         </>
     );
 }
