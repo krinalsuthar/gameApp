@@ -1,11 +1,10 @@
 import { Box, Typography, Button, Divider, List, ListItem, ListItemText, Tab, Tabs, IconButton } from "@mui/material";
 import { useState } from "react";
-import video from "../assets/gameVideos/aviators.mp4"
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useLocation } from "react-router-dom";
 
-const Extra = () => {
+const AvitaroGame = () => {
     const location = useLocation();
     const { data } = location?.state
     const bets = [
@@ -270,4 +269,4 @@ const Extra = () => {
     );
 };
 
-export default Extra;
+export default AvitaroGame;

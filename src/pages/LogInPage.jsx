@@ -89,7 +89,7 @@ const LogInPage = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 p: 2,
-                bgcolor: "#f5f5f5"
+                // bgcolor: "#f5f5f5"
             }}
         >
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
@@ -176,7 +176,6 @@ const LogInPage = () => {
                         }
                         label="Remember me"
                     />
-
                     <Button
                         type="submit"
                         variant="contained"

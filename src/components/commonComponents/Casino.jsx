@@ -7,7 +7,6 @@ import CommonCard from "./CommonCard";
 const Casino = () => {
     const location = useLocation();
     const data = location?.state?.data;
-
     return (
         <>
             {data?.length > 0 ? (

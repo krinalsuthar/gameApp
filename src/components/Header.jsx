@@ -20,6 +20,7 @@ import { casionData, categoriesData } from '../data/drawerData';
 const typoStyle = {
     fontWeight: 600,
     fontSize: '12px',
+    color: "black"
 };
 const commonBoxStyle = {
     display: 'flex',
@@ -40,11 +41,6 @@ const Header = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [open, setOpen] = useState(false);
-    // const casionData = categoriesData?.categories?.items?.map(item => ({
-    //     info: item?.info,
-    //     title: item?.title,
-    //     icon: item?.icon
-    // }));
     const user = sessionStorage.getItem('username')
     const navigate = useNavigate()
     const dispatch = useDispatch();
@@ -134,9 +130,9 @@ const Header = () => {
                     <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                         <Box onClick={() => dispatch(toggleDrawer())} sx={{ display: "flex" }}>
                             {isDrawerOpen ? (
-                                <CloseIcon sx={{ color: 'white' }} />
+                                <CloseIcon sx={{ color: "#ffffff" }} />
                             ) : (
-                                <DehazeIcon sx={{ color: 'white' }} />
+                                <DehazeIcon sx={{ color: "#ffffff" }} />
                             )}
                         </Box>
                         <Box>
@@ -200,7 +196,6 @@ const Header = () => {
                                 >
                                     DEPOSIT
                                 </Button>
-                                {/* BALANCE DROPDOWN */}
                                 <FormControl
                                     variant="standard"
                                     sx={{
@@ -218,7 +213,7 @@ const Header = () => {
                                         IconComponent={ArrowDropDownIcon}
                                         input={<InputBase />}
                                         renderValue={() => (
-                                            <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                                            <Box sx={{ display: 'flex', alignItems: 'center', color: "black" }}>
                                                 <Typography >₹ 0.00</Typography>
                                             </Box>
                                         )}
@@ -227,7 +222,8 @@ const Header = () => {
                                                 sx: {
                                                     bgcolor: "#ffc107",
                                                     width: "250px",
-                                                    mt: 1
+                                                    mt: 1,
+                                                    color: "black"
                                                 }
                                             }
                                         }}
@@ -237,8 +233,6 @@ const Header = () => {
                                         ))}
                                     </Select>
                                 </FormControl>
-
-                                {/* PROFILE DROPDOWN */}
                                 <FormControl
                                     variant="standard"
                                     sx={{
@@ -246,7 +240,7 @@ const Header = () => {
                                         bgcolor: '#ffc107',
                                         borderRadius: 1,
                                         px: 1,
-                                        display: { lg: "flex", md: "flex", sm: "none", xs: "none" }
+                                        display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
                                     }}
                                 >
                                     <Select
@@ -256,7 +250,7 @@ const Header = () => {
                                         IconComponent={ArrowDropDownIcon}
                                         input={<InputBase />}
                                         renderValue={() => (
-                                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: "black" }}>
                                                 <AccountCircleIcon fontSize="small" />
                                                 <Typography>{user}</Typography>
                                             </Box>
@@ -266,7 +260,8 @@ const Header = () => {
                                                 sx: {
                                                     bgcolor: "#ffc107",
                                                     scrollbarWidth: "none",
-                                                    width: "250px"
+                                                    width: "250px",
+                                                    color: "black"
                                                 }
                                             }
                                         }}
@@ -278,7 +273,7 @@ const Header = () => {
                                         ))}
                                         {userProfileData?.map((item, i) => (
                                             <MenuItem key={i} value={item?.value} component={Link} state={item?.to === "/login-default" ? { data: item?.label } : { data: item?.data }} to={item?.label === "LogOut" ? `${item?.to}` : `${item?.to}/${item?.label.trim().toLowerCase()}`}>
-                                                <item.icon fontSize="small" sx={{ fontSize: 20, color: "inherit", mr: 1 }} />
+                                                <item.icon fontSize="small" sx={{ fontSize: 20, mr: 1 }} />
                                                 {item?.label === "LogOut" ? (
                                                     <Typography onClick={() => {
                                                         dispatch(logout())

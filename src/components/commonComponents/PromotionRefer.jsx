@@ -1,8 +1,9 @@
-import { Box, Button, CardMedia, Typography } from "@mui/material"
+import { Box, Button, CardMedia, Typography, useTheme } from "@mui/material"
 import refer from "../../assets/referimage.png"
 import { Link, useLocation } from "react-router-dom"
 import * as allImages from "../../assets"
 import React from "react"
+import { useAppTheme } from "./ThemeComponent"
 const images = [
     allImages.promotion1,
     allImages.promotion2,
@@ -11,23 +12,25 @@ const images = [
     allImages.promotion5
 ]
 const PromotionRefer = () => {
+    const theme = useTheme();
+    const { mode } = useAppTheme();
     const location = useLocation();
     const promotion = location?.state?.data;
     return (
         <>
             {promotion ? (
                 <>
-                    <Box sx={{ bgcolor: "white", textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
+                    <Box sx={{ bgcolor: theme.palette.background.default, textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
                         <Typography variant="h5">PROMOTIONS</Typography>
                     </Box>
-                    <Box sx={{ bgcolor: "white", textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
+                    <Box sx={{ bgcolor: theme.palette.background.default, textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
                         <Typography variant="h5">We regret to inform you that no promotions are currently available.</Typography>
                         <Typography variant="subtitle2">However, we encourage you to stay connected with us.We are constantly working to provide you with the best promotions tailored just for you.</Typography>
                     </Box>
                 </>
             ) : (
                 <>
-                    <Box sx={{ bgcolor: "white", textAlign: "center", p: 3, borderRadius: "5px", display: "flex", flexWrap: { lg: "nowrap", md: "nowrap", sm: "nowrap", xs: "wrap" }, justifyContent: "center" }}>
+                    <Box sx={{ bgcolor: theme.palette.background.default, textAlign: "center", p: 3, borderRadius: "5px", display: "flex", flexWrap: { lg: "nowrap", md: "nowrap", sm: "nowrap", xs: "wrap" }, justifyContent: "center" }}>
                         <Box>
                             <CardMedia
                                 component="img"
@@ -54,7 +57,7 @@ const PromotionRefer = () => {
                     </Box>
                     <Box
                         sx={{
-                            bgcolor: 'white',
+                            bgcolor: theme.palette.background.default,
                             textAlign: 'center',
                             p: 3,
                             borderRadius: '5px',
@@ -89,10 +92,10 @@ const PromotionRefer = () => {
                                 <Box
                                     key={idx}
                                     sx={{
-                                        flex: 1,               // Ensures equal width in row layout
-                                        maxWidth: 300,         // Limits box width for large screens
-                                        textAlign: 'center',   // Keeps everything centered
-                                        mx: 'auto',            // Horizontally center on column layout
+                                        flex: 1,
+                                        maxWidth: 300,
+                                        textAlign: 'center',
+                                        mx: 'auto',
                                     }}
                                 >
                                     <CardMedia
@@ -116,7 +119,7 @@ const PromotionRefer = () => {
                             ))}
                         </Box>
                     </Box>
-                    <Box sx={{ bgcolor: "white", textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
+                    <Box sx={{ bgcolor: theme.palette.background.default, textAlign: "center", p: 3, borderRadius: "5px", mb: 2 }}>
                         <Typography variant="h5">Invite & Ignite: Claim Your Bonus Today!</Typography>
                         <Typography variant="subtitle2">Refer and Earn Bonus Not Available Currently.</Typography>
                     </Box>

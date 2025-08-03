@@ -5,7 +5,6 @@ import {
     IconButton,
     Fade,
 } from "@mui/material";
-
 import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -22,7 +21,13 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import { Link, useNavigate } from "react-router-dom";
 import { liveSportsData, sportData, userProfileData } from "../../data/dashboardData";
 import { Link as RouterLink } from 'react-router-dom';
-import { casionData, categoriesData } from "../../data/drawerData";
+import { casionData } from "../../data/drawerData";
+
+const commonStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+}
 
 const popupItems = [
     { label: "Download App", icon: <DownloadIcon />, to: "" },
@@ -33,11 +38,6 @@ const popupItems = [
     { label: "deposit", icon: <AccountBalanceWalletIcon />, to: "/login-default", data: "deposit" },
 ];
 const data = ["in-paly", "sports", "casino", "profile"]
-// const casionData = categoriesData?.categories?.items?.map(item => ({
-//     info: item?.info,
-//     title: item?.title,
-//     icon: item?.icon
-// }));
 const navigatorName = 'sportsbook';
 const BottomNavWithRadialMenu = () => {
     const [open, setOpen] = useState(false);
@@ -51,17 +51,15 @@ const BottomNavWithRadialMenu = () => {
             <Fade in={open} >
                 <Box
                     sx={{
+                        ...commonStyle,
                         position: "fixed",
                         bottom: '50px',
                         left: "50%",
                         transform: "translateX(-50%)",
                         borderRadius: "50%",
-                        bgcolor: "#111",
+                        bgcolor: "rgba(0,0,0,0.7)",
                         border: "4px solid #fbc02d",
                         zIndex: 10,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
                         p: 14
                     }}
                 >
@@ -75,6 +73,7 @@ const BottomNavWithRadialMenu = () => {
                             <Box
                                 key={index}
                                 sx={{
+                                    ...commonStyle,
                                     position: "absolute",
                                     left: `calc(50% + ${x}px - 25px)`,
                                     top: `calc(50% - ${y}px - 25px)`,
@@ -83,10 +82,7 @@ const BottomNavWithRadialMenu = () => {
                                     borderRadius: "50%",
                                     bgcolor: "#fbc02d",
                                     color: "#000",
-                                    display: "flex",
                                     flexDirection: "column",
-                                    alignItems: "center",
-                                    justifyContent: "center",
                                     fontSize: 10,
                                     textAlign: "center",
                                     px: 1,
@@ -103,14 +99,12 @@ const BottomNavWithRadialMenu = () => {
                     })}
                     <Box
                         sx={{
+                            ...commonStyle,
                             width: 70,
                             height: 70,
                             borderRadius: "50%",
                             bgcolor: "#fbc02d",
-                            display: "flex",
                             flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "center",
                             color: "#000",
                             position: "relative",
                             zIndex: 20,
@@ -147,6 +141,7 @@ const BottomNavWithRadialMenu = () => {
                 </Box>
                 <Box
                     sx={{
+                        ...commonStyle,
                         position: "absolute",
                         top: -35,
                         left: "50%",
@@ -155,9 +150,6 @@ const BottomNavWithRadialMenu = () => {
                         height: 70,
                         borderRadius: "50%",
                         bgcolor: "#111",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
                         zIndex: 30,
                         border: "4px solid #ffc107",
                     }}
@@ -183,9 +175,8 @@ const NavItem = ({ icon, label, onClick }) => (
     <Box
         onClick={onClick}
         sx={{
-            display: "flex",
+            ...commonStyle,
             flexDirection: "column",
-            alignItems: "center",
             color: "#000",
             cursor: "pointer",
         }}

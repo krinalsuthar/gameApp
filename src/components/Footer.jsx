@@ -1,9 +1,10 @@
-import { Box, CardMedia, Typography } from "@mui/material";
+import { Box, CardMedia, Typography, useTheme } from "@mui/material";
 import logo from "../assets/logo.png";
 import { BhimIcon, DiscortIcon, EmailIcon, FacebookIcon, GPayIcon, InstagramIcon, LinkedInIcon, PaytmIcon, PhonePeIcon, PinterestIcon, TelegramIcon, TelephoneIcon, TwitterIcon, VisaCardIcon, WhatsAppIcon, YouTubeIcon } from '../assets/SVGs/allSVGs';
 import CommonNavLink from "./commonComponents/CommonNavLink";
 import { liveSportsData, sportData, sportsData } from "../data/dashboardData";
 import { casionData, categoriesData } from "../data/drawerData";
+import { useAppTheme } from "./commonComponents/ThemeComponent";
 const imageModules = import.meta.glob('/src/assets/footerImages/footer*.{png,jpg,jpeg,svg}', {
     eager: true,
     import: 'default',
@@ -35,8 +36,9 @@ const socialIcons = [
     TelephoneIcon
 ];
 const Footer = () => {
+    const theme = useTheme();
     return (
-        <Box sx={{ p: 2, bgcolor: "white", margin: "0px 16px", borderRadius: "5px", m: { lg: "5px 0px", md: "5px 0px", sm: "0px 0px 110px 0px", xs: "0px 0px 110px 0px" } }}>
+        <Box sx={{ p: 2, margin: "0px 16px", borderRadius: "5px", bgcolor: theme.palette.background.default, m: { lg: "5px 0px", md: "5px 0px", sm: "0px 0px 110px 0px", xs: "0px 0px 110px 0px" } }}>
             <Box>
                 <CommonNavLink to={''} >
                     <CardMedia
@@ -52,8 +54,7 @@ const Footer = () => {
                     sx={{
                         fontSize: "10px",
                         fontWeight: "600",
-                        color: "#535558",
-                        mt: 2,
+                        my: 2,
                     }}
                 >
                     Gamekhelo.com is Asia's one of the biggest gaming platforms with over
@@ -65,7 +66,7 @@ const Footer = () => {
                     market.
                 </Typography>
 
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mt: 2, alignItems: "center", justifyContent: "center" }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, alignItems: "center", justifyContent: "center", bgcolor: "#ffffff", p: 1, width: "fit-content", m: "auto" }}>
                     {images?.map((imgSrc, idx) => (
                         <CardMedia
                             key={idx}
@@ -96,7 +97,7 @@ const Footer = () => {
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Quick Link</Typography>
                     {footerLinks?.map((item, i) => (
                         <Box key={i}>
-                            <CommonNavLink to={`${item?.to}/${item?.label}`} state={{ data: item?.data }} sx={{ color: '#535558', display: 'block' }}>
+                            <CommonNavLink to={`${item?.to}/${item?.label}`} state={{ data: item?.data }} sx={{ color: theme.palette.text.primary, display: 'block' }}>
                                 <Typography variant="caption">{item.label}</Typography>
                             </CommonNavLink>
                         </Box>
@@ -105,7 +106,7 @@ const Footer = () => {
 
                 <Box>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Info</Typography>
-                    <CommonNavLink to={"rules"} sx={{ color: '#535558' }}>
+                    <CommonNavLink to={"rules"} sx={{ color: theme.palette.text.primary }}>
                         <Typography variant="caption">Rules</Typography>
                     </CommonNavLink>
                 </Box>
@@ -114,7 +115,7 @@ const Footer = () => {
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>
                         100% Safe & instant payments
                     </Typography>
-                    <Typography variant="subtitle2" sx={{ fontSize: 10, color: '#535558', mt: 1 }}>
+                    <Typography variant="subtitle2" sx={{ fontSize: 10, mt: 1 }}>
                         You can make payments and receive earnings instantly using your UPI ID or bank account details, ensuring your money is always safe and secure. All major UPI platforms are supported.
                     </Typography>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600', mt: 2 }}>
@@ -128,8 +129,8 @@ const Footer = () => {
                 </Box>
                 <Box sx={{ maxWidth: "300px" }}>
                     <Typography sx={{ fontSize: 14, fontWeight: 700, color: '#ffc600' }}>Contact Us</Typography>
-                    <Typography sx={{ fontSize: 12, color: '#535558', mt: 1 }}>+16616752327</Typography>
-                    <Typography sx={{ fontSize: 12, color: '#535558' }}>support@gamekhelo.com</Typography>
+                    <Typography sx={{ fontSize: 12, mt: 1 }}>+16616752327</Typography>
+                    <Typography sx={{ fontSize: 12, }}>support@gamekhelo.com</Typography>
                     <Box sx={{ display: 'flex', gap: 2, mt: 2, flexWrap: 'wrap', cursor: "pointer" }}>
                         {socialIcons?.map((Icons, i) => (
                             <Icons key={i} />

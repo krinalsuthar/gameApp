@@ -862,7 +862,7 @@ const SportsBook = () => {
                                     sx={{
                                         px: 1.5,
                                         py: 0.5,
-                                        bgcolor: '#eee',
+                                        // bgcolor: '#eee',
                                         borderRadius: 1,
                                         minWidth: 100,
                                         textAlign: 'center',
@@ -875,7 +875,7 @@ const SportsBook = () => {
                                     sx={{
                                         px: 1.5,
                                         py: 0.5,
-                                        bgcolor: '#eee',
+                                        // bgcolor: '#eee',
                                         borderRadius: 1,
                                         minWidth: 100,
                                         textAlign: 'center',
@@ -1020,7 +1020,7 @@ const SportsBook = () => {
                 flexShrink: 0,
                 scrollbarWidth: "none"
             }}>
-                <Box px={2} bgcolor="#f5f5f5">
+                <Box px={2}>
                     <Grid container spacing={1} sx={{ overflowY: 'auto', flexWrap: 'nowrap', scrollbarWidth: 'none', }}>
                         {sportsCategories
                             .flatMap((s) =>

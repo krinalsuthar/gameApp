@@ -15,13 +15,11 @@ import logo from "../../assets/aura-logo.png"
 import LockIcon from '@mui/icons-material/Lock';
 import video from "../../assets/gameVideos/teen-patti.mp4"
 import { useLocation } from 'react-router-dom';
-import FourIconLoader from '../commonComponents/FourIconLoader';
 
 const AuraGame = () => {
     const theme = useTheme();
     const location = useLocation();
     const { data } = location?.state
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // For mobile layout control
     return (
         <>
             <Box sx={{ display: "flex", gap: 1, mb: 2, width: "100%", flexWrap: { lg: "nowrap", md: "nowrap", sm: "wrap", xs: "wrap" } }}>
@@ -53,7 +51,7 @@ const AuraGame = () => {
                         </Box>
                         <Box sx={{ width: { lg: "50%", md: "50%", sm: "100%", xs: "100%" }, height: "100%" }}>
                             <video
-                                src={data}
+                                src={data ?? video}
                                 width="100%"
                                 autoPlay
                                 muted

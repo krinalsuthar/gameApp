@@ -7,9 +7,11 @@ import AppRoutes from '../routers/Router';
 import BottomNavWithRadialMenu from '../components/commonComponents/BottomNAvigation';
 import { useLocation, useNavigate } from 'react-router-dom';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import { useAppTheme } from '../components/commonComponents/ThemeComponent';
 
-const App = () => {
+const Dashboard = () => {
     const theme = useTheme();
+    const { mode } = useAppTheme();
     const isXs = useMediaQuery(theme.breakpoints.down('sm'));
     const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
     const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
@@ -23,10 +25,9 @@ const App = () => {
         location.pathname.startsWith(path)
     );
     return (
-        <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+        <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: theme.palette.background.secondery }}>
             <CssBaseline />
             <DrawerMenu drawerWidth={drawerWidth} />
-
             <Box
                 sx={{
                     display: 'flex',
@@ -57,7 +58,6 @@ const App = () => {
                                 textTransform: 'none',
                                 fontWeight: 600,
                                 fontSize: '12px',
-                                // mr: 1,
                                 width: "50%",
                             }}
                             onClick={() => navigate("/login")}
@@ -72,7 +72,6 @@ const App = () => {
                                 textTransform: 'none',
                                 fontWeight: 600,
                                 fontSize: '12px',
-                                // mr: 1,
                                 width: "50%",
                             }}
                             onClick={() => navigate("/login")}
@@ -99,5 +98,5 @@ const App = () => {
     );
 };
 
-export default App;
+export default Dashboard;
 

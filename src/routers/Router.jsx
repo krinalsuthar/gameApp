@@ -10,8 +10,8 @@ import CommonMatch from '../components/commonComponents/CommonMatch';
 import AuraGame from '../components/gameUI/AuraGame';
 import UserProfile from '../pages/UserProfile';
 import CommonTable from '../components/commonComponents/CommonTable';
-import Extra from '../components/DesktopComponent ';
 import SportsBook from '../pages/SportsBook';
+import AvitaroGame from '../components/gameUI/DesktopComponent ';
 
 const AppRoutes = () => (
     <Routes>
@@ -23,7 +23,7 @@ const AppRoutes = () => (
         <Route path="/aura-game" element={<AuraGame />} />
         <Route path="/login-default/:data" element={<LoginDeposit />} />
         <Route path="/sports-book/:data" element={<SportsBook />} />
-        <Route path="/aviator" element={<Extra />} />
+        <Route path="/aviator" element={<AvitaroGame />} />
         <Route path="/user-profile/:data" element={<UserProfile />} />
         <Route path="/common-list/:data" element={<CommonList />} />
         <Route path="/common-card/:item" element={<Casion />} />

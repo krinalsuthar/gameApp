@@ -15,6 +15,8 @@ import {
     Select,
     MenuItem,
     CardMedia,
+    Switch,
+    Button
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,8 +34,12 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { liveSportsData, sportsData, TrendingGamesData } from '../data/dashboardData';
 import CommonNavLink from './commonComponents/CommonNavLink';
 import CollapsibleSection from './commonComponents/CollapsibleSection';
+import { useAppTheme } from './commonComponents/ThemeComponent';
+import { WhatsAppIcon } from '../assets/SVGs/allSVGs';
 
 const DrawerMenu = () => {
+    const theme = useTheme()
+    const { mode, toggleTheme } = useAppTheme();
     const { open, count, favouriteItems } = useSelector((state) => state.drawer);
     const dispatch = useDispatch();
     const [searchTerm, setSearchTerm] = useState('');
@@ -67,6 +73,14 @@ const DrawerMenu = () => {
     const handleToggleSportsEntire = () => {
         setOpenSportsEntire((prev) => !prev);
     };
+    const commonDefaultStyle = {
+        bgcolor: theme.palette.background.default,
+        color: theme.palette.text.primary
+    }
+    const commonSeconderyStyle = {
+        bgcolor: theme.palette.background.secondery,
+        color: theme.palette.text.primary
+    }
     const filteredSports = drawerData.sports?.map((sport) => ({
         ...sport,
         leagues: sport.leagues?.map((league) => ({
@@ -80,7 +94,6 @@ const DrawerMenu = () => {
         setLanguage(event.target.value);
     };
     const countData = liveSportsData?.flatMap((item) => item?.matches?.filter((match) => match?.tag === "LIVE"))
-    const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
 
@@ -129,18 +142,19 @@ const DrawerMenu = () => {
         >
             <Box
                 sx={{
+                    ...commonSeconderyStyle,
                     display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 1,
                     // marginLeft: isMobile ? 0 : open ? `${drawerWidth}px` : 0,
                     // width: isMobile ? '100%' : open ? `calc(100% - ${drawerWidth}px)` : '100%',
                     transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
-                    overflowY: 'auto', scrollbarWidth: "none", overflowX: "hidden", bgcolor: "#f5f5f5de", pb: "50px"
+                    overflowY: 'auto', scrollbarWidth: "none", overflowX: "hidden", pb: "50px"
                 }}
                 role="presentation"
                 onKeyDown={handleClose}
             >
-                <Grid container spacing={1} sx={{ padding: 2, bgcolor: "#f5f5f5de" }}>
+                <Grid container spacing={1} sx={{ ...commonSeconderyStyle, padding: 2 }}>
                     {data1?.map((item, index) => {
                         return (
                             <Grid item lg={5} md={5} key={index} sx={{ padding: "0px" }}>
@@ -186,7 +200,7 @@ const DrawerMenu = () => {
                         );
                     })}
                 </Grid>
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+                <Box sx={{ ...commonSeconderyStyle, p: 1 }}>
                     <List>
                         {startingData?.starting?.items?.map((item, index) => (
                             <ListItemButton
@@ -202,12 +216,13 @@ const DrawerMenu = () => {
                                         : item?.segment === "favourite" ? { info: favouriteData, isScroll: false } : ""}
                                 onClick={handleClose}
                                 sx={{
+                                    ...commonDefaultStyle,
                                     justifyContent: "space-between",
                                     alignItems: "center",
                                     margin: "5px 0px",
                                     borderRadius: "5px",
                                     padding: "6px 12px",
-                                    bgcolor: "white",
+                                    // bgcolor: "white",
                                     cursor: "pointer",
                                 }}
                             >
@@ -226,7 +241,7 @@ const DrawerMenu = () => {
                         ))}
                     </List>
                 </Box>
-                <Box sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+                <Box sx={{ ...commonSeconderyStyle, p: 1 }}>
                     <Box
                         sx={{
                             display: 'flex',
@@ -244,7 +259,7 @@ const DrawerMenu = () => {
 
                             {filteredSports?.map((sport, index) => (
                                 <React.Fragment key={index}>
-                                    <ListItemButton onClick={() => handleSportClick(sport.segment)} sx={{ justifyContent: "space-between", margin: "5px 0px", borderRadius: "5px", padding: "3px 10px", bgcolor: "white" }}>
+                                    <ListItemButton onClick={() => handleSportClick(sport.segment)} sx={{ ...commonDefaultStyle, justifyContent: "space-between", margin: "5px 0px", borderRadius: "5px", padding: "3px 10px" }}>
                                         <Box sx={{ display: "flex", alignItems: "center", gap: "7px", cursor: "pointer" }}>
                                             <sport.icon sx={{ color: 'inherit' }} />
                                             <Box>
@@ -274,11 +289,12 @@ const DrawerMenu = () => {
                                                 <React.Fragment key={index}>
                                                     <ListItemButton
                                                         sx={{
+                                                            ...commonDefaultStyle,
                                                             justifyContent: "space-between",
                                                             margin: "5px 0px",
                                                             borderRadius: "5px",
                                                             padding: "3px 10px",
-                                                            bgcolor: "white",
+                                                            // bgcolor: "white",
                                                         }}
                                                         onClick={() => handleLeagueClick(sport.segment, league.segment)}
                                                     >
@@ -314,7 +330,7 @@ const DrawerMenu = () => {
                                                                     to={`/common-match/${league?.segment}`}
                                                                     // to={`/common-page`}
                                                                     state={{ data: league.info, info: league?.matches[0]?.name }}
-                                                                    sx={{ bgcolor: "white", m: "5px 0px 5px 20px", p: "3px 10px" }}
+                                                                    sx={{ ...commonDefaultStyle, m: "5px 0px 5px 20px", p: "3px 10px" }}
                                                                     onClick={handleClose}
 
                                                                 >
@@ -337,8 +353,8 @@ const DrawerMenu = () => {
                     </Collapse>
                 </Box>
 
-                <Box sx={{ bgcolor: '#f5f5f5de' }}>
-                    <CollapsibleSection sectionKey={categoriesData?.categories?.title || 'categories'} title="CATEGORIES" sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+                <Box sx={{ ...commonSeconderyStyle }}>
+                    <CollapsibleSection sectionKey={categoriesData?.categories?.title || 'categories'} title="CATEGORIES" sx={{ ...commonSeconderyStyle, p: 1 }}>
                         <List>
                             {categoriesData.categories.items?.map((item, index) => (
                                 <CommonNavLink
@@ -354,13 +370,12 @@ const DrawerMenu = () => {
                                         isHeader: true,
                                     }}
                                     sx={{
+                                        ...commonDefaultStyle,
                                         display: 'flex',
-                                        color: 'black',
                                         justifyContent: 'space-between',
                                         margin: '5px 0px',
                                         borderRadius: '5px',
                                         padding: '6px 12px',
-                                        bgcolor: 'white',
                                     }}
                                 >
                                     <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
@@ -382,7 +397,7 @@ const DrawerMenu = () => {
                         </List>
                     </CollapsibleSection>
                 </Box>
-                <CollapsibleSection sectionKey={providersData?.providers?.title || 'providers'} title="PROVIDERS" sx={{ bgcolor: '#f5f5f5de', p: 1 }}>
+                <CollapsibleSection sectionKey={providersData?.providers?.title || 'providers'} title="PROVIDERS" sx={{ ...commonSeconderyStyle, p: 1 }}>
                     <List>
                         {providersData.providers.items?.map((item, index) => (
 
@@ -400,13 +415,14 @@ const DrawerMenu = () => {
                                     providerDataIcons: true
                                 }}
                                 sx={{
+                                    ...commonDefaultStyle,
                                     display: 'flex',
-                                    color: 'black',
+                                    // color: 'black',
                                     justifyContent: 'space-between',
                                     margin: '5px 0px',
                                     borderRadius: '5px',
                                     padding: '6px 12px',
-                                    bgcolor: 'white',
+                                    // bgcolor: 'white',
                                 }}
                             >
                                 <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
@@ -425,38 +441,81 @@ const DrawerMenu = () => {
                                         whiteSpace: "nowrap",
                                     }}
                                 >
-                                    {item.count}
+                                    {item.info.length}
                                 </Typography>
                             </CommonNavLink>
                         ))}
                     </List>
                 </CollapsibleSection>
-
                 <Box sx={{
-                    padding: "3px 10px", bgcolor: "#43727a", borderRadius: "5px", color: "white", m: 1
+                    bgcolor: theme.palette.background.default,
+                    p: 1,
                 }}>
-                    < Typography sx={{ textAlign: "center" }}>Blog</Typography>
-                </Box>
-                <Typography sx={{ fontSize: "15px", fontWeight: 500, m: 1 }}>SETTINGS</Typography>
-                <Box sx={{ minWidth: 120, m: 1 }}>
-                    <FormControl fullWidth size='small'>
-                        <InputLabel id="demo-simple-select-label">{language}</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={language}
-                            label="language"
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="ENglish">English</MenuItem>
-                            <MenuItem value="Hindi">Hindi</MenuItem>
-                            <MenuItem value="Gujarati">Gujarati</MenuItem>
-                            <MenuItem value="Kannada">Kannada</MenuItem>
-                            <MenuItem value="Tamil">Tamil</MenuItem>
-                            <MenuItem value="Telugu">Telugu</MenuItem>
-                            <MenuItem value="Marathi">Marathi</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <Box sx={{ bgcolor: '#43727a', borderRadius: 1, p: '3px 10px', mb: 1 }}>
+                        <Typography sx={{ color: 'white', textAlign: 'center', fontWeight: 600 }}>Blog</Typography>
+                    </Box>
+
+                    <Typography sx={{ fontSize: '15px', fontWeight: 500, mb: 1 }}>SETTINGS</Typography>
+                    <Box sx={{ mb: 2 }}>
+                        <FormControl fullWidth size="small" sx={{
+                            bgcolor: theme.palette.background.default,
+                            borderRadius: 1
+                        }}>
+                            <InputLabel id="demo-simple-select-label">Language</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={language}
+                                label="Language"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value="English">English</MenuItem>
+                                <MenuItem value="Hindi">Hindi</MenuItem>
+                                <MenuItem value="Gujarati">Gujarati</MenuItem>
+                                <MenuItem value="Kannada">Kannada</MenuItem>
+                                <MenuItem value="Tamil">Tamil</MenuItem>
+                                <MenuItem value="Telugu">Telugu</MenuItem>
+                                <MenuItem value="Marathi">Marathi</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    <Box sx={{ mb: 2 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 1, py: 0.5, bgcolor: theme.palette.background.secondery, borderRadius: 1 }}>
+                            <Typography sx={{ fontSize: 14 }}>Dark Mode</Typography>
+                            <Switch
+                                checked={mode === 'dark'}
+                                onChange={toggleTheme}
+                                inputProps={{ 'aria-label': 'theme toggle' }}
+                                sx={{
+                                    '& .MuiSwitch-switchBase.Mui-checked': {
+                                        color: '#ffc107',
+                                    },
+                                    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                                        backgroundColor: '#ffc107',
+                                    },
+                                }}
+                            />
+                        </Box>
+                    </Box>
+
+                    {/* WhatsApp Chat Button */}
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        startIcon={<WhatsAppIcon />}
+                        sx={{
+                            bgcolor: '#25D366',
+                            color: '#fff',
+                            textTransform: 'none',
+                            fontWeight: 600,
+                            borderRadius: 1,
+                            '&:hover': {
+                                bgcolor: '#1ebe5d',
+                            }
+                        }}
+                    >
+                        WhatsApp Chat
+                    </Button>
                 </Box>
 
             </Box >

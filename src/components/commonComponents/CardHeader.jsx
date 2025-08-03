@@ -1,6 +1,7 @@
-import { Box, CardMedia, Grid, TextField, Typography } from "@mui/material"
+import { Box, CardMedia, Grid, TextField, Typography, useTheme } from "@mui/material"
 import { LeftArrowIcon, RightArrowIcon } from "../../assets/SVGs/allSVGs"
 import CommonNavLink from "./CommonNavLink"
+import { useAppTheme } from "./ThemeComponent";
 
 const CardHeader = (
     {
@@ -17,6 +18,7 @@ const CardHeader = (
         showMoreData = ""
     }
 ) => {
+    const theme = useTheme();
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({
@@ -40,7 +42,7 @@ const CardHeader = (
                 <Grid
                     item
                     sx={{
-                        p: "5px 10px", m: "5px 0px", bgcolor: "white",
+                        p: "5px 10px", m: "5px 0px", bgcolor: theme.palette.background.default,
                         flexWrap: "wrap",
                         display: "flex",
                         justifyContent: "space-between",
@@ -70,10 +72,10 @@ const CardHeader = (
                         {showMore ? (
                             <CommonNavLink to={`show-more`}
                                 item={{
-                                    data: "item.title",
+                                    data: title,
                                     info: showMoreData,
                                     icon: "",
-                                    isHeader: false,
+                                    isHeader: true,
                                     isScroll: false
                                 }}
                                 variant="body2">

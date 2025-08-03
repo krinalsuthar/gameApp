@@ -10,6 +10,7 @@ import {
     Dialog,
     DialogContent,
     DialogActions,
+    useTheme,
 } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -21,9 +22,12 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CommonDialog from "./CommonDialog";
 import { drawerData } from "../../data/drawerData";
 import CollapsibleSection from "./CollapsibleSection";
+import { useAppTheme } from "./ThemeComponent";
 
 const CommonMatch = () => {
     const location = useLocation();
+    const theme = useTheme();
+    const { mode } = useAppTheme();
     const { data, info } = location?.state;
     const inningsList = ["1st INNS", "2nd INNS"];
     const [clickBetting, setClickBetting] = useState(false);
@@ -220,14 +224,14 @@ const CommonMatch = () => {
                     <Button
                         onClick={handleConfirm}
                         variant="contained"
-                        sx={{ bgcolor: "green", color: "white", px: 3 }}
+                        sx={{ bgcolor: "green", px: 3 }}
                     >
                         Accept
                     </Button>
                     <Button
                         onClick={handleDecline}
                         variant="contained"
-                        sx={{ bgcolor: "red", color: "white", px: 3 }}
+                        sx={{ bgcolor: "red", px: 3 }}
                     >
                         Decline
                     </Button>
@@ -349,7 +353,7 @@ const CommonMatch = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        color: '#fff',
+                                        // color: '#fff',
                                         fontSize: '1.2rem',
                                         fontWeight: 500,
                                         bgcolor: "#000"
@@ -379,12 +383,12 @@ const CommonMatch = () => {
                                         sx={{
                                             border: "1px solid #ffcc00",
                                             fontWeight: 600,
-                                            color: "black",
-                                            bgcolor: tab === idx ? "#ffcc00" : "#fff",
+                                            // color: "black",
+                                            bgcolor: tab === idx ? "#ffcc00" : "",
                                             py: 0,
                                             "&.Mui-selected": {
                                                 borderBottom: "none",
-                                                color: "#fff",
+                                                // color: "#fff",
                                             },
                                         }}
                                     />
@@ -400,7 +404,7 @@ const CommonMatch = () => {
                                 .map((section, index) => (
                                     <Box key={index} s>
                                         <CollapsibleSection sectionKey={section.title} title={`${section?.title || "data"} `}
-                                            sx={{ bgcolor: '#fff', borderRadius: 1, p: 2, mb: 2 }} >
+                                            sx={{ bgcolor: theme.palette.background.default, borderRadius: 1, p: 2, mb: 2 }} >
                                             <>
                                                 {section.type === "fancy" ? (
                                                     section.data.map((bet, index) => (
@@ -694,7 +698,7 @@ const CommonMatch = () => {
                                 </Box>
                             </Box>
                         ) : (
-                            <Box sx={{ textAlign: "center", py: 4, backgroundColor: "#fff" }}>
+                            <Box sx={{ textAlign: "center", py: 4 }}>
                                 <Typography>No bets placed in the selected event</Typography>
                             </Box>
                         )}

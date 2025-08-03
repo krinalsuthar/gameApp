@@ -1,4 +1,4 @@
-import { Box, Typography, Chip, Grid, Badge } from '@mui/material';
+import { Box, Typography, Chip, Grid, Badge, useTheme } from '@mui/material';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import { CricketIcon, TennisIcon, SoccerIcon } from '../../assets/SVGs/allSVGs';
@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { ImageCarousel } from './ImageCarousel';
 import { Link as RouterLink } from 'react-router-dom';
+import { useAppTheme } from './ThemeComponent';
 
 const OddsBox = ({ value, index }) => (
     <Box
@@ -39,6 +40,8 @@ const getTagColor = (tag) => {
 };
 
 const CommonList = ({ data: propsData = [] }) => {
+    const theme = useTheme();
+    const { mode } = useAppTheme();
     const location = useLocation();
     const locationData = location.state?.data;
     const isLoggedIN = location.state?.isLoggin ?? true;
@@ -87,13 +90,13 @@ const CommonList = ({ data: propsData = [] }) => {
                                     display: 'flex',
                                     flexWrap: 'wrap',
                                     alignItems: 'center',
-                                    bgcolor: 'white',
+                                    bgcolor: theme.palette.background.default,
                                     p: 1.5,
                                     mb: 1,
                                     borderRadius: 1,
                                     boxShadow: 1,
                                     textDecoration: "none",
-                                    color: "#000"
+                                    color: theme.palette.text.primary
                                 }}
                                 component={RouterLink}
                                 to={`/common-match/${match?.tag}`}
@@ -104,7 +107,7 @@ const CommonList = ({ data: propsData = [] }) => {
                                     size="small"
                                     sx={{
                                         bgcolor: getTagColor(match.tag),
-                                        color: 'white',
+                                        // color: 'black',
                                         fontWeight: 600,
                                         mr: 1.5,
                                         textTransform: 'uppercase',
@@ -114,7 +117,7 @@ const CommonList = ({ data: propsData = [] }) => {
 
                                 <Box sx={{ flexGrow: 1 }}>
                                     <Typography
-                                        sx={{ fontSize: 12, color: 'text.secondary', fontWeight: 500 }}
+                                        sx={{ fontSize: 12, fontWeight: 500 }}
                                     >
                                         {match.series}
                                     </Typography>

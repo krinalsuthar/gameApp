@@ -7,7 +7,8 @@ import {
     AccordionSummary,
     AccordionDetails,
     Paper,
-    Stack
+    Stack,
+    useTheme
 } from '@mui/material';
 import {
     Email, CalendarToday, Phone, ExpandMore,
@@ -16,7 +17,7 @@ import {
     Edit
 } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { userProfileData } from '../data/dashboardData';
 import { logout } from '../features/drawer/authSlice';
 import { useDispatch } from 'react-redux';
@@ -26,11 +27,11 @@ const Dashboard = () => {
     const location = useLocation();
     const data = location?.state?.data
     return (
-        <Box sx={{ bgcolor: '#f4f4f4' }}>
+        <Box>
             <HeaderData />
             <Grid container spacing={2} sx={{ display: "flex", width: "100%", flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" }, flexWrap: "nowrap", pt: "0px" }}>
                 <Paper sx={{
-                    width: { lg: "29%", md: "29%", sm: "39%", xs: "100%" }, mx: "auto", height: "fit-content", p: 2, bgcolor: "#fff", borderRadius: 4,
+                    width: { lg: "29%", md: "29%", sm: "39%", xs: "100%" }, mx: "auto", height: "fit-content", p: 2, borderRadius: 4,
                 }}>
                     <Paper
                         elevation={4}
@@ -93,7 +94,6 @@ const Dashboard = () => {
                                 <Box
                                     key={idx}
                                     sx={{
-                                        bgcolor: "#e0e0e0",
                                         px: 2,
                                         py: 1,
                                         borderRadius: 2,
@@ -118,7 +118,9 @@ const Dashboard = () => {
                     </Paper>
                     <Box mt={2} display="flex" flexDirection="column" gap={2}>
                         {["Bank Details", "Change Password"].map((section, i) => (
-                            <Accordion key={i} elevation={1} sx={{ borderRadius: 2, bgcolor: "#f1f1f1" }}>
+                            <Accordion key={i} elevation={1} sx={{
+                                borderRadius: 2,
+                            }}>
                                 <AccordionSummary expandIcon={<ExpandMore />}>
                                     <Typography fontWeight={600}>{section}</Typography>
                                 </AccordionSummary>
@@ -138,7 +140,6 @@ const Dashboard = () => {
                                 gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
                                 gap: 2,
                                 mb: 2,
-                                bgcolor: "#fff",
                                 p: 2,
                                 borderRadius: 4,
                             }}
@@ -150,7 +151,6 @@ const Dashboard = () => {
                                     sx={{
                                         borderRadius: 3,
                                         overflow: "hidden",
-                                        backgroundColor: "#f9f9f9",
                                         p: 0,
                                         border: "10px solid #f1f1f1"
                                     }}
@@ -161,12 +161,18 @@ const Dashboard = () => {
                                             alignItems: "center",
                                         }}
                                     >
-                                        <Box sx={{ color: "#fbc02d", bgcolor: "#f1f1f1", p: 2, borderRadius: "0px 0px 70% 0px" }}>
+                                        <Box sx={{
+                                            color: "#fbc02d",
+                                            p: 2, borderRadius: "0px 0px 70% 0px"
+                                        }}>
                                             <FontAwesomeIcon icon={item.icon} size="lg" />
                                         </Box>
                                         <Typography
                                             variant="subtitle2"
-                                            sx={{ fontWeight: 600, color: "#fbc02d", bgcolor: "#f1f1f1", width: "-webkit-fill-available", p: 1, textAlign: "center", transform: "scaleX(1.1)" }}
+                                            sx={{
+                                                fontWeight: 600, color: "#fbc02d",
+                                                width: "-webkit-fill-available", p: 1, textAlign: "center", transform: "scaleX(1.1)"
+                                            }}
                                         >
                                             {item.text}
                                         </Typography>
@@ -196,8 +202,8 @@ const Dashboard = () => {
 export default Dashboard;
 
 export function HeaderData() {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
+    const theme = useTheme()
     const [selected, setSelected] = useState("Profile");
     return (
         <Box sx={{ overflowX: "auto", width: "100%", p: 1, scrollbarWidth: "none", mb: 2, bgcolor: "#fff" }}>
@@ -214,7 +220,7 @@ export function HeaderData() {
                             px: 2,
                             py: 1,
                             borderRadius: 2,
-                            bgcolor: selected === item.label ? "#ffc107" : "#f2f2f2",
+                            bgcolor: selected === item.label ? "#ffc107" : theme.palette.background.secondery,
                             cursor: "pointer",
                             whiteSpace: "nowrap",
                             textDecoration: "none",

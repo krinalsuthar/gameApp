@@ -61,13 +61,17 @@ const RegisterPage = () => {
         const errors = validate();
         setFormErrors(errors);
         if (Object.keys(errors).length > 0) return;
-
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+        let users = [];
+        try {
+            users = JSON.parse(localStorage.getItem('users')) || [];
+        } catch (e) {
+            console.error('Error parsing users from localStorage:', e);
+            users = [];
+        }
         const exists = users.find((u) => u.username === formData.username);
-
         if (exists) {
             setOpen(true);
-            setToastText({ text: "User already exists!❗️👤", color: "error" })
+            setToastText({ text: "User already exists!❗️👤", color: "error" });
             return;
         }
         const newUser = {
@@ -77,7 +81,7 @@ const RegisterPage = () => {
         users.push(newUser);
         localStorage.setItem('users', JSON.stringify(users));
         setOpen(true);
-        setToastText({ text: "Registration successful! You can now log in. 📝✅", color: "success" })
+        setToastText({ text: "Registration successful! You can now log in. 📝✅", color: "success" });
         setTimeout(() => {
             navigate('/login');
         }, 2000);
@@ -90,7 +94,7 @@ const RegisterPage = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 minHeight: '100vh',
-                bgcolor: '#f5f5f5',
+                // bgcolor: '#f5f5f5',
                 px: 2
             }}
         >
