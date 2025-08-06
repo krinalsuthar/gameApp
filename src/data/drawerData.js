@@ -351,7 +351,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 5,
@@ -359,7 +359,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 6,
@@ -367,7 +367,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 7,
@@ -375,7 +375,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 8,
@@ -383,7 +383,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -396,7 +396,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 10,
@@ -404,7 +404,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 11,
@@ -412,7 +412,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 12,
@@ -420,7 +420,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 13,
@@ -428,7 +428,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -441,7 +441,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 15,
@@ -449,7 +449,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 16,
@@ -457,7 +457,6 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 17,
@@ -465,7 +464,6 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 18,
@@ -473,7 +471,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -486,7 +484,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 20,
@@ -494,7 +492,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 21,
@@ -502,7 +500,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 22,
@@ -510,7 +508,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 23,
@@ -518,7 +516,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -531,7 +529,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 25,
@@ -539,7 +537,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 26,
@@ -547,7 +545,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 27,
@@ -555,7 +553,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 28,
@@ -563,7 +561,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -576,7 +574,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 30,
@@ -584,7 +582,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 31,
@@ -592,7 +590,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 32,
@@ -600,7 +598,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 33,
@@ -608,7 +606,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -621,7 +619,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 35,
@@ -629,7 +627,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 36,
@@ -637,7 +635,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 37,
@@ -645,7 +643,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 38,
@@ -653,7 +651,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -666,7 +664,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 40,
@@ -674,7 +672,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 41,
@@ -682,7 +680,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 42,
@@ -690,7 +688,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 43,
@@ -698,7 +696,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -711,7 +709,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 45,
@@ -719,7 +717,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 46,
@@ -727,7 +725,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 47,
@@ -735,7 +733,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 48,
@@ -743,7 +741,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -756,7 +754,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 50,
@@ -764,7 +762,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 51,
@@ -772,7 +770,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 52,
@@ -780,7 +778,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 53,
@@ -788,7 +786,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -801,7 +799,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 55,
@@ -809,7 +807,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 56,
@@ -817,7 +815,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 57,
@@ -825,7 +823,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 58,
@@ -833,7 +831,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -846,7 +844,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 60,
@@ -854,7 +852,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 61,
@@ -862,7 +860,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 62,
@@ -870,7 +868,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 63,
@@ -878,7 +876,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -891,7 +889,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 65,
@@ -899,7 +897,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 66,
@@ -907,7 +905,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 67,
@@ -915,7 +913,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 68,
@@ -923,7 +921,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -936,7 +934,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 70,
@@ -944,7 +942,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 71,
@@ -952,7 +950,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 72,
@@ -960,7 +958,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 73,
@@ -968,7 +966,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -981,7 +979,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 75,
@@ -989,7 +987,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 76,
@@ -997,7 +995,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 77,
@@ -1005,7 +1003,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 78,
@@ -1013,7 +1011,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1026,7 +1024,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 80,
@@ -1034,7 +1032,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 81,
@@ -1042,7 +1040,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 82,
@@ -1050,7 +1048,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 83,
@@ -1058,7 +1056,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1071,7 +1069,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 85,
@@ -1079,7 +1077,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 86,
@@ -1087,7 +1085,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 87,
@@ -1095,7 +1093,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 88,
@@ -1103,7 +1101,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1116,7 +1114,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 90,
@@ -1124,7 +1122,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 91,
@@ -1132,7 +1130,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 92,
@@ -1140,7 +1138,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 93,
@@ -1148,7 +1146,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1161,7 +1159,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 95,
@@ -1169,7 +1167,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 96,
@@ -1177,7 +1175,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 97,
@@ -1185,7 +1183,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 98,
@@ -1193,7 +1191,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1206,7 +1204,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 100,
@@ -1214,7 +1212,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 101,
@@ -1222,7 +1220,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 102,
@@ -1230,7 +1228,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 103,
@@ -1238,7 +1236,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1251,7 +1249,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 105,
@@ -1259,7 +1257,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 106,
@@ -1267,7 +1265,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 107,
@@ -1275,7 +1273,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 108,
@@ -1283,7 +1281,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1296,7 +1294,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 110,
@@ -1304,7 +1302,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 111,
@@ -1312,7 +1310,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 112,
@@ -1320,7 +1318,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 113,
@@ -1328,7 +1326,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1341,7 +1339,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 115,
@@ -1349,7 +1347,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 116,
@@ -1357,7 +1355,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 117,
@@ -1365,7 +1363,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 118,
@@ -1373,7 +1371,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1386,7 +1384,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 120,
@@ -1394,7 +1392,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 121,
@@ -1402,7 +1400,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 122,
@@ -1410,7 +1408,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 123,
@@ -1418,7 +1416,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1431,7 +1429,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 125,
@@ -1439,7 +1437,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 126,
@@ -1447,7 +1445,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 127,
@@ -1455,7 +1453,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 128,
@@ -1463,7 +1461,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1476,7 +1474,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 130,
@@ -1484,7 +1482,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 131,
@@ -1492,7 +1490,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 132,
@@ -1500,7 +1498,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 133,
@@ -1508,7 +1506,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1521,7 +1519,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 135,
@@ -1529,7 +1527,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 136,
@@ -1537,7 +1535,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 137,
@@ -1545,7 +1543,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 138,
@@ -1553,7 +1551,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1566,7 +1564,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 140,
@@ -1574,7 +1572,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 141,
@@ -1582,7 +1580,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 142,
@@ -1590,7 +1588,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 143,
@@ -1598,7 +1596,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1611,7 +1609,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 145,
@@ -1619,7 +1617,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 146,
@@ -1627,7 +1625,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 147,
@@ -1635,7 +1633,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 148,
@@ -1643,7 +1641,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1656,7 +1654,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 150,
@@ -1664,7 +1662,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 151,
@@ -1672,7 +1670,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 152,
@@ -1680,7 +1678,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 153,
@@ -1688,7 +1686,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1701,7 +1699,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 155,
@@ -1709,7 +1707,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 156,
@@ -1717,7 +1715,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 157,
@@ -1725,7 +1723,7 @@ export const providersData = {
                         title: 'TEENPATTI TEST',
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 158,
@@ -1733,7 +1731,7 @@ export const providersData = {
                         title: '2 CARDS TEENPATTI',
                         video: allImages._2Card_teenpattiVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1746,7 +1744,7 @@ export const providersData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)"
                     }, {
                         id: 160,
@@ -1754,7 +1752,7 @@ export const providersData = {
                         title: '7 UP&DOWN',
                         video: allImages._7Up_DownVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)"
                     }, {
                         id: 161,
@@ -1762,7 +1760,7 @@ export const providersData = {
                         title: 'TEENPATTI ONE DAY',
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)"
                     }, {
                         id: 162,
@@ -1771,14 +1769,14 @@ export const providersData = {
                         video: allImages.teenpatti_testVideo,
                         video: allImages.teenpatti_testVideo,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)"
                     }, {
                         id: 163,
                         image: allImages.continuePlaying5,
                         title: 'Flexible Bet Range',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)"
                     },
                 ]
@@ -1801,7 +1799,7 @@ export const categoriesData = {
                         image: allImages.continuePlaying1,
                         title: 'Avitaro',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgba(39, 201, 44, 0.8)",
                         video: allImages.aviatorsVideo
                     }, {
@@ -1809,7 +1807,7 @@ export const categoriesData = {
                         image: allImages.continuePlaying2,
                         title: 'Dregon Tiger',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(251, 53, 101)",
                         // video:allImages
                     }, {
@@ -1817,7 +1815,7 @@ export const categoriesData = {
                         image: allImages.continuePlaying3,
                         title: 'TeenPatti',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: " rgb(238, 97, 89)",
                         video: allImages.teenPattiVideo
                     }, {
@@ -1825,7 +1823,7 @@ export const categoriesData = {
                         image: allImages.continuePlaying4,
                         title: 'JetX',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(31, 178, 252)",
                         video: allImages.aviatorsVideo
                     }, {
@@ -1834,7 +1832,7 @@ export const categoriesData = {
                         title: 'TeenPatti T20',
                         video: allImages.teenpattiT20Video,
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(190, 59, 250)",
                     },
                 ]
@@ -1848,7 +1846,7 @@ export const categoriesData = {
                         video: allImages.teenpatti_one_dayVideo,
                         text: 'Aura',
                         color: "rgb(246, 55, 83)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 170,
@@ -1857,7 +1855,7 @@ export const categoriesData = {
                         text: 'Aura',
                         color: "rgb(69, 141, 250)",
                         video: allImages.teenpattiT20Video,
-                        to: "/aura-game",
+
                     },
                     {
                         id: 171,
@@ -1866,7 +1864,7 @@ export const categoriesData = {
                         text: 'Aura',
                         color: "rgb(31, 178, 252)",
                         video: allImages.muflis_teenpattiVideo,
-                        to: "/aura-game",
+
                     },
                     {
                         id: 172,
@@ -1883,7 +1881,7 @@ export const categoriesData = {
                         video: allImages.teenpatti_testVideo,
                         text: 'Aura',
                         color: "rgba(39, 201, 44, 0.8)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 174,
@@ -1891,7 +1889,7 @@ export const categoriesData = {
                         title: 'TEENPATTI OPEN',
                         text: 'Aura',
                         color: "rgb(31, 178, 252)",
-                        to: "/aura-game",
+
                         // video:allImages.
                     },
                 ],
@@ -1903,7 +1901,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                     video: allImages._32Cards
                 },
                 {
@@ -1911,28 +1909,28 @@ export const categoriesData = {
                     image: allImages.live2,
                     title: 'HI LOW',
                     text: 'Aura',
-                    color: "rgb(251, 53, 101)", to: "/aura-game",
+                    color: "rgb(251, 53, 101)",
                 },
                 {
                     id: 177,
                     image: allImages.live3,
                     title: 'POKER',
                     text: 'Aura',
-                    color: "rgb(238, 97, 89)", to: "/aura-game",
+                    color: "rgb(238, 97, 89)",
                 },
                 {
                     id: 178,
                     image: allImages.live4,
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
-                    color: "rgb(31, 178, 252)", to: "/aura-game",
+                    color: "rgb(31, 178, 252)",
                 },
                 {
                     id: 179,
                     image: allImages.live5,
                     title: 'ANDER BAHAR',
                     text: 'Aura',
-                    color: "rgb(190, 59, 250)", to: "/aura-game",
+                    color: "rgb(190, 59, 250)",
                 },
                 {
                     id: 180,
@@ -1940,7 +1938,7 @@ export const categoriesData = {
                     title: 'TEENPATTI ONE DAY',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    video: allImages.teenpatti_one_dayVideo, to: "/aura-game",
+                    video: allImages.teenpatti_one_dayVideo,
                 },
                 {
                     id: 181,
@@ -1948,14 +1946,14 @@ export const categoriesData = {
                     title: 'TEENPATTI T20',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    video: allImages.teenpattiT20Video, to: "/aura-game",
+                    video: allImages.teenpattiT20Video,
                 },
                 {
                     id: 182,
                     image: allImages.live8,
                     title: 'MATKA',
                     text: 'Aura',
-                    color: "rgba(39, 201, 44, 0.8)", to: "/aura-game",
+                    color: "rgba(39, 201, 44, 0.8)",
                 },
                 {
                     id: 183,
@@ -1963,14 +1961,14 @@ export const categoriesData = {
                     title: '7 UP&DOWN',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    video: allImages._7Up_DownVideo, to: "/aura-game",
+                    video: allImages._7Up_DownVideo,
                 },
                 {
                     id: 184,
                     image: allImages.live10,
                     title: 'DRAGON TIGER',
                     text: 'Aura',
-                    color: "rgb(31, 178, 252)", to: "/aura-game",
+                    color: "rgb(31, 178, 252)",
                 },
                 ]
             },
@@ -1979,7 +1977,7 @@ export const categoriesData = {
                     id: 185,
                     image: allImages.virtual1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -1990,7 +1988,7 @@ export const categoriesData = {
                     title: '7 UP&DOWN',
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
-                    color: "rgb(251, 53, 101)", to: "/aura-game",
+                    color: "rgb(251, 53, 101)",
                 },
                 {
                     id: 187,
@@ -1998,7 +1996,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 188,
@@ -2007,7 +2005,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 189,
@@ -2015,7 +2013,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 190,
@@ -2023,7 +2021,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 191,
@@ -2031,7 +2029,7 @@ export const categoriesData = {
                     title: 'HI LOW (VIRTUAL)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 192,
@@ -2039,7 +2037,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 193,
@@ -2047,7 +2045,7 @@ export const categoriesData = {
                     title: 'POKER (VIRTUAL)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 194,
@@ -2055,7 +2053,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (VIRTUAL)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2066,7 +2064,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 196,
@@ -2074,7 +2072,7 @@ export const categoriesData = {
                     title: 'HI LOW',
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 197,
@@ -2082,7 +2080,7 @@ export const categoriesData = {
                     title: 'POKER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 198,
@@ -2090,7 +2088,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 199,
@@ -2098,7 +2096,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 200,
@@ -2107,17 +2105,17 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 201,
                     image: allImages.live7,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 202,
@@ -2125,7 +2123,7 @@ export const categoriesData = {
                     title: 'MATKA',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 203,
@@ -2134,7 +2132,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 204,
@@ -2142,7 +2140,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2151,7 +2149,7 @@ export const categoriesData = {
                     id: 205,
                     image: allImages.liveBaccarat1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2163,7 +2161,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 207,
@@ -2171,7 +2169,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 207,
@@ -2180,7 +2178,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 208,
@@ -2188,7 +2186,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 209,
@@ -2196,7 +2194,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 210,
@@ -2204,7 +2202,7 @@ export const categoriesData = {
                     title: 'HI LOW (VIRTUAL)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 211,
@@ -2212,7 +2210,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 212,
@@ -2220,7 +2218,7 @@ export const categoriesData = {
                     title: 'POKER (VIRTUAL)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 213,
@@ -2228,7 +2226,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (VIRTUAL)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2237,7 +2235,7 @@ export const categoriesData = {
                     id: 214,
                     image: allImages.liveRoulette1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2249,7 +2247,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 216,
@@ -2257,7 +2255,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 217,
@@ -2266,7 +2264,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 218,
@@ -2274,7 +2272,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 219,
@@ -2282,7 +2280,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 220,
@@ -2290,7 +2288,7 @@ export const categoriesData = {
                     title: 'HI LOW (liveRoulette)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 221,
@@ -2298,7 +2296,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 222,
@@ -2306,7 +2304,7 @@ export const categoriesData = {
                     title: 'POKER (liveRoulette)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 223,
@@ -2314,7 +2312,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (liveRoulette)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2323,7 +2321,7 @@ export const categoriesData = {
                     id: 224,
                     image: allImages.liveSicBo1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2335,7 +2333,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 226,
@@ -2343,7 +2341,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 227,
@@ -2352,7 +2350,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 228,
@@ -2360,7 +2358,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 229,
@@ -2368,7 +2366,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 230,
@@ -2376,7 +2374,7 @@ export const categoriesData = {
                     title: 'HI LOW (liveSicBo)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 231,
@@ -2384,7 +2382,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 232,
@@ -2392,7 +2390,7 @@ export const categoriesData = {
                     title: 'POKER (liveSicBo)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 233,
@@ -2400,7 +2398,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (liveSicBo)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2409,7 +2407,7 @@ export const categoriesData = {
                     id: 234,
                     image: allImages.liveBlackjack1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2421,7 +2419,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 236,
@@ -2429,7 +2427,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 237,
@@ -2438,7 +2436,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 238,
@@ -2446,7 +2444,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 239,
@@ -2454,7 +2452,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 240,
@@ -2462,7 +2460,7 @@ export const categoriesData = {
                     title: 'HI LOW (liveBlackjack)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 241,
@@ -2470,7 +2468,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 242,
@@ -2478,7 +2476,7 @@ export const categoriesData = {
                     title: 'POKER (liveBlackjack)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 243,
@@ -2486,7 +2484,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (liveBlackjack)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2495,7 +2493,7 @@ export const categoriesData = {
                     id: 244,
                     image: allImages.tableGames1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2507,7 +2505,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 246,
@@ -2515,7 +2513,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 247,
@@ -2524,7 +2522,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 248,
@@ -2532,7 +2530,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 249,
@@ -2540,7 +2538,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 250,
@@ -2548,7 +2546,7 @@ export const categoriesData = {
                     title: 'HI LOW (tableGames)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 251,
@@ -2556,7 +2554,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 252,
@@ -2564,7 +2562,7 @@ export const categoriesData = {
                     title: 'POKER (tableGames)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 253,
@@ -2572,7 +2570,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (tableGames)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2581,7 +2579,7 @@ export const categoriesData = {
                     id: 254,
                     image: allImages.livePoker1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2593,7 +2591,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 256,
@@ -2601,7 +2599,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 257,
@@ -2610,7 +2608,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 258,
@@ -2618,7 +2616,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 259,
@@ -2626,7 +2624,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 260,
@@ -2634,7 +2632,7 @@ export const categoriesData = {
                     title: 'HI LOW (livePoker)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 261,
@@ -2642,7 +2640,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 262,
@@ -2650,7 +2648,7 @@ export const categoriesData = {
                     title: 'POKER (livePoker)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 263,
@@ -2658,7 +2656,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (livePoker)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2669,9 +2667,9 @@ export const categoriesData = {
                         id: 264,
                         image: allImages.baccarat1,
                         title: 'TEENPATTI T20',
-                        to: "/aura-game",
+
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(246, 55, 83)"
                     },
                     {
@@ -2680,7 +2678,7 @@ export const categoriesData = {
                         title: 'Real Dealers',
                         text: 'Experience live Teen Patti with real hosts',
                         color: "rgb(69, 141, 250)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 266,
@@ -2688,7 +2686,7 @@ export const categoriesData = {
                         title: 'Multi-Language Support',
                         text: 'Available in Hindi, English, and more',
                         color: "rgb(190, 59, 250)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 267,
@@ -2696,16 +2694,16 @@ export const categoriesData = {
                         title: 'Multiplayer Gameplay',
                         text: 'Play with friends or join public tables',
                         color: "rgb(31, 178, 252)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 268,
                         image: allImages.baccarat5,
                         title: '7 UP&DOWN',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(246, 55, 83)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 269,
@@ -2713,7 +2711,7 @@ export const categoriesData = {
                         title: 'Real Dealers',
                         text: 'Experience live Teen Patti with real hosts',
                         color: "rgb(69, 141, 250)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 270,
@@ -2721,7 +2719,7 @@ export const categoriesData = {
                         title: 'Multi-Language Support',
                         text: 'Available in Hindi, English, and more',
                         color: "rgb(190, 59, 250)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 271,
@@ -2729,16 +2727,16 @@ export const categoriesData = {
                         title: 'Multiplayer Gameplay',
                         text: 'Play with friends or join public tables',
                         color: "rgb(31, 178, 252)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 272,
                         image: allImages.baccarat9,
                         title: 'Flexible Bet Range',
                         text: 'Bet from ₹10 to ₹1,000',
-                        to: "/aura-game",
+
                         color: "rgb(246, 55, 83)",
-                        to: "/aura-game",
+
                     },
                     {
                         id: 273,
@@ -2746,7 +2744,7 @@ export const categoriesData = {
                         title: 'Real Dealers',
                         text: 'Experience live Teen Patti with real hosts',
                         color: "rgb(69, 141, 250)",
-                        to: "/aura-game",
+
                     },
                 ]
             },
@@ -2755,7 +2753,7 @@ export const categoriesData = {
                     id: 274,
                     image: allImages.poker1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2767,7 +2765,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 276,
@@ -2775,7 +2773,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 277,
@@ -2784,7 +2782,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 278,
@@ -2792,7 +2790,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 279,
@@ -2800,7 +2798,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 280,
@@ -2808,7 +2806,7 @@ export const categoriesData = {
                     title: 'HI LOW (VIRTUAL)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 281,
@@ -2816,7 +2814,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 282,
@@ -2824,7 +2822,7 @@ export const categoriesData = {
                     title: 'POKER (VIRTUAL)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2833,7 +2831,7 @@ export const categoriesData = {
                     id: 283,
                     image: allImages.blackjack1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2845,7 +2843,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 285,
@@ -2853,7 +2851,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 286,
@@ -2862,7 +2860,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 287,
@@ -2870,7 +2868,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 288,
@@ -2878,7 +2876,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 289,
@@ -2886,7 +2884,7 @@ export const categoriesData = {
                     title: 'HI LOW (blackjack)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 290,
@@ -2894,7 +2892,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 291,
@@ -2902,7 +2900,7 @@ export const categoriesData = {
                     title: 'POKER (blackjack)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 292,
@@ -2910,7 +2908,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (blackjack)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2921,7 +2919,7 @@ export const categoriesData = {
                     title: 'luckey7',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2932,7 +2930,7 @@ export const categoriesData = {
                     title: '32Cards',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -2941,7 +2939,7 @@ export const categoriesData = {
                     id: 295,
                     image: allImages.casualGame1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -2953,7 +2951,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 297,
@@ -2961,7 +2959,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 298,
@@ -2970,7 +2968,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 299,
@@ -2978,7 +2976,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 300,
@@ -2986,7 +2984,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 301,
@@ -2994,7 +2992,7 @@ export const categoriesData = {
                     title: 'HI LOW (casualGame)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 302,
@@ -3002,7 +3000,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 303,
@@ -3010,7 +3008,7 @@ export const categoriesData = {
                     title: 'POKER (casualGame)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 304,
@@ -3018,7 +3016,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (casualGame)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 305,
@@ -3026,7 +3024,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (casualGame)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3035,7 +3033,7 @@ export const categoriesData = {
                     id: 306,
                     image: allImages.dragonTiger1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3047,7 +3045,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 308,
@@ -3055,7 +3053,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3064,7 +3062,7 @@ export const categoriesData = {
                     id: 309,
                     image: allImages.teenpatti1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3076,7 +3074,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 311,
@@ -3084,7 +3082,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 312,
@@ -3093,7 +3091,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 313,
@@ -3101,7 +3099,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 314,
@@ -3109,7 +3107,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3118,7 +3116,7 @@ export const categoriesData = {
                     id: 315,
                     image: allImages.liveDragonTiger1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3130,7 +3128,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 317,
@@ -3138,7 +3136,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 318,
@@ -3147,7 +3145,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 319,
@@ -3155,7 +3153,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 320,
@@ -3163,7 +3161,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 321,
@@ -3171,7 +3169,7 @@ export const categoriesData = {
                     title: 'HI LOW (liveDragonTiger)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 322,
@@ -3179,7 +3177,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 323,
@@ -3187,7 +3185,7 @@ export const categoriesData = {
                     title: 'POKER (liveDragonTiger)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 324,
@@ -3195,7 +3193,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (liveDragonTiger)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3204,7 +3202,7 @@ export const categoriesData = {
                     id: 325,
                     image: allImages.topCard1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3216,7 +3214,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 327,
@@ -3224,7 +3222,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 328,
@@ -3233,7 +3231,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 329,
@@ -3241,7 +3239,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 330,
@@ -3249,7 +3247,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 331,
@@ -3257,7 +3255,7 @@ export const categoriesData = {
                     title: 'HI LOW (topCard)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 332,
@@ -3265,7 +3263,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 333,
@@ -3273,7 +3271,7 @@ export const categoriesData = {
                     title: 'POKER (topCard)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3282,7 +3280,7 @@ export const categoriesData = {
                     id: 334,
                     image: allImages.videoSlots1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3294,7 +3292,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 336,
@@ -3302,7 +3300,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 337,
@@ -3311,7 +3309,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 338,
@@ -3319,7 +3317,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 339,
@@ -3327,7 +3325,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 340,
@@ -3335,7 +3333,7 @@ export const categoriesData = {
                     title: 'HI LOW (videoSlots)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 341,
@@ -3343,7 +3341,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 342,
@@ -3351,7 +3349,7 @@ export const categoriesData = {
                     title: 'POKER (videoSlots)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 343,
@@ -3359,7 +3357,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (videoSlots)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3368,7 +3366,7 @@ export const categoriesData = {
                     id: 344,
                     image: allImages.crashGames1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3380,7 +3378,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 346,
@@ -3388,7 +3386,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 347,
@@ -3397,7 +3395,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 348,
@@ -3405,7 +3403,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 349,
@@ -3413,7 +3411,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 350,
@@ -3421,7 +3419,7 @@ export const categoriesData = {
                     title: 'HI LOW (crashGames)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 351,
@@ -3429,7 +3427,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 352,
@@ -3437,7 +3435,7 @@ export const categoriesData = {
                     title: 'POKER (crashGames)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 353,
@@ -3445,7 +3443,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (crashGames)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3454,7 +3452,7 @@ export const categoriesData = {
                     id: 354,
                     image: allImages.lottery1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3466,7 +3464,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 356,
@@ -3474,7 +3472,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 357,
@@ -3483,7 +3481,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 358,
@@ -3491,7 +3489,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 359,
@@ -3499,7 +3497,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 360,
@@ -3507,7 +3505,7 @@ export const categoriesData = {
                     title: 'HI LOW (lottery)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 361,
@@ -3515,7 +3513,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 362,
@@ -3523,7 +3521,7 @@ export const categoriesData = {
                     title: 'POKER (lottery)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3532,7 +3530,7 @@ export const categoriesData = {
                     id: 362,
                     image: allImages.liveLottery1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3544,7 +3542,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 364,
@@ -3552,7 +3550,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 365,
@@ -3561,7 +3559,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 366,
@@ -3569,7 +3567,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 367,
@@ -3577,7 +3575,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 368,
@@ -3585,7 +3583,7 @@ export const categoriesData = {
                     title: 'HI LOW (liveLottery)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 369,
@@ -3593,7 +3591,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 370,
@@ -3601,7 +3599,7 @@ export const categoriesData = {
                     title: 'POKER (liveLottery)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 371,
@@ -3609,7 +3607,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (liveLottery)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3618,7 +3616,7 @@ export const categoriesData = {
                     id: 372,
                     image: allImages.fishingGames1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3630,7 +3628,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 374,
@@ -3638,7 +3636,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 375,
@@ -3647,7 +3645,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 376,
@@ -3655,7 +3653,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 377,
@@ -3663,7 +3661,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 378,
@@ -3671,7 +3669,7 @@ export const categoriesData = {
                     title: 'HI LOW (fishingGames)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 379,
@@ -3686,7 +3684,7 @@ export const categoriesData = {
                     title: 'POKER (fishingGames)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 381,
@@ -3694,7 +3692,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (fishingGames)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3703,7 +3701,7 @@ export const categoriesData = {
                     id: 382,
                     image: allImages.scratchCard1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3715,7 +3713,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 384,
@@ -3723,7 +3721,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 385,
@@ -3732,7 +3730,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 386,
@@ -3740,7 +3738,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 387,
@@ -3748,7 +3746,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 388,
@@ -3756,7 +3754,7 @@ export const categoriesData = {
                     title: 'HI LOW (scratchCard)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 389,
@@ -3764,7 +3762,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 390,
@@ -3772,7 +3770,7 @@ export const categoriesData = {
                     title: 'POKER (scratchCard)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 391,
@@ -3780,7 +3778,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (scratchCard)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3789,7 +3787,7 @@ export const categoriesData = {
                     id: 392,
                     image: allImages.virtualSports1,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"
@@ -3801,7 +3799,7 @@ export const categoriesData = {
                     video: allImages._7Up_DownVideo,
                     text: 'Aura',
                     color: "rgb(251, 53, 101)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 394,
@@ -3809,7 +3807,7 @@ export const categoriesData = {
                     title: 'DRAGON TIGER',
                     text: 'Aura',
                     color: "rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 395,
@@ -3818,7 +3816,7 @@ export const categoriesData = {
                     video: allImages.teenpatti_one_dayVideo,
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 396,
@@ -3826,7 +3824,7 @@ export const categoriesData = {
                     title: 'ANDER BAHAR',
                     text: 'Aura',
                     color: "rgb(190, 59, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 397,
@@ -3834,7 +3832,7 @@ export const categoriesData = {
                     title: 'SIX PLAYER POKER',
                     text: 'Aura',
                     color: "rgb(69, 141, 250)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 398,
@@ -3842,7 +3840,7 @@ export const categoriesData = {
                     title: 'HI LOW (virtualSports)',
                     text: 'Aura',
                     color: "rgb(246, 55, 83)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 399,
@@ -3850,7 +3848,7 @@ export const categoriesData = {
                     title: '32CARD CASINO',
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 400,
@@ -3858,7 +3856,7 @@ export const categoriesData = {
                     title: 'POKER (virtualSports)',
                     text: 'Aura',
                     color: " rgb(238, 97, 89)",
-                    to: "/aura-game",
+
                 },
                 {
                     id: 401,
@@ -3866,7 +3864,7 @@ export const categoriesData = {
                     title: 'AMAR AKBAR ANTHONY (virtualSports)',
                     text: 'Aura',
                     color: "rgb(31, 178, 252)",
-                    to: "/aura-game",
+
                 },
                 ]
             },
@@ -3875,7 +3873,7 @@ export const categoriesData = {
                     id: 402,
                     image: allImages.sportsbook,
                     title: 'TEENPATTI T20',
-                    to: "/aura-game",
+
                     video: allImages.teenpattiT20Video,
                     text: 'Aura',
                     color: "rgba(39, 201, 44, 0.8)"

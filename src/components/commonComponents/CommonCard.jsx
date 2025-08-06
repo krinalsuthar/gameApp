@@ -184,9 +184,6 @@ const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle
                                             )}
                                         </Box>
                                         <IconButton
-                                            component={RouterLink}
-                                            to={`${game?.to}`}
-                                            state={game?.state ? { data: game?.data } : { data: game?.video }}
                                             className="play-icon"
                                             sx={{
                                                 position: 'absolute',

@@ -7,23 +7,16 @@ import AppRoutes from '../routers/Router';
 import BottomNavWithRadialMenu from '../components/commonComponents/BottomNAvigation';
 import { useLocation, useNavigate } from 'react-router-dom';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-import { useAppTheme } from '../components/commonComponents/ThemeComponent';
 
 const Dashboard = () => {
     const theme = useTheme();
-    const { mode } = useAppTheme();
     const isXs = useMediaQuery(theme.breakpoints.down('sm'));
     const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-    const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
     const open = useSelector((state) => state.drawer.open);
     const drawerWidth = isXs ? 0 : isSm ? 250 : 350;
     const headerHeight = '35px';
     const navigate = useNavigate()
-    const location = useLocation();
-    const hideLayoutPaths = ['/aura-game', '/aviator'];
-    const shouldHideLayout = hideLayoutPaths.some((path) =>
-        location.pathname.startsWith(path)
-    );
+
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: theme.palette.background.secondery }}>
             <CssBaseline />
@@ -87,12 +80,8 @@ const Dashboard = () => {
                         <AppRoutes />
                     </Box>
                 </Box>
-                {!shouldHideLayout &&
-                    <>
-                        <Footer />
-                        <BottomNavWithRadialMenu />
-                    </>
-                }
+                <Footer />
+                <BottomNavWithRadialMenu />
             </Box>
         </Box>
     );

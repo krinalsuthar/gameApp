@@ -20,10 +20,8 @@ const AppRoutes = () => (
         <Route path="/login" element={<LogInPage />} />
         <Route path="/common-table/:data" element={<CommonTable />} />
         <Route path="/show-more" element={<CommonCard />} />
-        <Route path="/aura-game" element={<AuraGame />} />
         <Route path="/login-default/:data" element={<LoginDeposit />} />
         <Route path="/sports-book/:data" element={<SportsBook />} />
-        <Route path="/aviator" element={<AvitaroGame />} />
         <Route path="/user-profile/:data" element={<UserProfile />} />
         <Route path="/common-list/:data" element={<CommonList />} />
         <Route path="/common-card/:item" element={<Casion />} />
