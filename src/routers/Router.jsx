@@ -7,11 +7,9 @@ import CommonList from '../components/commonComponents/CommonList';
 import Casion from '../components/commonComponents/Casino';
 import PromotionRefer from '../components/commonComponents/PromotionRefer';
 import CommonMatch from '../components/commonComponents/CommonMatch';
-import AuraGame from '../components/gameUI/AuraGame';
 import UserProfile from '../pages/UserProfile';
 import CommonTable from '../components/commonComponents/CommonTable';
 import SportsBook from '../pages/SportsBook';
-import AvitaroGame from '../components/gameUI/DesktopComponent ';
 
 const AppRoutes = () => (
     <Routes>

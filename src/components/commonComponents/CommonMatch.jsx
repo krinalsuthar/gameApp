@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Box, Paper, IconButton, Switch,
     Typography,
@@ -17,28 +17,59 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import AddIcon from "@mui/icons-material/Add";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CommonChartSwitcher from "./CommonChart";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RemoveIcon from '@mui/icons-material/Remove';
 import CommonDialog from "./CommonDialog";
 import { drawerData } from "../../data/drawerData";
 import CollapsibleSection from "./CollapsibleSection";
-import { useAppTheme } from "./ThemeComponent";
+import { useQuery } from "@tanstack/react-query";
+import { mainData } from "../../api/authApi";
 
 const CommonMatch = () => {
-    const location = useLocation();
+    const { segment } = useParams();
     const theme = useTheme();
-    const { mode } = useAppTheme();
-    const { data, info } = location?.state;
+
+    // Fetch match data with refetching
+    const { data: fetchedMatchData } = useQuery({
+        queryKey: ["matchData", segment],
+        queryFn: () => mainData(segment),
+    });
+
+    const [marketsByType, setMarketsByType] = useState({});
+    useEffect(() => {
+        if (!fetchedMatchData?.data?.markets?.length) {
+            setMarketsByType({});
+            return;
+        }
+        const matchesData = [...new Set(fetchedMatchData.data.markets.map(item => item.t))];
+        const newState = {};
+        matchesData.forEach(type => {
+            newState[type] = fetchedMatchData.data.markets.filter(
+                market => market.t === type
+            );
+        });
+        setMarketsByType(newState);
+    }, [fetchedMatchData]);
+
+    const matchData = fetchedMatchData?.data || {
+        event: { mnm: '', st: new Date().toISOString() },
+        markets: []
+    };
+
+    // Dynamic tab labels: "All" plus market types from marketsByType
+    const tabLabels = ["All", ...Object.keys(marketsByType)];
+
     const inningsList = ["1st INNS", "2nd INNS"];
     const [clickBetting, setClickBetting] = useState(false);
     const [acceptOdds, setAcceptOdds] = useState(false);
-    const [collapse, setCollapse] = useState(true)
+    const [collapse, setCollapse] = useState(true);
     const [tab, setTab] = useState(0);
     const [values, setValues] = useState([20, 50, 100]);
     const [readOnly, setReadOnly] = useState(true);
     const [open, setOpen] = useState(false);
     const [selectedTab, setSelectedTab] = useState("betSlip");
     const [stake, setStake] = useState(0);
+    const [profit, setProfit] = useState(0);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [dialogData, setDialogData] = useState();
     const [bestSliptData, setBestSliptData] = useState({
@@ -46,25 +77,20 @@ const CommonMatch = () => {
         label: '',
         odds: null,
         bgcolor: '',
-    })
-    const odds = 2.08;
-    const dialogSportData = {};
+    });
 
+    const dialogSportData = {};
     drawerData?.sports?.forEach((sport) => {
         const sportName = sport?.sport;
         if (!sportName || !Array.isArray(sport?.leagues)) return;
-
         sport.leagues.forEach((league) => {
             const hasInfo = Array.isArray(league?.info) && league.info.length > 0;
-
             const subtitles = hasInfo
                 ? league.info.map((infoItem) => infoItem?.title).filter(Boolean)
                 : [];
-
             if (!dialogSportData[sportName]) {
                 dialogSportData[sportName] = [];
             }
-
             dialogSportData[sportName].push({
                 title: league.title?.trim() || '',
                 subtitle: subtitles,
@@ -72,60 +98,73 @@ const CommonMatch = () => {
         });
     });
 
-    const [profit, setProfit] = useState(0);
     const presetAmounts = [500, 1000, 5000, "10K", "50K", "100K", "500K", "5M"];
     const parseAmount = (val) => {
         if (typeof val === "number") return val;
         return parseInt(val.replace("K", "000").replace("M", "000000"));
     };
     const handleDislogData = (data) => {
-        setDialogData(data)
-        setDialogOpen(true)
-    }
+        setDialogData(data);
+        setDialogOpen(true);
+    };
+
+    const calculateProfit = (currentStake, currentOdds) => {
+        if (currentOdds) {
+            return ((parseFloat(currentOdds)) * currentStake).toFixed(2);
+        }
+        return 0;
+    };
+
+    useEffect(() => {
+        const newProfit = calculateProfit(stake, bestSliptData.odds);
+        setProfit(newProfit);
+    }, [stake, bestSliptData.odds]);
+
     const handlePresetClick = (amount) => {
         const value = parseAmount(amount);
         const newStake = stake + value;
         setStake(newStake);
-        setProfit(((odds - 1) * newStake).toFixed(2));
     };
 
     const handleStakeChange = (e) => {
         const value = parseFloat(e.target.value) || 0;
         setStake(value);
-        setProfit(((odds - 1) * value).toFixed(2));
+    };
+
+    const adjustOdds = (value) => {
+        const newOdds = Math.max(1, parseFloat(bestSliptData.odds) + value);
+        setBestSliptData(prev => ({ ...prev, odds: newOdds.toFixed(2) }));
     };
 
     const incrementStake = () => {
         const newStake = stake + 10;
         setStake(newStake);
-        setProfit(((odds - 1) * newStake).toFixed(2));
     };
 
     const decrementStake = () => {
         const newStake = Math.max(0, stake - 10);
         setStake(newStake);
-        setProfit(((odds - 1) * newStake).toFixed(2));
     };
 
     const clearAll = () => {
-        setBestSliptData((prev) => ({ ...prev, isOpen: false }))
+        setBestSliptData((prev) => ({ ...prev, isOpen: false }));
         setStake(0);
         setProfit(0);
     };
 
     const handleAcceptToggle = () => {
-        setAcceptOdds(!acceptOdds)
+        setAcceptOdds(!acceptOdds);
         setOpen(true);
     };
 
     const handleConfirm = () => {
         setOpen(true);
-        setAcceptOdds(true)
+        setAcceptOdds(true);
         setOpen(false);
     };
 
     const handleDecline = () => {
-        setAcceptOdds(false)
+        setAcceptOdds(false);
         setOpen(false);
     };
 
@@ -135,18 +174,22 @@ const CommonMatch = () => {
         setValues(updated);
     };
     const handleToggle = () => {
-        setCollapse((prev) => !prev)
-    }
-    const matchName = typeof info === 'string' ? info : '';
-    const teams = matchName.includes('vs') ? matchName.split('vs') : [];
+        setCollapse((prev) => !prev);
+    };
+
+    const matchName = matchData?.event?.mnm || '';
+    const teams = matchName.includes(' v ') ? matchName.split(' v ') : [matchName];
     const teamA = teams[0]?.trim() ?? '';
     const teamB = teams[1]?.trim() ?? '';
-    const country1 = teamA.toUpperCase();
-    const country2 = teamB.toUpperCase();
     const shortA = teamA.slice(0, 2).toUpperCase();
     const shortB = teamB.slice(0, 2).toUpperCase();
-
+    const country1 = teamA.toUpperCase();
+    const country2 = teamB.toUpperCase();
     const countryData = [country1, country2, shortA, shortB];
+    const matchStartTime = new Date(matchData?.event?.st);
+    const date = matchStartTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const time = matchStartTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
     const lineChartData = {
         "1st INNS": [
             {
@@ -193,6 +236,10 @@ const CommonMatch = () => {
         ],
     };
 
+    const filteredMarkets = tab === 0
+        ? Object.keys(marketsByType).reduce((acc, type) => [...acc, ...marketsByType[type]], [])
+        : marketsByType[tabLabels[tab]] || [];
+
 
     return (
         <Box sx={{ position: "relative", mb: 4, p: 2 }}>
@@ -210,7 +257,7 @@ const CommonMatch = () => {
                         position: "absolute",
                         top: { lg: "10%", md: "10%", sm: "15%", xs: "15%" },
                         left: "50%",
-                        transform: "translate(-50%, -50%) !important", // center it
+                        transform: "translate(-50%, -50%) !important",
                     }
                 }}
             >
@@ -263,7 +310,7 @@ const CommonMatch = () => {
                                 flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" },
                                 fontSize: { lg: "15px", md: "15px", sm: "15px", xs: "10px" },
                             }}>
-                                Today <b>11:30 PM</b>
+                                {date} <b>{time}</b>
                             </Typography>
                         </Box>
                         <Typography
@@ -314,31 +361,35 @@ const CommonMatch = () => {
                                 }}
                             >
                                 <Typography fontWeight="bold">{countryData[0]}</Typography>
-                                <img
-                                    src="https://img.freepik.com/premium-vector/versus-battle-illustration-logo-design-template-versus-vector-icon-vs-letters-sports_564974-202.jpg"
-                                    alt="vs"
-                                    style={{ height: 40, width: 40 }}
-                                />
-                                <Typography fontWeight="bold">{countryData[1]}</Typography>
+                                {teamB && (
+                                    <img
+                                        src="https://img.freepik.com/premium-vector/versus-battle-illustration-logo-design-template-versus-vector-icon-vs-letters-sports_564974-202.jpg"
+                                        alt="vs"
+                                        style={{ height: 40, width: 40 }}
+                                    />
+                                )}
+                                {teamB && <Typography fontWeight="bold">{countryData[1]}</Typography>}
                             </Box>
-                            <Box
-                                sx={{
-                                    backgroundColor: "#f5f5f5de",
-                                    width: 40,
-                                    height: 40,
-                                    borderRadius: "50%",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontWeight: "bold",
-                                    p: 2
-                                }}
-                            >
-                                {countryData[3]}
-                            </Box>
+                            {teamB && (
+                                <Box
+                                    sx={{
+                                        backgroundColor: "#f5f5f5de",
+                                        width: 40,
+                                        height: 40,
+                                        borderRadius: "50%",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontWeight: "bold",
+                                        p: 2
+                                    }}
+                                >
+                                    {countryData[3]}
+                                </Box>
+                            )}
                         </Box>
                         <Collapse in={collapse} timeout="auto" unmountOnExit>
-                            {data ? (
+                            {matchData ? (
                                 <Box>
                                     <CommonChartSwitcher
                                         lineChartData={lineChartData}
@@ -353,7 +404,6 @@ const CommonMatch = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        // color: '#fff',
                                         fontSize: '1.2rem',
                                         fontWeight: 500,
                                         bgcolor: "#000"
@@ -363,181 +413,192 @@ const CommonMatch = () => {
                                 </Box>
                             )}
                         </Collapse>
-                        <Box sx={{ background: "#f5f5f5", borderRadius: 2 }}>
-                        </Box>
+                        <Box sx={{ background: "#f5f5f5", borderRadius: 2 }}></Box>
                     </Paper>
                     <Box sx={{ display: "flex", gap: 2 }}>
                         <Box sx={{ flex: 1 }}>
                             <Tabs
                                 value={tab}
-                                onChange={(e, v) => setTab(v)}
+                                onChange={(e, v) => {
+                                    setTab(v);
+                                }}
                                 sx={{ mt: 2 }}
                                 TabIndicatorProps={{
                                     style: { display: 'none' }
                                 }}
                             >
-                                {["All", "Match Odd", "Bookmakers"].map((label, idx) => (
+                                {tabLabels.map((label, idx) => (
                                     <Tab
                                         key={idx}
                                         label={label}
                                         sx={{
                                             border: "1px solid #ffcc00",
                                             fontWeight: 600,
-                                            // color: "black",
                                             bgcolor: tab === idx ? "#ffcc00" : "",
                                             py: 0,
                                             "&.Mui-selected": {
                                                 borderBottom: "none",
-                                                // color: "#fff",
                                             },
                                         }}
                                     />
                                 ))}
                             </Tabs>
-                            {data?.filter((section) => {
-                                if (section.type === "fancy") return true;
-                                if (tab === 0) return true;
-                                if (tab === 1) return section.type === "team";
-                                if (tab === 2) return section.type === "bookmaker";
-                                return false;
-                            })
-                                .map((section, index) => (
-                                    <Box key={index} s>
-                                        <CollapsibleSection sectionKey={section.title} title={`${section?.title || "data"} `}
-                                            sx={{ bgcolor: theme.palette.background.default, borderRadius: 1, p: 2, mb: 2 }} >
-                                            <>
-                                                {section.type === "fancy" ? (
-                                                    section.data.map((bet, index) => (
-                                                        <Box
-                                                            key={index}
-                                                            display="flex"
-                                                            justifyContent="space-between"
-                                                            alignItems="center"
-                                                            py={1}
-                                                            sx={{ borderBottom: "1px solid #ddd", "&:last-child": { borderBottom: "none" } }}
-                                                        >
-                                                            <Box>
-                                                                <Typography fontSize="14px">{bet.label}</Typography>
-                                                            </Box>
-                                                            <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
-                                                                <Typography fontSize="12px" color="gray" mr={2}>
-                                                                    Stake Limit: {section.stakeLimit}<br />Max Profit: {section.maxProfit}
-                                                                </Typography>
-                                                                {[bet.back, bet.lay].map((entry, i) => (
-                                                                    <Box
-                                                                        key={i}
-                                                                        sx={{
-                                                                            bgcolor: i === 0 ? "#ffcdd2" : "#bbdefb",
-                                                                            borderRadius: 1,
-                                                                            fontWeight: 500,
-                                                                            minWidth: "40px",
-                                                                            height: "fit-content",
-                                                                            textAlign: "center"
-                                                                        }}
-                                                                        onClick={() => setBestSliptData({
-                                                                            isOpen: true,
-                                                                            label: bet?.label,
-                                                                            odds: entry?.odds,
-                                                                            bgcolor: i === 0 ? "#ffcdd2" : "#bbdefb",
-                                                                        })}>
-                                                                        <Typography variant="subtitle2" sx={{ height: "13px" }} >{entry.odds}</Typography>
-                                                                        <Typography variant="caption" >{entry.stake}</Typography>
-                                                                    </Box>
-                                                                ))}
-                                                            </Box>
-                                                        </Box>
-                                                    ))
-                                                ) : (
-                                                    Object.entries(section.data || {}).map(([team, odds], idx) => (
-                                                        <Box
-                                                            key={team}
-                                                            sx={{
-                                                                display: "flex",
-                                                                justifyContent: "space-between",
-                                                                mb: 1,
-                                                                borderBottom: "1px solid #ddd",
-                                                                "&:last-child": { borderBottom: "none" },
-                                                            }}
-                                                        >
-                                                            <Box>
-                                                                <Typography fontWeight={500} >{team}</Typography>
-                                                                <Typography color="green">0</Typography>
-                                                            </Box>
-
-                                                            {section.type === "bookmaker" && odds?.status === "SUSPENDED" ? (
+                            {filteredMarkets.length > 0 ? (
+                                <Box>
+                                    {Object.keys(marketsByType).map((marketType) => (
+                                        (tab === 0 || tabLabels[tab] === marketType) && marketsByType[marketType] && (
+                                            <CollapsibleSection
+                                                key={marketType}
+                                                sectionKey={marketType}
+                                                title={marketType}
+                                                sx={{ bgcolor: theme.palette.background.default, borderRadius: 1, p: 2, mb: 2 }}
+                                            >
+                                                <>
+                                                    {marketType === "Fancy" && (
+                                                        <Box>
+                                                            {marketsByType[marketType].map((fancyMarket, idx) => (
                                                                 <Box
+                                                                    key={fancyMarket.i}
+                                                                    display="flex"
+                                                                    justifyContent="space-between"
+                                                                    alignItems="center"
+                                                                    py={1}
+                                                                    sx={{ borderBottom: "1px solid #ddd", "&:last-child": { borderBottom: "none" } }}
+                                                                >
+                                                                    <Box>
+                                                                        <Typography fontSize="14px">{fancyMarket.n}</Typography>
+                                                                    </Box>
+                                                                    <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
+                                                                        {/* <Typography fontSize="12px" color="gray" mr={2}>
+                                                                            Stake Limit: {fancyMarket.mn}-{fancyMarket.mx}<br />Max Profit: {fancyMarket.mx}
+                                                                        </Typography> */}
+                                                                        {fancyMarket.ms.name === "open" ? (
+                                                                            [
+                                                                                { odds: fancyMarket.do.toString().slice(0, 3), stake: fancyMarket.fi.toString().slice(0, 3), label: "No", bgcolor: "#ffcdd2" },
+                                                                                { odds: fancyMarket.mn.toString().slice(0, 3), stake: fancyMarket.i.toString().slice(0, 3), label: "Yes", bgcolor: "#bbdefb" }
+                                                                            ].map((entry, i) => (
+                                                                                <Box
+                                                                                    key={i}
+                                                                                    sx={{
+                                                                                        bgcolor: entry.bgcolor,
+                                                                                        borderRadius: 1,
+                                                                                        fontWeight: 500,
+                                                                                        minWidth: "40px",
+                                                                                        height: "fit-content",
+                                                                                        textAlign: "center",
+                                                                                        cursor: "pointer"
+                                                                                    }}
+                                                                                    onClick={() => setBestSliptData({
+                                                                                        isOpen: true,
+                                                                                        label: `${fancyMarket.n} ${entry.label}`,
+                                                                                        odds: entry.odds,
+                                                                                        bgcolor: entry.bgcolor,
+                                                                                    })}
+                                                                                >
+                                                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{entry.odds}</Typography>
+                                                                                    <Typography variant="caption">{entry.stake}</Typography>
+                                                                                </Box>
+                                                                            ))
+                                                                        ) : (
+                                                                            <Box
+                                                                                sx={{
+                                                                                    background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
+                                                                                    borderRadius: 1,
+                                                                                    textAlign: "center",
+                                                                                    p: 1,
+                                                                                    border: "1px solid #ddd",
+                                                                                    fontWeight: 600,
+                                                                                    fontSize: "14px",
+                                                                                    height: "fit-content",
+                                                                                    cursor: "pointer"
+                                                                                }}
+                                                                            >
+                                                                                {fancyMarket.ms.name.toUpperCase()}
+                                                                            </Box>
+                                                                        )}
+                                                                    </Box>
+                                                                </Box>
+                                                            ))}
+                                                        </Box>
+                                                    )}
+                                                    {marketType !== "Fancy" && marketsByType[marketType].map((market, idx) => (
+                                                        <>
+                                                            {market.r.map((runner, runnerIdx) => (
+                                                                <Box
+                                                                    key={runner.runnerName}
                                                                     sx={{
-                                                                        background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
-                                                                        borderRadius: 1,
-                                                                        textAlign: "center",
-                                                                        p: 1,
-                                                                        border: "1px solid #ddd",
-                                                                        fontWeight: 600,
-                                                                        fontSize: "14px",
-                                                                        height: "fit-content",
-                                                                        cursor: "pointer"
+                                                                        display: "flex",
+                                                                        justifyContent: "space-between",
+                                                                        pb: 1,
+                                                                        borderBottom: "1px solid #ddd",
+                                                                        paddingTop: "10px",
+                                                                        "&:last-child": { borderBottom: "none" },
                                                                     }}
                                                                 >
-                                                                    SUSPENDED
-                                                                </Box>
-                                                            ) : (
-                                                                <Box display="flex" sx={{ textAlign: "center" }} gap={1} flexWrap="wrap" mt={1}>
-                                                                    {odds.back?.map((odd, i) => (
+                                                                    <Box>
+                                                                        <Typography fontWeight={500}>{runner.runnerName}</Typography>
+                                                                        <Typography color="green">0</Typography>
+                                                                    </Box>
+                                                                    {market.ms?.name === "SUSPENDED" ? (
                                                                         <Box
-                                                                            key={`back-${i}`}
                                                                             sx={{
-                                                                                bgcolor: "#bbdefb",
+                                                                                background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
                                                                                 borderRadius: 1,
-                                                                                fontWeight: 500,
-                                                                                minWidth: "40px",
-                                                                                height: "fit-content",
                                                                                 textAlign: "center",
+                                                                                p: 1,
+                                                                                border: "1px solid #ddd",
+                                                                                fontWeight: 600,
+                                                                                fontSize: "14px",
+                                                                                height: "fit-content",
                                                                                 cursor: "pointer"
                                                                             }}
-                                                                            onClick={() => setBestSliptData({
-                                                                                isOpen: true,
-                                                                                label: team,
-                                                                                odds: odd,
-                                                                                bgcolor: "#bbdefb",
-                                                                            })}>
-                                                                            <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
-                                                                            <Typography variant="caption">1.5</Typography>
-                                                                        </Box>
-                                                                    ))}
-                                                                    {odds.lay?.map((odd, i) => (
-                                                                        <Box
-                                                                            key={`lay-${i}`}
-                                                                            sx={{
-                                                                                bgcolor: "#ffcdd2",
-                                                                                borderRadius: 1,
-                                                                                fontWeight: 500,
-                                                                                minWidth: "40px",
-                                                                                height: "fit-content",
-                                                                                textAlign: "center",
-                                                                                cursor: "pointer"
-                                                                            }}
-                                                                            onClick={() => setBestSliptData({
-                                                                                isOpen: true,
-                                                                                label: team,
-                                                                                odds: odd,
-                                                                                bgcolor: "#ffcdd2",
-                                                                            })}
                                                                         >
-                                                                            <Typography variant="subtitle2" sx={{ height: "13px" }}>{odd}</Typography>
-                                                                            <Typography variant="caption">1.5</Typography>
+                                                                            SUSPENDED
                                                                         </Box>
-                                                                    ))}
+                                                                    ) : (
+                                                                        <>
+                                                                            <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
+                                                                                {[
+                                                                                    { odds: market.do.toString().slice(0, 3), stake: market.mx.toString().slice(0, 3), label: "No", bgcolor: "#ffcdd2" },
+                                                                                    { odds: market.mn.toString().slice(0, 3), stake: market.i.toString().slice(0, 3), label: "Yes", bgcolor: "#bbdefb" }
+                                                                                ].map((entry, i) => (
+                                                                                    <Box
+                                                                                        key={i}
+                                                                                        sx={{
+                                                                                            bgcolor: entry.bgcolor,
+                                                                                            borderRadius: 1,
+                                                                                            fontWeight: 500,
+                                                                                            minWidth: "40px",
+                                                                                            height: "fit-content",
+                                                                                            textAlign: "center",
+                                                                                            cursor: "pointer"
+                                                                                        }}
+                                                                                        onClick={() => setBestSliptData({
+                                                                                            isOpen: true,
+                                                                                            label: `${market.n} ${entry.label}`,
+                                                                                            odds: entry.odds,
+                                                                                            bgcolor: entry.bgcolor,
+                                                                                        })}
+                                                                                    >
+                                                                                        <Typography variant="subtitle2" sx={{ height: "13px" }}>{entry.odds}</Typography>
+                                                                                        <Typography variant="caption">{entry.stake}</Typography>
+                                                                                    </Box>
+                                                                                ))}
+                                                                            </Box>
+                                                                        </>
+                                                                    )}
                                                                 </Box>
-                                                            )}
-                                                        </Box>
-                                                    ))
-                                                )}
-                                            </>
-                                        </CollapsibleSection>
-                                    </Box>
-                                )
-
-                                )}
+                                                            ))}
+                                                        </>
+                                                    ))}
+                                                </>
+                                            </CollapsibleSection>
+                                        )
+                                    ))}
+                                </Box>
+                            ) : (
+                                <Typography>No markets available</Typography>
+                            )}
                         </Box>
                     </Box>
                 </Box>
@@ -553,14 +614,14 @@ const CommonMatch = () => {
                                     checked={clickBetting}
                                     onChange={() => setClickBetting(!clickBetting)}
                                 />
-                                <Typography >1 Click Betting</Typography>
+                                <Typography>1 Click Betting</Typography>
                             </Box>
                             <Box display="flex" alignItems="center" gap={1}>
                                 <Switch
                                     checked={acceptOdds}
                                     onClick={handleAcceptToggle}
                                 />
-                                <Typography >Accept any ODDS</Typography>
+                                <Typography>Accept any ODDS</Typography>
                             </Box>
                         </Box>
                         {clickBetting && (
@@ -587,7 +648,6 @@ const CommonMatch = () => {
                                 </Button>
                             </>
                         )}
-
                     </Paper>
                     <Paper sx={{ borderRadius: 2, overflow: "hidden", bgcolor: "#b2ebf2" }}>
                         <Box display="flex">
@@ -607,8 +667,7 @@ const CommonMatch = () => {
                                 Bet Slip
                             </Box>
                             <Box
-                                onClick={() => setBestSliptData((prev) => ({ ...prev, isOpen: false }))
-                                }
+                                onClick={() => setBestSliptData((prev) => ({ ...prev, isOpen: false }))}
                                 sx={{
                                     flex: 1,
                                     py: 1,
@@ -626,7 +685,7 @@ const CommonMatch = () => {
                         {bestSliptData.isOpen ? (
                             <Box sx={{ p: 2, bgcolor: bestSliptData.bgcolor, textAlign: "center" }}>
                                 <Typography variant="subtitle2" color="text.secondary">
-                                    England W v India W
+                                    {matchName}
                                 </Typography>
                                 <Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
                                     <Typography>{bestSliptData.label}</Typography>
@@ -640,9 +699,21 @@ const CommonMatch = () => {
                                     </Box>
                                 </Box>
                                 <Box display="flex" alignItems="center" gap={1} sx={{ borderRadius: 1, width: "50%", justifyContent: "space-between", border: "1px solid #000" }}>
-                                    <Button size="small" sx={{ minWidth: 24, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }}><RemoveIcon /></Button>
+                                    <Button
+                                        size="small"
+                                        sx={{ minWidth: 24, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }}
+                                        onClick={() => adjustOdds(-0.01)}
+                                    >
+                                        <RemoveIcon />
+                                    </Button>
                                     <Typography fontWeight={600}>{bestSliptData.odds}</Typography>
-                                    <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }}><AddIcon /></Button>
+                                    <Button
+                                        size="small"
+                                        sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }}
+                                        onClick={() => adjustOdds(0.01)}
+                                    >
+                                        <AddIcon />
+                                    </Button>
                                 </Box>
                                 <Box display="flex" alignItems="center" mt={2} sx={{ borderRadius: 1, border: "1px solid #000" }}>
                                     <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }} onClick={decrementStake}><RemoveIcon /></Button>
@@ -691,7 +762,7 @@ const CommonMatch = () => {
                                         fullWidth
                                         variant="contained"
                                         sx={{ bgcolor: "green", color: "white", fontWeight: 600 }}
-                                        onClick={() => alert(`Placed ₹${stake} bet for odds ${odds}`)}
+                                        onClick={() => alert(`Placed ₹${stake} bet for odds ${bestSliptData.odds}`)}
                                     >
                                         PLACE BET
                                     </Button>
@@ -704,8 +775,8 @@ const CommonMatch = () => {
                         )}
                     </Paper>
                 </Box>
-            </Box >
-        </Box >
+            </Box>
+        </Box>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import {
     Drawer,
     List,
@@ -35,7 +35,9 @@ import { liveSportsData, sportsData, TrendingGamesData } from '../data/dashboard
 import CommonNavLink from './commonComponents/CommonNavLink';
 import CollapsibleSection from './commonComponents/CollapsibleSection';
 import { useAppTheme } from './commonComponents/ThemeComponent';
-import { WhatsAppIcon } from '../assets/SVGs/allSVGs';
+import { CricketIcon, SoccerIcon, TennisIcon, WhatsAppIcon } from '../assets/SVGs/allSVGs';
+import { getMarketMatchData, mainData } from '../api/authApi';
+import { useQuery } from '@tanstack/react-query';
 
 const DrawerMenu = () => {
     const theme = useTheme()
@@ -48,13 +50,77 @@ const DrawerMenu = () => {
     const handleClose = () => dispatch(closeDrawer())
     const [opeSportsEntire, setOpenSportsEntire] = useState(true);
     const [language, setLanguage] = React.useState('English');
+    const [groupedSportsData, setGroupedSportsData] = useState([]);
+
     const casionData = categoriesData?.categories?.items?.map(item => ({
         info: item?.info,
         title: item?.title,
         icon: item?.icon
     }));
-    const sportData = ([sportsData.find((item) => item.sport === "Cricket")])
-    const data1 = [{ sport: sportData, title: "Sports", type: "list" },
+
+    // const { data: games } = useQuery({ queryKey: ["gameData"], queryFn: getMarketMatchData })
+    const games = useSelector((state) => state.fancyMarkets);
+    const sportIconMap = {
+        "4": CricketIcon,
+        "1": SoccerIcon,
+        "2": TennisIcon
+    };
+    useEffect(() => {
+        if (games?.data) {
+            const newGroupedData = games?.data?.data?.map(sportItem => {
+                const doc = sportItem.doc || [];
+                const groupedByTournament = doc.reduce((acc, match) => {
+                    const tournamentId = match?.tournament?.id;
+                    const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+                    const isPlay = match?.isPlay
+                    const marketId = match?.marketId
+                    const numOfBookmaker = match?.numOfBookmaker
+                    const numOfFancy = match?.numOfFancy
+                    const openDate = match?.openDate
+                    const sport = match?.sport
+                    const tournament = match?.tournament
+                    if (tournamentId) {
+                        if (!acc[tournamentName]) {
+                            acc[tournamentName] = {
+                                id: tournamentId,
+                                title: tournamentName,
+                                matches: [],
+                            };
+                        }
+                        acc[tournamentName].matches.push({
+                            name: match?.name?.trim(),
+                            id: match?.id,
+                            isPlay: isPlay,
+                            marketId: marketId,
+                            numOfBookmaker: numOfBookmaker,
+                            numOfFancy: numOfFancy,
+                            openDate: openDate,
+                            sport: sport,
+                            tournament: tournament,
+                        });
+                    }
+                    return acc;
+                }, {});
+                return {
+                    id: sportItem._id,
+                    name: sportItem.name,
+                    leagues: Object.values(groupedByTournament),
+                    icon: sportIconMap[sportItem._id] || null
+                };
+            });
+            const filteredAndGroupedData = newGroupedData.map((sport, index) => {
+                return ({
+                    ...sport,
+                    leagues: sport.leagues.map(league => ({
+                        ...league,
+                        matches: league.matches.filter(match => match.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                    })).filter(league => league.matches.length > 0)
+                });
+            }).filter(sport => sport.leagues.length > 0);
+            setGroupedSportsData(filteredAndGroupedData);
+        }
+    }, [games, searchTerm]);
+    const data1 = [{ sport: sportsData, title: "Sports", type: "list" },
     { sport: casionData, title: "Casion", type: "cards" },
     { sport: true, title: "Promotion", type: "" },
     { sport: false, title: "Refer&Earn", type: "" }]
@@ -81,21 +147,11 @@ const DrawerMenu = () => {
         bgcolor: theme.palette.background.secondery,
         color: theme.palette.text.primary
     }
-    const filteredSports = drawerData.sports?.map((sport) => ({
-        ...sport,
-        leagues: sport.leagues?.map((league) => ({
-            ...league,
-            matches: league.matches.filter((match) =>
-                match.name.toLowerCase().includes(searchTerm.toLowerCase())
-            ),
-        })).filter((league) => league.matches.length > 0),
-    })).filter((sport) => sport.leagues.length > 0);
     const handleChange = (event) => {
         setLanguage(event.target.value);
     };
     const countData = liveSportsData?.flatMap((item) => item?.matches?.filter((match) => match?.tag === "LIVE"))
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const drawerWidth = isMobile ? 0 : theme.breakpoints.down('md') ? 250 : 350;
 
     const flattenedItems = [
         ...(categoriesData?.categories?.items?.flatMap(item => item?.info) || []),
@@ -108,6 +164,9 @@ const DrawerMenu = () => {
             return favouriteItems[item?.id];
         });
     }, [flattenedItems, favouriteItems, count]);
+    useEffect(() => {
+        getMarketMatchData()
+    }, [])
 
     return (
         <Drawer
@@ -146,8 +205,6 @@ const DrawerMenu = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 1,
-                    // marginLeft: isMobile ? 0 : open ? `${drawerWidth}px` : 0,
-                    // width: isMobile ? '100%' : open ? `calc(100% - ${drawerWidth}px)` : '100%',
                     transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
                     overflowY: 'auto', scrollbarWidth: "none", overflowX: "hidden", pb: "50px"
                 }}
@@ -222,7 +279,6 @@ const DrawerMenu = () => {
                                     margin: "5px 0px",
                                     borderRadius: "5px",
                                     padding: "6px 12px",
-                                    // bgcolor: "white",
                                     cursor: "pointer",
                                 }}
                             >
@@ -256,15 +312,14 @@ const DrawerMenu = () => {
                     </Box>
                     <Collapse in={opeSportsEntire} timeout="auto" unmountOnExit>
                         <List>
-
-                            {filteredSports?.map((sport, index) => (
+                            {groupedSportsData?.map((sport, index) => (
                                 <React.Fragment key={index}>
-                                    <ListItemButton onClick={() => handleSportClick(sport.segment)} sx={{ ...commonDefaultStyle, justifyContent: "space-between", margin: "5px 0px", borderRadius: "5px", padding: "3px 10px" }}>
+                                    <ListItemButton onClick={() => handleSportClick(sport.name)} sx={{ ...commonDefaultStyle, justifyContent: "space-between", margin: "5px 0px", borderRadius: "5px", padding: "3px 10px" }}>
                                         <Box sx={{ display: "flex", alignItems: "center", gap: "7px", cursor: "pointer" }}>
                                             <sport.icon sx={{ color: 'inherit' }} />
                                             <Box>
                                                 <ListItemText
-                                                    primary={`${sport.sport}`}
+                                                    primary={`${sport.name}`}
                                                 />
                                             </Box>
                                         </Box>
@@ -275,12 +330,12 @@ const DrawerMenu = () => {
                                                 {`${sport.leagues.reduce((acc, league) => acc + (league.matches?.length || 0), 0)}`}
                                             </Typography>
                                             <Box sx={{ display: "flex", alignItems: "center" }}>
-                                                {openSports[sport.segment] ? <ExpandLess /> : <ExpandMore />}
+                                                {openSports[sport.name] ? <ExpandLess /> : <ExpandMore />}
                                             </Box>
                                         </Box>
                                     </ListItemButton>
                                     <Collapse
-                                        in={openSports[sport.segment]}
+                                        in={openSports[sport.name]}
                                         timeout="auto"
                                         unmountOnExit
                                     >
@@ -294,21 +349,22 @@ const DrawerMenu = () => {
                                                             margin: "5px 0px",
                                                             borderRadius: "5px",
                                                             padding: "3px 10px",
-                                                            // bgcolor: "white",
                                                         }}
-                                                        onClick={() => handleLeagueClick(sport.segment, league.segment)}
+                                                        onClick={() => handleLeagueClick(sport.name, league.title)}
                                                     >
                                                         <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
-                                                            <league.icon sx={{ color: "inherit" }} />
                                                             <Box>
-                                                                <ListItemText primary={`${league.title}`} />
+                                                                {/* <ListItemText primary={` ${league.title}`} /> */}
+                                                                <Typography >
+                                                                    &#x2022; {league?.title}
+                                                                </Typography>
                                                             </Box>
                                                         </Box>
                                                         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                                             <Typography sx={{ fontSize: "12px", fontWeight: 600, color: "#92928e" }}>
                                                                 {league?.matches?.length}
                                                             </Typography>
-                                                            {openLeagues[`${sport.segment}-${league.segment}`] ? (
+                                                            {openLeagues[`${sport.name}-${league.title}`] ? (
                                                                 <ExpandLess />
                                                             ) : (
                                                                 <ExpandMore />
@@ -317,26 +373,20 @@ const DrawerMenu = () => {
                                                     </ListItemButton>
 
                                                     <Collapse
-                                                        in={openLeagues[`${sport.segment}-${league.segment}`]}
+                                                        in={openLeagues[`${sport.name}-${league.title}`]}
                                                         timeout="auto"
                                                         unmountOnExit
                                                     >
-
                                                         <List component="div" disablePadding>
                                                             {league.matches?.map((match, index) => (
                                                                 <ListItemButton
                                                                     key={index}
                                                                     component={Link}
-                                                                    to={`/common-match/${league?.segment}`}
-                                                                    // to={`/common-page`}
-                                                                    state={{ data: league.info, info: league?.matches[0]?.name }}
+                                                                    to={`/common-match/${match?.id}`}
+                                                                    state={{ data: league.info, info: match?.name }}
                                                                     sx={{ ...commonDefaultStyle, m: "5px 0px 5px 20px", p: "3px 10px" }}
                                                                     onClick={handleClose}
-
                                                                 >
-                                                                    <Box sx={{ mr: "5px" }}>
-                                                                        <match.icon sx={{ color: "inherit" }} />
-                                                                    </Box>
                                                                     <ListItemText primary={match.name} />
                                                                 </ListItemButton>
                                                             ))}
@@ -417,12 +467,10 @@ const DrawerMenu = () => {
                                 sx={{
                                     ...commonDefaultStyle,
                                     display: 'flex',
-                                    // color: 'black',
                                     justifyContent: 'space-between',
                                     margin: '5px 0px',
                                     borderRadius: '5px',
                                     padding: '6px 12px',
-                                    // bgcolor: 'white',
                                 }}
                             >
                                 <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>

@@ -2,21 +2,31 @@ import Header from '../components/Header';
 import DrawerMenu from '../components/DrawerMenu';
 import Footer from '../components/Footer';
 import { Box, Button, CssBaseline, useMediaQuery, useTheme } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AppRoutes from '../routers/Router';
 import BottomNavWithRadialMenu from '../components/commonComponents/BottomNAvigation';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import { getMarketMatchData } from '../api/authApi';
+import { useQuery } from '@tanstack/react-query';
+import { setFancyMarkets } from '../features/Authntication/fancyMarketsSlice';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
     const theme = useTheme();
+    const dispatch = useDispatch();
     const isXs = useMediaQuery(theme.breakpoints.down('sm'));
     const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
     const open = useSelector((state) => state.drawer.open);
     const drawerWidth = isXs ? 0 : isSm ? 250 : 350;
     const headerHeight = '35px';
     const navigate = useNavigate()
-
+    const { data } = useQuery({ queryKey: ["gameData"], queryFn: getMarketMatchData })
+    useEffect(() => {
+        if (data) {
+            dispatch(setFancyMarkets(data));
+        }
+    }, [data, dispatch]);
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: theme.palette.background.secondery }}>
             <CssBaseline />

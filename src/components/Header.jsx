@@ -3,13 +3,13 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 import logo from '../assets/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer } from '../features/drawer/drawerSlice';
-import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon } from '../assets/SVGs/allSVGs';
+import { CricketIcon, InPlayIcon, SportsbookIcon, CasinoIcon, SoccerIcon, TennisIcon } from '../assets/SVGs/allSVGs';
 import { useNavigate } from 'react-router-dom';
 import { liveSportsData, sportsData, userProfileData } from '../data/dashboardData';
 import CloseIcon from '@mui/icons-material/Close';
 import CommonNavLink from './commonComponents/CommonNavLink';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link } from 'react-router-dom';
@@ -45,12 +45,132 @@ const Header = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const [groupedSportsData, setGroupedSportsData] = useState([]);
+    const games = useSelector((state) => state.fancyMarkets);
+    // const sportIconMap = {
+    //     "4": CricketIcon,
+    //     "1": SoccerIcon,
+    //     "2": TennisIcon
+    // };
+    useEffect(() => {
+        if (games?.data) {
+            const newGroupedData = games?.data?.data?.map(sportItem => {
+                const doc = sportItem.doc || [];
+                const groupedByTournament = doc.reduce((acc, match) => {
+                    const tournamentId = match?.tournament?.id;
+                    const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+                    const isPlay = match?.isPlay
+                    const marketId = match?.marketId
+                    const numOfBookmaker = match?.numOfBookmaker
+                    const numOfFancy = match?.numOfFancy
+                    const openDate = match?.openDate
+                    const sport = match?.sport
+                    const tournament = match?.tournament
+                    if (tournamentId) {
+                        if (!acc[tournamentName]) {
+                            acc[tournamentName] = {
+                                id: tournamentId,
+                                title: tournamentName,
+                                matches: [],
+                            };
+                        }
+                        acc[tournamentName].matches.push({
+                            name: match?.name?.trim(),
+                            id: match?.id,
+                            isPlay: isPlay,
+                            marketId: marketId,
+                            numOfBookmaker: numOfBookmaker,
+                            numOfFancy: numOfFancy,
+                            openDate: openDate,
+                            sport: sport,
+                            tournament: tournament,
+                        });
+                    }
+                    return acc;
+                }, {});
+                return {
+                    id: sportItem._id,
+                    name: sportItem.name,
+                    leagues: Object.values(groupedByTournament),
+                    // icon: sportIconMap[sportItem._id] || null
+                };
+            });
+            // const filteredAndGroupedData = newGroupedData.map((sport, index) => {
+            //     return ({
+            //         ...sport,
+            //         leagues: sport.leagues.map(league => ({
+            //             ...league,
+            //             matches: league.matches.filter(match => match.name.toLowerCase().includes(searchTerm.toLowerCase()))
+            //         })).filter(league => league.matches.length > 0)
+            //     });
+            // }).filter(sport => sport.leagues.length > 0);
+            setGroupedSportsData(newGroupedData);
+        }
+    }, [games]);
+    const [inPlayData, setInPlayData] = useState([]);
+
+    // const { data: games } = useQuery({ queryKey: ["gameData"], queryFn: getMarketMatchData })
+    // const games = useSelector((state) => state.fancyMarkets);
+
+    // const sportIconMap = {
+    //     "4": CricketIcon,
+    //     "1": SoccerIcon,
+    //     "2": TennisIcon
+    // };
+    useEffect(() => {
+        if (games?.data) {
+            const newGroupedData = games?.data?.data?.map(sportItem => {
+                const doc = sportItem.doc || [];
+                const groupedByTournament = doc.reduce((acc, match) => {
+
+                    const tournamentId = match?.tournament?.id;
+                    const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+                    const isPlay = match?.isPlay
+                    const marketId = match?.marketId
+                    const numOfBookmaker = match?.numOfBookmaker
+                    const numOfFancy = match?.numOfFancy
+                    const openDate = match?.openDate
+                    const sport = match?.sport
+                    const tournament = match?.tournament
+                    if (tournamentId && match.isPlay) {
+                        if (!acc[tournamentName]) {
+                            acc[tournamentName] = {
+                                id: tournamentId,
+                                title: tournamentName,
+                                matches: [],
+                            };
+                        }
+                        acc[tournamentName].matches.push({
+                            name: match?.name?.trim(),
+                            id: match?.id,
+                            isPlay: isPlay,
+                            marketId: marketId,
+                            numOfBookmaker: numOfBookmaker,
+                            numOfFancy: numOfFancy,
+                            openDate: openDate,
+                            sport: sport,
+                            tournament: tournament,
+                        });
+                    }
+                    return acc;
+                }, {});
+                return {
+                    id: sportItem._id,
+                    name: sportItem.name,
+                    leagues: Object.values(groupedByTournament),
+                    // icon: sportIconMap[sportItem._id] || null
+                };
+            });
+            setInPlayData(newGroupedData);
+        }
+    }, [games]);
     const headerData = [
-        { title: 'SPORTS', icon: <CricketIcon />, data: sportsData, isLoggedIn: true, to: "common-list" },
-        { title: 'IN PLAY', icon: <InPlayIcon />, data: liveSportsData, isLoggedIn: true, to: "common-list" },
+        { title: 'SPORTS', icon: <CricketIcon />, data: groupedSportsData, isLoggedIn: true, to: "common-list" },
+        { title: 'IN PLAY', icon: <InPlayIcon />, data: inPlayData, isLoggedIn: true, to: "common-list" },
         { title: 'SPORTSBOOK', icon: <SportsbookIcon />, data: "", isLoggedIn: isLoggedIn, to: "sports-book" },
         { title: 'CASINO', icon: <CasinoIcon />, data: casionData, isLoggedIn: isLoggedIn, to: "common-card" },
     ];
+
     return (
         <>
             <Dialog open={open} >
