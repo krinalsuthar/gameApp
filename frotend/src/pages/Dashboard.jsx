@@ -7,10 +7,11 @@ import AppRoutes from '../routers/Router';
 import BottomNavWithRadialMenu from '../components/commonComponents/BottomNAvigation';
 import { useNavigate } from 'react-router-dom';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-import { getMarketMatchData } from '../api/authApi';
+import { getMarketMatchData, marketRawData } from '../api/authApi';
 import { useQuery } from '@tanstack/react-query';
 import { setFancyMarkets } from '../features/Authntication/fancyMarketsSlice';
 import { useEffect } from 'react';
+import { setRawMarketData } from '../features/drawer/RawDataSlice';
 
 const Dashboard = () => {
     const theme = useTheme();
@@ -22,6 +23,16 @@ const Dashboard = () => {
     const headerHeight = '35px';
     const navigate = useNavigate()
     const { data } = useQuery({ queryKey: ["gameData"], queryFn: getMarketMatchData })
+    const { data: rawData } = useQuery({
+        queryKey: ["rawData"],
+        queryFn: marketRawData,
+    });
+    useEffect(() => {
+        if (rawData) {
+            dispatch(setRawMarketData(rawData))
+        }
+    }, [rawData, dispatch])
+
     useEffect(() => {
         if (data) {
             dispatch(setFancyMarkets(data));

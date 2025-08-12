@@ -1,7 +1,7 @@
 import axios from "axios";
 import { decryptData } from "../utils/cryptoUtils";
 
-const auth = import.meta.env.VITE_AUTHORIZATION_KEY; // ✅ Correct way in Vite
+const auth = import.meta.env.VITE_AUTHORIZATION_KEY;
 
 const api = axios.create({
     baseURL: "http://localhost:5000",

@@ -15,7 +15,6 @@ const io = new Server(server, {
     cors: { origin: "*" },
 });
 
-// Store tokens in memory for demo
 let users = {};
 
 app.post("/register", (req, res) => {

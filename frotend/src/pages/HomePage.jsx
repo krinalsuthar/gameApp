@@ -11,6 +11,7 @@ import PromotionRefer from "../components/commonComponents/PromotionRefer";
 import { useQuery } from "@tanstack/react-query";
 import { getGameData, getMarketMatchData } from "../api/authApi";
 import { useSelector } from "react-redux";
+import { appendInitialData } from "../components/commonComponents/reusableFunctions";
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("");

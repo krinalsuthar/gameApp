@@ -1,783 +1,804 @@
-import { useEffect, useState } from "react";
-import {
-    Box, Paper, IconButton, Switch,
-    Typography,
-    Tab,
-    Tabs,
-    Collapse,
-    TextField,
-    Button,
-    Dialog,
-    DialogContent,
-    DialogActions,
-    useTheme,
-} from "@mui/material";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import AddIcon from "@mui/icons-material/Add";
-import DescriptionIcon from "@mui/icons-material/Description";
-import CommonChartSwitcher from "./CommonChart";
-import { useParams } from "react-router-dom";
-import RemoveIcon from '@mui/icons-material/Remove';
-import CommonDialog from "./CommonDialog";
-import { drawerData } from "../../data/drawerData";
-import CollapsibleSection from "./CollapsibleSection";
-import { useQuery } from "@tanstack/react-query";
-import { mainData } from "../../api/authApi";
+// import { useEffect, useState } from "react";
+// import {
+//     Box, Paper, IconButton, Switch,
+//     Typography,
+//     Tab,
+//     Tabs,
+//     Collapse,
+//     TextField,
+//     Button,
+//     Dialog,
+//     DialogContent,
+//     DialogActions,
+//     useTheme,
+// } from "@mui/material";
+// import AccessTimeIcon from "@mui/icons-material/AccessTime";
+// import BarChartIcon from "@mui/icons-material/BarChart";
+// import AddIcon from "@mui/icons-material/Add";
+// import DescriptionIcon from "@mui/icons-material/Description";
+// import CommonChartSwitcher from "./CommonChart";
+// import { useLocation, useParams } from "react-router-dom";
+// import RemoveIcon from '@mui/icons-material/Remove';
+// import CommonDialog from "./CommonDialog";
+// import { drawerData } from "../../data/drawerData";
+// import CollapsibleSection from "./CollapsibleSection";
+// import { useQuery } from "@tanstack/react-query";
+// import { mainData } from "../../api/authApi";
+// import { appendInitialData } from "./reusableFunctions";
+// import { useSelector } from "react-redux";
 
-const CommonMatch = () => {
-    const { segment } = useParams();
-    const theme = useTheme();
+// const CommonMatch = () => {
+//     const { segment } = useParams();
+//     const theme = useTheme();
+//     const location = useLocation();
+//     const data = location?.state?.marketId;
+//     const { data: fetchedMatchData } = useQuery({
+//         queryKey: ["matchData", segment],
+//         queryFn: () => mainData(segment),
+//     });
+//     const rawData = useSelector((state) => state.getrawMarketData);
+//     const [markedRawData, setMarketRewData] = useState({ backOdds: "", layOdds: "" })
+//     console.log("🚀 ~ CommonMatch ~ markedRawData:", markedRawData)
+//     const [marketId, setMarketId] = useState([])
+//     const [marketsByType, setMarketsByType] = useState({});
+//     console.log("🚀 ~ CommonMatch ~ marketsByType:", marketsByType)
+//     const selectionIds = ["Bookmaker", "Match Odds"].flatMap(category =>
+//         (marketsByType?.[category] ?? []).flatMap(item =>
+//             (item.r ?? []).map(runner => runner.selectionId)
+//         )
+//     );
+//     const rawdatafunction = async () => {
+//         const getrawData = await appendInitialData(rawData, selectionIds);
+//         console.log("🚀 ~ rawdatafunction ~ selectionIds:", selectionIds)
+//         console.log("🚀 ~ rawdatafunction ~ getrawData:", getrawData)
+//         const evenData = getrawData[0]?.runners?.map((item) => item.backOdds)
+//         const oddData = getrawData[0]?.runners?.map((item) => item.layOdds)
+//         setMarketRewData({ backOdds: evenData, layOdds: oddData })
+//     };
+//     useEffect(() => {
+//         rawdatafunction()
+//     }, [rawData]);
+//     useEffect(() => {
+//         if (!fetchedMatchData?.data?.markets?.length) {
+//             setMarketsByType({});
+//             return;
+//         }
+//         const matchesData = [...new Set(fetchedMatchData.data.markets.map(item => item.t))];
+//         const newState = {};
+//         matchesData.forEach(type => {
+//             newState[type] = fetchedMatchData.data.markets.filter(
+//                 market => market.t === type
+//             );
+//         });
+//         setMarketsByType(newState);
+//     }, [fetchedMatchData]);
 
-    // Fetch match data with refetching
-    const { data: fetchedMatchData } = useQuery({
-        queryKey: ["matchData", segment],
-        queryFn: () => mainData(segment),
-    });
+//     const matchData = fetchedMatchData?.data || {
+//         event: { mnm: '', st: new Date().toISOString() },
+//         markets: []
+//     };
+//     const tabLabels = ["All", ...Object.keys(marketsByType)];
+//     const inningsList = ["1st INNS", "2nd INNS"];
+//     const [clickBetting, setClickBetting] = useState(false);
+//     const [acceptOdds, setAcceptOdds] = useState(false);
+//     const [collapse, setCollapse] = useState(true);
+//     const [tab, setTab] = useState(0);
+//     const [values, setValues] = useState([20, 50, 100]);
+//     const [readOnly, setReadOnly] = useState(true);
+//     const [open, setOpen] = useState(false);
+//     const [selectedTab, setSelectedTab] = useState("betSlip");
+//     const [stake, setStake] = useState(0);
+//     const [profit, setProfit] = useState(0);
+//     const [dialogOpen, setDialogOpen] = useState(false);
+//     const [dialogData, setDialogData] = useState();
+//     const [bestSliptData, setBestSliptData] = useState({
+//         isOpen: false,
+//         label: '',
+//         odds: null,
+//         bgcolor: '',
+//     });
 
-    const [marketsByType, setMarketsByType] = useState({});
-    useEffect(() => {
-        if (!fetchedMatchData?.data?.markets?.length) {
-            setMarketsByType({});
-            return;
-        }
-        const matchesData = [...new Set(fetchedMatchData.data.markets.map(item => item.t))];
-        const newState = {};
-        matchesData.forEach(type => {
-            newState[type] = fetchedMatchData.data.markets.filter(
-                market => market.t === type
-            );
-        });
-        setMarketsByType(newState);
-    }, [fetchedMatchData]);
+//     const dialogSportData = {};
+//     drawerData?.sports?.forEach((sport) => {
+//         const sportName = sport?.sport;
+//         if (!sportName || !Array.isArray(sport?.leagues)) return;
+//         sport.leagues.forEach((league) => {
+//             const hasInfo = Array.isArray(league?.info) && league.info.length > 0;
+//             const subtitles = hasInfo
+//                 ? league.info.map((infoItem) => infoItem?.title).filter(Boolean)
+//                 : [];
+//             if (!dialogSportData[sportName]) {
+//                 dialogSportData[sportName] = [];
+//             }
+//             dialogSportData[sportName].push({
+//                 title: league.title?.trim() || '',
+//                 subtitle: subtitles,
+//             });
+//         });
+//     });
 
-    const matchData = fetchedMatchData?.data || {
-        event: { mnm: '', st: new Date().toISOString() },
-        markets: []
-    };
+//     const presetAmounts = [500, 1000, 5000, "10K", "50K", "100K", "500K", "5M"];
+//     const parseAmount = (val) => {
+//         if (typeof val === "number") return val;
+//         return parseInt(val.replace("K", "000").replace("M", "000000"));
+//     };
+//     const handleDislogData = (data) => {
+//         setDialogData(data);
+//         setDialogOpen(true);
+//     };
 
-    // Dynamic tab labels: "All" plus market types from marketsByType
-    const tabLabels = ["All", ...Object.keys(marketsByType)];
+//     const calculateProfit = (currentStake, currentOdds) => {
+//         if (currentOdds) {
+//             return ((parseFloat(currentOdds)) * currentStake).toFixed(2);
+//         }
+//         return 0;
+//     };
 
-    const inningsList = ["1st INNS", "2nd INNS"];
-    const [clickBetting, setClickBetting] = useState(false);
-    const [acceptOdds, setAcceptOdds] = useState(false);
-    const [collapse, setCollapse] = useState(true);
-    const [tab, setTab] = useState(0);
-    const [values, setValues] = useState([20, 50, 100]);
-    const [readOnly, setReadOnly] = useState(true);
-    const [open, setOpen] = useState(false);
-    const [selectedTab, setSelectedTab] = useState("betSlip");
-    const [stake, setStake] = useState(0);
-    const [profit, setProfit] = useState(0);
-    const [dialogOpen, setDialogOpen] = useState(false);
-    const [dialogData, setDialogData] = useState();
-    const [bestSliptData, setBestSliptData] = useState({
-        isOpen: false,
-        label: '',
-        odds: null,
-        bgcolor: '',
-    });
+//     useEffect(() => {
+//         const newProfit = calculateProfit(stake, bestSliptData.odds);
+//         setProfit(newProfit);
+//     }, [stake, bestSliptData.odds]);
 
-    const dialogSportData = {};
-    drawerData?.sports?.forEach((sport) => {
-        const sportName = sport?.sport;
-        if (!sportName || !Array.isArray(sport?.leagues)) return;
-        sport.leagues.forEach((league) => {
-            const hasInfo = Array.isArray(league?.info) && league.info.length > 0;
-            const subtitles = hasInfo
-                ? league.info.map((infoItem) => infoItem?.title).filter(Boolean)
-                : [];
-            if (!dialogSportData[sportName]) {
-                dialogSportData[sportName] = [];
-            }
-            dialogSportData[sportName].push({
-                title: league.title?.trim() || '',
-                subtitle: subtitles,
-            });
-        });
-    });
+//     const handlePresetClick = (amount) => {
+//         const value = parseAmount(amount);
+//         const newStake = stake + value;
+//         setStake(newStake);
+//     };
 
-    const presetAmounts = [500, 1000, 5000, "10K", "50K", "100K", "500K", "5M"];
-    const parseAmount = (val) => {
-        if (typeof val === "number") return val;
-        return parseInt(val.replace("K", "000").replace("M", "000000"));
-    };
-    const handleDislogData = (data) => {
-        setDialogData(data);
-        setDialogOpen(true);
-    };
+//     const handleStakeChange = (e) => {
+//         const value = parseFloat(e.target.value) || 0;
+//         setStake(value);
+//     };
 
-    const calculateProfit = (currentStake, currentOdds) => {
-        if (currentOdds) {
-            return ((parseFloat(currentOdds)) * currentStake).toFixed(2);
-        }
-        return 0;
-    };
+//     const adjustOdds = (value) => {
+//         const newOdds = Math.max(1, parseFloat(bestSliptData.odds) + value);
+//         setBestSliptData(prev => ({ ...prev, odds: newOdds.toFixed(2) }));
+//     };
 
-    useEffect(() => {
-        const newProfit = calculateProfit(stake, bestSliptData.odds);
-        setProfit(newProfit);
-    }, [stake, bestSliptData.odds]);
+//     const incrementStake = () => {
+//         const newStake = stake + 10;
+//         setStake(newStake);
+//     };
 
-    const handlePresetClick = (amount) => {
-        const value = parseAmount(amount);
-        const newStake = stake + value;
-        setStake(newStake);
-    };
+//     const decrementStake = () => {
+//         const newStake = Math.max(0, stake - 10);
+//         setStake(newStake);
+//     };
 
-    const handleStakeChange = (e) => {
-        const value = parseFloat(e.target.value) || 0;
-        setStake(value);
-    };
+//     const clearAll = () => {
+//         setBestSliptData((prev) => ({ ...prev, isOpen: false }));
+//         setStake(0);
+//         setProfit(0);
+//     };
 
-    const adjustOdds = (value) => {
-        const newOdds = Math.max(1, parseFloat(bestSliptData.odds) + value);
-        setBestSliptData(prev => ({ ...prev, odds: newOdds.toFixed(2) }));
-    };
+//     const handleAcceptToggle = () => {
+//         setAcceptOdds(!acceptOdds);
+//         setOpen(true);
+//     };
 
-    const incrementStake = () => {
-        const newStake = stake + 10;
-        setStake(newStake);
-    };
+//     const handleConfirm = () => {
+//         setOpen(true);
+//         setAcceptOdds(true);
+//         setOpen(false);
+//     };
 
-    const decrementStake = () => {
-        const newStake = Math.max(0, stake - 10);
-        setStake(newStake);
-    };
+//     const handleDecline = () => {
+//         setAcceptOdds(false);
+//         setOpen(false);
+//     };
 
-    const clearAll = () => {
-        setBestSliptData((prev) => ({ ...prev, isOpen: false }));
-        setStake(0);
-        setProfit(0);
-    };
+//     const handleChange = (index, newValue) => {
+//         const updated = [...values];
+//         updated[index] = newValue;
+//         setValues(updated);
+//     };
+//     const handleToggle = () => {
+//         setCollapse((prev) => !prev);
+//     };
 
-    const handleAcceptToggle = () => {
-        setAcceptOdds(!acceptOdds);
-        setOpen(true);
-    };
+//     const matchName = matchData?.event?.mnm || '';
+//     const teams = matchName.includes(' v ') ? matchName.split(' v ') : [matchName];
+//     const teamA = teams[0]?.trim() ?? '';
+//     const teamB = teams[1]?.trim() ?? '';
+//     const shortA = teamA.slice(0, 2).toUpperCase();
+//     const shortB = teamB.slice(0, 2).toUpperCase();
+//     const country1 = teamA.toUpperCase();
+//     const country2 = teamB.toUpperCase();
+//     const countryData = [country1, country2, shortA, shortB];
+//     const matchStartTime = new Date(matchData?.event?.st);
+//     const date = matchStartTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+//     const time = matchStartTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
-    const handleConfirm = () => {
-        setOpen(true);
-        setAcceptOdds(true);
-        setOpen(false);
-    };
+//     const lineChartData = {
+//         "1st INNS": [
+//             {
+//                 name: "Bangladesh",
+//                 data: [0, 2, 4, 5, 6, 6.5, 7, 8, 8.2, 8.5, 9, 9.5, 10, 9.8, 9.5, 9.2, 8.5, 8.0, 7.5, 7],
+//             },
+//             {
+//                 name: "Sri Lanka",
+//                 data: [0, 1, 2, 3, 4, 4.2, 4.5, 5, 6, 7, 7.5, 8, 8.3, 8.5, 8.7, 8.9, 9.0, 9.1, 9.2, 9.3],
+//             },
+//         ],
+//         "2nd INNS": [
+//             {
+//                 name: "Bangladesh",
+//                 data: [0, 1, 2, 2.5, 3.5, 4, 4.8, 5.2, 5.7, 6, 6.2, 6.8, 7.2, 7.5, 7.8, 8, 8.2, 8.4, 8.5, 9],
+//             },
+//             {
+//                 name: "Sri Lanka",
+//                 data: [0, 1, 1.5, 2, 2.5, 3, 3.4, 3.8, 4.2, 4.5, 5, 5.3, 5.8, 6.2, 6.5, 6.9, 7.1, 7.5, 7.8, 8],
+//             },
+//         ],
+//     };
 
-    const handleDecline = () => {
-        setAcceptOdds(false);
-        setOpen(false);
-    };
+//     const barChartData = {
+//         "1st INNS": [
+//             {
+//                 name: "Bangladesh",
+//                 data: [4, 5, 6, 5.5, 4.5, 5.7, 6.3, 6, 7, 5, 6, 7, 8, 6, 5, 4, 4.2, 4.8, 3.9, 2],
+//             },
+//             {
+//                 name: "Sri Lanka",
+//                 data: [3.5, 4, 4.8, 4.2, 3.9, 4.1, 4.6, 5, 5.2, 5.5, 6, 6.2, 6.5, 6.8, 6.9, 7, 7.1, 7.3, 7.4, 7.5],
+//             },
+//         ],
+//         "2nd INNS": [
+//             {
+//                 name: "Bangladesh",
+//                 data: [2, 3, 4, 4.5, 5, 5.2, 5.8, 6, 6.5, 6.8, 7, 7.2, 7.5, 7.7, 7.9, 8.1, 8.2, 8.3, 8.4, 8.5],
+//             },
+//             {
+//                 name: "Sri Lanka",
+//                 data: [1, 2, 2.8, 3.5, 4, 4.5, 5, 5.2, 5.4, 5.8, 6, 6.3, 6.6, 6.8, 7, 7.3, 7.5, 7.7, 7.9, 8],
+//             },
+//         ],
+//     };
 
-    const handleChange = (index, newValue) => {
-        const updated = [...values];
-        updated[index] = newValue;
-        setValues(updated);
-    };
-    const handleToggle = () => {
-        setCollapse((prev) => !prev);
-    };
-
-    const matchName = matchData?.event?.mnm || '';
-    const teams = matchName.includes(' v ') ? matchName.split(' v ') : [matchName];
-    const teamA = teams[0]?.trim() ?? '';
-    const teamB = teams[1]?.trim() ?? '';
-    const shortA = teamA.slice(0, 2).toUpperCase();
-    const shortB = teamB.slice(0, 2).toUpperCase();
-    const country1 = teamA.toUpperCase();
-    const country2 = teamB.toUpperCase();
-    const countryData = [country1, country2, shortA, shortB];
-    const matchStartTime = new Date(matchData?.event?.st);
-    const date = matchStartTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    const time = matchStartTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-
-    const lineChartData = {
-        "1st INNS": [
-            {
-                name: "Bangladesh",
-                data: [0, 2, 4, 5, 6, 6.5, 7, 8, 8.2, 8.5, 9, 9.5, 10, 9.8, 9.5, 9.2, 8.5, 8.0, 7.5, 7],
-            },
-            {
-                name: "Sri Lanka",
-                data: [0, 1, 2, 3, 4, 4.2, 4.5, 5, 6, 7, 7.5, 8, 8.3, 8.5, 8.7, 8.9, 9.0, 9.1, 9.2, 9.3],
-            },
-        ],
-        "2nd INNS": [
-            {
-                name: "Bangladesh",
-                data: [0, 1, 2, 2.5, 3.5, 4, 4.8, 5.2, 5.7, 6, 6.2, 6.8, 7.2, 7.5, 7.8, 8, 8.2, 8.4, 8.5, 9],
-            },
-            {
-                name: "Sri Lanka",
-                data: [0, 1, 1.5, 2, 2.5, 3, 3.4, 3.8, 4.2, 4.5, 5, 5.3, 5.8, 6.2, 6.5, 6.9, 7.1, 7.5, 7.8, 8],
-            },
-        ],
-    };
-
-    const barChartData = {
-        "1st INNS": [
-            {
-                name: "Bangladesh",
-                data: [4, 5, 6, 5.5, 4.5, 5.7, 6.3, 6, 7, 5, 6, 7, 8, 6, 5, 4, 4.2, 4.8, 3.9, 2],
-            },
-            {
-                name: "Sri Lanka",
-                data: [3.5, 4, 4.8, 4.2, 3.9, 4.1, 4.6, 5, 5.2, 5.5, 6, 6.2, 6.5, 6.8, 6.9, 7, 7.1, 7.3, 7.4, 7.5],
-            },
-        ],
-        "2nd INNS": [
-            {
-                name: "Bangladesh",
-                data: [2, 3, 4, 4.5, 5, 5.2, 5.8, 6, 6.5, 6.8, 7, 7.2, 7.5, 7.7, 7.9, 8.1, 8.2, 8.3, 8.4, 8.5],
-            },
-            {
-                name: "Sri Lanka",
-                data: [1, 2, 2.8, 3.5, 4, 4.5, 5, 5.2, 5.4, 5.8, 6, 6.3, 6.6, 6.8, 7, 7.3, 7.5, 7.7, 7.9, 8],
-            },
-        ],
-    };
-
-    const filteredMarkets = tab === 0
-        ? Object.keys(marketsByType).reduce((acc, type) => [...acc, ...marketsByType[type]], [])
-        : marketsByType[tabLabels[tab]] || [];
+//     const filteredMarkets = tab === 0
+//         ? Object.keys(marketsByType).reduce((acc, type) => [...acc, ...marketsByType[type]], [])
+//         : marketsByType[tabLabels[tab]] || [];
 
 
-    return (
-        <Box sx={{ position: "relative", mb: 4, p: 2 }}>
-            <CommonDialog open={dialogOpen} data={dialogData} title={"Rules"} handleClose={() => setDialogOpen(false)} />
-            <Dialog
-                open={open}
-                onClose={handleDecline}
-                scroll="body"
-                PaperProps={{
-                    sx: {
-                        borderRadius: 2,
-                        p: 2,
-                        minWidth: 300,
-                        textAlign: "center",
-                        position: "absolute",
-                        top: { lg: "10%", md: "10%", sm: "15%", xs: "15%" },
-                        left: "50%",
-                        transform: "translate(-50%, -50%) !important",
-                    }
-                }}
-            >
-                <DialogContent>
-                    <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>
-                        Please confirm that you're allowing exchange system to place bets
-                        on any odds at Betfair accepted rate
-                    </Typography>
-                </DialogContent>
-                <DialogActions sx={{ justifyContent: "center", gap: 2 }}>
-                    <Button
-                        onClick={handleConfirm}
-                        variant="contained"
-                        sx={{ bgcolor: "green", px: 3 }}
-                    >
-                        Accept
-                    </Button>
-                    <Button
-                        onClick={handleDecline}
-                        variant="contained"
-                        sx={{ bgcolor: "red", px: 3 }}
-                    >
-                        Decline
-                    </Button>
-                </DialogActions>
-            </Dialog>
-            <Box sx={{ display: "flex", width: "100%", justifyContent: "space-between", flexWrap: "wrap" }}>
-                <Box
-                    sx={{
-                        width: { lg: "59%", md: "59%", sm: "100%", xs: "100%" },
-                        borderRadius: "5px",
-                    }}
-                >
-                    <Paper
-                        elevation={3}
-                        sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            px: 1.5,
-                            mb: 2,
-                            borderRadius: 2,
-                            minHeight: 60,
-                        }}
-                    >
-                        <Box display="flex" alignItems="center" gap={1}>
-                            <AccessTimeIcon fontSize="small" />
-                            <Typography variant="body1" fontWeight="medium" sx={{
-                                display: { xs: "flex" },
-                                flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" },
-                                fontSize: { lg: "15px", md: "15px", sm: "15px", xs: "10px" },
-                            }}>
-                                {date} <b>{time}</b>
-                            </Typography>
-                        </Box>
-                        <Typography
-                            fontWeight="bold"
-                        >
-                            {matchName}
-                        </Typography>
-                        <Box display="flex" gap={1}>
-                            <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }} onClick={handleToggle}>
-                                {collapse ? <BarChartIcon /> : <BarChartIcon />}
-                            </IconButton>
-                            <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }} onClick={() => handleDislogData(dialogSportData)}>
-                                <AddIcon />
-                            </IconButton>
-                        </Box>
-                    </Paper>
-                    <Paper>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                                mb: 2,
-                                px: 3,
-                                py: 1
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    backgroundColor: "#f5f5f5de",
-                                    width: 40,
-                                    height: 40,
-                                    borderRadius: "50%",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontWeight: "bold",
-                                    p: 2
-                                }}
-                            >
-                                {countryData[2]}
-                            </Box>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 3,
-                                }}
-                            >
-                                <Typography fontWeight="bold">{countryData[0]}</Typography>
-                                {teamB && (
-                                    <img
-                                        src="https://img.freepik.com/premium-vector/versus-battle-illustration-logo-design-template-versus-vector-icon-vs-letters-sports_564974-202.jpg"
-                                        alt="vs"
-                                        style={{ height: 40, width: 40 }}
-                                    />
-                                )}
-                                {teamB && <Typography fontWeight="bold">{countryData[1]}</Typography>}
-                            </Box>
-                            {teamB && (
-                                <Box
-                                    sx={{
-                                        backgroundColor: "#f5f5f5de",
-                                        width: 40,
-                                        height: 40,
-                                        borderRadius: "50%",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        fontWeight: "bold",
-                                        p: 2
-                                    }}
-                                >
-                                    {countryData[3]}
-                                </Box>
-                            )}
-                        </Box>
-                        <Collapse in={collapse} timeout="auto" unmountOnExit>
-                            {matchData ? (
-                                <Box>
-                                    <CommonChartSwitcher
-                                        lineChartData={lineChartData}
-                                        barChartData={barChartData}
-                                        inningsList={inningsList}
-                                    />
-                                </Box>
-                            ) : (
-                                <Box
-                                    sx={{
-                                        height: 200,
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontSize: '1.2rem',
-                                        fontWeight: 500,
-                                        bgcolor: "#000"
-                                    }}
-                                >
-                                    No data available
-                                </Box>
-                            )}
-                        </Collapse>
-                        <Box sx={{ background: "#f5f5f5", borderRadius: 2 }}></Box>
-                    </Paper>
-                    <Box sx={{ display: "flex", gap: 2 }}>
-                        <Box sx={{ flex: 1 }}>
-                            <Tabs
-                                value={tab}
-                                onChange={(e, v) => {
-                                    setTab(v);
-                                }}
-                                sx={{ mt: 2 }}
-                                TabIndicatorProps={{
-                                    style: { display: 'none' }
-                                }}
-                            >
-                                {tabLabels.map((label, idx) => (
-                                    <Tab
-                                        key={idx}
-                                        label={label}
-                                        sx={{
-                                            border: "1px solid #ffcc00",
-                                            fontWeight: 600,
-                                            bgcolor: tab === idx ? "#ffcc00" : "",
-                                            py: 0,
-                                            "&.Mui-selected": {
-                                                borderBottom: "none",
-                                            },
-                                        }}
-                                    />
-                                ))}
-                            </Tabs>
-                            {filteredMarkets.length > 0 ? (
-                                <Box>
-                                    {Object.keys(marketsByType).map((marketType) => (
-                                        (tab === 0 || tabLabels[tab] === marketType) && marketsByType[marketType] && (
-                                            <CollapsibleSection
-                                                key={marketType}
-                                                sectionKey={marketType}
-                                                title={marketType}
-                                                sx={{ bgcolor: theme.palette.background.default, borderRadius: 1, p: 2, mb: 2 }}
-                                            >
-                                                <>
-                                                    {marketType === "Fancy" && (
-                                                        <Box>
-                                                            {marketsByType[marketType].map((fancyMarket, idx) => (
-                                                                <Box
-                                                                    key={fancyMarket.i}
-                                                                    display="flex"
-                                                                    justifyContent="space-between"
-                                                                    alignItems="center"
-                                                                    py={1}
-                                                                    sx={{ borderBottom: "1px solid #ddd", "&:last-child": { borderBottom: "none" } }}
-                                                                >
-                                                                    <Box>
-                                                                        <Typography fontSize="14px">{fancyMarket.n}</Typography>
-                                                                    </Box>
-                                                                    <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
-                                                                        {/* <Typography fontSize="12px" color="gray" mr={2}>
-                                                                            Stake Limit: {fancyMarket.mn}-{fancyMarket.mx}<br />Max Profit: {fancyMarket.mx}
-                                                                        </Typography> */}
-                                                                        {fancyMarket.ms.name === "open" ? (
-                                                                            [
-                                                                                { odds: fancyMarket.do.toString().slice(0, 3), stake: fancyMarket.fi.toString().slice(0, 3), label: "No", bgcolor: "#ffcdd2" },
-                                                                                { odds: fancyMarket.mn.toString().slice(0, 3), stake: fancyMarket.i.toString().slice(0, 3), label: "Yes", bgcolor: "#bbdefb" }
-                                                                            ].map((entry, i) => (
-                                                                                <Box
-                                                                                    key={i}
-                                                                                    sx={{
-                                                                                        bgcolor: entry.bgcolor,
-                                                                                        borderRadius: 1,
-                                                                                        fontWeight: 500,
-                                                                                        minWidth: "40px",
-                                                                                        height: "fit-content",
-                                                                                        textAlign: "center",
-                                                                                        cursor: "pointer"
-                                                                                    }}
-                                                                                    onClick={() => setBestSliptData({
-                                                                                        isOpen: true,
-                                                                                        label: `${fancyMarket.n} ${entry.label}`,
-                                                                                        odds: entry.odds,
-                                                                                        bgcolor: entry.bgcolor,
-                                                                                    })}
-                                                                                >
-                                                                                    <Typography variant="subtitle2" sx={{ height: "13px" }}>{entry.odds}</Typography>
-                                                                                    <Typography variant="caption">{entry.stake}</Typography>
-                                                                                </Box>
-                                                                            ))
-                                                                        ) : (
-                                                                            <Box
-                                                                                sx={{
-                                                                                    background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
-                                                                                    borderRadius: 1,
-                                                                                    textAlign: "center",
-                                                                                    p: 1,
-                                                                                    border: "1px solid #ddd",
-                                                                                    fontWeight: 600,
-                                                                                    fontSize: "14px",
-                                                                                    height: "fit-content",
-                                                                                    cursor: "pointer"
-                                                                                }}
-                                                                            >
-                                                                                {fancyMarket.ms.name.toUpperCase()}
-                                                                            </Box>
-                                                                        )}
-                                                                    </Box>
-                                                                </Box>
-                                                            ))}
-                                                        </Box>
-                                                    )}
-                                                    {marketType !== "Fancy" && marketsByType[marketType].map((market, idx) => (
-                                                        <>
-                                                            {market.r.map((runner, runnerIdx) => (
-                                                                <Box
-                                                                    key={runner.runnerName}
-                                                                    sx={{
-                                                                        display: "flex",
-                                                                        justifyContent: "space-between",
-                                                                        pb: 1,
-                                                                        borderBottom: "1px solid #ddd",
-                                                                        paddingTop: "10px",
-                                                                        "&:last-child": { borderBottom: "none" },
-                                                                    }}
-                                                                >
-                                                                    <Box>
-                                                                        <Typography fontWeight={500}>{runner.runnerName}</Typography>
-                                                                        <Typography color="green">0</Typography>
-                                                                    </Box>
-                                                                    {market.ms?.name === "SUSPENDED" ? (
-                                                                        <Box
-                                                                            sx={{
-                                                                                background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
-                                                                                borderRadius: 1,
-                                                                                textAlign: "center",
-                                                                                p: 1,
-                                                                                border: "1px solid #ddd",
-                                                                                fontWeight: 600,
-                                                                                fontSize: "14px",
-                                                                                height: "fit-content",
-                                                                                cursor: "pointer"
-                                                                            }}
-                                                                        >
-                                                                            SUSPENDED
-                                                                        </Box>
-                                                                    ) : (
-                                                                        <>
-                                                                            <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
-                                                                                {[
-                                                                                    { odds: market.do.toString().slice(0, 3), stake: market.mx.toString().slice(0, 3), label: "No", bgcolor: "#ffcdd2" },
-                                                                                    { odds: market.mn.toString().slice(0, 3), stake: market.i.toString().slice(0, 3), label: "Yes", bgcolor: "#bbdefb" }
-                                                                                ].map((entry, i) => (
-                                                                                    <Box
-                                                                                        key={i}
-                                                                                        sx={{
-                                                                                            bgcolor: entry.bgcolor,
-                                                                                            borderRadius: 1,
-                                                                                            fontWeight: 500,
-                                                                                            minWidth: "40px",
-                                                                                            height: "fit-content",
-                                                                                            textAlign: "center",
-                                                                                            cursor: "pointer"
-                                                                                        }}
-                                                                                        onClick={() => setBestSliptData({
-                                                                                            isOpen: true,
-                                                                                            label: `${market.n} ${entry.label}`,
-                                                                                            odds: entry.odds,
-                                                                                            bgcolor: entry.bgcolor,
-                                                                                        })}
-                                                                                    >
-                                                                                        <Typography variant="subtitle2" sx={{ height: "13px" }}>{entry.odds}</Typography>
-                                                                                        <Typography variant="caption">{entry.stake}</Typography>
-                                                                                    </Box>
-                                                                                ))}
-                                                                            </Box>
-                                                                        </>
-                                                                    )}
-                                                                </Box>
-                                                            ))}
-                                                        </>
-                                                    ))}
-                                                </>
-                                            </CollapsibleSection>
-                                        )
-                                    ))}
-                                </Box>
-                            ) : (
-                                <Typography>No markets available</Typography>
-                            )}
-                        </Box>
-                    </Box>
-                </Box>
-                <Box sx={{ width: { lg: "39%", md: "39%", sm: "100%", xs: "100%" } }}>
-                    <Paper sx={{ p: 1, mb: 1 }}>
-                        <Box
-                            display="flex"
-                            justifyContent="space-between"
-                            alignItems="center"
-                        >
-                            <Box display="flex" alignItems="center" gap={1}>
-                                <Switch
-                                    checked={clickBetting}
-                                    onChange={() => setClickBetting(!clickBetting)}
-                                />
-                                <Typography>1 Click Betting</Typography>
-                            </Box>
-                            <Box display="flex" alignItems="center" gap={1}>
-                                <Switch
-                                    checked={acceptOdds}
-                                    onClick={handleAcceptToggle}
-                                />
-                                <Typography>Accept any ODDS</Typography>
-                            </Box>
-                        </Box>
-                        {clickBetting && (
-                            <>
-                                <Box sx={{ display: "flex", justifyContent: "space-between", textAlign: "center", flexWrap: "wrap" }}>
-                                    {values.map((val, index) => (
-                                        <TextField
-                                            key={index}
-                                            size="small"
-                                            type="number"
-                                            value={val}
-                                            onChange={(e) => handleChange(index, e.target.value)}
-                                            inputProps={{ readOnly }}
-                                            sx={{ py: 1, m: 1.5, flex: 1 }}
-                                        />
-                                    ))}
-                                </Box>
-                                <Button
-                                    variant="contained"
-                                    sx={{ display: "flex", margin: "auto", bgcolor: "#ffc107", color: "black" }}
-                                    onClick={() => setReadOnly((prev) => !prev)}
-                                >
-                                    Edit
-                                </Button>
-                            </>
-                        )}
-                    </Paper>
-                    <Paper sx={{ borderRadius: 2, overflow: "hidden", bgcolor: "#b2ebf2" }}>
-                        <Box display="flex">
-                            <Box
-                                onClick={() => setSelectedTab("betSlip")}
-                                sx={{
-                                    flex: 1,
-                                    py: 1,
-                                    textAlign: "center",
-                                    bgcolor: selectedTab === "betSlip" ? "#ffc107" : "#535558",
-                                    color: selectedTab === "betSlip" ? "#000" : "#fff",
-                                    fontWeight: 600,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <AddIcon fontSize="small" sx={{ verticalAlign: "middle", mr: 0.5 }} />
-                                Bet Slip
-                            </Box>
-                            <Box
-                                onClick={() => setBestSliptData((prev) => ({ ...prev, isOpen: false }))}
-                                sx={{
-                                    flex: 1,
-                                    py: 1,
-                                    textAlign: "center",
-                                    bgcolor: selectedTab === "myBets" ? "#ffc107" : "#535558",
-                                    color: selectedTab === "myBets" ? "#000" : "#fff",
-                                    fontWeight: 600,
-                                    cursor: "pointer",
-                                }}
-                            >
-                                <DescriptionIcon fontSize="small" sx={{ verticalAlign: "middle", mr: 0.5 }} />
-                                My Bets
-                            </Box>
-                        </Box>
-                        {bestSliptData.isOpen ? (
-                            <Box sx={{ p: 2, bgcolor: bestSliptData.bgcolor, textAlign: "center" }}>
-                                <Typography variant="subtitle2" color="text.secondary">
-                                    {matchName}
-                                </Typography>
-                                <Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
-                                    <Typography>{bestSliptData.label}</Typography>
-                                    <Box>
-                                        <Typography fontSize="14px" fontWeight={600} color="green">
-                                            Profit
-                                        </Typography>
-                                        <Typography fontSize="14px" fontWeight={600} color="green">
-                                            ₹ {profit}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                <Box display="flex" alignItems="center" gap={1} sx={{ borderRadius: 1, width: "50%", justifyContent: "space-between", border: "1px solid #000" }}>
-                                    <Button
-                                        size="small"
-                                        sx={{ minWidth: 24, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }}
-                                        onClick={() => adjustOdds(-0.01)}
-                                    >
-                                        <RemoveIcon />
-                                    </Button>
-                                    <Typography fontWeight={600}>{bestSliptData.odds}</Typography>
-                                    <Button
-                                        size="small"
-                                        sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }}
-                                        onClick={() => adjustOdds(0.01)}
-                                    >
-                                        <AddIcon />
-                                    </Button>
-                                </Box>
-                                <Box display="flex" alignItems="center" mt={2} sx={{ borderRadius: 1, border: "1px solid #000" }}>
-                                    <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }} onClick={decrementStake}><RemoveIcon /></Button>
-                                    <TextField
-                                        placeholder="Stake"
-                                        variant="standard"
-                                        value={stake}
-                                        onChange={handleStakeChange}
-                                        fullWidth
-                                        InputProps={{ disableUnderline: true }}
-                                        sx={{ mx: 1, input: { textAlign: "center" } }}
-                                    />
-                                    <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }} onClick={incrementStake}><AddIcon /></Button>
-                                </Box>
-                                <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={1} mt={2}>
-                                    {presetAmounts.map((val, idx) => (
-                                        <Button
-                                            key={idx}
-                                            variant="contained"
-                                            size="small"
-                                            sx={{ bgcolor: "#e0e0e0", color: "#000" }}
-                                            onClick={() => handlePresetClick(val)}
-                                        >
-                                            {val}
-                                        </Button>
-                                    ))}
-                                    <Button
-                                        variant="outlined"
-                                        size="small"
-                                        sx={{ gridColumn: "span 3", borderColor: "#000", color: "#000" }}
-                                        onClick={clearAll}
-                                    >
-                                        Clear
-                                    </Button>
-                                </Box>
-                                <Box display="flex" justifyContent="space-between" gap={1} mt={2}>
-                                    <Button
-                                        fullWidth
-                                        variant="contained"
-                                        sx={{ bgcolor: "red", color: "white", fontWeight: 600 }}
-                                        onClick={clearAll}
-                                    >
-                                        CANCEL
-                                    </Button>
-                                    <Button
-                                        fullWidth
-                                        variant="contained"
-                                        sx={{ bgcolor: "green", color: "white", fontWeight: 600 }}
-                                        onClick={() => alert(`Placed ₹${stake} bet for odds ${bestSliptData.odds}`)}
-                                    >
-                                        PLACE BET
-                                    </Button>
-                                </Box>
-                            </Box>
-                        ) : (
-                            <Box sx={{ textAlign: "center", py: 4 }}>
-                                <Typography>No bets placed in the selected event</Typography>
-                            </Box>
-                        )}
-                    </Paper>
-                </Box>
-            </Box>
-        </Box>
-    );
-};
+//     return (
+//         <Box sx={{ position: "relative", mb: 4, p: 2 }}>
+//             <CommonDialog open={dialogOpen} data={dialogData} title={"Rules"} handleClose={() => setDialogOpen(false)} />
+//             <Dialog
+//                 open={open}
+//                 onClose={handleDecline}
+//                 scroll="body"
+//                 PaperProps={{
+//                     sx: {
+//                         borderRadius: 2,
+//                         p: 2,
+//                         minWidth: 300,
+//                         textAlign: "center",
+//                         position: "absolute",
+//                         top: { lg: "10%", md: "10%", sm: "15%", xs: "15%" },
+//                         left: "50%",
+//                         transform: "translate(-50%, -50%) !important",
+//                     }
+//                 }}
+//             >
+//                 <DialogContent>
+//                     <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>
+//                         Please confirm that you're allowing exchange system to place bets
+//                         on any odds at Betfair accepted rate
+//                     </Typography>
+//                 </DialogContent>
+//                 <DialogActions sx={{ justifyContent: "center", gap: 2 }}>
+//                     <Button
+//                         onClick={handleConfirm}
+//                         variant="contained"
+//                         sx={{ bgcolor: "green", px: 3 }}
+//                     >
+//                         Accept
+//                     </Button>
+//                     <Button
+//                         onClick={handleDecline}
+//                         variant="contained"
+//                         sx={{ bgcolor: "red", px: 3 }}
+//                     >
+//                         Decline
+//                     </Button>
+//                 </DialogActions>
+//             </Dialog>
+//             <Box sx={{ display: "flex", width: "100%", justifyContent: "space-between", flexWrap: "wrap" }}>
+//                 <Box
+//                     sx={{
+//                         width: { lg: "59%", md: "59%", sm: "100%", xs: "100%" },
+//                         borderRadius: "5px",
+//                     }}
+//                 >
+//                     <Paper
+//                         elevation={3}
+//                         sx={{
+//                             display: "flex",
+//                             justifyContent: "space-between",
+//                             alignItems: "center",
+//                             px: 1.5,
+//                             mb: 2,
+//                             borderRadius: 2,
+//                             minHeight: 60,
+//                         }}
+//                     >
+//                         <Box display="flex" alignItems="center" gap={1}>
+//                             <AccessTimeIcon fontSize="small" />
+//                             <Typography variant="body1" fontWeight="medium" sx={{
+//                                 display: { xs: "flex" },
+//                                 flexDirection: { lg: "row", md: "row", sm: "row", xs: "column" },
+//                                 fontSize: { lg: "15px", md: "15px", sm: "15px", xs: "10px" },
+//                             }}>
+//                                 {date} <b>{time}</b>
+//                             </Typography>
+//                         </Box>
+//                         <Typography
+//                             fontWeight="bold"
+//                         >
+//                             {matchName}
+//                         </Typography>
+//                         <Box display="flex" gap={1}>
+//                             <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }} onClick={handleToggle}>
+//                                 {collapse ? <BarChartIcon /> : <BarChartIcon />}
+//                             </IconButton>
+//                             <IconButton size="small" sx={{ border: "1px solid black", borderRadius: "10px" }} onClick={() => handleDislogData(dialogSportData)}>
+//                                 <AddIcon />
+//                             </IconButton>
+//                         </Box>
+//                     </Paper>
+//                     <Paper>
+//                         <Box
+//                             sx={{
+//                                 display: "flex",
+//                                 justifyContent: "space-between",
+//                                 alignItems: "center",
+//                                 mb: 2,
+//                                 px: 3,
+//                                 py: 1
+//                             }}
+//                         >
+//                             <Box
+//                                 sx={{
+//                                     backgroundColor: "#f5f5f5de",
+//                                     width: 40,
+//                                     height: 40,
+//                                     borderRadius: "50%",
+//                                     display: "flex",
+//                                     alignItems: "center",
+//                                     justifyContent: "center",
+//                                     fontWeight: "bold",
+//                                     p: 2
+//                                 }}
+//                             >
+//                                 {countryData[2]}
+//                             </Box>
+//                             <Box
+//                                 sx={{
+//                                     display: "flex",
+//                                     alignItems: "center",
+//                                     gap: 3,
+//                                 }}
+//                             >
+//                                 <Typography fontWeight="bold">{countryData[0]}</Typography>
+//                                 {teamB && (
+//                                     <img
+//                                         src="https://img.freepik.com/premium-vector/versus-battle-illustration-logo-design-template-versus-vector-icon-vs-letters-sports_564974-202.jpg"
+//                                         alt="vs"
+//                                         style={{ height: 40, width: 40 }}
+//                                     />
+//                                 )}
+//                                 {teamB && <Typography fontWeight="bold">{countryData[1]}</Typography>}
+//                             </Box>
+//                             {teamB && (
+//                                 <Box
+//                                     sx={{
+//                                         backgroundColor: "#f5f5f5de",
+//                                         width: 40,
+//                                         height: 40,
+//                                         borderRadius: "50%",
+//                                         display: "flex",
+//                                         alignItems: "center",
+//                                         justifyContent: "center",
+//                                         fontWeight: "bold",
+//                                         p: 2
+//                                     }}
+//                                 >
+//                                     {countryData[3]}
+//                                 </Box>
+//                             )}
+//                         </Box>
+//                         <Collapse in={collapse} timeout="auto" unmountOnExit>
+//                             {matchData ? (
+//                                 <Box>
+//                                     <CommonChartSwitcher
+//                                         lineChartData={lineChartData}
+//                                         barChartData={barChartData}
+//                                         inningsList={inningsList}
+//                                     />
+//                                 </Box>
+//                             ) : (
+//                                 <Box
+//                                     sx={{
+//                                         height: 200,
+//                                         display: 'flex',
+//                                         alignItems: 'center',
+//                                         justifyContent: 'center',
+//                                         fontSize: '1.2rem',
+//                                         fontWeight: 500,
+//                                         bgcolor: "#000"
+//                                     }}
+//                                 >
+//                                     No data available
+//                                 </Box>
+//                             )}
+//                         </Collapse>
+//                         <Box sx={{ background: "#f5f5f5", borderRadius: 2 }}></Box>
+//                     </Paper>
+//                     <Box sx={{ display: "flex", gap: 2 }}>
+//                         <Box sx={{ flex: 1 }}>
+//                             <Tabs
+//                                 value={tab}
+//                                 onChange={(e, v) => {
+//                                     setTab(v);
+//                                 }}
+//                                 sx={{ mt: 2 }}
+//                                 TabIndicatorProps={{
+//                                     style: { display: 'none' }
+//                                 }}
+//                             >
+//                                 {tabLabels.map((label, idx) => (
+//                                     <Tab
+//                                         key={idx}
+//                                         label={label}
+//                                         sx={{
+//                                             border: "1px solid #ffcc00",
+//                                             fontWeight: 600,
+//                                             bgcolor: tab === idx ? "#ffcc00" : "",
+//                                             py: 0,
+//                                             "&.Mui-selected": {
+//                                                 borderBottom: "none",
+//                                             },
+//                                         }}
+//                                     />
+//                                 ))}
+//                             </Tabs>
+//                             {filteredMarkets.length > 0 ? (
+//                                 <Box>
+//                                     {Object.keys(marketsByType).map((marketType) => (
+//                                         (tab === 0 || tabLabels[tab] === marketType) && marketsByType[marketType] && (
+//                                             <CollapsibleSection
+//                                                 key={marketType}
+//                                                 sectionKey={marketType}
+//                                                 title={marketType}
+//                                                 sx={{ bgcolor: theme.palette.background.default, borderRadius: 1, p: 2, mb: 2 }}
+//                                             >
+//                                                 <>
+//                                                     {marketType === "Fancy" && (
+//                                                         <Box>
+//                                                             {marketsByType[marketType].map((fancyMarket, idx) => (
+//                                                                 <Box
+//                                                                     key={fancyMarket.i}
+//                                                                     display="flex"
+//                                                                     justifyContent="space-between"
+//                                                                     alignItems="center"
+//                                                                     py={1}
+//                                                                     sx={{ borderBottom: "1px solid #ddd", "&:last-child": { borderBottom: "none" } }}
+//                                                                 >
+//                                                                     <Box>
+//                                                                         <Typography fontSize="14px">{fancyMarket.n}</Typography>
+//                                                                     </Box>
+//                                                                     <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
+//                                                                         {/* <Typography fontSize="12px" color="gray" mr={2}>
+//                                                                             Stake Limit: {fancyMarket.mn}-{fancyMarket.mx}<br />Max Profit: {fancyMarket.mx}
+//                                                                         </Typography> */}
+//                                                                         {fancyMarket.ms.name === "open" ? (
+//                                                                             [
+//                                                                                 { odds: fancyMarket.do.toString().slice(0, 3), stake: fancyMarket.fi.toString().slice(0, 3), label: "No", bgcolor: "#ffcdd2" },
+//                                                                                 { odds: fancyMarket.mn.toString().slice(0, 3), stake: fancyMarket.i.toString().slice(0, 3), label: "Yes", bgcolor: "#bbdefb" }
+//                                                                             ].map((entry, i) => (
+//                                                                                 <Box
+//                                                                                     key={i}
+//                                                                                     sx={{
+//                                                                                         bgcolor: entry.bgcolor,
+//                                                                                         borderRadius: 1,
+//                                                                                         fontWeight: 500,
+//                                                                                         minWidth: "40px",
+//                                                                                         height: "fit-content",
+//                                                                                         textAlign: "center",
+//                                                                                         cursor: "pointer"
+//                                                                                     }}
+//                                                                                     onClick={() => setBestSliptData({
+//                                                                                         isOpen: true,
+//                                                                                         label: `${fancyMarket.n} ${entry.label}`,
+//                                                                                         odds: entry.odds,
+//                                                                                         bgcolor: entry.bgcolor,
+//                                                                                     })}
+//                                                                                 >
+//                                                                                     <Typography variant="subtitle2" sx={{ height: "13px" }}>{entry.odds}</Typography>
+//                                                                                     <Typography variant="caption">{entry.stake}</Typography>
+//                                                                                 </Box>
+//                                                                             ))
+//                                                                         ) : (
+//                                                                             <Box
+//                                                                                 sx={{
+//                                                                                     background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
+//                                                                                     borderRadius: 1,
+//                                                                                     textAlign: "center",
+//                                                                                     p: 1,
+//                                                                                     border: "1px solid #ddd",
+//                                                                                     fontWeight: 600,
+//                                                                                     fontSize: "14px",
+//                                                                                     height: "fit-content",
+//                                                                                     cursor: "pointer"
+//                                                                                 }}
+//                                                                             >
+//                                                                                 {fancyMarket.ms.name.toUpperCase()}
+//                                                                             </Box>
+//                                                                         )}
+//                                                                     </Box>
 
-export default CommonMatch;
+//                                                                 </Box>
+//                                                             ))}
+//                                                         </Box>
+//                                                     )}
+//                                                     {marketType !== "Fancy" && marketsByType[marketType].map((market, idx) => (
+//                                                         <>
+//                                                             {market.r.map((runner, runnerIdx) => (
+//                                                                 <Box
+//                                                                     key={runner.runnerName}
+//                                                                     sx={{
+//                                                                         display: "flex",
+//                                                                         justifyContent: "space-between",
+//                                                                         pb: 1,
+//                                                                         borderBottom: "1px solid #ddd",
+//                                                                         paddingTop: "10px",
+//                                                                         "&:last-child": { borderBottom: "none" },
+//                                                                     }}
+//                                                                 >
+//                                                                     <Box>
+//                                                                         <Typography fontWeight={500}>{runner.runnerName}</Typography>
+//                                                                         <Typography color="green">0</Typography>
+//                                                                     </Box>
+//                                                                     {market.ms?.name === "SUSPENDED" ? (
+//                                                                         <Box
+//                                                                             sx={{
+//                                                                                 background: "linear-gradient(to right, #e6f7ff 50%, #fff0f0 50%)",
+//                                                                                 borderRadius: 1,
+//                                                                                 textAlign: "center",
+//                                                                                 p: 1,
+//                                                                                 border: "1px solid #ddd",
+//                                                                                 fontWeight: 600,
+//                                                                                 fontSize: "14px",
+//                                                                                 height: "fit-content",
+//                                                                                 cursor: "pointer"
+//                                                                             }}
+//                                                                         >
+//                                                                             SUSPENDED
+//                                                                         </Box>
+//                                                                     ) : (
+//                                                                         <>
+//                                                                             <Box display="flex" sx={{ textAlign: "center" }} gap={1}>
+//                                                                                 {[
+//                                                                                     { odds: market.do.toString().slice(0, 3), stake: market.mx.toString().slice(0, 3), label: "No", bgcolor: "#ffcdd2" },
+//                                                                                     { odds: market.mn.toString().slice(0, 3), stake: market.i.toString().slice(0, 3), label: "Yes", bgcolor: "#bbdefb" }
+//                                                                                 ].map((entry, i) => (
+//                                                                                     <Box
+//                                                                                         key={i}
+//                                                                                         sx={{
+//                                                                                             bgcolor: entry.bgcolor,
+//                                                                                             borderRadius: 1,
+//                                                                                             fontWeight: 500,
+//                                                                                             minWidth: "40px",
+//                                                                                             height: "fit-content",
+//                                                                                             textAlign: "center",
+//                                                                                             cursor: "pointer"
+//                                                                                         }}
+//                                                                                         onClick={() => setBestSliptData({
+//                                                                                             isOpen: true,
+//                                                                                             label: `${market.n} ${entry.label}`,
+//                                                                                             odds: entry.odds,
+//                                                                                             bgcolor: entry.bgcolor,
+//                                                                                         })}
+//                                                                                     >
+//                                                                                         <Typography variant="subtitle2" sx={{ height: "13px" }}>{entry.odds}</Typography>
+//                                                                                         <Typography variant="caption">{entry.stake}</Typography>
+//                                                                                     </Box>
+//                                                                                 ))}
+//                                                                             </Box>
+//                                                                         </>
+//                                                                     )}
+//                                                                 </Box>
+//                                                             ))}
+//                                                         </>
+//                                                     ))}
+//                                                 </>
+//                                             </CollapsibleSection>
+//                                         )
+//                                     ))}
+//                                 </Box>
+//                             ) : (
+//                                 <Typography>No markets available</Typography>
+//                             )}
+//                         </Box>
+//                     </Box>
+//                 </Box>
+//                 <Box sx={{ width: { lg: "39%", md: "39%", sm: "100%", xs: "100%" } }}>
+//                     <Paper sx={{ p: 1, mb: 1 }}>
+//                         <Box
+//                             display="flex"
+//                             justifyContent="space-between"
+//                             alignItems="center"
+//                         >
+//                             <Box display="flex" alignItems="center" gap={1}>
+//                                 <Switch
+//                                     checked={clickBetting}
+//                                     onChange={() => setClickBetting(!clickBetting)}
+//                                 />
+//                                 <Typography>1 Click Betting</Typography>
+//                             </Box>
+//                             <Box display="flex" alignItems="center" gap={1}>
+//                                 <Switch
+//                                     checked={acceptOdds}
+//                                     onClick={handleAcceptToggle}
+//                                 />
+//                                 <Typography>Accept any ODDS</Typography>
+//                             </Box>
+//                         </Box>
+//                         {clickBetting && (
+//                             <>
+//                                 <Box sx={{ display: "flex", justifyContent: "space-between", textAlign: "center", flexWrap: "wrap" }}>
+//                                     {values.map((val, index) => (
+//                                         <TextField
+//                                             key={index}
+//                                             size="small"
+//                                             type="number"
+//                                             value={val}
+//                                             onChange={(e) => handleChange(index, e.target.value)}
+//                                             inputProps={{ readOnly }}
+//                                             sx={{ py: 1, m: 1.5, flex: 1 }}
+//                                         />
+//                                     ))}
+//                                 </Box>
+//                                 <Button
+//                                     variant="contained"
+//                                     sx={{ display: "flex", margin: "auto", bgcolor: "#ffc107", color: "black" }}
+//                                     onClick={() => setReadOnly((prev) => !prev)}
+//                                 >
+//                                     Edit
+//                                 </Button>
+//                             </>
+//                         )}
+//                     </Paper>
+//                     <Paper sx={{ borderRadius: 2, overflow: "hidden", bgcolor: "#b2ebf2" }}>
+//                         <Box display="flex">
+//                             <Box
+//                                 onClick={() => setSelectedTab("betSlip")}
+//                                 sx={{
+//                                     flex: 1,
+//                                     py: 1,
+//                                     textAlign: "center",
+//                                     bgcolor: selectedTab === "betSlip" ? "#ffc107" : "#535558",
+//                                     color: selectedTab === "betSlip" ? "#000" : "#fff",
+//                                     fontWeight: 600,
+//                                     cursor: "pointer",
+//                                 }}
+//                             >
+//                                 <AddIcon fontSize="small" sx={{ verticalAlign: "middle", mr: 0.5 }} />
+//                                 Bet Slip
+//                             </Box>
+//                             <Box
+//                                 onClick={() => setBestSliptData((prev) => ({ ...prev, isOpen: false }))}
+//                                 sx={{
+//                                     flex: 1,
+//                                     py: 1,
+//                                     textAlign: "center",
+//                                     bgcolor: selectedTab === "myBets" ? "#ffc107" : "#535558",
+//                                     color: selectedTab === "myBets" ? "#000" : "#fff",
+//                                     fontWeight: 600,
+//                                     cursor: "pointer",
+//                                 }}
+//                             >
+//                                 <DescriptionIcon fontSize="small" sx={{ verticalAlign: "middle", mr: 0.5 }} />
+//                                 My Bets
+//                             </Box>
+//                         </Box>
+//                         {bestSliptData.isOpen ? (
+//                             <Box sx={{ p: 2, bgcolor: bestSliptData.bgcolor, textAlign: "center" }}>
+//                                 <Typography variant="subtitle2" color="text.secondary">
+//                                     {matchName}
+//                                 </Typography>
+//                                 <Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
+//                                     <Typography>{bestSliptData.label}</Typography>
+//                                     <Box>
+//                                         <Typography fontSize="14px" fontWeight={600} color="green">
+//                                             Profit
+//                                         </Typography>
+//                                         <Typography fontSize="14px" fontWeight={600} color="green">
+//                                             ₹ {profit}
+//                                         </Typography>
+//                                     </Box>
+//                                 </Box>
+//                                 <Box display="flex" alignItems="center" gap={1} sx={{ borderRadius: 1, width: "50%", justifyContent: "space-between", border: "1px solid #000" }}>
+//                                     <Button
+//                                         size="small"
+//                                         sx={{ minWidth: 24, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }}
+//                                         onClick={() => adjustOdds(-0.01)}
+//                                     >
+//                                         <RemoveIcon />
+//                                     </Button>
+//                                     <Typography fontWeight={600}>{bestSliptData.odds}</Typography>
+//                                     <Button
+//                                         size="small"
+//                                         sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }}
+//                                         onClick={() => adjustOdds(0.01)}
+//                                     >
+//                                         <AddIcon />
+//                                     </Button>
+//                                 </Box>
+//                                 <Box display="flex" alignItems="center" mt={2} sx={{ borderRadius: 1, border: "1px solid #000" }}>
+//                                     <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderRight: "1px solid #000" }} onClick={decrementStake}><RemoveIcon /></Button>
+//                                     <TextField
+//                                         placeholder="Stake"
+//                                         variant="standard"
+//                                         value={stake}
+//                                         onChange={handleStakeChange}
+//                                         fullWidth
+//                                         InputProps={{ disableUnderline: true }}
+//                                         sx={{ mx: 1, input: { textAlign: "center" } }}
+//                                     />
+//                                     <Button size="small" sx={{ minWidth: 24, px: 1, bgcolor: "#ddd", color: "black", borderLeft: "1px solid #000" }} onClick={incrementStake}><AddIcon /></Button>
+//                                 </Box>
+//                                 <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={1} mt={2}>
+//                                     {presetAmounts.map((val, idx) => (
+//                                         <Button
+//                                             key={idx}
+//                                             variant="contained"
+//                                             size="small"
+//                                             sx={{ bgcolor: "#e0e0e0", color: "#000" }}
+//                                             onClick={() => handlePresetClick(val)}
+//                                         >
+//                                             {val}
+//                                         </Button>
+//                                     ))}
+//                                     <Button
+//                                         variant="outlined"
+//                                         size="small"
+//                                         sx={{ gridColumn: "span 3", borderColor: "#000", color: "#000" }}
+//                                         onClick={clearAll}
+//                                     >
+//                                         Clear
+//                                     </Button>
+//                                 </Box>
+//                                 <Box display="flex" justifyContent="space-between" gap={1} mt={2}>
+//                                     <Button
+//                                         fullWidth
+//                                         variant="contained"
+//                                         sx={{ bgcolor: "red", color: "white", fontWeight: 600 }}
+//                                         onClick={clearAll}
+//                                     >
+//                                         CANCEL
+//                                     </Button>
+//                                     <Button
+//                                         fullWidth
+//                                         variant="contained"
+//                                         sx={{ bgcolor: "green", color: "white", fontWeight: 600 }}
+//                                         onClick={() => alert(`Placed ₹${stake} bet for odds ${bestSliptData.odds}`)}
+//                                     >
+//                                         PLACE BET
+//                                     </Button>
+//                                 </Box>
+//                             </Box>
+//                         ) : (
+//                             <Box sx={{ textAlign: "center", py: 4 }}>
+//                                 <Typography>No bets placed in the selected event</Typography>
+//                             </Box>
+//                         )}
+//                     </Paper>
+//                 </Box>
+//             </Box>
+//         </Box>
+//     );
+// };
+
+// export default CommonMatch;
+

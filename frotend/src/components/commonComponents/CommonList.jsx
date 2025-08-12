@@ -104,7 +104,9 @@ const CommonList = ({ data: propsData = [] }) => {
                                                 }}
                                                 component={RouterLink}
                                                 to={`/common-match/${item?.id}`}
-                                                state={{ data: match?.info, info: match?.teams }}
+                                                state={{
+                                                    data: match?.info, info: match?.teams, marketId: item.marketId[0].toString()
+                                                }}
                                             >
                                                 <Chip
                                                     label={item.isPlay == true ? "Live" : "UPCOMING"}

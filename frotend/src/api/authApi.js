@@ -31,3 +31,7 @@ export const mainData = async (id) => {
     const result = await extranalApi.get(`/market/creativeV1/${id}?userId=670515811b1cd50efa7cda25`)
     return result.status == 200 ? result.data : [];
 }
+export const marketRawData = async () => {
+    const result = await extranalApi.get(`/market/get-dummy-rate`)
+    return result.status == 200 ? result.data : [];
+}
