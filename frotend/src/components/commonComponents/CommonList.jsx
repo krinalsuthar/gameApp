@@ -7,22 +7,6 @@ import { useEffect } from 'react';
 import { ImageCarousel } from './ImageCarousel';
 import { Link as RouterLink } from 'react-router-dom';
 
-const OddsBox = ({ value, index }) => (
-    <Box
-        sx={{
-            bgcolor: index % 2 === 0 ? '#fce4ec' : '#bbdefb',
-            borderRadius: 1,
-            textAlign: 'center',
-            p: 1,
-            fontSize: '0.875rem',
-            fontWeight: 500,
-            width: 50,
-        }}
-    >
-        {value}
-    </Box>
-);
-
 const getTagColor = (tag) => {
     switch (tag) {
         case true:
@@ -45,7 +29,6 @@ const CommonList = ({ data: propsData = [] }) => {
     const isLoggedIN = location.state?.isLoggin ?? true;
     const isImageCarousel = location.state?.isImageCarousel ?? false;
     const data = propsData.length ? propsData : locationData || [];
-
     const navigate = useNavigate()
     const sportIcons = {
         CRICKET: <CricketIcon sx={{ color: 'red' }} />,
@@ -60,12 +43,10 @@ const CommonList = ({ data: propsData = [] }) => {
     }, [isLoggedIN, navigate]);
 
     return (
-        <Box >
-            {isImageCarousel && (
-                <ImageCarousel />
-            )}
-            {data ? (
-                data?.map((sport, sportIndex) => (
+        <Box>
+            {isImageCarousel && <ImageCarousel />}
+            {data?.length > 0 ? (
+                data.map((sport, sportIndex) => (
                     <Box key={sportIndex} mb={3}>
                         {sport?.leagues?.length > 0 && (
                             <>
@@ -85,57 +66,58 @@ const CommonList = ({ data: propsData = [] }) => {
                                     {sportIcons[sport.name] || null}
                                     <Typography fontWeight={600}>{sport?.name}</Typography>
                                 </Box>
-                                {sport?.leagues?.map((match, matchIndex) => (
-                                    <>
-                                        {match?.matches?.map((item, index) => (
-                                            <Box
-                                                key={index}
+                                {sport.leagues.map((league, leagueIndex) =>
+                                    league?.matches?.map((item, matchIndex) => (
+                                        <Box
+                                            key={`${leagueIndex}-${matchIndex}`}
+                                            sx={{
+                                                display: 'flex',
+                                                flexWrap: 'wrap',
+                                                alignItems: 'center',
+                                                bgcolor: theme.palette.background.default,
+                                                p: 1.5,
+                                                mb: 1,
+                                                borderRadius: 1,
+                                                boxShadow: 1,
+                                                textDecoration: 'none',
+                                                color: theme.palette.text.primary,
+                                            }}
+                                            component={RouterLink}
+                                            to={`/common-match/${item?.id}`}
+                                            state={{
+                                                data: league,
+                                                marketId: item.marketId?.[0]?.toString(),
+                                            }}
+                                        >
+                                            <Chip
+                                                label={item.isPlay ? 'Live' : 'UPCOMING'}
+                                                size="small"
                                                 sx={{
-                                                    display: 'flex',
-                                                    flexWrap: 'wrap',
-                                                    alignItems: 'center',
-                                                    bgcolor: theme.palette.background.default,
-                                                    p: 1.5,
-                                                    mb: 1,
-                                                    borderRadius: 1,
-                                                    boxShadow: 1,
-                                                    textDecoration: "none",
-                                                    color: theme.palette.text.primary
+                                                    bgcolor: getTagColor(item?.isPlay),
+                                                    fontWeight: 600,
+                                                    mr: 1.5,
+                                                    textTransform: 'uppercase',
                                                 }}
-                                                component={RouterLink}
-                                                to={`/common-match/${item?.id}`}
-                                                state={{
-                                                    data: match?.info, info: match?.teams, marketId: item.marketId[0].toString()
-                                                }}
-                                            >
-                                                <Chip
-                                                    label={item.isPlay == true ? "Live" : "UPCOMING"}
-                                                    size="small"
-                                                    sx={{
-                                                        bgcolor: getTagColor(item?.isPlay),
-                                                        // color: 'black',
-                                                        fontWeight: 600,
-                                                        mr: 1.5,
-                                                        textTransform: 'uppercase',
-                                                    }}
-                                                    icon={<PlayCircleFilledWhiteIcon sx={{ fontSize: 16 }} />}
-                                                />
-                                                <Box sx={{ flexGrow: 1 }}>
-                                                    <Typography
-                                                        sx={{ fontSize: 12, fontWeight: 500 }}
-                                                    >
-                                                        {match?.title}
-                                                    </Typography>
-                                                    <Typography sx={{ fontWeight: 600, fontSize: 14 }}>
-                                                        {item.name}
-                                                    </Typography>
-                                                </Box>
-                                                <LiveTvIcon sx={{ fontSize: 20, color: 'green', mx: 1 }} />
-                                                {match?.categories?.map((item, index) => (
-                                                    item?.value !== 0 && (
+                                                icon={<PlayCircleFilledWhiteIcon sx={{ fontSize: 16 }} />}
+                                            />
+
+                                            <Box sx={{ flexGrow: 1 }}>
+                                                <Typography sx={{ fontSize: 12, fontWeight: 500 }}>
+                                                    {league?.title}
+                                                </Typography>
+                                                <Typography sx={{ fontWeight: 600, fontSize: 14 }}>
+                                                    {item.name}
+                                                </Typography>
+                                            </Box>
+
+                                            <LiveTvIcon sx={{ fontSize: 20, color: 'green', mx: 1 }} />
+
+                                            {league?.categories?.map(
+                                                (cat, index) =>
+                                                    cat?.value !== 0 && (
                                                         <Badge
                                                             key={index}
-                                                            badgeContent={`${item?.value}`}
+                                                            badgeContent={`${cat?.value}`}
                                                             sx={{
                                                                 '& .MuiBadge-badge': {
                                                                     fontSize: '10px',
@@ -149,7 +131,7 @@ const CommonList = ({ data: propsData = [] }) => {
                                                             color="primary"
                                                         >
                                                             <Chip
-                                                                label={`${item?.label}`}
+                                                                label={`${cat?.label}`}
                                                                 size="small"
                                                                 sx={{
                                                                     borderRadius: '5px',
@@ -157,31 +139,23 @@ const CommonList = ({ data: propsData = [] }) => {
                                                                     fontWeight: 500,
                                                                     fontSize: '10px',
                                                                     bgcolor:
-                                                                        item?.label === 'M'
+                                                                        cat?.label === 'M'
                                                                             ? '#bbdefb'
-                                                                            : item?.label === 'F'
+                                                                            : cat?.label === 'F'
                                                                                 ? '#c8e6c9'
-                                                                                : item?.label === 'MO'
+                                                                                : cat?.label === 'MO'
                                                                                     ? '#ffe0b2'
-                                                                                    : item?.label === 'O'
+                                                                                    : cat?.label === 'O'
                                                                                         ? '#d1c4e9'
                                                                                         : 'grey.300',
                                                                 }}
                                                             />
                                                         </Badge>
                                                     )
-                                                ))}
-                                                {/* <Grid container spacing={1} sx={{ width: 'auto', flexWrap: 'nowrap', ml: 2 }}>
-                                        {match.odds.map((odd, i) => (
-                                            <Grid item key={i}>
-                                                <OddsBox value={odd} index={i} />
-                                            </Grid>
-                                        ))}
-                                    </Grid> */}
-                                            </Box>
-                                        ))}
-                                    </>
-                                ))}
+                                            )}
+                                        </Box>
+                                    ))
+                                )}
                             </>
                         )}
                     </Box>
@@ -190,6 +164,7 @@ const CommonList = ({ data: propsData = [] }) => {
                 <Typography>No data available.</Typography>
             )}
         </Box>
+
     );
 };
 

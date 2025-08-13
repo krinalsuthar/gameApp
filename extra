@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeDrawer } from '../features/drawer/drawerSlice';
 import { Link as RouterLink } from 'react-router-dom';
 import {
+    drawerData,
     providersData,
     categoriesData,
     startingData
@@ -37,7 +38,6 @@ import { useAppTheme } from './commonComponents/ThemeComponent';
 import { CricketIcon, SoccerIcon, TennisIcon, WhatsAppIcon } from '../assets/SVGs/allSVGs';
 import { getMarketMatchData, mainData } from '../api/authApi';
 import { useQuery } from '@tanstack/react-query';
-import { groupSportsData } from './commonComponents/reusableFunctions';
 
 const DrawerMenu = () => {
     const theme = useTheme()
@@ -58,7 +58,69 @@ const DrawerMenu = () => {
         title: item?.title,
         icon: item?.icon
     }));
+
+    // const { data: games } = useQuery({ queryKey: ["gameData"], queryFn: getMarketMatchData })
     const games = useSelector((state) => state.fancyMarkets);
+    const sportIconMap = {
+        "4": CricketIcon,
+        "1": SoccerIcon,
+        "2": TennisIcon
+    };
+    useEffect(() => {
+        if (games?.data) {
+            const newGroupedData = games?.data?.data?.map(sportItem => {
+                const doc = sportItem.doc || [];
+                const groupedByTournament = doc.reduce((acc, match) => {
+                    const tournamentId = match?.tournament?.id;
+                    const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+                    const isPlay = match?.isPlay
+                    const marketId = match?.marketId
+                    const numOfBookmaker = match?.numOfBookmaker
+                    const numOfFancy = match?.numOfFancy
+                    const openDate = match?.openDate
+                    const sport = match?.sport
+                    const tournament = match?.tournament
+                    if (tournamentId) {
+                        if (!acc[tournamentName]) {
+                            acc[tournamentName] = {
+                                id: tournamentId,
+                                title: tournamentName,
+                                matches: [],
+                            };
+                        }
+                        acc[tournamentName].matches.push({
+                            name: match?.name?.trim(),
+                            id: match?.id,
+                            isPlay: isPlay,
+                            marketId: marketId,
+                            numOfBookmaker: numOfBookmaker,
+                            numOfFancy: numOfFancy,
+                            openDate: openDate,
+                            sport: sport,
+                            tournament: tournament,
+                        });
+                    }
+                    return acc;
+                }, {});
+                return {
+                    id: sportItem._id,
+                    name: sportItem.name,
+                    leagues: Object.values(groupedByTournament),
+                    icon: sportIconMap[sportItem._id] || null
+                };
+            });
+            const filteredAndGroupedData = newGroupedData.map((sport, index) => {
+                return ({
+                    ...sport,
+                    leagues: sport.leagues.map(league => ({
+                        ...league,
+                        matches: league.matches.filter(match => match.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                    })).filter(league => league.matches.length > 0)
+                });
+            }).filter(sport => sport.leagues.length > 0);
+            setGroupedSportsData(filteredAndGroupedData);
+        }
+    }, [games, searchTerm]);
     const data1 = [{ sport: sportsData, title: "Sports", type: "list" },
     { sport: casionData, title: "Casion", type: "cards" },
     { sport: true, title: "Promotion", type: "" },
@@ -103,17 +165,9 @@ const DrawerMenu = () => {
             return favouriteItems[item?.id];
         });
     }, [flattenedItems, favouriteItems, count]);
-    // useEffect(() => {
-    //     const filteredAndGroupedData = groupSportsData(games, searchTerm);
-    //     setGroupedSportsData(filteredAndGroupedData);
-    // }, [games, searchTerm]);
     useEffect(() => {
-        if (games) {
-            const filteredAndGroupedData = groupSportsData(games, searchTerm);
-            setGroupedSportsData(filteredAndGroupedData);
-        }
         getMarketMatchData()
-    }, [games, searchTerm])
+    }, [])
 
     return (
         <Drawer
@@ -265,7 +319,9 @@ const DrawerMenu = () => {
                                         <Box sx={{ display: "flex", alignItems: "center", gap: "7px", cursor: "pointer" }}>
                                             <sport.icon sx={{ color: 'inherit' }} />
                                             <Box>
-                                                <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>{`${sport.name}`}</Typography>
+                                                <ListItemText
+                                                    primary={`${sport.name}`}
+                                                />
                                             </Box>
                                         </Box>
                                         <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -299,6 +355,7 @@ const DrawerMenu = () => {
                                                     >
                                                         <Box sx={{ display: "flex", alignItems: "center", gap: "7px" }}>
                                                             <Box>
+                                                                {/* <ListItemText primary={` ${league.title}`} /> */}
                                                                 <Typography >
                                                                     &#x2022; {league?.title}
                                                                 </Typography>
@@ -394,6 +451,7 @@ const DrawerMenu = () => {
                 <CollapsibleSection sectionKey={providersData?.providers?.title || 'providers'} title="PROVIDERS" sx={{ ...commonSeconderyStyle, p: 1 }}>
                     <List>
                         {providersData.providers.items?.map((item, index) => (
+
                             <CommonNavLink
                                 key={index}
                                 onClick={handleClose}

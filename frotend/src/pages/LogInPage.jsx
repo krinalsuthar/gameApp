@@ -11,7 +11,7 @@ import CommonNavLink from '../components/commonComponents/CommonNavLink';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/drawer/authSlice';
 import { loginUserApi } from '../api/authApi.js';
-import { validateLoginForm } from '../utils/validate'; // Changed to validateLoginForm
+import { validateLoginForm } from '../utils/validate';
 import { encryptData } from '../utils/cryptoUtils';
 import { connectSocket } from '../utils/socketClient';
 
@@ -29,7 +29,7 @@ const LoginPage = () => {
     const handleClose = (_, reason) => { if (reason !== 'clickaway') setOpen(false); };
 
     const handleLogin = async () => {
-        const errors = validateLoginForm(formData); // Use validateLoginForm
+        const errors = validateLoginForm(formData);
         setFormErrors(errors);
         if (Object.keys(errors).length > 0) return;
 
@@ -60,7 +60,7 @@ const LoginPage = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', px: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: "30px 0px", px: 2 }}>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                 <Alert onClose={handleClose} severity={toastText.color} variant="filled">{toastText.text}</Alert>
             </Snackbar>

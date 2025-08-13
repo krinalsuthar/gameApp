@@ -1,10 +1,9 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { IconButton } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import CardHeader from "./CardHeader";
 import { motion } from 'framer-motion';
 import {
@@ -42,7 +41,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../features/drawer/drawerSlice";
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
-import { useAppTheme } from "./ThemeComponent";
 
 const CommonCard = ({ data: propsData = [], containerRef = "", title: propsTitle = "" }) => {
     const { favouriteItems, count } = useSelector((state) => state.drawer);

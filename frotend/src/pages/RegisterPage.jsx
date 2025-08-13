@@ -12,11 +12,13 @@ import { useNavigate } from 'react-router-dom';
 import { encryptData } from '../utils/cryptoUtils';
 import { connectSocket } from '../utils/socketClient';
 import { validateRegisterForm } from '../utils/validate';
-import api from "../api/apiClient.js";
 import { registerUserApi } from '../api/authApi.js';
 import { getRandomString } from '../utils/common.js';
+import { login } from '../features/drawer/authSlice.jsx';
+import { useDispatch } from 'react-redux';
 
 const RegisterPage = () => {
+    const dispatch = useDispatch()
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({ username: "", mobile: "", password: "" });
     const [referralUsed, setReferralUsed] = useState(false);
@@ -42,7 +44,6 @@ const RegisterPage = () => {
                 mobile: formData.mobile,
                 password: formData.password,
                 token
-                // referralUsed
             });
 
             if (res.status) {
@@ -107,6 +108,20 @@ const RegisterPage = () => {
                 </FormControl>
 
                 <Button fullWidth onClick={handleRegister} variant="contained" sx={{ mt: 2, py: 1, bgcolor: '#ffc107', color: 'black', fontWeight: 700, '&:hover': { bgcolor: '#e6b800' } }}>REGISTER</Button>
+                <Button
+                    variant="contained"
+                    fullWidth
+                    sx={{ mt: 2, py: 1, bgcolor: '#ffc107', color: 'black', fontWeight: 700, '&:hover': { bgcolor: '#e6b800' } }}
+                    onClick={() => {
+                        const demoUser = { username: 'demo', password: 'demo123' };
+                        localStorage.setItem('token', 'demo-token');
+                        sessionStorage.setItem('username', demoUser.username);
+                        dispatch(login(demoUser));
+                        navigate('/');
+                    }}
+                >
+                    Login With Demo ID
+                </Button>
 
                 <Typography variant="body2" textAlign="center" sx={{ mt: 2, fontSize: 13, display: "flex", justifyContent: "center", gap: 0.5 }}>
                     Already have an account? <CommonNavLink to="login">LogIn</CommonNavLink>

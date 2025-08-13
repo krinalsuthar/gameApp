@@ -1,19 +1,15 @@
-import axios from "axios";
 import api, { extranalApi } from "./apiClient";
 
-// Login API
 export const loginUserApi = async (username, password) => {
     const { data } = await api.post("/login", { username, password });
     return data;
 };
 
-// Register API
 export const registerUserApi = async (userData) => {
     const { data } = await api.post("/register", userData);
     return data;
 };
 
-// Example: get users from mock API
 export const getUsersApi = async () => {
     const { data } = await api.get("/users");
     return data;

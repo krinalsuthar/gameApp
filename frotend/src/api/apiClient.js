@@ -10,6 +10,7 @@ const api = axios.create({
         Accept: "application/json",
         identity: "sG6eDcsG6eDcQeecx9QO1dBsOhepUkOchh+LO57xB6Sk8w1lG8cOsGVut78/eiAn/t",
         referer: "http://localhost:3000/",
+        authorization: auth,
     },
 });
 
@@ -27,8 +28,7 @@ api.interceptors.request.use((config) => {
     const encryptedToken = localStorage.getItem("token");
     if (encryptedToken) {
         try {
-            const token = decryptData(encryptedToken);
-            config.headers["Authorization"] = `Bearer ${token}`;
+            config.headers["Authorization"] = auth;
         } catch (error) {
             console.error("Failed to decrypt token for internal API:", error);
         }
@@ -40,8 +40,7 @@ extranalApi.interceptors.request.use((config) => {
     const encryptedToken = localStorage.getItem("token");
     if (encryptedToken) {
         try {
-            const token = decryptData(encryptedToken);
-            config.headers["Authorization"] = `Bearer ${token}`;
+            config.headers["Authorization"] = auth;
         } catch (error) {
             console.error("Failed to decrypt token for external API:", error);
         }

@@ -1,192 +1,202 @@
-// export function appendInitialData(rawData, selectionIds = null) {
-//     console.log("🚀 ~ appendInitialData ~ selectionIds:", selectionIds)
-//     // Validate input and extract the array
-//     let dataArray;
-//     if (Array.isArray(rawData)) {
-//         dataArray = rawData;
-//     } else if (rawData?.data?.data && Array.isArray(rawData.data.data)) {
-//         dataArray = rawData.data.data;
-//     } else {
-//         console.error("Invalid rawData format: expected an array or object with data.data array");
-//         return [];
-//     }
+import { CricketIcon, SoccerIcon, TennisIcon } from "../../assets/SVGs/allSVGs";
 
-//     if (dataArray.length === 0) {
-//         console.warn("rawData is empty");
-//         return [];
-//     }
-
-//     // Ensure selectionIds is an array; convert single string to array, treat null/undefined as empty
-//     const selectionIdArray = Array.isArray(selectionIds)
-//         ? selectionIds
-//         : typeof selectionIds === "string"
-//             ? [selectionIds]
-//             : [];
-
-//     // Filter markets based on selectionIds (array or single)
-//     const marketsToProcess = selectionIdArray.length > 0
-//         ? dataArray.filter(data => {
-//             try {
-//                 // Remove backslashes and parse JSON
-//                 const cleanedData = typeof data === "string" ? data.replace(/\\/g, '') : JSON.stringify(data);
-//                 const parsedData = JSON.parse(cleanedData);
-//                 // Check if any runner's selectionId matches
-//                 return parsedData.runners.some(runner =>
-//                     selectionIdArray.includes(runner.selectionId)
-//                 );
-//             } catch (error) {
-//                 console.warn(`Error parsing or filtering market data for selectionIds ${selectionIdArray.join(", ")}:`, error);
-//                 return false;
-//             }
-//         })
-//         : dataArray;
-
-//     if (selectionIdArray.length > 0 && marketsToProcess.length === 0) {
-//         console.warn(`No markets found with selectionIds: ${selectionIdArray.join(", ")}`);
-//         return [];
-//     }
-
-//     // Process markets and collect results
-//     const result = marketsToProcess.map(data => {
-//         try {
-//             // Remove backslashes and parse JSON
-//             const cleanedData = typeof data === "string" ? data.replace(/\\/g, '') : JSON.stringify(data);
-//             const parsedData = JSON.parse(cleanedData);
-
-//             if (!parsedData?.marketId || !Array.isArray(parsedData?.runners)) {
-//                 console.warn(`Invalid market data for marketId: ${parsedData?.marketId}`);
-//                 return null;
-//             }
-
-//             // Keep marketId with decimal point
-//             const marketId = parsedData.marketId;
-
-//             return {
-//                 marketId: marketId,
-//                 status: parsedData.status || "OPEN",
-//                 numberOfRunners: parsedData.runners.length,
-//                 runners: parsedData.runners.map(runner => ({
-//                     selectionId: runner.selectionId, // Keep selectionId as is
-//                     backOdds: runner.ex?.availableToBack?.[0]?.price || "-",
-//                     layOdds: runner.ex?.availableToLay?.[0]?.price || "-"
-//                 }))
-//             };
-//         } catch (error) {
-//             console.error(`Error processing market data:`, error);
-//             return null;
-//         }
-//     }).filter(Boolean);
-
-//     return result;
-// }
-
-export function appendInitialData(rawData, selectionIds = null, marketIds = null) {
-    console.log("🚀 ~ appendInitialData ~ selectionIds:", selectionIds);
-    console.log("🚀 ~ appendInitialData ~ marketIds:", marketIds);
-
-    // Validate input and extract the array
+export function appendInitialData(rawData, selectionIds = null) {
+    const selectionIdArray = Array.isArray(selectionIds)
+        ? selectionIds.map(String)
+        : typeof selectionIds === "string"
+            ? [selectionIds]
+            : [];
+    if (!selectionIdArray.length) {
+        console.error("No selectionIds provided");
+        return [];
+    }
     let dataArray;
     if (Array.isArray(rawData)) {
         dataArray = rawData;
     } else if (rawData?.data?.data && Array.isArray(rawData.data.data)) {
         dataArray = rawData.data.data;
     } else {
-        console.error("Invalid rawData format: expected an array or object with data.data array");
+        console.error("Invalid rawData format");
         return [];
     }
-
-    if (dataArray.length === 0) {
-        console.warn("rawData is empty");
-        return [];
-    }
-
-    // Ensure selectionIds & marketIds are arrays
-    const selectionIdArray = Array.isArray(selectionIds)
-        ? selectionIds
-        : typeof selectionIds === "string"
-            ? [selectionIds]
-            : [];
-
-    const marketIdArray = Array.isArray(marketIds)
-        ? marketIds.map(id => String(id).replace(".", ""))
-        : typeof marketIds === "string"
-            ? [marketIds.replace(".", "")]
-            : [];
-
-    const matchedBySelection = [];
-    const matchedByMarketId = [];
-
-    // First pass: match by selectionIds
-    if (selectionIdArray.length > 0) {
-        matchedBySelection.push(
-            ...dataArray.filter(data => {
-                try {
-                    const cleanedData = typeof data === "string" ? data.replace(/\\/g, '') : JSON.stringify(data);
-                    const parsedData = JSON.parse(cleanedData);
-                    return parsedData.runners.some(runner =>
-                        selectionIdArray.includes(runner.selectionId)
-                    );
-                } catch (error) {
-                    console.warn(`Error parsing for selectionIds filter:`, error);
-                    return false;
-                }
-            })
-        );
-    }
-
-    // Second pass: match by marketIds (excluding already matched markets)
-    if (marketIdArray.length > 0) {
-        matchedByMarketId.push(
-            ...dataArray.filter(data => {
-                try {
-                    const cleanedData = typeof data === "string" ? data.replace(/\\/g, '') : JSON.stringify(data);
-                    const parsedData = JSON.parse(cleanedData);
-                    const cleanedMarketId = String(parsedData.marketId).replace(".", "");
-
-                    // Skip if already in matchedBySelection
-                    const alreadyMatched = matchedBySelection.some(sel => {
-                        const selData = JSON.parse(typeof sel === "string" ? sel.replace(/\\/g, '') : JSON.stringify(sel));
-                        return String(selData.marketId).replace(".", "") === cleanedMarketId;
-                    });
-
-                    return !alreadyMatched && marketIdArray.includes(cleanedMarketId);
-                } catch (error) {
-                    console.warn(`Error parsing for marketIds filter:`, error);
-                    return false;
-                }
-            })
-        );
-    }
-
-    // Combine both results
-    const finalMarkets = [...matchedBySelection, ...matchedByMarketId];
-
-    // Process markets into output format
-    const result = finalMarkets.map(data => {
+    const result = [];
+    const seenIds = new Set();
+    dataArray.forEach(market => {
         try {
-            const cleanedData = typeof data === "string" ? data.replace(/\\/g, '') : JSON.stringify(data);
-            const parsedData = JSON.parse(cleanedData);
+            const parsedMarket =
+                typeof market === "string"
+                    ? JSON.parse(market.replace(/\\/g, ""))
+                    : market;
 
-            if (!parsedData?.marketId || !Array.isArray(parsedData?.runners)) {
-                console.warn(`Invalid market data for marketId: ${parsedData?.marketId}`);
-                return null;
+            if (Array.isArray(parsedMarket.runners)) {
+                parsedMarket.runners.forEach(runner => {
+                    const idStr = String(runner.selectionId);
+                    if (
+                        selectionIdArray.includes(idStr) &&
+                        !seenIds.has(idStr)
+                    ) {
+                        result.push({
+                            selectionId: runner.selectionId,
+                            availableToBack: runner.ex?.availableToBack || [],
+                            availableToLay: runner.ex?.availableToLay || []
+                        });
+                        seenIds.add(idStr);
+                    }
+                });
             }
-
-            return {
-                marketId: parsedData.marketId,
-                status: parsedData.status || "OPEN",
-                numberOfRunners: parsedData.runners.length,
-                runners: parsedData.runners.map(runner => ({
-                    selectionId: runner.selectionId,
-                    backOdds: runner.ex?.availableToBack?.[0]?.price || "-",
-                    layOdds: runner.ex?.availableToLay?.[0]?.price || "-"
-                }))
-            };
-        } catch (error) {
-            console.error(`Error processing market data:`, error);
-            return null;
+        } catch (err) {
+            console.warn("Error parsing market:", err);
         }
-    }).filter(Boolean);
+    });
 
     return result;
 }
+
+const sportIconMap = {
+    "4": CricketIcon,
+    "1": SoccerIcon,
+    "2": TennisIcon
+};
+export const groupSportsData = (games, searchTerm) => {
+    if (!games?.data) return [];
+
+    const newGroupedData = games?.data?.data?.map(sportItem => {
+        const doc = sportItem.doc || [];
+
+        const groupedByTournament = doc.reduce((acc, match) => {
+            const tournamentId = match?.tournament?.id;
+            const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+
+            if (!tournamentId) return acc;
+
+            if (!acc[tournamentName]) {
+                acc[tournamentName] = {
+                    id: tournamentId,
+                    title: tournamentName,
+                    matches: [],
+                };
+            }
+
+            acc[tournamentName].matches.push({
+                name: match?.name?.trim(),
+                id: match?.id,
+                isPlay: match?.isPlay,
+                marketId: match?.marketId,
+                numOfBookmaker: match?.numOfBookmaker,
+                numOfFancy: match?.numOfFancy,
+                openDate: match?.openDate,
+                sport: match?.sport,
+                tournament: match?.tournament,
+            });
+
+            return acc;
+        }, {});
+
+        return {
+            id: sportItem._id,
+            name: sportItem.name,
+            leagues: Object.values(groupedByTournament),
+            icon: sportIconMap[sportItem._id] || null
+        };
+    });
+
+    return newGroupedData?.map(sport => ({
+        ...sport,
+        leagues: sport.leagues
+            .map(league => ({
+                ...league,
+                matches: league.matches.filter(match =>
+                    match.name.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            }))
+            .filter(league => league.matches.length > 0)
+    }))
+        .filter(sport => sport.leagues.length > 0);
+};
+
+
+export const newGroupSportsData = (games) => {
+    if (!games?.data?.data) return [];
+
+    return games.data.data.map(sportItem => {
+        const doc = sportItem.doc || [];
+
+        const groupedByTournament = doc.reduce((acc, match) => {
+            const tournamentId = match?.tournament?.id;
+            const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+
+            if (!tournamentId) return acc;
+
+            if (!acc[tournamentName]) {
+                acc[tournamentName] = {
+                    id: tournamentId,
+                    title: tournamentName,
+                    matches: [],
+                };
+            }
+
+            acc[tournamentName].matches.push({
+                name: match?.name?.trim(),
+                id: match?.id,
+                isPlay: match?.isPlay,
+                marketId: match?.marketId,
+                numOfBookmaker: match?.numOfBookmaker,
+                numOfFancy: match?.numOfFancy,
+                openDate: match?.openDate,
+                sport: match?.sport,
+                tournament: match?.tournament,
+            });
+
+            return acc;
+        }, {});
+
+        return {
+            id: sportItem._id,
+            name: sportItem.name,
+            leagues: Object.values(groupedByTournament),
+        };
+    });
+};
+
+export const groupInPlaySportsData = (games) => {
+    if (!games?.data?.data) return [];
+
+    return games.data.data.map(sportItem => {
+        const doc = sportItem.doc || [];
+
+        const groupedByTournament = doc.reduce((acc, match) => {
+            const tournamentId = match?.tournament?.id;
+            const tournamentName = match?.tournament?.name?.trim() || 'Unknown Tournament';
+
+            if (!tournamentId || !match?.isPlay) return acc;
+
+            if (!acc[tournamentName]) {
+                acc[tournamentName] = {
+                    id: tournamentId,
+                    title: tournamentName,
+                    matches: [],
+                };
+            }
+
+            acc[tournamentName].matches.push({
+                name: match?.name?.trim(),
+                id: match?.id,
+                isPlay: match?.isPlay,
+                marketId: match?.marketId,
+                numOfBookmaker: match?.numOfBookmaker,
+                numOfFancy: match?.numOfFancy,
+                openDate: match?.openDate,
+                sport: match?.sport,
+                tournament: match?.tournament,
+            });
+
+            return acc;
+        }, {});
+
+        return {
+            id: sportItem._id,
+            name: sportItem.name,
+            leagues: Object.values(groupedByTournament),
+        };
+    });
+};

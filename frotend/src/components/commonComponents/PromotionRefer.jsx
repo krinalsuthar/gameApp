@@ -4,16 +4,9 @@ import { Link, useLocation } from "react-router-dom"
 import * as allImages from "../../assets"
 import React from "react"
 import { useAppTheme } from "./ThemeComponent"
-const images = [
-    allImages.promotion1,
-    allImages.promotion2,
-    allImages.promotion3,
-    allImages.promotion4,
-    allImages.promotion5
-]
+
 const PromotionRefer = () => {
     const theme = useTheme();
-    const { mode } = useAppTheme();
     const location = useLocation();
     const promotion = location?.state?.data;
     return (

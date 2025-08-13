@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const rawMarketData = createSlice({
-    name: "getrawMarketData",
+const fancyMarketsSlice = createSlice({
+    name: "fancyMarkets",
     initialState: {
         data: null,
         isLoading: false, // Add isLoading state
         error: null, // Optional: for error handling
     },
     reducers: {
-        setRawMarketData: (state, action) => {
+        setFancyMarkets: (state, action) => {
             state.data = action.payload;
             state.isLoading = false; // Reset loading when data is set
             state.error = null; // Clear error
@@ -23,5 +23,5 @@ const rawMarketData = createSlice({
     },
 });
 
-export const { setRawMarketData, setLoading, setError } = rawMarketData.actions;
-export default rawMarketData.reducer;
+export const { setFancyMarkets, setLoading, setError } = fancyMarketsSlice.actions;
+export default fancyMarketsSlice.reducer;

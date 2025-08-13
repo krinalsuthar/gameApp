@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import { getMarketMatchData, marketRawData } from '../api/authApi';
 import { useQuery } from '@tanstack/react-query';
-import { setFancyMarkets } from '../features/Authntication/fancyMarketsSlice';
+import { setFancyMarkets, setLoading as setFancyLoading, setError as setFancyError } from "../features/Authntication/fancyMarketsSlice";
+import { setRawMarketData, setLoading as setRawLoading, setError as setRawError } from "../features/drawer/RawDataSlice";
 import { useEffect } from 'react';
-import { setRawMarketData } from '../features/drawer/RawDataSlice';
+import "../loading.css"
 
 const Dashboard = () => {
     const theme = useTheme();
@@ -21,23 +22,55 @@ const Dashboard = () => {
     const open = useSelector((state) => state.drawer.open);
     const drawerWidth = isXs ? 0 : isSm ? 250 : 350;
     const headerHeight = '35px';
-    const navigate = useNavigate()
-    const { data } = useQuery({ queryKey: ["gameData"], queryFn: getMarketMatchData })
-    const { data: rawData } = useQuery({
+    const navigate = useNavigate();
+
+    const { data: fancyData, isLoading: isFancyLoading, isError: isFancyError, error: fancyError } = useQuery({
+        queryKey: ["gameData"],
+        queryFn: getMarketMatchData,
+        refetchOnMount: true,
+        cacheTime: 0,
+        staleTime: 0,
+    });
+
+    const { data: rawData, isLoading: isRawLoading, isError: isRawError, error: rawError } = useQuery({
         queryKey: ["rawData"],
         queryFn: marketRawData,
+        refetchOnMount: true,
+        cacheTime: 0,
+        staleTime: 0,
     });
-    useEffect(() => {
-        if (rawData) {
-            dispatch(setRawMarketData(rawData))
-        }
-    }, [rawData, dispatch])
 
     useEffect(() => {
-        if (data) {
-            dispatch(setFancyMarkets(data));
+        if (isFancyLoading) {
+            dispatch(setFancyLoading());
+        } else if (isFancyError) {
+            dispatch(setFancyError(fancyError.message));
+            dispatch(setGlobalError(fancyError.message));
+        } else if (fancyData) {
+            dispatch(setFancyMarkets(fancyData));
         }
-    }, [data, dispatch]);
+
+        if (isRawLoading) {
+            dispatch(setRawLoading());
+        } else if (isRawError) {
+            dispatch(setRawError(rawError.message));
+            dispatch(setGlobalError(rawError.message));
+        } else if (rawData) {
+            dispatch(setRawMarketData(rawData));
+        }
+    }, [fancyData, isFancyLoading, isFancyError, fancyError, rawData, isRawLoading, isRawError, rawError, dispatch]);
+
+    if (isFancyLoading) {
+        return (
+            <Box sx={{ width: "100vw", height: "100vh", bgcolor: "#373737ff", }}>
+                <Box sx={{ transform: " translate(40%, 150%)" }}>
+                    <div className="loader"></div>
+                </Box>
+            </Box>
+
+        )
+    }
+
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: theme.palette.background.secondery }}>
             <CssBaseline />
@@ -61,8 +94,8 @@ const Dashboard = () => {
                     }}
                 >
                     <Box sx={{
-                        bgcolor: "black", display: { lg: "none", md: "none", sm: "flex", xs: "flex" }
-                        , gap: 1, p: 1
+                        bgcolor: "black", display: { lg: "none", md: "none", sm: "flex", xs: "flex" },
+                        gap: 1, p: 1
                     }}>
                         <Button
                             variant="contained"
@@ -97,7 +130,7 @@ const Dashboard = () => {
                         flex: 1,
                         px: 2,
                         pt: 3
-                    }} >
+                    }}>
                         <AppRoutes />
                     </Box>
                 </Box>
@@ -109,4 +142,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
